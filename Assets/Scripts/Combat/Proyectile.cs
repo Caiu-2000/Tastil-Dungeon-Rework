@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-using Unity.VisualScripting;
+
 using UnityEngine;
 
 
@@ -37,12 +34,6 @@ public class Proyectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-       
-        if (collision.gameObject.CompareTag("Shield"))
-        {
-            collision.GetComponent<Shield>().BlockProyectile(this , _damage);
-           
-        }
         if (collision.gameObject.CompareTag("Player") && !_fromPlayer)
         {
             collision.gameObject.GetComponent<PlayerMaster>().applyDamage(_damage);
@@ -53,22 +44,16 @@ public class Proyectile : MonoBehaviour
             collision.gameObject.GetComponent<Entity>().applyDamage(_damage);
             Destroy(gameObject);
         }
-        if (collision.gameObject.GetComponent<BreacableComponent>() && _fromPlayer)
+
+        IBreackable inter = collision.gameObject.GetComponent<IBreackable>();
+
+        if ( inter != null && _fromPlayer)
         {
-            collision.gameObject.GetComponent<BreacableComponent>().Breack();
+            collision.gameObject.GetComponent<IBreackable>().Breack();
             Destroy(gameObject);
         }
-
-         
+  
     }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Shield"))
-            {
-            other.GetComponent<Shield>().passTrough(this);
-        }
-    }
-
 
 
     private void Hitted()

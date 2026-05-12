@@ -6,7 +6,8 @@ public class PlayerMovement : MovementComponent
 
     private float rotationY = 0f, _rotationX = 0f , rotationspeed = 25f ;
     [SerializeField] private Camera _camera;
-    [SerializeField] private PlayerInput _inputComp;
+    [SerializeField]private PlayerInput _inputComp;
+    [SerializeField] private CharacterController Cc;
     public void Rotate(Vector2 lookdir)
     {
         rotationY += lookdir.x * rotationspeed * Time.deltaTime;
@@ -26,11 +27,27 @@ public class PlayerMovement : MovementComponent
 
     public override void Movement(Vector3 dir)
     {
-        base.Movement(dir);
+        Vector3 move = transform.forward * dir.y + transform.right * dir.x;
+
+        move = move.normalized * speed * Time.fixedDeltaTime * force;
+        Cc.SimpleMove(move);
     }
     public override void jump()
     {
-        base.jump();
+        print("SeLlegaAca");
+        if (Cc.isGrounded)
+        {
+            print("Se pasa el check");
+            Cc.Move(new Vector3(0, _jumpForce, 0));
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (Cc.isGrounded)
+        {
+            
+        }
     }
 
 }

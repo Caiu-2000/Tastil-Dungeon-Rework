@@ -4,30 +4,15 @@ using UnityEngine;
 public class ItemsHand : MonoBehaviour
 {
 
-    public Item cosito;
-
-
-    [SerializeField] private PlayerMaster _player;
-
     private Item _equipedItem;
     private bool _hotbarCd = false ;
-    
-    
-    
-    
-    
-    
-    
+
     public void ParryPressed()
     {
 
     }
     
-    
-    
-    
-    
-    
+
     public void ChangeItem(Item _newItem)
     {
         if (_hotbarCd) { return; }

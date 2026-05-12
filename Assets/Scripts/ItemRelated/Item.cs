@@ -25,7 +25,7 @@ abstract public class Item : MonoBehaviour , IInteractable
         _firstPosition = transform.position;
     }
 
-    public void Interact()
+    public virtual void Interact(PlayerMaster _player = null)
     {
 
     }
@@ -74,8 +74,5 @@ abstract public class Item : MonoBehaviour , IInteractable
         return _itemIcon;
     }
 
-    public void Interact(PlayerMaster _player = null)
-    { 
 
-    }
 }

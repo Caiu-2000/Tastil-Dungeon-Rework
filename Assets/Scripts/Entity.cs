@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-[RequireComponent(typeof(Rigidbody))]
+
 public abstract  class Entity : MonoBehaviour
 {
                     //PENDIENTE CAMBIAR ESTO A PROTEGIDO O ALGO QUE LO PRIVATICE PARA TODO MENOS SUS 

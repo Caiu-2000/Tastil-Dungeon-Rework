@@ -1,9 +1,9 @@
 
 using UnityEngine;
-[RequireComponent  (typeof(Rigidbody))]
+
 public class MovementComponent : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f,  force = 10f , _jumpForce;
+    [SerializeField] protected float speed = 5f,  force = 10f , _jumpForce;
     private Rigidbody Rb = null;
     
     protected Entity _entityController;
@@ -36,7 +36,7 @@ public class MovementComponent : MonoBehaviour
     }
     public virtual void Movement(Vector3 dir)
     {
-        if (!_entityController._CanInputMovement) return;
+        //if (!_entityController._CanInputMovement) return;
         Vector3 move = transform.forward * dir.y + transform.right * dir.x;
 
         move = move.normalized * speed * Time.fixedDeltaTime * force;
@@ -84,23 +84,6 @@ public class MovementComponent : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
-    {
-        if (!RespectGroundDamping) 
-        {
-            return;
-        }
-        if (CheckGrounded())
-        {
-            Rb.linearDamping = 15;
-            Rb.linearVelocity = new Vector3(Rb.linearVelocity.x , 0 , Rb.linearVelocity.z);
-        }
-        else
-        {
-            Rb.linearDamping = 0;
-
-        }
-    }
 
 
 }

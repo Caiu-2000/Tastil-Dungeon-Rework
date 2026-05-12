@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField] private MovementComponent _playerMovement = null;
+    [SerializeField] private PlayerMovement _playerMovement = null;
     [SerializeField] private InputAction _useAction, _movementAction, _lookAction, _attackAction , _interactAction , _blockAction, _jumpAtion , _rightClickAction;
     [SerializeField] private PlayerMaster _EntityController = null;
     //[SerializeField] private InventoryComponent _inventory;
@@ -15,7 +15,8 @@ public class PlayerInput : MonoBehaviour
     private InputAction _reset , _close;
 
 
-    private float _lastBlockingState = 0.0f;
+    private InventoryComponent _inventory;
+
 
 
     public delegate void AttacksDelegate();
@@ -50,12 +51,14 @@ public class PlayerInput : MonoBehaviour
 
 
         //PASAR A GAMEMANAGER
+        /*
         _reset = InputSystem.actions.FindAction("Reset");
-        _close = InputSystem.actions.FindAction("Close");
+        _close = InputSystem.actions.FindAction("Close");*/
     }
 
+
     private void Update()
-    {
+    {/*
         #region ControlesEscena
         if (_close.WasPressedThisFrame())
         {
@@ -64,9 +67,9 @@ public class PlayerInput : MonoBehaviour
         }
         if (_reset.WasPressedThisFrame()) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         #endregion
-
+        */
         _dir = _movementAction.ReadValue<Vector2>();
-
+        print(_movementAction.ReadValue<Vector2>());
         if(_interactAction.WasPressedThisFrame()) _EntityController.InteractPressed();
         
 
@@ -127,7 +130,8 @@ public class PlayerInput : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _playerMovement.Movement(_dir);
+
+        _playerMovement.Movement(new Vector3 (_dir.x,_dir.y,0));
     }
 }
 
