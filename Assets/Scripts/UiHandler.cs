@@ -1,16 +1,15 @@
 
 using System.Collections.Generic;
 using TMPro;
-
 using UnityEngine;
 using UnityEngine.UI;
 
-
+// HAY QUE ACORDARSE DE BORRAR TODOS LOS RETURN CUANDO AGREGUE LA UI DE NUEVO
 
 public class UiHandler : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI  _contextIndicator;
-    [SerializeField] private PlayerMaster  Player;
+    private PlayerMaster  Player;
     [SerializeField] private Image _lifeBar, _stamBar;
  
     [SerializeField] private List<Image> _hotbarIndicators = new List<Image>(3);
@@ -21,6 +20,7 @@ public class UiHandler : MonoBehaviour
 
     private void Awake()
     {
+        return;
            if (!Player) Player = GetComponent<PlayerMaster>();
 
         firstPosition = _hotbarSelector.transform;
@@ -28,7 +28,7 @@ public class UiHandler : MonoBehaviour
 
     private void Update()
     {
-
+        return;
         UpdateStam(Player._currentStamina , Player._maxStamina );
     }
 

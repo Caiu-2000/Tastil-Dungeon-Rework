@@ -6,27 +6,29 @@ using UnityEngine.SceneManagement;
 public class PlayerMaster : Entity
 {
     [SerializeField] private UiHandler Ui;
-    [SerializeField] public Transform _Hand;
-
+    [SerializeField] public InventoryComponent _inventory;
+    [SerializeField] public WeaponsHand weaponHand;
     private IInteractable _lastItemOnSigth;
-    [SerializeField] private InventoryComponent _inventory;
-    [SerializeField] private PlayerInput _input;
     
-    public override void ReduceStamina(float Cost)
-    {
-        _currentStamina -= Cost;
-        if (_currentStamina < 0) _currentStamina = 0;
-        _StaminaCount = _StaminaCD;
-        Ui.UpdateStam(_currentStamina,  _maxStamina);
-        Ui.UpdateLife(_currentLife, _maxLife);
-    }
     private void Start()
     {
         GameManager.Instance.Player = this;
     }
 
+    public override void ReduceStamina(float Cost)
+    {
+        _currentStamina -= Cost;
+        if (_currentStamina < 0) _currentStamina = 0;
+        _StaminaCount = _StaminaCD;
+        //Ui.UpdateStam(_currentStamina,  _maxStamina);
+        //Ui.UpdateLife(_currentLife, _maxLife);
+    }
+
+
+
     private void Update()
     {
+        /*
         Ray _ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         RaycastHit _hit;
         float _maxDistance = 100f;
@@ -39,7 +41,7 @@ public class PlayerMaster : Entity
         
             if (_lastItemOnSigth != _hit.transform.gameObject.GetComponent<IInteractable>())
             {
-                Ui.IndicateInteractItem();
+                //Ui.IndicateInteractItem();
             }
 
             _lastItemOnSigth = _hit.transform.gameObject.GetComponent<IInteractable>();
@@ -48,7 +50,7 @@ public class PlayerMaster : Entity
         else
         {
             _lastItemOnSigth = null;
-            Ui.IndicateInteractItem(true);
+            //Ui.IndicateInteractItem(true);
         }
         if (_StaminaCount > 0)
         {
@@ -61,30 +63,15 @@ public class PlayerMaster : Entity
         }
         // Optional: Visualize the ray in the Scene view
         Debug.DrawRay(_ray.origin, _ray.direction * _maxDistance, Color.red);
+        */
     }
-
-
-
 
 
     public void InteractPressed()
     {
         
         if (_lastItemOnSigth == null) return;
-        if (_lastItemOnSigth is ItemCollider item) {
-            if (item.ParentItem.GetItemType() == Item.ItemType.Weapon)
-            {
-                EquipWeapon(item.ParentItem);
-            }
-            if (item.ParentItem.GetItemType() == Item.ItemType.Item)
-            {
-                _inventory.AddItem(item.ParentItem);
-            }
-        }
-        else
-        {
-            _lastItemOnSigth.Interact();
-        }
+        _lastItemOnSigth.Interact(this);
     }
 
 
@@ -92,7 +79,7 @@ public class PlayerMaster : Entity
     {
 
         _currentLife -= damage;
-        print(_currentLife);
+
         if (_currentLife <= 0)
         {
             Die();
@@ -103,7 +90,7 @@ public class PlayerMaster : Entity
             this.gameObject.GetComponent<MovementComponent>().ApplyKnockback(KBDir, knockbackForce);
         }
 
-        Ui.UpdateLife(_currentLife, _maxLife); 
+        //Ui.UpdateLife(_currentLife, _maxLife); 
     }
 
     public  override void Die()
@@ -114,7 +101,7 @@ public class PlayerMaster : Entity
     public override void Heal(float _healAmount)
     {
         base.Heal(_healAmount);
-        Ui.UpdateLife(_currentLife,_maxLife);
+        //Ui.UpdateLife(_currentLife,_maxLife);
     }
 
 

@@ -8,10 +8,10 @@ public class GameManager : MonoBehaviour
    
     public static GameManager Instance { get; private set; }
     public PlayerMaster Player;
-
+    public PlayerInput InputHandler;
     private void Awake()
     {
-        // Si ya existe una instancia y no es esta, se destruye
+
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
 
-        // Opcional: Hace que el objeto no se destruya al cambiar de escena
+     
         DontDestroyOnLoad(gameObject);
     }
 
@@ -28,6 +28,13 @@ public class GameManager : MonoBehaviour
     {
         return Instance.Player;
     }
+
+    public PlayerInput GetInput()
+    {
+        return Instance.InputHandler;
+    }
+
+
 
 }
 

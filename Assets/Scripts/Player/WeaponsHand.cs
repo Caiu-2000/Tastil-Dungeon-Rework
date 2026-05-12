@@ -1,13 +1,16 @@
 using UnityEngine;
-using UnityEngine.Windows;
 
-public class WeaponsHand
+
+public class WeaponsHand : MonoBehaviour 
 {
+    private Weapon _equipedWeapon;
+    [SerializeField] private PlayerInput _playerInput;
 
 
-
-
-
+    public void Start()
+    {
+        _playerInput = GameManager.Instance.GetInput();
+    }
 
 
     public void EquipWeapon(Item _newWeapon)
@@ -21,15 +24,11 @@ public class WeaponsHand
             _equipedWeapon = null;
         }
         _equipedWeapon = _newWeapon.GetComponent<Weapon>();
-        _equipedWeapon.transform.SetParent(this, true);
+        _equipedWeapon.transform.SetParent(this.transform, true);
         _equipedWeapon.transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
-        _equipedWeapon._input = _input;
+
         _equipedWeapon.ActivateWeapon();
     }
-
-
-
-
 
 }

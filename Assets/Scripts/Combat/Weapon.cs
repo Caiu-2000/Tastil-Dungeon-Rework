@@ -7,7 +7,7 @@ public class Weapon : Item
 {
 
     [SerializeField] protected float _damage = 10.0f, _knockbackForce = 30.0f;
-    public PlayerInput _input;
+  
     protected Animator animator;
     [SerializeField]
     protected bool _equiped = false , _readyToAttack = true;
@@ -16,7 +16,7 @@ public class Weapon : Item
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        if (_equiped) ActivateWeapon();
+       
     }
 
     public virtual void ChargeAttack()
@@ -31,6 +31,7 @@ public class Weapon : Item
     
     public void ActivateWeapon()
     {
+        PlayerInput _input = GameManager.Instance.GetInput();
         animator.SetTrigger("Activate");
         _equiped = true;
         _readyToAttack = true;
@@ -44,6 +45,7 @@ public class Weapon : Item
     }
     public void DeactivateWeapon()
     {
+        PlayerInput _input = GameManager.Instance.GetInput();
         _readyToAttack = false;
         _equiped = false;
         animator.SetTrigger("Deactivate");
@@ -67,10 +69,17 @@ public class Weapon : Item
 
     private void OnDestroy()
     {
+        PlayerInput _input = GameManager.Instance.GetInput();
         if (_input)
         {
             _input.OnAttackPressed -= ChargeAttack;
             _input.OnAttackReleased -= ReleaseAttack;
         }
     }
+
+    public override void Interact(PlayerMaster player = null)
+    {
+        player.weaponHand.EquipWeapon(this);
+    }
+    
 }
