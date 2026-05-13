@@ -14,8 +14,15 @@ public class InventoryComponent : MonoBehaviour
 
 
     public void AddItem(Item _newItem)
-    {
 
+
+    {
+        print("Hasta aca se llegho bien");
+        if (_newItem.GetItemType() == Item.ItemType.WeaponMele)
+        {
+            _weaponsHand.EquipWeapon(_newItem.GetComponent<MeleWeapon>());
+            return;
+        }
         for (int x = 0; x < ItemsInside.Length; x++) 
         {
             if (ItemsInside[x] == null)

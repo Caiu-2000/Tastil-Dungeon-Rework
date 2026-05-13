@@ -69,7 +69,6 @@ public class PlayerInput : MonoBehaviour
         #endregion
         */
         _dir = _movementAction.ReadValue<Vector2>();
-        print(_movementAction.ReadValue<Vector2>());
         if(_interactAction.WasPressedThisFrame()) _EntityController.InteractPressed();
         
 

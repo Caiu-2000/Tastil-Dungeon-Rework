@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
 
 
 public class Weapon : Item
@@ -8,16 +7,12 @@ public class Weapon : Item
 
     [SerializeField] protected float _damage = 10.0f, _knockbackForce = 30.0f;
   
-    protected Animator animator;
+
     [SerializeField]
     protected bool _equiped = false , _readyToAttack = true;
     public float _stamCost = 0.0f;
 
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
-       
-    }
+    protected Entity ParentEntity;
 
     public virtual void ChargeAttack()
     {
@@ -31,8 +26,9 @@ public class Weapon : Item
     
     public void ActivateWeapon()
     {
+
         PlayerInput _input = GameManager.Instance.GetInput();
-        animator.SetTrigger("Activate");
+
         _equiped = true;
         _readyToAttack = true;
 
@@ -48,7 +44,7 @@ public class Weapon : Item
         PlayerInput _input = GameManager.Instance.GetInput();
         _readyToAttack = false;
         _equiped = false;
-        animator.SetTrigger("Deactivate");
+
         if (_input)
         {
             _input.OnAttackPressed -= ChargeAttack;
@@ -56,14 +52,14 @@ public class Weapon : Item
         }
     }
 
-    public virtual float TryAttack()
+    public virtual void TryAttack()
     {
-        return 0.0f;
+        return;
     }
 
-    public virtual float Attack()
+    public virtual void Attack()
     {
-        return 0.0f;
+        return ;
     }
 
 
@@ -79,7 +75,12 @@ public class Weapon : Item
 
     public override void Interact(PlayerMaster player = null)
     {
-        player.weaponHand.EquipWeapon(this);
+        player._inventory.AddItem(this);
+    }
+
+    public void SetParentEntity(Entity NewParent)
+    {
+        ParentEntity = NewParent;
     }
     
 }

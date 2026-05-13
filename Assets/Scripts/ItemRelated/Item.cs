@@ -12,7 +12,8 @@ abstract public class Item : MonoBehaviour , IInteractable
     [SerializeField]private Sprite _itemIcon;
     public enum ItemType
     {
-        Weapon,
+        WeaponMele,
+        WeaponRange,
         Item,
         Gold
     }
@@ -27,7 +28,8 @@ abstract public class Item : MonoBehaviour , IInteractable
 
     public virtual void Interact(PlayerMaster _player = null)
     {
-
+        print("hoal");
+        //psldofj sdoif sd
     }
 
 
