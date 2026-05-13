@@ -26,7 +26,7 @@ public class Weapon : Item
     
     public void ActivateWeapon()
     {
-
+        print(GameManager.Instance.GetInput());
         PlayerInput _input = GameManager.Instance.GetInput();
 
         _equiped = true;

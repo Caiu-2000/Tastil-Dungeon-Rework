@@ -8,7 +8,7 @@ public class MovementComponent : MonoBehaviour
     
     protected Entity _entityController;
 
-    [SerializeField] bool RespectGroundDamping = true;
+    //[SerializeField] bool RespectGroundDamping = true;
 
     private void Awake()
     {
