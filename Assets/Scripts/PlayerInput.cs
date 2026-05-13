@@ -56,7 +56,10 @@ public class PlayerInput : MonoBehaviour
         _close = InputSystem.actions.FindAction("Close");*/
     }
 
-
+    private void Start()
+    {
+        GameManager.Instance.InputHandler = this;
+    }
     private void Update()
     {/*
         #region ControlesEscena
@@ -69,7 +72,6 @@ public class PlayerInput : MonoBehaviour
         #endregion
         */
         _dir = _movementAction.ReadValue<Vector2>();
-        print(_movementAction.ReadValue<Vector2>());
         if(_interactAction.WasPressedThisFrame()) _EntityController.InteractPressed();
         
 
@@ -83,6 +85,7 @@ public class PlayerInput : MonoBehaviour
 
         if(_attackAction.WasPressedThisFrame())
         {
+            print("Se apreto atacar");
             OnAttackPressed?.Invoke();
         }
         if(_attackAction.WasReleasedThisFrame())

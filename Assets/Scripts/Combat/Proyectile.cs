@@ -6,14 +6,14 @@ using UnityEngine;
 public class Proyectile : MonoBehaviour
 {
     [SerializeField] public bool _fromPlayer = false;
-    private Vector3 _direction;
+
     [SerializeField] private Transform _objective;
     [SerializeField] public float _weight, _speed = 1.0f , _damage = 50.0f;
     [SerializeField] private bool _canKnockback = false;
     [SerializeField] private float _timeToAutoDelete = 10.0f;
     private bool _wasRedirected = false;
     
-    private float _gravity = 0.0f;
+
     [SerializeField] private GameObject _objectModel;
 
 

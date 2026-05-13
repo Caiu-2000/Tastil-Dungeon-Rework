@@ -9,9 +9,12 @@ public class PlayerMaster : Entity
     [SerializeField] public InventoryComponent _inventory;
     [SerializeField] public WeaponsHand weaponHand;
     private IInteractable _lastItemOnSigth;
+    [SerializeField] private Camera _camera;
     
     private void Start()
     {
+      
+   
         GameManager.Instance.Player = this;
     }
 
@@ -28,13 +31,13 @@ public class PlayerMaster : Entity
 
     private void Update()
     {
-        /*
-        Ray _ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        
+        Ray _ray = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         RaycastHit _hit;
         float _maxDistance = 100f;
 
 
-        if (Physics.Raycast(_ray, out _hit, _maxDistance, LayerMask.GetMask("ItemsCollisions")))
+        if (Physics.Raycast(_ray, out _hit, _maxDistance, LayerMask.GetMask("ItemCollisions")))
         {
             
             if(_hit.transform.gameObject.GetComponent<IInteractable>() == null) return;
@@ -45,7 +48,6 @@ public class PlayerMaster : Entity
             }
 
             _lastItemOnSigth = _hit.transform.gameObject.GetComponent<IInteractable>();
-
         }
         else
         {
@@ -63,7 +65,7 @@ public class PlayerMaster : Entity
         }
         // Optional: Visualize the ray in the Scene view
         Debug.DrawRay(_ray.origin, _ray.direction * _maxDistance, Color.red);
-        */
+        
     }
 
 
@@ -107,6 +109,6 @@ public class PlayerMaster : Entity
 
     public Vector3 GetLookDretirection()
     {
-        return Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f)).direction;
+        return _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f)).direction;
     }
 }

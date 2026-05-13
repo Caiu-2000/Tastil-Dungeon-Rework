@@ -1,11 +1,11 @@
-using System.Collections;
+
 using UnityEngine;
 
-public abstract  class Entity : MonoBehaviour
+public abstract  class Entity : MonoBehaviour , IHittable
 {
                     //PENDIENTE CAMBIAR ESTO A PROTEGIDO O ALGO QUE LO PRIVATICE PARA TODO MENOS SUS 
                     //HERENCIAS
-    [SerializeField] public float _currentLife = 0, _maxLife = 100, _DamageCDTime = 0.25f;
+    [SerializeField] protected float _currentLife = 0, _maxLife = 100, _DamageCDTime = 0.25f;
 
     public bool _damCD = false;
     public bool _CanInputMovement = true;
@@ -61,8 +61,6 @@ public abstract  class Entity : MonoBehaviour
     {
         _currentStamina -= Cost;
         if (_currentStamina <0) _currentStamina = 0;
-
-
     }
 
     public virtual void Heal(float _healAmount)
@@ -71,4 +69,8 @@ public abstract  class Entity : MonoBehaviour
         if (_currentLife > _maxLife) _currentLife = _maxLife;
     }
 
+    public void Hit(float damage = 0, bool ApplyKnockback = false, float knockbackForce = 0, Transform KnockBackFrom = null)
+    {
+        applyDamage(damage,ApplyKnockback,knockbackForce,KnockBackFrom);
+    }
 }

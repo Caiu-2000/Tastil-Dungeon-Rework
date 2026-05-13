@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 
 public class WeaponsHand : MonoBehaviour 
@@ -13,7 +14,7 @@ public class WeaponsHand : MonoBehaviour
     }
 
 
-    public void EquipWeapon(Item _newWeapon)
+    public void EquipWeapon(Weapon _newWeapon)
     {
         if (_equipedWeapon != null)
         {
@@ -22,13 +23,17 @@ public class WeaponsHand : MonoBehaviour
             _equipedWeapon.ResetPosition();
             transform.localRotation = Quaternion.identity;
             _equipedWeapon = null;
+            _equipedWeapon.SetParentEntity(null);
         }
         _equipedWeapon = _newWeapon.GetComponent<Weapon>();
         _equipedWeapon.transform.SetParent(this.transform, true);
         _equipedWeapon.transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
+        _equipedWeapon.SetParentEntity(GameManager.Instance.GetPlayer());
 
         _equipedWeapon.ActivateWeapon();
     }
+
+
 
 }

@@ -1,10 +1,21 @@
 using UnityEngine;
 
+[RequireComponent (typeof(Animator))]
 public class RangedWeapon : Weapon
 {
     [SerializeField] Proyectile _arrow;
     [SerializeField] Transform _firePoint;
+    private Animator animator;
     private bool _IsCharging = false;
+
+
+
+
+    private void Start()
+    {
+        animator = GetComponent<Animator> ();
+    }
+
     public override void ChargeAttack()
     {
         animator.SetTrigger("StartCharge");
