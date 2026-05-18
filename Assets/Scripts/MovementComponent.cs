@@ -9,7 +9,7 @@ public class MovementComponent : MonoBehaviour
     protected Entity _entityController;
 
     //[SerializeField] bool RespectGroundDamping = true;
-
+    
     private void Awake()
     {
         if (!Rb) Rb = GetComponent<Rigidbody>();
@@ -47,7 +47,7 @@ public class MovementComponent : MonoBehaviour
     }
 
 
-    public void ApplyKnockback(Vector3 knockbackDir , float force)
+    public virtual void ApplyKnockback(Vector3 knockbackDir , float force)
     {
         Rb.linearVelocity = Vector3.zero;
         Vector3 move = knockbackDir.normalized * speed * Time.fixedDeltaTime * force;
@@ -82,7 +82,6 @@ public class MovementComponent : MonoBehaviour
         float distance = 1.1f; // Slightly more than half the player's height
         return Physics.Raycast(transform.position, Vector3.down, distance);
     }
-
 
 
 

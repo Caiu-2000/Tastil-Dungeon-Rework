@@ -1,5 +1,7 @@
-using Unity.VisualScripting;
+using System.Collections;
+
 using UnityEngine;
+
 
 public class HealingItem : Item
 {
@@ -7,12 +9,30 @@ public class HealingItem : Item
     
     public override void Use()
     {
-        base.Use();
-        GameManager.Instance.GetPlayer().Heal(_healingPower);
-        Destroy(gameObject);
+        StartCoroutine(DrinkTime());
+        
+    }
+
+    public override void Interact(PlayerMaster player = null)
+    {
+        player._inventory.AddItem(this);
     }
 
 
+    private IEnumerator DrinkTime()
+    {
+        _hand.SetAnimationTrigger("Drink");
+        yield return new WaitForSeconds(_useTime);
+        if (_ReplaceItem)
+        {
+            Item Replace = Instantiate(_ReplaceItem);
+            _inventory.ReplaceItem(this, Replace);
+            
 
+        }
+
+        GameManager.Instance.GetPlayer().Heal(_healingPower);
+        Destroy(gameObject);
+    }
 
 }

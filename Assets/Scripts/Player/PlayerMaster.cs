@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,8 +23,8 @@ public class PlayerMaster : Entity
         _currentStamina -= Cost;
         if (_currentStamina < 0) _currentStamina = 0;
         _StaminaCount = _StaminaCD;
-        //Ui.UpdateStam(_currentStamina,  _maxStamina);
-        //Ui.UpdateLife(_currentLife, _maxLife);
+        Ui.UpdateStam(_currentStamina,  _maxStamina);
+        Ui.UpdateLife(_currentLife, _maxLife);
     }
 
 
@@ -43,7 +44,7 @@ public class PlayerMaster : Entity
         
             if (_lastItemOnSigth != _hit.transform.gameObject.GetComponent<IInteractable>())
             {
-                //Ui.IndicateInteractItem();
+                Ui.IndicateInteractItem();
             }
 
             _lastItemOnSigth = _hit.transform.gameObject.GetComponent<IInteractable>();
@@ -51,7 +52,7 @@ public class PlayerMaster : Entity
         else
         {
             _lastItemOnSigth = null;
-            //Ui.IndicateInteractItem(true);
+            Ui.IndicateInteractItem(true);
         }
         if (_StaminaCount > 0)
         {
@@ -62,7 +63,7 @@ public class PlayerMaster : Entity
             _currentStamina += _StaminaRegen * Time.deltaTime;
             if (_currentStamina > _maxStamina) _currentStamina = _maxStamina;
         }
-        // Optional: Visualize the ray in the Scene view
+
         Debug.DrawRay(_ray.origin, _ray.direction * _maxDistance, Color.red);
         
     }
@@ -70,7 +71,7 @@ public class PlayerMaster : Entity
 
     public void InteractPressed()
     {
-        
+        print(_lastItemOnSigth);
         if (_lastItemOnSigth == null) return;
         _lastItemOnSigth.Interact(this);
     }
@@ -78,7 +79,7 @@ public class PlayerMaster : Entity
 
     public override void applyDamage(float damage, bool ApplyKnockback = false, float knockbackForce = 0, Transform KnockBackFrom = null)
     {
-
+        
         _currentLife -= damage;
 
         if (_currentLife <= 0)
@@ -88,10 +89,10 @@ public class PlayerMaster : Entity
         if (ApplyKnockback)
         {
             Vector3 KBDir = this.transform.position - KnockBackFrom.position;
-            this.gameObject.GetComponent<MovementComponent>().ApplyKnockback(KBDir, knockbackForce);
+            this.gameObject.GetComponent<PlayerMovement>().ApplyKnockback(KBDir, knockbackForce);
         }
 
-        //Ui.UpdateLife(_currentLife, _maxLife); 
+        Ui.UpdateLife(_currentLife, _maxLife); 
     }
 
     public  override void Die()
@@ -102,7 +103,7 @@ public class PlayerMaster : Entity
     public override void Heal(float _healAmount)
     {
         base.Heal(_healAmount);
-        //Ui.UpdateLife(_currentLife,_maxLife);
+        Ui.UpdateLife(_currentLife,_maxLife);
     }
 
 

@@ -113,6 +113,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "UseItem",
+                    "type": "Button",
+                    "id": "9d0f29ac-68bd-4a75-9f1b-b158b12eeaa8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -531,6 +540,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Use",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9962d9b7-e1ff-4a84-89d1-2fbd404918ce",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseItem",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
