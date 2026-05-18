@@ -50,4 +50,10 @@ public class PlayerMovement : MovementComponent
         }
     }
 
+
+    public override void ApplyKnockback(Vector3 knockbackDir, float force)
+    {
+        return;
+    }
+
 }

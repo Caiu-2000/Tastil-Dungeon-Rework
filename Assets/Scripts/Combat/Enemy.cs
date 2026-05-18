@@ -71,7 +71,9 @@ public class Enemy : Entity
 
     internal void HitConnectded(Collider other)
     {
+
         other.GetComponent<PlayerMaster>().applyDamage(_damage , true , _knockBackForce , transform);
+        PerkManager.Instance.OnPlayerHitted?.Invoke(_damage, this);
     }
 
     protected IEnumerator PlayAndFinish(string TriggerName)

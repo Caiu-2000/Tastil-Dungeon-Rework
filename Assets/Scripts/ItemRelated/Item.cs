@@ -3,17 +3,22 @@ using UnityEngine;
 
 abstract public class Item : MonoBehaviour , IInteractable
 {
-    [SerializeField] private Item _ReplaceItem;
+    [SerializeField] protected Item _ReplaceItem;
     private Vector2 _firstPosition;
     public bool _isPicked = false;
     // Por ahora voy a usar firsPosition para que los items vuelvan a su lugar y que 
     // la sala de pruebas se mantenga organizada
     public InventoryComponent _inventory;
     [SerializeField]private Sprite _itemIcon;
+    [SerializeField] protected float _useTime = 1.0f;
+    protected ItemsHand _hand;
+
     public enum ItemType
     {
         WeaponMele,
         WeaponRange,
+        Consumable,
+        Trowable,
         Item,
         Gold
     }
@@ -68,11 +73,19 @@ abstract public class Item : MonoBehaviour , IInteractable
         {
             _inventory.RemoveItem(this);
         }
+
+        GameManager.Instance.InputHandler.OnUsePressed -= Use;
+
     }
 
     public Sprite GetIcon()
     {
         return _itemIcon;
+    }
+
+    public void SetHand(ItemsHand newhand)
+    {
+        _hand = newhand;
     }
 
 
