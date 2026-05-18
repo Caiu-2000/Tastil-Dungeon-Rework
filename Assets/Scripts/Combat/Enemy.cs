@@ -27,6 +27,10 @@ public class Enemy : Entity
     public override void applyDamage(float damage, bool ApplyKnockback = false, float knockbackForce = 0, Transform KnockBackFrom = null)
     {
         base.applyDamage(damage, ApplyKnockback, knockbackForce, KnockBackFrom);
+
+
+        PerkManager.Instance.OnEnemyHitted(this);
+
         //StartCoroutine(PlayAndFinish("hitted"));
         if (_damCD) return;
         StartCoroutine(CDCounter());
@@ -35,6 +39,14 @@ public class Enemy : Entity
         
 
     }
+
+    public override void Die()
+    {
+        PerkManager.Instance.OnEnemyDeath(this);
+        base.Die();
+    }
+
+
     private IEnumerator CDCounter()
     {
         /*

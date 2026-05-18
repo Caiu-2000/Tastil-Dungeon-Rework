@@ -34,10 +34,10 @@ public class PlayerMovement : MovementComponent
     }
     public override void jump()
     {
-        print("SeLlegaAca");
+        
         if (Cc.isGrounded)
         {
-            print("Se pasa el check");
+            
             Cc.Move(new Vector3(0, _jumpForce, 0));
         }
     }

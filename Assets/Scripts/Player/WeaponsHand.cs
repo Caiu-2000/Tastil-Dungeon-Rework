@@ -5,12 +5,12 @@ using UnityEngine.UIElements;
 public class WeaponsHand : MonoBehaviour 
 {
     private Weapon _equipedWeapon;
-    [SerializeField] private PlayerInput _playerInput;
+
 
 
     public void Start()
     {
-        _playerInput = GameManager.Instance.GetInput();
+        SuscribeToInput();
     }
 
 
@@ -24,6 +24,7 @@ public class WeaponsHand : MonoBehaviour
             transform.localRotation = Quaternion.identity;
             _equipedWeapon = null;
             _equipedWeapon.SetParentEntity(null);
+      
         }
         _equipedWeapon = _newWeapon.GetComponent<Weapon>();
         _equipedWeapon.transform.SetParent(this.transform, true);
@@ -32,8 +33,30 @@ public class WeaponsHand : MonoBehaviour
         _equipedWeapon.SetParentEntity(GameManager.Instance.GetPlayer());
 
         _equipedWeapon.ActivateWeapon();
+
+    }
+
+    public virtual void AttackPressed()
+    {
+        if (_equipedWeapon)
+        {
+            
+        }
+    }
+    public virtual void AttackReleased()
+    {
+
     }
 
 
-
+    private void SuscribeToInput()
+    {
+        GameManager.Instance.InputHandler.OnAttackPressed += AttackPressed;
+        GameManager.Instance.InputHandler.OnAttackReleased += AttackReleased;
+    }
+    private void CancelInput()
+    {
+        GameManager.Instance.InputHandler.OnAttackPressed  -= AttackPressed;
+        GameManager.Instance.InputHandler.OnAttackReleased -= AttackReleased;
+    }
 }

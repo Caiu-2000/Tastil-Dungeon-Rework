@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private PlayerMovement _playerMovement = null;
-    [SerializeField] private InputAction _useAction, _movementAction, _lookAction, _attackAction , _interactAction , _blockAction, _jumpAtion , _rightClickAction;
+    private InputAction _useAction, _movementAction, _lookAction, _attackAction , _interactAction , _blockAction, _jumpAtion , _rightClickAction;
     [SerializeField] private PlayerMaster _EntityController = null;
     //[SerializeField] private InventoryComponent _inventory;
     Vector2 _dir = Vector2.zero;
@@ -85,7 +85,7 @@ public class PlayerInput : MonoBehaviour
 
         if(_attackAction.WasPressedThisFrame())
         {
-            print("Se apreto atacar");
+
             OnAttackPressed?.Invoke();
         }
         if(_attackAction.WasReleasedThisFrame())
@@ -121,12 +121,6 @@ public class PlayerInput : MonoBehaviour
                 }
             }
         }
-
-
-
-
-
-
 
 
     }

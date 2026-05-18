@@ -36,16 +36,19 @@ public class MeleWeapon : Weapon
     }
     public override void ChargeAttack()
     {
-        print("Se cargo ataque");
+        if (TryAttack())
+        {
+
+        }
     }
     public override void ReleaseAttack()
     {
-        TryAttack();
+
     }
-    public override void TryAttack()
+    public override bool TryAttack()
     {
-        print("Se intento atacar");
-        if (_attacking || !_equiped) return;
+
+        if (_attacking || !_equiped) return false;
         if (ParentEntity._currentStamina >= _stamCost)
         {
             ParentEntity.ReduceStamina(_stamCost);
@@ -56,12 +59,10 @@ public class MeleWeapon : Weapon
 
             _attacking = true;
             StartCoroutine(AttackSecuence());
+            return true;
         }
+        return false;
     }
-
-
-
-
     public override Item PicItem(Entity _entity)
     {
         return this;
@@ -70,38 +71,40 @@ public class MeleWeapon : Weapon
 
     private IEnumerator AttackSecuence()
     {
-        print("Empezo la secuencia de ataque");
+ 
         // LLAMAR A ANIMACIONES 
 
         yield return new WaitForSeconds(AttackTimers[_currentCombo -1]);
-        Vector3 AttackPos = GameManager.Instance.GetPlayer().GetLookDretirection() * _reach + ParentEntity.transform.position + new Vector3(0, _vertialOfsset, 0);
 
-        Collider[] collisions = Physics.OverlapSphere(AttackPos , _collSize , LayerMask.GetMask("Hittable" ));
 
-        foreach (Collider Hitted in collisions)
-        {
-            print("Una Collision");
-            IHittable hitable = Hitted.GetComponent<IHittable>();
+        //Tendria que implementar aca un while para que la deteccion dure mas que solo un frame
+            Vector3 AttackPos = GameManager.Instance.GetPlayer().GetLookDretirection() * _reach + ParentEntity.transform.position + new Vector3(0, _vertialOfsset, 0);
 
-            if (hitable == null) continue;
+            Collider[] collisions = Physics.OverlapSphere(AttackPos, _collSize, LayerMask.GetMask("Hittable"));
+
+            foreach (Collider Hitted in collisions)
+            {
+                IHittable hitable = Hitted.GetComponent<IHittable>();
+
+                if (hitable == null) continue;
+
+
+                hitable.Hit(_damage, _canKnockback, _knockbackForce, ParentEntity.transform);
+
+            }
             
-
-            hitable.Hit(_damage, _canKnockback, _knockbackForce, ParentEntity.transform);
-
-        }
+        
         yield return new WaitForSeconds(_timeBetwenAttacks);
+
         _attacking = false;
     }
 
-
-
-
-
-
-
-
     private void OnDrawGizmos()
     {
+        //Esto es solo debug pero tira error de referencia nula en editore por eso esta asi apagado. Es para ver la collision del golpe
+
+        return;
+        if (GameManager.Instance == null) return;
         // Al final tengo que ver como hacer para usar parententity y ver cuando es del player y cuando no
         // O tambien me queda hacer que cada entity tenga un punto de spawn para los ataques
         Vector3 AttackPos = GameManager.Instance.GetPlayer().GetLookDretirection() * _reach + ParentEntity.transform.position + new Vector3(0,_vertialOfsset,0);
