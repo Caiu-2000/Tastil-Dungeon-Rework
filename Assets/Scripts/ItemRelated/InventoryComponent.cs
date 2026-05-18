@@ -17,7 +17,8 @@ public class InventoryComponent : MonoBehaviour
 
 
     {
-        print("Hasta aca se llegho bien");
+
+
         if (_newItem.GetItemType() == Item.ItemType.WeaponMele)
         {
             _weaponsHand.EquipWeapon(_newItem.GetComponent<MeleWeapon>());

@@ -28,8 +28,7 @@ abstract public class Item : MonoBehaviour , IInteractable
 
     public virtual void Interact(PlayerMaster _player = null)
     {
-        print("hoal");
-        //psldofj sdoif sd
+
     }
 
 

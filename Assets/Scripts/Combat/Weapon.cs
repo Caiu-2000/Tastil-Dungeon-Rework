@@ -9,24 +9,24 @@ public class Weapon : Item
   
 
     [SerializeField]
-    protected bool _equiped = false , _readyToAttack = true;
+    protected bool _equiped = false , _readyToAttack = true , _chargableAttack = false;
     public float _stamCost = 0.0f;
 
     protected Entity ParentEntity;
 
     public virtual void ChargeAttack()
     {
-        print("Se cargo ataque");
+        
     }
     public virtual void ReleaseAttack()
     {
-        print(" Se solto ataque");
+      
     }
     
     
     public void ActivateWeapon()
     {
-        print(GameManager.Instance.GetInput());
+
         PlayerInput _input = GameManager.Instance.GetInput();
 
         _equiped = true;
@@ -52,9 +52,9 @@ public class Weapon : Item
         }
     }
 
-    public virtual void TryAttack()
+    public virtual bool TryAttack()
     {
-        return;
+        return false;
     }
 
     public virtual void Attack()
