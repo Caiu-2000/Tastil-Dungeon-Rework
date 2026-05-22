@@ -10,11 +10,12 @@ public class PlayerMaster : Entity
     [SerializeField] public WeaponsHand weaponHand;
     private IInteractable _lastItemOnSigth;
     [SerializeField] private Camera _camera;
+    private Animator _animator;
     
     private void Start()
     {
       
-   
+        _animator = GetComponent<Animator>();
         GameManager.Instance.Player = this;
     }
 
@@ -111,4 +112,21 @@ public class PlayerMaster : Entity
     {
         return _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f)).direction;
     }
+
+
+
+
+
+
+    public void SetAttackAnimation(string Trigger , int Combo)
+    {
+        _animator.SetTrigger(Trigger);
+        _animator.SetInteger("AttackCounter" , Combo);
+    }
+
+
+
+
+
+
 }
