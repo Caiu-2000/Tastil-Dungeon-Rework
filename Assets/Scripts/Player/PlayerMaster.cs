@@ -72,7 +72,7 @@ public class PlayerMaster : Entity
 
     public void InteractPressed()
     {
-        print(_lastItemOnSigth);
+
         if (_lastItemOnSigth == null) return;
         _lastItemOnSigth.Interact(this);
     }
@@ -125,7 +125,12 @@ public class PlayerMaster : Entity
     }
 
 
+    public void PickedNewWeapon(int Id)
+    {
+        _animator.SetTrigger("TakeWeapon");
+        _animator.SetInteger("WeaponId", Id);
 
+    }
 
 
 

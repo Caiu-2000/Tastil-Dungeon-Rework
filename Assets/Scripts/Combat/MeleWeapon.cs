@@ -83,7 +83,7 @@ public class MeleWeapon : Weapon
         yield return new WaitForSeconds(AttackTimers[_currentCombo -1]);
         DebugBool = true;
 
-        //Tendria que implementar aca un while para que la deteccion dure mas que solo un frame
+   
         float elapsedTime = 0;
 
         while (true)
@@ -92,8 +92,8 @@ public class MeleWeapon : Weapon
 
             Vector3 AttackPos = GameManager.Instance.GetPlayer().GetLookDretirection() * _reach + ParentEntity.transform.position + new Vector3(0, _vertialOfsset, 0);
 
-            Collider[] collisions = Physics.OverlapSphere(AttackPos, _collSize, LayerMask.GetMask("Hittable"));
-
+            //Collider[] collisions = Physics.OverlapSphere(AttackPos, _collSize, LayerMask.GetMask("Hittable"));
+            Collider[] collisions = Physics.OverlapBox(AttackPos, new Vector3(_collSize , _collSize , _collSize) , GameManager.Instance.Player.transform.rotation, LayerMask.GetMask("Hittable"));
             foreach (Collider Hitted in collisions)
             {
                 IHittable hitable = Hitted.GetComponent<IHittable>();
@@ -122,11 +122,11 @@ public class MeleWeapon : Weapon
     {
         //Esto es solo debug pero tira error de referencia nula en editore por eso esta asi apagado. Es para ver la collision del golpe
 
-        return;
-        if (GameManager.Instance == null) return;
+        if (!DebugBool) return;
         // Al final tengo que ver como hacer para usar parententity y ver cuando es del player y cuando no
         // O tambien me queda hacer que cada entity tenga un punto de spawn para los ataques
         Vector3 AttackPos = GameManager.Instance.GetPlayer().GetLookDretirection() * _reach + ParentEntity.transform.position + new Vector3(0,_vertialOfsset,0);
-        Gizmos.DrawWireSphere(AttackPos , _collSize);
+        //Gizmos.DrawWireSphere(AttackPos , _collSize);
+        Gizmos.DrawWireCube(AttackPos, new Vector3(_collSize, _collSize, _collSize));
     }
 }

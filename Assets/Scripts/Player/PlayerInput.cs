@@ -12,6 +12,7 @@ public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private PlayerMovement _playerMovement = null;
     private InputAction _useAction,_useItemAction, _movementAction, _lookAction, _attackAction , _interactAction , _blockAction, _jumpAtion , _rightClickAction;
+    private InputAction _parryAction ;
     [SerializeField] private PlayerMaster _EntityController = null;
     //[SerializeField] private InventoryComponent _inventory;
     Vector2 _dir = Vector2.zero;
@@ -27,7 +28,7 @@ public class PlayerInput : MonoBehaviour
     
     public delegate void JumpPress();
     public delegate void UseAction();
-  
+    public delegate void Parry();
 
     public AttacksDelegate OnAttackPressed = delegate { };
     public AttacksDelegate OnAttackReleased = delegate { };
@@ -36,6 +37,8 @@ public class PlayerInput : MonoBehaviour
     public UseAction OnUsePressed = delegate { };
     public UseAction OnUseItemPressed = delegate { };
 
+
+    public Parry OnParryPressed = delegate { };
 
     // Este todavia no se usa pero ya queda aca
     // public UseAction OnUseReleased = delegate { };
@@ -52,7 +55,7 @@ public class PlayerInput : MonoBehaviour
         _jumpAtion = InputSystem.actions.FindAction("Jump");
         _rightClickAction = InputSystem.actions.FindAction("SecondClick");
 
-
+        _parryAction = InputSystem.actions.FindAction("Parry");
         _useItemAction = InputSystem.actions.FindAction("UseItem");
 
 
@@ -60,10 +63,7 @@ public class PlayerInput : MonoBehaviour
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
 
 
-        //PASAR A GAMEMANAGER
-        /*
-        _reset = InputSystem.actions.FindAction("Reset");
-        _close = InputSystem.actions.FindAction("Close");*/
+
     }
 
     private void Start()
@@ -71,16 +71,8 @@ public class PlayerInput : MonoBehaviour
         GameManager.Instance.InputHandler = this;
     }
     private void Update()
-    {/*
-        #region ControlesEscena
-        if (_close.WasPressedThisFrame())
-        {
-            print("Se intento salir");
-            Application.Quit();
-        }
-        if (_reset.WasPressedThisFrame()) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        #endregion
-        */
+    {
+
         _dir = _movementAction.ReadValue<Vector2>();
         if(_interactAction.WasPressedThisFrame()) _EntityController.InteractPressed();
         
@@ -88,7 +80,6 @@ public class PlayerInput : MonoBehaviour
             Vector2 lookDir = _lookAction.ReadValue<Vector2>();
         _playerMovement.Rotate(lookDir);
 
-        float BlockState = 0.0f;// _blockAction.ReadValue<float>();
 
 
 
@@ -116,6 +107,12 @@ public class PlayerInput : MonoBehaviour
             {
                 OnUseItemPressed?.Invoke();
             }
+
+            if (_parryAction.WasPressedThisFrame())
+            {
+                OnParryPressed?.Invoke();
+            }
+
         }
         if (_jumpAtion.WasPressedThisFrame())
         {

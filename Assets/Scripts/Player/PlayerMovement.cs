@@ -4,7 +4,7 @@ public class PlayerMovement : MovementComponent
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    private float rotationY = 0f, _rotationX = 0f , rotationspeed = 25f ;
+    public float rotationY = 0f, _rotationX = 0f , rotationspeed = 25f ;
     [SerializeField] private Camera _camera;
     [SerializeField]private PlayerInput _inputComp;
     [SerializeField] private CharacterController Cc;

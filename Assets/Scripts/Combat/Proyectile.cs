@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 
-public class Proyectile : MonoBehaviour
+public class Proyectile : MonoBehaviour , IParryable
 {
     [SerializeField] public bool _fromPlayer = false;
 
@@ -34,6 +34,21 @@ public class Proyectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
+
+        IHittable hittable;
+        if(collision.gameObject.TryGetComponent(out hittable))
+        {
+            if (hittable.GetType() == GameManager.Instance.Player.GetType())
+            {
+                if(_fromPlayer)
+                {
+                    return;
+                }
+            }
+            hittable.Hit(_damage);
+        }
+
+        /*
         if (collision.gameObject.CompareTag("Player") && !_fromPlayer)
         {
             collision.gameObject.GetComponent<PlayerMaster>().applyDamage(_damage);
@@ -52,7 +67,7 @@ public class Proyectile : MonoBehaviour
             collision.gameObject.GetComponent<IBreackable>().Breack();
             Destroy(gameObject);
         }
-  
+        */
     }
 
 
@@ -85,5 +100,10 @@ public class Proyectile : MonoBehaviour
     {
         yield return new WaitForSeconds(_timeToAutoDelete);
         Destroy(gameObject);
+    }
+
+    public void Parry()
+    {
+        RedirectHit(GameManager.Instance.Player.GetLookDretirection());
     }
 }
