@@ -26,13 +26,19 @@ public class WeaponsHand : MonoBehaviour
             _equipedWeapon.SetParentEntity(null);
       
         }
+        
         _equipedWeapon = _newWeapon.GetComponent<Weapon>();
         _equipedWeapon.transform.SetParent(this.transform, true);
         _equipedWeapon.transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.identity;
+        _equipedWeapon.transform.localRotation = Quaternion.identity;
         _equipedWeapon.SetParentEntity(GameManager.Instance.GetPlayer());
 
         _equipedWeapon.ActivateWeapon();
+
+
+        GameManager.Instance.Player.PickedNewWeapon(0);
+        //POR AHORA ES 0 POR QUE SOLO TENEMOS LA ESPADA
+
 
     }
 

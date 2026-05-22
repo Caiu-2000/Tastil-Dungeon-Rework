@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SearchService;
 
 
 public class Enemy : Entity
 {
-    private Renderer _renderer;
+    [SerializeField] private Renderer _renderer;
     protected bool CanAttack = true;
     //[SerializeField] protected AiComponent _ai;
     [SerializeField] protected Animator _animator;
@@ -16,9 +17,11 @@ public class Enemy : Entity
     [SerializeField] protected float _damage;
     [SerializeField] private float _knockBackForce;
 
+   
+
     private void Awake()
     {
-        _renderer = GetComponent<Renderer>();
+
    
         _currentLife = _maxLife;
 
@@ -26,13 +29,14 @@ public class Enemy : Entity
 
     public override void applyDamage(float damage, bool ApplyKnockback = false, float knockbackForce = 0, Transform KnockBackFrom = null)
     {
+        if (_damCD) { return; }
         base.applyDamage(damage, ApplyKnockback, knockbackForce, KnockBackFrom);
 
 
         PerkManager.Instance.OnEnemyHitted(this);
 
         //StartCoroutine(PlayAndFinish("hitted"));
-        if (_damCD) return;
+        
         StartCoroutine(CDCounter());
        // _ai.TemporaryDisable(1.0f);
        // _damCD = true;
@@ -49,13 +53,12 @@ public class Enemy : Entity
 
     private IEnumerator CDCounter()
     {
-        /*
         _renderer.material.SetColor("_BaseColor", Color.red);
+        _damCD = true;
         yield return new WaitForSeconds(_DamageCDTime);
         _damCD = false;
         _renderer.material.SetColor("_BaseColor", Color.white);
-        */
-        yield return null;
+
     }
 
 

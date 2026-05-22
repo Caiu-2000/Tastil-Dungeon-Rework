@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ItemsHand : MonoBehaviour
@@ -9,16 +10,19 @@ public class ItemsHand : MonoBehaviour
     [SerializeField] Transform ItemPosition;
     private Animator _animator;
 
+    bool ParryReady = true;
+
+
     private void Start()
     {
         _animator = GetComponent<Animator>();
         GameManager.Instance.InputHandler.OnUseItemPressed += TryToUse;
-    }
+        GameManager.Instance.InputHandler.OnParryPressed +=  ParryPressed;
 
-    public void ParryPressed()
-    {
 
     }
+
+
 
 
     public void ChangeItem(Item _newItem)
@@ -81,5 +85,55 @@ public class ItemsHand : MonoBehaviour
             _equipedItem.Use();
         }
 
+    }
+
+
+
+    public void ParryPressed()
+    {
+        if (!ParryReady) { return; }
+        StartCoroutine(ProcessParry());
+
+    }
+    
+
+    IEnumerator ProcessParry()
+    {
+        _animator.SetTrigger("Parry");
+        ParryReady = false;
+        float elapsedtime = 0;
+        while (true)
+        {
+            Vector3 AttackPos = GameManager.Instance.GetPlayer().GetLookDretirection() * 0.5f + GameManager.Instance.Player.transform.position + new Vector3(0, 0.5f, 0);
+
+            Collider[] collisions = Physics.OverlapSphere(AttackPos, 1.0f);
+
+
+            foreach (Collider collider in collisions) {
+                print(collider.gameObject.name);
+                IParryable parried;
+
+                if (collider.gameObject.TryGetComponent(out parried))
+                {
+                    print("Se llego a parrear");
+                    parried.Parry();
+                }
+            }
+            
+            elapsedtime += Time.deltaTime;
+            if (elapsedtime > 0.25f /*Esta es la ventana de parry*/) break;
+            yield return null;
+        }
+
+
+        yield return new WaitForSeconds(0.5f);
+        ParryReady = true;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Vector3 AttackPos = GameManager.Instance.GetPlayer().GetLookDretirection() * 0.5f + GameManager.Instance.Player.transform.position + new Vector3(0, 0.5f, 0);
+
+        Gizmos.DrawWireSphere(AttackPos, 1.0f);
     }
 }

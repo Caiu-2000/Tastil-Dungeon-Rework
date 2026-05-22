@@ -72,9 +72,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4502373333423509512}
-  - component: {fileID: 5073768170924246124}
   - component: {fileID: 2279640971165994126}
-  m_Layer: 0
+  - component: {fileID: 683617291411065294}
+  - component: {fileID: 5716303463953329436}
+  m_Layer: 11
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,27 +98,6 @@ Transform:
   - {fileID: 2185109982655564875}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5073768170924246124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2894647268707689856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 850ddad4c564042499ee954386865b48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fromPlayer: 0
-  _objective: {fileID: 0}
-  _effect: {fileID: 0}
-  _weight: 0
-  _speed: 10
-  _damage: 10
-  _canKnockback: 0
-  _timeToAutoDelete: 10
-  _objectModel: {fileID: 1625335435438986158}
 --- !u!54 &2279640971165994126
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -145,6 +125,47 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &683617291411065294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2894647268707689856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63c6ad9a2633a9749a62996787a43221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fromPlayer: 0
+  _objective: {fileID: 0}
+  _weight: 0
+  _speed: 10
+  _damage: 5
+  _canKnockback: 0
+  _timeToAutoDelete: 10
+  _objectModel: {fileID: 0}
+--- !u!65 &5716303463953329436
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2894647268707689856}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.34, y: 0.22, z: 1.99}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &575984460343427665
 PrefabInstance:
   m_ObjectHideFlags: 0
