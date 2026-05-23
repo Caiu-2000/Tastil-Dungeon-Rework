@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95ca1c4a50c95d3418f9fb29822f06de, type: 3}
+  m_Name: ProjectileRegistry
+  m_EditorClassIdentifier: 
+  entries:
+  - key: ElectroBall
+    prefab: {fileID: 1491515742707835685, guid: f5a66ad6102f9f1449055c791bbfc6c7, type: 3}
+  - key: Fire
+    prefab: {fileID: 7251879486380165639, guid: c2f6a8962aac3814aa56cb9647c93470, type: 3}
+  - key: FireBreath
+    prefab: {fileID: 5712219488875869251, guid: 29f4c72f9a1d9d446945740c2819895b, type: 3}
+  - key: Arrow
+    prefab: {fileID: 4060787579812220181, guid: 6d1c85cd6335c2b48ae2c53b855bdd40, type: 3}
+  - key: SlowVFX
+    prefab: {fileID: 7202427111349603692, guid: 6c7f8b55de318f247a198b250ac9d782, type: 3}
+  - key: StunVFX
+    prefab: {fileID: 7155182288136426503, guid: 369f5f8506fff3141ae6c9c7032f2c4d, type: 3}
+  - key: RingOfFire
+    prefab: {fileID: 4560897313095062548, guid: c887c077b0af9e24e8283041b527d2b6, type: 3}
+  - key: HealOrb
+    prefab: {fileID: 3864233571105451528, guid: a6de675a1f952c04e849382e84f56acb, type: 3}
+  - key: Explosion
+    prefab: {fileID: 953460464650809435, guid: 18057e6af8388404a85ee5fdfaaaf433, type: 3}
+  - key: ExplosionSmall
+    prefab: {fileID: 4611771311522726687, guid: 2c1c79b0fddb14d4284ac34931cc39e7, type: 3}
+  - key: Bleed
+    prefab: {fileID: 5513840539181429617, guid: 3f80d912240cce74bbf907af0e0eb20f, type: 3}

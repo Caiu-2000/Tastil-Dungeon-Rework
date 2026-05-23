@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.XR;
+
 
 public class TrowableItem : Item
 {
@@ -8,6 +8,7 @@ public class TrowableItem : Item
     public override void Use()
     {
         StartCoroutine(Trowanim());
+        _hand._animator.SetBool("Trowable" , false);
     }
 
     private IEnumerator Trowanim()
@@ -20,6 +21,6 @@ public class TrowableItem : Item
         Vector3 localSpinAxis = transform.right;
         instancia.GetComponent<Rigidbody>().AddTorque(localSpinAxis * 50, ForceMode.Impulse);
         Destroy(gameObject);
-
+  
     }
 }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 
 
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
 
 
     private InputAction PauseAction;
+    private InputAction RestartAction;
     public bool IsPaused = false;
 
     public float PendigSens = 25;
@@ -34,6 +36,7 @@ public class GameManager : MonoBehaviour
      
         DontDestroyOnLoad(gameObject);
         PauseAction = InputSystem.actions.FindAction("Pause");
+        RestartAction = InputSystem.actions.FindAction("Restart");
     }
 
     private void Update()
@@ -46,21 +49,31 @@ public class GameManager : MonoBehaviour
             else Pause();
  
         }
+
+        if (RestartAction.WasPressedThisFrame())
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
     }
 
     private void Pause()
     {
+        Cursor.lockState = CursorLockMode.None;
+        UnityEngine.Cursor.visible = true;
         pause.SetActive(true);
         Time.timeScale = 0;
         IsPaused = true;
-        Cursor.lockState = CursorLockMode.None;
+        
     }
 
     private void Resume()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        UnityEngine.Cursor.visible = false;
         pause.SetActive(false);
         Time.timeScale = 1;
-        Cursor.lockState = CursorLockMode.Locked;
+        
         IsPaused = false;   
     }
 

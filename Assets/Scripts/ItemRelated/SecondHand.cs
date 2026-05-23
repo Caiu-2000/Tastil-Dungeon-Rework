@@ -8,7 +8,7 @@ public class ItemsHand : MonoBehaviour
     private Item _equipedItem;
     private bool _hotbarCd = false;
     [SerializeField] Transform ItemPosition;
-    private Animator _animator;
+    public Animator _animator;
 
     bool ParryReady = true;
 
@@ -132,6 +132,7 @@ public class ItemsHand : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        return;
         Vector3 AttackPos = GameManager.Instance.GetPlayer().GetLookDretirection() * 0.5f + GameManager.Instance.Player.transform.position + new Vector3(0, 0.5f, 0);
 
         Gizmos.DrawWireSphere(AttackPos, 1.0f);

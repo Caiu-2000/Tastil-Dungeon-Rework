@@ -32,10 +32,15 @@ public abstract  class Entity : MonoBehaviour , IHittable
         }
         if (ApplyKnockback)
         {
-
+            print("Se llamo aplly knockbakc");
             Vector3 KBDir = this.transform.position - KnockBackFrom.position;
 
-            //this.gameObject.GetComponent<MovementComponent>().ApplyKnockback(KBDir, knockbackForce);
+            if(this.gameObject.TryGetComponent(out MovementComponent movecomp))
+            {
+                movecomp.gameObject.GetComponent<MovementComponent>().ApplyKnockback(KBDir, knockbackForce * 1.5f);
+            }
+                
+            
         }
     }
 
