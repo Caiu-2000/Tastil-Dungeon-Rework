@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//ORIGINAL QUE TIENE QUE QUEDAR
 
 public class PlayerMaster : Entity
 {
@@ -11,7 +12,7 @@ public class PlayerMaster : Entity
     private IInteractable _lastItemOnSigth;
     [SerializeField] private Camera _camera;
     private Animator _animator;
-    
+    private BuffManager manager;
     private void Start()
     {
       
@@ -94,6 +95,7 @@ public class PlayerMaster : Entity
         }
 
         Ui.UpdateLife(_currentLife, _maxLife); 
+        manager.TriggerOnPlayerHitted(this.gameObject);
     }
 
     public  override void Die()
@@ -115,7 +117,19 @@ public class PlayerMaster : Entity
 
 
 
-
+    public float GetLife()
+    {
+        return _currentLife;
+    }
+    public float GetMaxLife()
+    {
+        return _maxLife;
+    }
+    public void AddMaxLife(float amount)
+    {
+        _maxLife += amount;
+        _currentLife = +amount;
+    }
 
 
     public void SetAttackAnimation(string Trigger , int Combo)
@@ -128,7 +142,7 @@ public class PlayerMaster : Entity
     public void PickedNewWeapon(int Id)
     {
         _animator.SetTrigger("TakeWeapon");
-        _animator.SetInteger("WeaponId", Id);
+        _animator.SetInteger("WeaponID", Id);
 
     }
 

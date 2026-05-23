@@ -6,7 +6,7 @@ public class Weapon : Item
 {
 
     [SerializeField] protected float _damage = 10.0f, _knockbackForce = 30.0f;
-  
+    public int WeaponID = 0;
 
     [SerializeField]
     protected bool _equiped = false , _readyToAttack = true , _chargableAttack = false;

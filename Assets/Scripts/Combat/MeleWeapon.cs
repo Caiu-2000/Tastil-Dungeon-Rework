@@ -1,9 +1,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 
 public class MeleWeapon : Weapon
@@ -25,6 +23,7 @@ public class MeleWeapon : Weapon
 
 
     public bool _attacking = false,  _activeHitt = false;
+    
 
     private void Update()
     {
@@ -120,6 +119,7 @@ public class MeleWeapon : Weapon
 
     private void OnDrawGizmos()
     {
+        return;
         //Esto es solo debug pero tira error de referencia nula en editore por eso esta asi apagado. Es para ver la collision del golpe
 
         if (!DebugBool) return;
