@@ -117,6 +117,7 @@ public class ItemsHand : MonoBehaviour
                 {
                     print("Se llego a parrear");
                     parried.Parry();
+                    BuffManager.Instance.TriggerOnParry();
                 }
             }
             

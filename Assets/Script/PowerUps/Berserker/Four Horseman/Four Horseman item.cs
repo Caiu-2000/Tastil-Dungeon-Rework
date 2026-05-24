@@ -8,7 +8,7 @@ public class FourHorsemanitem : Item
     MeleWeapon weapon;
     RangedWeapon bow;
     [SerializeField] BuffData data;
-    [SerializeField] BuffManager manager;
+    [SerializeField] BuffManager manager = BuffManager.Instance;
     [SerializeField] Image imagen;
     [SerializeField] VFXController controller;
     bool isSelected;

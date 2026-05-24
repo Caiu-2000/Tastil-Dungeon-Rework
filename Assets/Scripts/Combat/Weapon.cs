@@ -5,7 +5,9 @@ using UnityEngine;
 public class Weapon : Item
 {
 
-    [SerializeField] protected float _damage = 10.0f, _knockbackForce = 30.0f;
+    [SerializeField] protected float _damage = 10.0f, _knockbackForce = 30.0f, _baseDamage = 10.0f;
+    [SerializeField] protected float _critChance = 10f; float _baseCritChance = 10f;
+    bool guaranteeCrit = false;
     public int WeaponID = 0;
 
     [SerializeField]
@@ -83,4 +85,23 @@ public class Weapon : Item
         ParentEntity = NewParent;
     }
     
+    public void SetDamage(float damageMultiplier)
+    {
+        _damage = _baseDamage * damageMultiplier;
+    }
+    public void GuaranteeCriticalHit()
+    {
+        guaranteeCrit = true;
+    }
+    public void ResetCritChance()
+    {
+        _critChance = _baseCritChance;
+    }
+    public void AddCritChance(int critChanceToAdd)
+    {
+        _critChance += critChanceToAdd;
+        if (_critChance > 100)
+            _critChance = 100;
+    }
+
 }

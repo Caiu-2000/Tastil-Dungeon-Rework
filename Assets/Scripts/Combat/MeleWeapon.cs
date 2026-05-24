@@ -12,8 +12,6 @@ public class MeleWeapon : Weapon
     [SerializeField] private int _maxCombo = 3, _currentCombo = 0;
     [SerializeField] private List<float> AttackTimers = new List<float>();
     private float ComboCd = 3.0f, ComboCount = 0.0f;
-
-
     [SerializeField] private float  _reach = 1.0f , _collSize = 0.5f , _vertialOfsset = 0.5f , _attackCollDuration = 0.1f , _timeBetwenAttacks = 1.0f;
     [SerializeField] private TrailRenderer _trail;
 
@@ -53,6 +51,7 @@ public class MeleWeapon : Weapon
     {
 
         if (_attacking || !_equiped) return false;
+        BuffManager.Instance.TriggerOnAttack(ParentEntity.gameObject);
         if (ParentEntity._currentStamina >= _stamCost)
         {
             ParentEntity.ReduceStamina(_stamCost);
@@ -102,9 +101,17 @@ public class MeleWeapon : Weapon
 
 
                 if (hitable.GetType() == ParentEntity.GetType()) { continue; }
-
-                hitable.Hit(_damage, _canKnockback, _knockbackForce, ParentEntity.transform);
-
+                if (Random.Range(0f, 1f) < _critChance / 100)              //Divido por 100 asi hago que la critchance vaya entre 0 a 1 (pasando por las comas), se prodria haber hecho diferente pero queria usar floats
+                {
+                    hitable.Hit(_damage * 1.5f, _canKnockback, _knockbackForce, ParentEntity.transform); //CRITICO, aca tendriamos que llamar vfx y toda la cosa
+                    BuffManager.Instance.TriggerOnHit(Hitted.gameObject);
+                    BuffManager.Instance.TriggerOnCriticalHit(Hitted.gameObject);
+                }
+                else
+                {
+                    hitable.Hit(_damage, _canKnockback, _knockbackForce, ParentEntity.transform);
+                    BuffManager.Instance.TriggerOnHit(Hitted.gameObject);
+                }
             }
             if (elapsedTime > _attackCollDuration) break;
             yield return null;
@@ -116,6 +123,7 @@ public class MeleWeapon : Weapon
         _attacking = false;
         
     }
+    
 
     private void OnDrawGizmos()
     {

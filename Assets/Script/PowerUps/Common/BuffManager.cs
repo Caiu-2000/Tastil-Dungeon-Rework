@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class BuffManager : MonoBehaviour
 {
+    #region singletone
+    public static BuffManager Instance { get; private set; }
+    void Awake()
+    {
+        if (Instance == null) { Instance = this; }
+        else Destroy(gameObject);
+        projectileRegistry.Init();
+
+    }
+    #endregion
     #region Listas
     //Listas para almacenar que buffos estan activos
     private List<IOnHitBuff> onHitBuffs = new List<IOnHitBuff>();
@@ -38,10 +48,6 @@ public class BuffManager : MonoBehaviour
     #endregion
     [SerializeField] ProjectileRegistry projectileRegistry;
     [SerializeField] VFXController controller;
-    void Awake()
-    {
-        projectileRegistry.Init();
-    }
     #region Triggers
     public void TriggerOnHit(GameObject enemy)
     {

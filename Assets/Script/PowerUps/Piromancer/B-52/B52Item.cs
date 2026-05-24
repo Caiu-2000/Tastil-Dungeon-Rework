@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class B52Item : Item
 {
     [SerializeField] BuffData data;
-    [SerializeField] BuffManager manager;
+    [SerializeField] BuffManager manager = BuffManager.Instance;
     [SerializeField] Image imagen;
     bool isActive;
 

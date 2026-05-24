@@ -6,7 +6,7 @@ public class BloodyMaryItem : Item
 {
     PlayerMaster player;
     [SerializeField] BuffData data;
-    [SerializeField] BuffManager manager;
+    [SerializeField] BuffManager manager = BuffManager.Instance;
     [SerializeField] Image imagen;
     bool isSelected;
     private void Update()

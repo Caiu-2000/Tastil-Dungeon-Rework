@@ -8,7 +8,7 @@ public class Fireball : Item
     MeleWeapon weapon;
     RangedWeapon bow;
     [SerializeField] BuffData data;
-    [SerializeField] BuffManager manager;
+    [SerializeField] BuffManager manager = BuffManager.Instance;
     [SerializeField] Image imagen;
     bool isSelected;
     private void Update()

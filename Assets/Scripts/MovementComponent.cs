@@ -82,7 +82,10 @@ public class MovementComponent : MonoBehaviour
         float distance = 1.1f; // Slightly more than half the player's height
         return Physics.Raycast(transform.position, Vector3.down, distance);
     }
-
+    public void SetCanWalk(bool state)
+    {
+        _entityController._CanInputMovement = state;
+    }
 
 
 }
