@@ -13,10 +13,6 @@ public class HealingItem : Item
         
     }
 
-    public override void Interact(PlayerMaster player = null)
-    {
-        player._inventory.AddItem(this);
-    }
 
 
     private IEnumerator DrinkTime()
