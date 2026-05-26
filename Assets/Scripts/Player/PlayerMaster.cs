@@ -81,9 +81,24 @@ public class PlayerMaster : Entity
 
     public override void applyDamage(float damage, bool ApplyKnockback = false, float knockbackForce = 0, Transform KnockBackFrom = null)
     {
-        
-        _currentLife -= damage;
 
+        float reducedDamage = Mathf.Max(0, damage - _armor);
+
+        if (currentShieldedLife <= 0)
+        {
+            _currentLife -= reducedDamage;
+        }
+        else if (currentShieldedLife - reducedDamage < 0)
+        {
+            float remainingDamage = reducedDamage - currentShieldedLife;
+            currentShieldedLife = 0;
+            _currentLife -= remainingDamage;
+        }
+        else
+        {
+            currentShieldedLife -= reducedDamage;
+        }
+        BuffManager.Instance.TriggerOnPlayerHitted(this.gameObject);
         if (_currentLife <= 0)
         {
             Die();

@@ -17,7 +17,7 @@ public class FHBW : IOnAttackBuff
     }
     public void ExecuteOnAttack(GameObject player, BuffManager manager)
     {
-        this.player.applyDamage(this.player._currentLife * 0.05f);
+        this.player.applyDamage(this.player.GetLife() * 0.05f);
         weapon.SetDamage(1.15f);
         //manager.SpawnProjectile("BloodSword", weapon.transform.position, weapon.transform);
     }

@@ -16,12 +16,12 @@ public class FHBB : IOnAttackBuff, IPassiveBuff
         this.player = player;
         this.weapon = weapon;
         this.bow = bow;
-        maxLife = player._maxLife;
-        currentLife = player._currentLife;
+        maxLife = player.GetMaxLife();
+        currentLife = player.GetLife();
     }
     public void ExecuteOnAttack(GameObject player, BuffManager manager)
     {
-        currentLife = this.player._currentLife;
+        currentLife = this.player.GetLife();
         deltaLife = Mathf.Clamp(maxLife - currentLife, 0, 70);
         float powerOfLife = Mathf.Pow(deltaLife, 2);
         float damageMultiplier = Mathf.Clamp(((2* powerOfLife)/ 49 + 100)/100, 1, 3);
@@ -30,7 +30,7 @@ public class FHBB : IOnAttackBuff, IPassiveBuff
 
     public void ExecuteOnPassive(GameObject player, BuffManager manager)
     {
-        currentLife = this.player._currentLife;
+        currentLife = this.player.GetLife();
         deltaLife = Mathf.Clamp(maxLife - currentLife, 0, 70);
         Debug.Log(deltaLife);
         float intensity = Mathf.Lerp(0f, 2f, deltaLife / 70f);

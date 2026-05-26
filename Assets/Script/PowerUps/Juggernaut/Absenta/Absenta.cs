@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class Absenta : Item
 {
     [SerializeField] BuffData data;
-    [SerializeField] BuffManager manager;
+    [SerializeField] BuffManager manager = BuffManager.Instance;
     [SerializeField] Image imagen;
     MeleWeapon weapon;
     PlayerMaster player;

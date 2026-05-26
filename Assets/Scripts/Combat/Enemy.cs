@@ -12,8 +12,6 @@ public class Enemy : Entity
     //[SerializeField] protected AiComponent _ai;
     [SerializeField] protected Animator _animator;
 
-
-
     [SerializeField] protected float _damage;
     [SerializeField] private float _knockBackForce;
 
@@ -22,7 +20,6 @@ public class Enemy : Entity
     private void Awake()
     {
 
-   
         _currentLife = _maxLife;
 
     }
@@ -47,6 +44,7 @@ public class Enemy : Entity
     public override void Die()
     {
         PerkManager.Instance.OnEnemyDeath(this);
+        BuffManager.Instance.TriggerOnEnemyDeath(this.gameObject);
         base.Die();
     }
 

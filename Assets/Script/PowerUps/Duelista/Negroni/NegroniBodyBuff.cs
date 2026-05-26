@@ -16,11 +16,11 @@ public class NegroniBodyBuff : IOnHitBuff
         if(enemyCache != null || enemy != enemyCache)
         {
             enemyCache = enemy;
-            weapon.resetCritChance();
+            weapon.ResetCritChance();
         }
         else
         {
-            weapon.addCritChance(5);
+            weapon.AddCritChance(5);
         }
     }
 }
