@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class Negroni : Item
 {
@@ -10,7 +11,7 @@ public class Negroni : Item
     MeleWeapon weapon;
     PlayerMaster player;
     bool isActive;
-
+    
     private void Update()
     {
         if (imagen.IsActive() && isActive)
@@ -40,6 +41,20 @@ public class Negroni : Item
     {
         manager.AddBuffOnHit(new NegroniBodyBuff(data, weapon));
         imagen.gameObject.SetActive(false);
+        Destroy(gameObject);
+    }
+    private IEnumerator DrinkTime()
+    {
+        _hand.SetAnimationTrigger("Drink");
+        yield return new WaitForSeconds(_useTime);
+        if (_ReplaceItem)
+        {
+            Item Replace = Instantiate(_ReplaceItem);
+            _inventory.ReplaceItem(this, Replace);
+
+
+        }
+
         Destroy(gameObject);
     }
 }
