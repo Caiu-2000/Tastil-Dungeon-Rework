@@ -2597,6 +2597,10 @@ PrefabInstance:
       propertyPath: imagen
       value: 
       objectReference: {fileID: 788858295}
+    - target: {fileID: 5504066616223988758, guid: 7bb791ccfe011ae4597bd47496fee58a, type: 3}
+      propertyPath: _ReplaceItem
+      value: 
+      objectReference: {fileID: 5515066605373719603, guid: b2704491627eefa45be84f7c614b073b, type: 3}
     - target: {fileID: 7243447023429743723, guid: 7bb791ccfe011ae4597bd47496fee58a, type: 3}
       propertyPath: m_Layer
       value: 10
