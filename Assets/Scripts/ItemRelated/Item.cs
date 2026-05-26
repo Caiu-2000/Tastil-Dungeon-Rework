@@ -32,10 +32,11 @@ abstract public class Item : MonoBehaviour , IInteractable
         _firstPosition = transform.position;
     }
 
-    public virtual void Interact(PlayerMaster _player = null)
+    public virtual void Interact(PlayerMaster player = null)
     {
-
+        player._inventory.AddItem(this);
     }
+
 
 
     public virtual Item PicItem( Entity _entity)
