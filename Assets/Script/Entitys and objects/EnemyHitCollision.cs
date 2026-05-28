@@ -1,9 +1,10 @@
-using System.Collections;
+using System;
 using UnityEngine;
 
+[Serializable]
 public class EnemyHitCollision : MonoBehaviour
 {
-    [SerializeField] private float HitDuration = 0.2f;
+    [SerializeField] public float HitDuration = 0.2f;
     [SerializeField] public Enemy parentEnemy;
 
     private void OnTriggerEnter(Collider other)
@@ -22,6 +23,10 @@ public class EnemyHitCollision : MonoBehaviour
         Destroy(this , HitDuration);    
     }
 
+    public void ChangeDuration(float duration)
+    {
+        Destroy(this, duration);
+    }
     
 
 }

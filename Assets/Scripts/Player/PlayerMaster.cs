@@ -12,6 +12,7 @@ public class PlayerMaster : Entity
     private IInteractable _lastItemOnSigth;
     [SerializeField] private Camera _camera;
     private Animator _animator;
+    [SerializeField]
     private BuffManager manager;
     private void Start()
     {
