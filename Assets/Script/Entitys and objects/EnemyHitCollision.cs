@@ -13,6 +13,7 @@ public class EnemyHitCollision : MonoBehaviour
         if (other.GetComponent<PlayerMaster>())
         {
             parentEnemy.HitConnectded(other);
+            Destroy(this.gameObject);
         }
     }
 
