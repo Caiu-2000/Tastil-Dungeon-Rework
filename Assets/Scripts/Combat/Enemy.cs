@@ -30,13 +30,9 @@ public class Enemy : Entity
 
 
         PerkManager.Instance.OnEnemyHitted(this);
-
-        //StartCoroutine(PlayAndFinish("hitted"));
+        _animator.SetTrigger("hitted");
         
         StartCoroutine(CDCounter());
-       // _ai.TemporaryDisable(1.0f);
-       // _damCD = true;
-        
 
     }
 
@@ -44,7 +40,8 @@ public class Enemy : Entity
     {
         PerkManager.Instance.OnEnemyDeath(this);
         BuffManager.Instance.TriggerOnEnemyDeath(this.gameObject);
-        base.Die();
+        _animator.SetTrigger("Death");
+
     }
 
 
@@ -69,7 +66,7 @@ public class Enemy : Entity
         _animator.SetBool("Walking", IsWalking);
     }
 
-    internal void HitConnectded(Collider other)
+    internal virtual void HitConnectded(Collider other)
     {
 
         other.GetComponent<PlayerMaster>().applyDamage(_damage , true , _knockBackForce , transform);
@@ -79,13 +76,14 @@ public class Enemy : Entity
     protected IEnumerator PlayAndFinish(string TriggerName)
     {
         _animator.SetTrigger(TriggerName);
-        //_ai.ChangeEnabled(false);
         yield return new WaitForSeconds(_animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
 
-        //_ai.ChangeEnabled(true);
     }
 
+    public virtual void ApplyParry()
+    {
 
+    }
 
 }
 

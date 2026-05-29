@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class AiComponent : MonoBehaviour
 {
+   
     [SerializeField] Enemy _parentEnemy;
     [SerializeField] MovementComponent _movement;
     [SerializeField] NavMeshAgent _agent;

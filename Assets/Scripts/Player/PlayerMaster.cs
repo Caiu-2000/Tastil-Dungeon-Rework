@@ -3,9 +3,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 //ORIGINAL QUE TIENE QUE QUEDAR
-
+[DefaultExecutionOrder(-1)]
 public class PlayerMaster : Entity
 {
+
     [SerializeField] private UiHandler Ui;
     [SerializeField] public InventoryComponent _inventory;
     [SerializeField] public WeaponsHand weaponHand;

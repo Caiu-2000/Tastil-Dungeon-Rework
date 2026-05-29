@@ -477,6 +477,90 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyBase Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+      propertyPath: Attacks.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+      propertyPath: AttackTimers.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+      propertyPath: Attacks.Array.data[0].AttackCD
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+      propertyPath: Attacks.Array.data[1].AttackCD
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+      propertyPath: Attacks.Array.data[2].AttackCD
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+      propertyPath: Attacks.Array.data[3].AttackCD
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+      propertyPath: Attacks.Array.data[0].CollisionTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+      propertyPath: Attacks.Array.data[1].CollisionTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+      propertyPath: Attacks.Array.data[2].CollisionTime
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+      propertyPath: Attacks.Array.data[3].CollisionTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+      propertyPath: Attacks.Array.data[0].AttackDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+      propertyPath: Attacks.Array.data[0].KnockbackForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+      propertyPath: Attacks.Array.data[1].AttackDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+      propertyPath: Attacks.Array.data[1].KnockbackForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+      propertyPath: Attacks.Array.data[2].AttackDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+      propertyPath: Attacks.Array.data[2].KnockbackForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+      propertyPath: Attacks.Array.data[3].AttackDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+      propertyPath: Attacks.Array.data[0].Damagemultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+      propertyPath: Attacks.Array.data[1].Damagemultiplier
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+      propertyPath: Attacks.Array.data[2].Damagemultiplier
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+      propertyPath: Attacks.Array.data[3].Damagemultiplier
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

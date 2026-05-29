@@ -1,7 +1,7 @@
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
+
 using UnityEngine.SceneManagement;
 
 
@@ -41,10 +41,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        print("Sos re vivo");
+
         if (PauseAction.WasPressedThisFrame())
         {
-            print("Se apreto");
+
             if (IsPaused) Resume();
             else Pause();
  

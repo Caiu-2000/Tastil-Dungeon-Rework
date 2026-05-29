@@ -115,7 +115,7 @@ public class ItemsHand : MonoBehaviour
 
                 if (collider.gameObject.TryGetComponent(out parried))
                 {
-                    print("Se llego a parrear");
+                    print("<color=red>Se hizo parry</color>");
                     parried.Parry();
                     BuffManager.Instance.TriggerOnParry();
                 }
