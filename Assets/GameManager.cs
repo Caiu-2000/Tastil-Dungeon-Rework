@@ -16,10 +16,11 @@ public class GameManager : MonoBehaviour
 
     private InputAction PauseAction;
     private InputAction RestartAction;
+    private InputAction DebugAction;
     public bool IsPaused = false;
 
     public float PendigSens = 25;
-
+    public bool DebugActive = false;
     public PauseManager pause;
 
     private void Awake()
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         PauseAction = InputSystem.actions.FindAction("Pause");
         RestartAction = InputSystem.actions.FindAction("Restart");
+        DebugAction = InputSystem.actions.FindAction("DebugButton");
     }
 
     private void Update()
@@ -54,6 +56,12 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        if (DebugAction.WasPressedThisFrame())
+        {
+            DebugActive = !DebugActive;
+        }
+        
 
     }
 
@@ -100,5 +108,7 @@ public class GameManager : MonoBehaviour
         Player.GetComponent<PlayerMovement>().rotationspeed = sens;
         print(sens);
     }
+
+
 }
 

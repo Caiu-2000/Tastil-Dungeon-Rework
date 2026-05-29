@@ -100,6 +100,7 @@ public class MeleHumanoid : Enemy
         yield return new WaitForSeconds(time);
         CanAttack = true;
         _ai.ChangeEnabled(true);
+        _animator.SetTrigger("ParriedFinished");
     }
 
 

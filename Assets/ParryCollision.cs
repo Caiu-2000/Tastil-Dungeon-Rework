@@ -14,7 +14,8 @@ public class ParryCollision : MonoBehaviour , IParryable
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        if (!GameManager.Instance.DebugActive) { return; }
+        Gizmos.color = Color.green;
         Gizmos.DrawWireCube(this.transform.position, new Vector3(1.5f, 1.5f, 1.5f));
     }
 
