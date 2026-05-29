@@ -1,11 +1,13 @@
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 //ORIGINAL QUE TIENE QUE QUEDAR
-
+[DefaultExecutionOrder(-1)]
 public class PlayerMaster : Entity
 {
+
     [SerializeField] private UiHandler Ui;
     [SerializeField] public InventoryComponent _inventory;
     [SerializeField] public WeaponsHand weaponHand;
@@ -84,7 +86,7 @@ public class PlayerMaster : Entity
     {
 
         float reducedDamage = Mathf.Max(0, damage - _armor);
-
+        Shake(0.15f, 0.1f);
         if (currentShieldedLife <= 0)
         {
             _currentLife -= reducedDamage;
@@ -162,6 +164,32 @@ public class PlayerMaster : Entity
 
     }
 
+    private Vector3 originalPos;
+
+
+    public void Shake(float duration, float magnitude)
+    {
+        StartCoroutine(DoShake(duration, magnitude));
+    }
+
+    private IEnumerator DoShake(float duration, float magnitude)
+    {
+        originalPos = _camera.transform.localPosition;
+        float elapsed = 0.0f;
+
+        while (elapsed < duration)
+        {
+            float x = Random.Range(-1f, 1f) * magnitude;
+            float y = Random.Range(-1f, 1f) * magnitude;
+
+            _camera.transform.localPosition = new Vector3(originalPos.x + x, originalPos.y + y, originalPos.x);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        _camera.transform.localPosition = originalPos;
+    }
 
 
 }
