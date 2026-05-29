@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 
 public class FourHorsemanitem : Item
 {
-    PlayerMaster player;
-    MeleWeapon weapon;
+    [SerializeField]PlayerMaster player;
+    [SerializeField]MeleWeapon weapon;
     RangedWeapon bow;
     [SerializeField] BuffData data;
     [SerializeField] BuffManager manager = BuffManager.Instance;
@@ -32,7 +32,7 @@ public class FourHorsemanitem : Item
     }
     void WeaponBuff()
     {
-        manager.AddBuffOnAttack(new FHBW(data, player, weapon));
+        BuffManager.Instance.AddBuffOnAttack(new FHBW(data, player, weapon));
         imagen.gameObject.SetActive(false);
         Destroy(this.gameObject);
     }
@@ -40,8 +40,8 @@ public class FourHorsemanitem : Item
     void BodyBuff()
     {
         var buff = new FHBB(data, player, weapon, bow);
-        manager.AddBuffOnAttack(buff);
-        manager.AddBuffPassive(buff, 0.1f);
+        BuffManager.Instance.AddBuffOnAttack(buff);
+        BuffManager.Instance.AddBuffPassive(buff, 0.1f);
         imagen.gameObject.SetActive(false);
         Destroy(this.gameObject);
     }

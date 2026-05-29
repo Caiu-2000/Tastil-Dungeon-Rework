@@ -27,14 +27,14 @@ public class B52Item : Item
     }
     void WeaponBuff()
     {
-        manager.AddBuffOnCriticalHit(new B52WB(data));
+        BuffManager.Instance.AddBuffOnCriticalHit(new B52WB(data));
         imagen.gameObject.SetActive(false);
         Destroy(gameObject);
     }
 
     void BodyBuff()
     {
-        manager.AddBuffOnEnemyDeath(new B52BB(data));
+        BuffManager.Instance.AddBuffOnEnemyDeath(new B52BB(data));
         imagen.gameObject.SetActive(false);
         Destroy(gameObject);
     }

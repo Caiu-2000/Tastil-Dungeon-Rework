@@ -12,6 +12,7 @@ public class PlayerMaster : Entity
     private IInteractable _lastItemOnSigth;
     [SerializeField] private Camera _camera;
     private Animator _animator;
+    [SerializeField]
     private BuffManager manager;
     private void Start()
     {
@@ -110,7 +111,7 @@ public class PlayerMaster : Entity
         }
 
         Ui.UpdateLife(_currentLife, _maxLife); 
-        manager.TriggerOnPlayerHitted(this.gameObject);
+        //manager.TriggerOnPlayerHitted(this.gameObject);
     }
 
     public  override void Die()

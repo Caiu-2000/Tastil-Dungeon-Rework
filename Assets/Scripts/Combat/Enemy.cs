@@ -1,15 +1,14 @@
-using System;
+
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.SearchService;
+
 
 
 public class Enemy : Entity
 {
     [SerializeField] private Renderer _renderer;
     protected bool CanAttack = true;
-    //[SerializeField] protected AiComponent _ai;
+    [SerializeField] protected AiComponent _ai;
     [SerializeField] protected Animator _animator;
 
     [SerializeField] protected float _damage;

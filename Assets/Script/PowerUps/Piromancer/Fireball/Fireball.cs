@@ -33,14 +33,14 @@ public class Fireball : Item
     }
     void WeaponBuff()
     {
-        manager.AddBuffOnHit(new FWB(data, weapon));
+        BuffManager.Instance.AddBuffOnHit(new FWB(data, weapon));
         imagen.gameObject.SetActive(false);
         Destroy(this.gameObject);
     }
 
     void BodyBuff()
     {
-        manager.AddBuffOnPlayerHitted(new FBB(data, player));
+        BuffManager.Instance.AddBuffOnPlayerHitted(new FBB(data, player));
         imagen.gameObject.SetActive(false);
         Destroy(this.gameObject);
     }

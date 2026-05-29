@@ -32,14 +32,14 @@ public class Negroni : Item
     }
     void WeaponBuff()
     {
-        manager.AddBuffOnCriticalHit(new NegroniWeaponBuff(data));
+        BuffManager.Instance.AddBuffOnCriticalHit(new NegroniWeaponBuff(data));
         imagen.gameObject.SetActive(false);
         Destroy(gameObject);
     }
 
     void BodyBuff()
     {
-        manager.AddBuffOnHit(new NegroniBodyBuff(data, weapon));
+        BuffManager.Instance.AddBuffOnHit(new NegroniBodyBuff(data, weapon));
         imagen.gameObject.SetActive(false);
         Destroy(gameObject);
     }
