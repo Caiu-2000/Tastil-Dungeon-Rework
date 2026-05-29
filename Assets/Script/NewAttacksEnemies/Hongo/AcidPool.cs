@@ -6,7 +6,10 @@ public class AcidPool : MonoBehaviour
     [SerializeField] private float tickInterval = 0.5f;
     [SerializeField] private float damage = 5f;
     private bool coroutineRunning = false;
-
+    private void Start()
+    {
+        StartCoroutine(Destroy());
+    }
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player") && !coroutineRunning)
@@ -21,5 +24,10 @@ public class AcidPool : MonoBehaviour
     {
         yield return new WaitForSeconds(tickInterval);
         coroutineRunning = false;
+    }
+    private IEnumerator Destroy()
+    {
+        yield return new WaitForSeconds(3f);
+        Destroy(gameObject);
     }
 }

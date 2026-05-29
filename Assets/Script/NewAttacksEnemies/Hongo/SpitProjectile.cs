@@ -35,13 +35,13 @@ public class SpitProjectile : MonoBehaviour
         rb.linearVelocity = (horizontalDir * Vx) + (Vector3.up * Vy);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         float groundY = 0f;
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("CorreWachin");
-            collision.gameObject.GetComponent<PlayerMaster>().applyDamage(10f);
+            other.gameObject.GetComponent<PlayerMaster>().applyDamage(10f);
             if(Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 10f, layerMask))
             {
                 Debug.Log("Homoerotico");
@@ -51,7 +51,7 @@ public class SpitProjectile : MonoBehaviour
             Instantiate(acidPoolPrefab,new Vector3(transform.position.x, groundY, transform.position.z) , Quaternion.identity);
             Destroy(gameObject);
         }
-        else if(collision.gameObject.CompareTag("Piso"))
+        else if(other.gameObject.CompareTag("Piso"))
         {
             if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 10f, layerMask))
             {

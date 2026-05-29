@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5113461691830792103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6659231912365625128}
+  m_Layer: 6
+  m_Name: Mouth
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6659231912365625128
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5113461691830792103}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2279357077934767184}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5829660864400697119
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,7 +43,7 @@ GameObject:
   - component: {fileID: 8858758503646052594}
   - component: {fileID: 8125421011042982255}
   - component: {fileID: 1086749961462174949}
-  - component: {fileID: 735909680966038672}
+  - component: {fileID: 5428452550848097593}
   - component: {fileID: 2614652689348200489}
   - component: {fileID: 6245934071168992640}
   - component: {fileID: 7414105989320626070}
@@ -39,6 +70,7 @@ Transform:
   - {fileID: 3125823418151862975}
   - {fileID: 7407078450332687098}
   - {fileID: 6087825562646383768}
+  - {fileID: 6659231912365625128}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &8858758503646052594
@@ -106,6 +138,8 @@ MonoBehaviour:
   _currentLife: 0
   _maxLife: 100
   _DamageCDTime: 0.25
+  _armor: 0
+  currentShieldedLife: 0
   _damCD: 0
   _CanInputMovement: 1
   _maxStamina: 100
@@ -113,16 +147,17 @@ MonoBehaviour:
   _StaminaCD: 1
   _StaminaCount: 0
   _StaminaRegen: 25
+  _renderer: {fileID: 0}
   _ai: {fileID: 6245934071168992640}
   _animator: {fileID: 7414105989320626070}
   _damage: 20
   _knockBackForce: 100
-  _moveComp: {fileID: 735909680966038672}
+  _moveComp: {fileID: 0}
   _SpecialCD: 2
   _specialDuration: 1
   _specialPreparationTime: 1
   _speedMult: 2
---- !u!114 &735909680966038672
+--- !u!114 &5428452550848097593
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,15 +166,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 5829660864400697119}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1eccdbb418eb8f429fdb2593b12f586, type: 3}
+  m_Script: {fileID: 11500000, guid: c4b3da67e04156d43b540d64b3e6d84a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 500
-  rotationspeed: 5
-  force: 10
-  _jumpForce: 0
-  _camera: {fileID: 0}
-  _inputComp: {fileID: 0}
+  spitCooldown: 5
+  burrowCooldown: 8
+  rollCooldown: 1.5
+  minDistance: 3
+  maxDistance: 15
+  telegraphDuration: 2
+  spitPrefab: {fileID: 5190326461633714553, guid: bf72b93ef26970f4d9f1dec1631ba595, type: 3}
+  mouth: {fileID: 5113461691830792103}
+  hitCollider: {fileID: 8035257078668317136}
+  modelo: {fileID: 7947188858032358409}
+  player: {fileID: 0}
 --- !u!195 &2614652689348200489
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -175,7 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parentEnemy: {fileID: 1086749961462174949}
-  _movement: {fileID: 735909680966038672}
+  _movement: {fileID: 0}
   _agent: {fileID: 2614652689348200489}
   _minDistance: 5
 --- !u!95 &7414105989320626070
@@ -240,6 +280,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2279357077934767184}
     m_Modifications:
+    - target: {fileID: 1880342443381401363, guid: ea9cdb7c950f6fe459dab4d616a59af8, type: 3}
+      propertyPath: m_Radius
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6593905920895522112, guid: ea9cdb7c950f6fe459dab4d616a59af8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

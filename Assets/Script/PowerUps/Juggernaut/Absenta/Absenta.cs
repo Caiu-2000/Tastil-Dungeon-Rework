@@ -31,14 +31,14 @@ public class Absenta : Item
     }
     void WeaponBuff()
     {
-        manager.AddBuffOnHit(new AbsentaWeaponBuff(data, player));
+        BuffManager.Instance.AddBuffOnHit(new AbsentaWeaponBuff(data, player));
         imagen.gameObject.SetActive(false);
         Destroy(gameObject);
     }
 
     void BodyBuff()
     {
-        manager.AddBuffOnPlayerHitted(new AbsentaBodyBuff(data, player));
+        BuffManager.Instance.AddBuffOnPlayerHitted(new AbsentaBodyBuff(data, player));
         imagen.gameObject.SetActive(false);
         Destroy(gameObject);
     }
