@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+[DefaultExecutionOrder(2)]
 
 public class EnemyAttackController : MonoBehaviour
 {
@@ -7,22 +8,28 @@ public class EnemyAttackController : MonoBehaviour
     [SerializeField] private float burrowCooldown = 8f;
     [SerializeField] private float rollCooldown = 1.5f;
     [SerializeField] private float minDistance = 3f;
-    [SerializeField] private float maxDistance = 7f;
+    [SerializeField] private float maxDistance = 17f;
     [SerializeField] private float telegraphDuration = 2f;
     [SerializeField] private GameObject spitPrefab;
     [SerializeField] private GameObject mouth;
+    [SerializeField]CapsuleCollider hitCollider;
 
     private bool spitReady = true;
     private bool burrowReady = true;
     private bool isRolling = false;
     private bool isAttacking = false;
-    private Renderer _renderer;
-    private PlayerMaster player;
+    //private Renderer _renderer;
+    [SerializeField]GameObject modelo;
+    [SerializeField]private PlayerMaster player;
 
     private void Start()
     {
         player = GameManager.Instance.Player;
-        _renderer = GetComponent<Renderer>();
+        foreach (Transform child in transform)
+        {
+            if (child.gameObject.name == "HitCollision")
+                hitCollider = child.GetComponent<CapsuleCollider>();
+        }
         StartCoroutine(RollCooldown());
     }
 
@@ -80,14 +87,17 @@ public class EnemyAttackController : MonoBehaviour
         GetComponent<Animator>().SetTrigger("Burrow");
         yield return new WaitForSeconds(GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.length);
 
-        _renderer.enabled = false;
+        //_renderer.enabled = false;
+        modelo.SetActive(false);
         Vector3 targetPos = player.transform.position;
         transform.position = new Vector3(targetPos.x, transform.position.y - 5f, targetPos.z);
-
+        hitCollider.enabled = false;
         yield return new WaitForSeconds(telegraphDuration);
 
         transform.position = new Vector3(targetPos.x, targetPos.y, targetPos.z);
-        _renderer.enabled = true;
+        //_renderer.enabled = true;
+        hitCollider.enabled = true;
+        modelo.SetActive(true);
         GetComponent<Animator>().SetTrigger("PopUp");
         yield return new WaitForSeconds(GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.length);
 

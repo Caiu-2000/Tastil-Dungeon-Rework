@@ -6,6 +6,7 @@ public class SpitProjectile : MonoBehaviour
     [SerializeField] private GameObject acidPoolPrefab;
     private Vector3 targetPos;
     private Rigidbody rb;
+    [SerializeField]LayerMask layerMask;
 
     private void Awake()
     {
@@ -36,10 +37,30 @@ public class SpitProjectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        float groundY = 0f;
         if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("CorreWachin");
             collision.gameObject.GetComponent<PlayerMaster>().applyDamage(10f);
-
-        Instantiate(acidPoolPrefab, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+            if(Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 10f, layerMask))
+            {
+                Debug.Log("Homoerotico");
+                print(hit.collider.name);
+                groundY = hit.point.y;
+            }
+            Instantiate(acidPoolPrefab,new Vector3(transform.position.x, groundY, transform.position.z) , Quaternion.identity);
+            Destroy(gameObject);
+        }
+        else if(collision.gameObject.CompareTag("Piso"))
+        {
+            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 10f, layerMask))
+            {
+                Debug.Log("Homoerotico");
+                print(hit.collider.name);
+                groundY = hit.point.y;
+            }
+            Instantiate(acidPoolPrefab, new Vector3(transform.position.x, groundY, transform.position.z), Quaternion.identity);
+            Destroy(gameObject);
+        }        
     }
 }
