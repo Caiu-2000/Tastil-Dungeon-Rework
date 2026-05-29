@@ -12,6 +12,7 @@ public class AiComponent : MonoBehaviour
 
     private bool _enabled = false;
     private Transform _objectiveTransform;
+    private bool fleeing = false;
 
     // Por ahora queda muy simple el movimiento pero quisiera meterle mas mano par hacerlo custom con el componente
     // de movimiento que estoy referenciando
@@ -24,11 +25,17 @@ public class AiComponent : MonoBehaviour
         }
         float currentDistance = Vector3.Distance(this.transform.position, _objectiveTransform.position);
 
-        if (currentDistance > _minDistance)
+        if (currentDistance > _minDistance && fleeing != true)
         {
             _agent.SetDestination(_objectiveTransform.position);
             _parentEnemy.SetWalking(true);
         } 
+        else if (fleeing == true)
+        {
+            Vector3 fleeDirection = (transform.position - _objectiveTransform.position).normalized;
+            Vector3 fleeDestination = transform.position + fleeDirection * _fleeDistance;
+            _agent.SetDestination(fleeDestination);
+        }
         else
         {
             _parentEnemy.DistanceReached();
@@ -61,5 +68,14 @@ public class AiComponent : MonoBehaviour
     {
         return _objectiveTransform;
     }
-
+    public Flee()
+    {
+        fleeing = true;
+        StartCoroutine(DisableFlee());
+    }
+    private IEnumerator DisableFlee()
+    {
+        yield return new WaitForSeconds(3f);
+        fleeing = false;
+    }
 }
