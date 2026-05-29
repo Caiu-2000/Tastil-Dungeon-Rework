@@ -30,13 +30,13 @@ public class DryMartini : Item
     }
     void WeaponBuff()
     {
-        manager.AddBuffOnCriticalHit(new DryMartiniWB(data, player));
+        BuffManager.Instance.AddBuffOnCriticalHit(new DryMartiniWB(data, player));
         imagen.gameObject.SetActive(false);
         Destroy(gameObject);
     }
     void BodyBuff()
     {
-        manager.AddBuffOnParry(new DryMartiniBB(weapon, data));
+        BuffManager.Instance.AddBuffOnParry(new DryMartiniBB(weapon, data));
         imagen.gameObject.SetActive(false);
         Destroy(gameObject);
     }

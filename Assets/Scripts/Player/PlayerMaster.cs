@@ -113,7 +113,7 @@ public class PlayerMaster : Entity
         }
 
         Ui.UpdateLife(_currentLife, _maxLife); 
-        manager.TriggerOnPlayerHitted(this.gameObject);
+        //manager.TriggerOnPlayerHitted(this.gameObject);
     }
 
     public  override void Die()

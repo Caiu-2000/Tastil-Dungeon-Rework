@@ -28,14 +28,14 @@ public class BloodyMaryItem : Item
     }
     void WeaponBuff()
     {
-        manager.AddBuffOnCriticalHit(new BMWB(data, player));
+        BuffManager.Instance.AddBuffOnCriticalHit(new BMWB(data, player));
         imagen.gameObject.SetActive(false);
         Destroy(this.gameObject);
     }
 
     void BodyBuff()
     {
-        manager.AddBuffOnEnemyDeath(new BMBB(data, player));
+        BuffManager.Instance.AddBuffOnEnemyDeath(new BMBB(data, player));
         imagen.gameObject.SetActive(false);
         Destroy(this.gameObject);
     }

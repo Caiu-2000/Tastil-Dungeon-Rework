@@ -16,7 +16,7 @@ MonoBehaviour:
   - key: ElectroBall
     prefab: {fileID: 1491515742707835685, guid: f5a66ad6102f9f1449055c791bbfc6c7, type: 3}
   - key: Fire
-    prefab: {fileID: 7251879486380165639, guid: c2f6a8962aac3814aa56cb9647c93470, type: 3}
+    prefab: {fileID: 3393415183437956616, guid: 8ca20971ea3bae943acf1935d961931c, type: 3}
   - key: FireBreath
     prefab: {fileID: 5712219488875869251, guid: 29f4c72f9a1d9d446945740c2819895b, type: 3}
   - key: Arrow
@@ -28,10 +28,10 @@ MonoBehaviour:
   - key: RingOfFire
     prefab: {fileID: 4560897313095062548, guid: c887c077b0af9e24e8283041b527d2b6, type: 3}
   - key: HealOrb
-    prefab: {fileID: 3864233571105451528, guid: a6de675a1f952c04e849382e84f56acb, type: 3}
+    prefab: {fileID: 3864233571105451528, guid: 00be1c53b137fed409e4c0370d448d9c, type: 3}
   - key: Explosion
-    prefab: {fileID: 953460464650809435, guid: 18057e6af8388404a85ee5fdfaaaf433, type: 3}
+    prefab: {fileID: 953460464650809435, guid: a94938b8b3d99cf42ba2bafb04264745, type: 3}
   - key: ExplosionSmall
-    prefab: {fileID: 4611771311522726687, guid: 2c1c79b0fddb14d4284ac34931cc39e7, type: 3}
+    prefab: {fileID: 4611771311522726687, guid: df9aa525c097f914aa66e7cc5b707028, type: 3}
   - key: Bleed
     prefab: {fileID: 5513840539181429617, guid: 3f80d912240cce74bbf907af0e0eb20f, type: 3}
