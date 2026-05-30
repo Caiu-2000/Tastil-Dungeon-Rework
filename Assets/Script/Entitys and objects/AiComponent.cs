@@ -33,7 +33,7 @@ public class AiComponent : MonoBehaviour
         else if (fleeing == true)
         {
             Vector3 fleeDirection = (transform.position - _objectiveTransform.position).normalized;
-            Vector3 fleeDestination = transform.position + fleeDirection * _fleeDistance;
+            Vector3 fleeDestination = transform.position + fleeDirection;
             _agent.SetDestination(fleeDestination);
         }
         else
@@ -68,7 +68,7 @@ public class AiComponent : MonoBehaviour
     {
         return _objectiveTransform;
     }
-    public Flee()
+    public void Flee()
     {
         fleeing = true;
         StartCoroutine(DisableFlee());
