@@ -13,7 +13,6 @@ public class EnemyHitCollision : MonoBehaviour
         if (other.GetComponent<PlayerMaster>())
         {
             parentEnemy.HitConnectded(other);
-            Destroy(this.gameObject);
         }
     }
 
@@ -28,12 +27,6 @@ public class EnemyHitCollision : MonoBehaviour
     {
         Destroy(this, duration);
     }
-    private void OnDrawGizmos()
-    {
-        if (!GameManager.Instance.DebugActive) { return; }
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(this.transform.position, new Vector3(1f, 1f, 1f));
-    }
-
+    
 
 }
