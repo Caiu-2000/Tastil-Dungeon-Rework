@@ -9,12 +9,12 @@ public class Enemy : Entity
     [SerializeField] private Renderer _renderer;
     protected bool CanAttack = true;
     [SerializeField] protected AiComponent _ai;
-    [SerializeField] protected Animator _animator;
+    [SerializeField] public Animator _animator;
 
     [SerializeField] protected float _damage;
     [SerializeField] private float _knockBackForce;
 
-   
+    public bool CanAnimHitted = true;
 
     private void Awake()
     {
@@ -30,7 +30,8 @@ public class Enemy : Entity
 
 
         PerkManager.Instance.OnEnemyHitted(this);
-        _animator.SetTrigger("hitted");
+        print("Hasta aca se llego bien");
+        if (CanAnimHitted) _animator.SetTrigger("hitted");
         
         StartCoroutine(CDCounter());
 
@@ -45,7 +46,7 @@ public class Enemy : Entity
     }
 
 
-    private IEnumerator CDCounter()
+    protected IEnumerator CDCounter()
     {
         _renderer.material.SetColor("_BaseColor", Color.red);
         _damCD = true;
@@ -73,7 +74,7 @@ public class Enemy : Entity
         PerkManager.Instance.OnPlayerHitted?.Invoke(_damage, this);
     }
 
-    protected IEnumerator PlayAndFinish(string TriggerName)
+    public IEnumerator PlayAndFinish(string TriggerName)
     {
         _animator.SetTrigger(TriggerName);
         yield return new WaitForSeconds(_animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
