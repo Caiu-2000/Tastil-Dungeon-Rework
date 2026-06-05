@@ -13,7 +13,7 @@ public class Enemy : Entity
 
     [SerializeField] protected float _damage;
     [SerializeField] private float _knockBackForce;
-    RoomController _roomController;
+    protected RoomController _roomController;
     public void SetRoomController(RoomController rc) => _roomController = rc;
 
     public bool CanAnimHitted = true;
