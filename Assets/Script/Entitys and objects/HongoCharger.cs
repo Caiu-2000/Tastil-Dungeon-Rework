@@ -26,7 +26,7 @@ public class HongoCharger : Enemy
         }
         */
 
-    //}
+    }
     //private void Update()
     //{
     //    //if (_attackInProgress)
@@ -40,6 +40,7 @@ public class HongoCharger : Enemy
     // Ahora mismo lo dejo para arreglar
     private IEnumerator SpecialAttack()
     {
+        yield return null;
         
     //    float BaseSpeed = _moveComp.GetSpeed();
     //    _ai.ChangeEnabled(false);
@@ -66,7 +67,7 @@ public class HongoCharger : Enemy
     //    _ai.ChangeEnabled(true);
     //    _moveComp.ChangeDamping(100);
     //    StartCoroutine(CountCDforSpecial());
-    //}
+    }
 
     private IEnumerator CountCDforSpecial()
     {

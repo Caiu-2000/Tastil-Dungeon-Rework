@@ -9,6 +9,7 @@ public class AcidPool : MonoBehaviour
     private void Start()
     {
         StartCoroutine(Destroy());
+        transform.position += new Vector3(0, 0.07f, 0); // Para que se vea bien el acido lo muevo un toque para arriba
     }
     private void OnTriggerStay(Collider other)
     {
