@@ -161,7 +161,10 @@ public class PlayerMaster : Entity
         _animator.SetInteger("WeaponID", Id);
 
     }
-
+    public void ToggleCamera()
+    {
+        _camera.gameObject.SetActive(!_camera.gameObject.activeSelf);
+    }
 
 
 }

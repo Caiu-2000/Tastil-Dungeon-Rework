@@ -4,67 +4,67 @@ using UnityEngine;
 using UnityEngine.Rendering;
 public class HongoCharger : Enemy
 {
-    [SerializeField] MovementComponent _moveComp;
-    [SerializeField] float _SpecialCD = 2.0f;
-    [SerializeField] float _specialDuration = 1.0f;
-    [SerializeField] float _specialPreparationTime = 1.0f;
-    [SerializeField] float _speedMult = 2.0f;
+    //[SerializeField] MovementComponent _moveComp;
+    //[SerializeField] float _SpecialCD = 2.0f;
+    //[SerializeField] float _specialDuration = 1.0f;
+    //[SerializeField] float _specialPreparationTime = 1.0f;
+    //[SerializeField] float _speedMult = 2.0f;
 
-    private bool _attackInProgress = false;
-    private Vector2 _attackDir;
+    //private bool _attackInProgress = false;
+    //private Vector2 _attackDir;
 
-    public override void DistanceReached()
-    {
-        if (CanAttack)
-        {
-            StartCoroutine(SpecialAttack());
+    //public override void DistanceReached()
+    //{
+    //    //if (CanAttack)
+    //    //{
+    //    //    StartCoroutine(SpecialAttack());
             
-        }
+    //    //}
 
 
-    }
-    private void Update()
-    {
-        if (_attackInProgress)
-        {
-            _moveComp.Movement(_attackDir);
+    //}
+    //private void Update()
+    //{
+    //    //if (_attackInProgress)
+    //    //{
+    //    //    _moveComp.Movement(_attackDir);
              
-        }
-    }
+    //    //}
+    //}
 
-    private IEnumerator SpecialAttack()
-    {
+    //private IEnumerator SpecialAttack()
+    //{
         
-        float BaseSpeed = _moveComp.GetSpeed();
-        _ai.ChangeEnabled(false);
+    //    float BaseSpeed = _moveComp.GetSpeed();
+    //    _ai.ChangeEnabled(false);
         
-        CanAttack = false;
-        _animator.SetTrigger("StartSpecial");
-        print("Empezo el ataque especial");
-        yield return new WaitForSeconds(_specialPreparationTime);
+    //    CanAttack = false;
+    //    _animator.SetTrigger("StartSpecial");
+    //    print("Empezo el ataque especial");
+    //    yield return new WaitForSeconds(_specialPreparationTime);
    
-        _moveComp.ChangeDamping(1);
-        print("Comenzo el ataque con velocidad extra");
-        _moveComp.SetSpeed(BaseSpeed *  _speedMult);
-        _attackInProgress = true;
-        Vector3 dir = GameManager.Instance.Player.transform.position - transform.position;
-        //_attackDir = new Vector2(dir.x, dir.z);
+    //    _moveComp.ChangeDamping(1);
+    //    print("Comenzo el ataque con velocidad extra");
+    //    _moveComp.SetSpeed(BaseSpeed *  _speedMult);
+    //    _attackInProgress = true;
+    //    Vector3 dir = GameManager.Instance.Player.transform.position - transform.position;
+    //    //_attackDir = new Vector2(dir.x, dir.z);
         
-        _moveComp.ApplyKnockback(dir , 50.0f); 
+    //    _moveComp.ApplyKnockback(dir , 50.0f); 
 
-        yield return new WaitForSeconds(_specialDuration);
-        _attackInProgress = false;
-        print("Se termino el ataque");
-        _animator.SetTrigger("SpecialFinished");
-        _moveComp.SetSpeed(BaseSpeed);
-        _ai.ChangeEnabled(true);
-        _moveComp.ChangeDamping(100);
-        StartCoroutine(CountCDforSpecial());
-    }
+    //    yield return new WaitForSeconds(_specialDuration);
+    //    _attackInProgress = false;
+    //    print("Se termino el ataque");
+    //    _animator.SetTrigger("SpecialFinished");
+    //    _moveComp.SetSpeed(BaseSpeed);
+    //    _ai.ChangeEnabled(true);
+    //    _moveComp.ChangeDamping(100);
+    //    StartCoroutine(CountCDforSpecial());
+    //}
 
-    private IEnumerator CountCDforSpecial()
-    {
-        yield return new WaitForSeconds(_specialDuration);
-        CanAttack = true;
-    }
+    //private IEnumerator CountCDforSpecial()
+    //{
+    //    yield return new WaitForSeconds(_specialDuration);
+    //    CanAttack = true;
+    //}
 }

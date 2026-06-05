@@ -29,7 +29,7 @@ public class Enemy : Entity
         base.applyDamage(damage, ApplyKnockback, knockbackForce, KnockBackFrom);
 
 
-        PerkManager.Instance.OnEnemyHitted(this);
+        //PerkManager.Instance.OnEnemyHitted(this);
 
         //StartCoroutine(PlayAndFinish("hitted"));
         
@@ -42,7 +42,7 @@ public class Enemy : Entity
 
     public override void Die()
     {
-        PerkManager.Instance.OnEnemyDeath(this);
+        //PerkManager.Instance.OnEnemyDeath(this);
         BuffManager.Instance.TriggerOnEnemyDeath(this.gameObject);
         _roomController?.OnEnemyDied(this);
         base.Die();

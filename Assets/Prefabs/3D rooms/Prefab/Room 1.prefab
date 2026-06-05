@@ -683,6 +683,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sala combate 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6438963661910705191, guid: 1031b526162939648ae6bb80d4b1371f, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -699,6 +703,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6438963661910705191, guid: 1031b526162939648ae6bb80d4b1371f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8831890233902226062}
+    - targetCorrespondingSourceObject: {fileID: 6438963661910705191, guid: 1031b526162939648ae6bb80d4b1371f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8192763697595000226}
     - targetCorrespondingSourceObject: {fileID: 1534351712279982580, guid: 1031b526162939648ae6bb80d4b1371f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3486382215070957031}
@@ -861,12 +868,26 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 413.51666, y: 396.36737, z: 21.320343}
   m_Center: {x: 0, y: 0, z: 1370.2816}
+--- !u!114 &8192763697595000226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3043984369355386491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d009e42cb334d048859c22c2f90bff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ui: {fileID: 1146518444293090018}
+  nextRoom: {fileID: 8759136277354865006, guid: 71326fd96d2d0b0469049422da5ba33d, type: 3}
 --- !u!1 &3169819213011207688 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2839280741233251244, guid: 1031b526162939648ae6bb80d4b1371f, type: 3}
