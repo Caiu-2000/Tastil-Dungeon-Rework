@@ -1,4 +1,5 @@
 
+using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -39,10 +40,15 @@ public class GameManager : MonoBehaviour
         PauseAction = InputSystem.actions.FindAction("Pause");
         RestartAction = InputSystem.actions.FindAction("Restart");
         DebugAction = InputSystem.actions.FindAction("DebugButton");
+
     }
+
 
     private void Update()
     {
+        // Cada que se resetaba se perdia la referencia y se rompia todo. 
+        // Esto es un manotazo de ahogado
+        if (!pause) pause = FindAnyObjectByType<PauseManager>();
 
         if (PauseAction.WasPressedThisFrame())
         {
