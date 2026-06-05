@@ -57,7 +57,7 @@ public class SpitProjectile : MonoBehaviour
             {
                 Debug.Log("Homoerotico");
                 print(hit.collider.name);
-                groundY = hit.point.y;
+                groundY = hit.point.y + 0.05f;
             }
             Instantiate(acidPoolPrefab, new Vector3(transform.position.x, groundY, transform.position.z), Quaternion.identity);
             Destroy(gameObject);

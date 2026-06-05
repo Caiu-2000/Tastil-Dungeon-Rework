@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 
 
@@ -11,8 +12,10 @@ public class Weapon : Item
     public int WeaponID = 0;
 
     [SerializeField]
-    protected bool _equiped = false , _readyToAttack = true , _chargableAttack = false;
+    protected bool   _readyToAttack = true , _chargableAttack = false;
     public float _stamCost = 0.0f;
+
+    public bool _equiped = false;
 
     protected Entity ParentEntity;
 

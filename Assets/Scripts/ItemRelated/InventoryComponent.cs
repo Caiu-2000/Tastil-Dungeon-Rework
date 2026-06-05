@@ -21,6 +21,7 @@ public class InventoryComponent : MonoBehaviour
 
         if (_newItem.GetItemType() == Item.ItemType.WeaponMele)
         {
+            if (_newItem.GetComponent<Weapon>()._equiped) return;
             _weaponsHand.EquipWeapon(_newItem.GetComponent<MeleWeapon>());
             return;
         }
