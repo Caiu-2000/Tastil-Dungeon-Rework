@@ -84,6 +84,13 @@ public class MeleWeapon : Weapon
    
         float elapsedTime = 0;
 
+        /*Perdoname padre por que eh pecado
+         Tengo que hacer una lista que cada frame se recorra y actualice por que es la unica manera que se me ocurre 
+        con el codigo en este estado.
+        Esto es para que al golpear no se hitee varias veces por golpe a cada enemigo
+         
+         */
+        List<IHittable> AlreadyHitted = new List<IHittable>();
         while (true)
         {
             elapsedTime += Time.deltaTime;
@@ -98,9 +105,9 @@ public class MeleWeapon : Weapon
 
 
                 if (hitable == null) continue;
-
-
+                if (AlreadyHitted.Contains(hitable)) continue;
                 if (hitable.GetType() == ParentEntity.GetType()) { continue; }
+                
                 if (Random.Range(0f, 1f) < _critChance / 100)              //Divido por 100 asi hago que la critchance vaya entre 0 a 1 (pasando por las comas), se prodria haber hecho diferente pero queria usar floats
                 {
                     hitable.Hit(_damage * 1.5f, _canKnockback, _knockbackForce, ParentEntity.transform); //CRITICO, aca tendriamos que llamar vfx y toda la cosa
@@ -112,6 +119,7 @@ public class MeleWeapon : Weapon
                     hitable.Hit(_damage, _canKnockback, _knockbackForce, ParentEntity.transform);
                     BuffManager.Instance.TriggerOnHit(Hitted.gameObject);
                 }
+                AlreadyHitted.Add(hitable);
             }
             if (elapsedTime > _attackCollDuration) break;
             yield return null;

@@ -14,7 +14,7 @@ public class EnemyAttackController : MonoBehaviour
     [SerializeField] private GameObject mouth;
     [SerializeField]CapsuleCollider hitCollider;
     [SerializeField] CapsuleCollider BodyCollider;
-
+    [SerializeField] GameObject TelegraphSprite;
     private bool spitReady = true;
     private bool burrowReady = true;
     private bool isRolling = false;
@@ -95,6 +95,7 @@ public class EnemyAttackController : MonoBehaviour
         HongoMaster._animator.SetTrigger("Burrow");
         // Cambiar los triggers por el nombre real
         yield return new WaitForSeconds(GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        TelegraphSprite.GetComponent<SpriteRenderer>().enabled = true;
         hitCollider.enabled = false;
         BodyCollider.enabled = false;
         modelo.SetActive(false);
@@ -112,6 +113,7 @@ public class EnemyAttackController : MonoBehaviour
         HongoMaster.IsOnBurrow = false;
         isAttacking = false;
         HongoMaster.CanAnimHitted = true;
+        TelegraphSprite.GetComponent<SpriteRenderer>().enabled = false;
         StartCoroutine(BurrowCooldown());
         StartCoroutine(RollCooldown());
     }
