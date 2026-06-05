@@ -79,6 +79,7 @@ public class HongoCharger : Enemy
     {
         _animator.SetTrigger("Died");
         CollisionForbody.enabled = false;
+        CanAnimHitted = false;
         float time = _animator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
         Destroy(gameObject, time);
         
