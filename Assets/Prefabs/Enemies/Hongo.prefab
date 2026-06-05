@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentLife: 0
-  _maxLife: 100
+  _maxLife: 50
   _DamageCDTime: 0.25
   _armor: 0
   currentShieldedLife: 0
@@ -261,7 +261,7 @@ MonoBehaviour:
   _renderer: {fileID: 0}
   _ai: {fileID: 6245934071168992640}
   _animator: {fileID: 7414105989320626070}
-  _damage: 20
+  _damage: 5
   _knockBackForce: 100
   CanAnimHitted: 1
   _moveComp: {fileID: 0}

@@ -6,7 +6,7 @@ public class RoomManager : MonoBehaviour
 {
     public static RoomManager instance;
     public Transform roomAnchor;
-    GameObject thisRoom;
+    [SerializeField] GameObject thisRoom;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
