@@ -191,6 +191,11 @@ public class PlayerMaster : Entity
 
         _camera.transform.localPosition = originalPos;
     }
+    }
+    public void ToggleCamera()
+    {
+        _camera.gameObject.SetActive(!_camera.gameObject.activeSelf);
+    }
 
 
 }

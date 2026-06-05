@@ -13,6 +13,8 @@ public class Enemy : Entity
 
     [SerializeField] protected float _damage;
     [SerializeField] private float _knockBackForce;
+    RoomController _roomController;
+    public void SetRoomController(RoomController rc) => _roomController = rc;
 
     public bool CanAnimHitted = true;
 
@@ -39,10 +41,12 @@ public class Enemy : Entity
 
     public override void Die()
     {
-        PerkManager.Instance.OnEnemyDeath(this);
+        //PerkManager.Instance.OnEnemyDeath(this);
         BuffManager.Instance.TriggerOnEnemyDeath(this.gameObject);
         _animator.SetTrigger("Death");
 
+        _roomController?.OnEnemyDied(this);
+        
     }
 
 

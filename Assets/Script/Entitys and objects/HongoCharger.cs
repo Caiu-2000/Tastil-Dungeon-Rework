@@ -2,7 +2,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
-
 public class HongoCharger : Enemy
 {
     [SerializeField] MovementComponent _moveComp;
@@ -27,47 +26,47 @@ public class HongoCharger : Enemy
         }
         */
 
-    }
-    private void Update()
-    {
-        if (_attackInProgress)
-        {
-            _moveComp.Movement(_attackDir);
+    //}
+    //private void Update()
+    //{
+    //    //if (_attackInProgress)
+    //    //{
+    //    //    _moveComp.Movement(_attackDir);
              
-        }
-    }
+    //    //}
+    //}
 
     // Este es el ataque de carga que quedo con error de referencia nula el movmeent componenet
     // Ahora mismo lo dejo para arreglar
     private IEnumerator SpecialAttack()
     {
         
-        float BaseSpeed = _moveComp.GetSpeed();
-        _ai.ChangeEnabled(false);
+    //    float BaseSpeed = _moveComp.GetSpeed();
+    //    _ai.ChangeEnabled(false);
         
-        CanAttack = false;
-        _animator.SetTrigger("StartSpecial");
-        print("Empezo el ataque especial");
-        yield return new WaitForSeconds(_specialPreparationTime);
+    //    CanAttack = false;
+    //    _animator.SetTrigger("StartSpecial");
+    //    print("Empezo el ataque especial");
+    //    yield return new WaitForSeconds(_specialPreparationTime);
    
-        _moveComp.ChangeDamping(1);
-        print("Comenzo el ataque con velocidad extra");
-        _moveComp.SetSpeed(BaseSpeed *  _speedMult);
-        _attackInProgress = true;
-        Vector3 dir = GameManager.Instance.Player.transform.position - transform.position;
-        //_attackDir = new Vector2(dir.x, dir.z);
+    //    _moveComp.ChangeDamping(1);
+    //    print("Comenzo el ataque con velocidad extra");
+    //    _moveComp.SetSpeed(BaseSpeed *  _speedMult);
+    //    _attackInProgress = true;
+    //    Vector3 dir = GameManager.Instance.Player.transform.position - transform.position;
+    //    //_attackDir = new Vector2(dir.x, dir.z);
         
-        _moveComp.ApplyKnockback(dir , 50.0f); 
+    //    _moveComp.ApplyKnockback(dir , 50.0f); 
 
-        yield return new WaitForSeconds(_specialDuration);
-        _attackInProgress = false;
-        print("Se termino el ataque");
-        _animator.SetTrigger("SpecialFinished");
-        _moveComp.SetSpeed(BaseSpeed);
-        _ai.ChangeEnabled(true);
-        _moveComp.ChangeDamping(100);
-        StartCoroutine(CountCDforSpecial());
-    }
+    //    yield return new WaitForSeconds(_specialDuration);
+    //    _attackInProgress = false;
+    //    print("Se termino el ataque");
+    //    _animator.SetTrigger("SpecialFinished");
+    //    _moveComp.SetSpeed(BaseSpeed);
+    //    _ai.ChangeEnabled(true);
+    //    _moveComp.ChangeDamping(100);
+    //    StartCoroutine(CountCDforSpecial());
+    //}
 
     private IEnumerator CountCDforSpecial()
     {
@@ -77,6 +76,7 @@ public class HongoCharger : Enemy
 
     public override void Die()
     {
+        _roomController?.OnEnemyDied(this);
         _animator.SetTrigger("Died");
         CollisionForbody.enabled = false;
         CanAnimHitted = false;

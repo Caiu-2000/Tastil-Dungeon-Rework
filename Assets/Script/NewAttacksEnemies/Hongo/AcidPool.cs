@@ -4,7 +4,7 @@ using System.Collections;
 public class AcidPool : MonoBehaviour
 {
     [SerializeField] private float tickInterval = 0.5f;
-    [SerializeField] private float damage = 5f;
+    [SerializeField] private float damage = 1f;
     private bool coroutineRunning = false;
     private void Start()
     {
