@@ -13,8 +13,8 @@ public class Enemy : Entity
 
     [SerializeField] protected float _damage;
     [SerializeField] private float _knockBackForce;
-
-   
+    RoomController _roomController;
+    public void SetRoomController(RoomController rc) => _roomController = rc;
 
     private void Awake()
     {
@@ -44,6 +44,7 @@ public class Enemy : Entity
     {
         PerkManager.Instance.OnEnemyDeath(this);
         BuffManager.Instance.TriggerOnEnemyDeath(this.gameObject);
+        _roomController?.OnEnemyDied(this);
         base.Die();
     }
 

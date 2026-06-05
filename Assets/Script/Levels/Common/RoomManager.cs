@@ -32,8 +32,9 @@ public class RoomManager : MonoBehaviour
         CharacterController _cC=GameManager.Instance.Player.GetComponent<CharacterController>();
         _cC.enabled = false;
         GameManager.Instance.Player.transform.position = thisRoomController.GetEnterPosition().position;
-        yield return StartCoroutine(FadeController.Instance.UnFade());
         _cC.enabled = true;
+        yield return StartCoroutine(FadeController.Instance.UnFade());
+
 
     }
     public IEnumerator destroyRoom()
@@ -41,5 +42,10 @@ public class RoomManager : MonoBehaviour
         yield return StartCoroutine(FadeController.Instance.Fade());
         Destroy(thisRoom);
     }
-
+    public IEnumerator TransitionToRoom(GameObject roomPrefab)
+    {
+        yield return StartCoroutine(destroyRoom());
+        yield return StartCoroutine(spawnRoom(roomPrefab));
+        thisRoom.GetComponent<RoomController>().ActivateSpawners();
+    }
 }

@@ -8,7 +8,7 @@ public class roomSpawnkey :MonoBehaviour
     {
         if(Keyboard.current.numpad2Key.wasPressedThisFrame)
         {
-            StartCoroutine(RoomManager.instance.spawnRoom(room));
+            StartCoroutine(RoomManager.instance.TransitionToRoom(room));
         }
     }
 }
