@@ -9,12 +9,14 @@ public class Enemy : Entity
     [SerializeField] private Renderer _renderer;
     protected bool CanAttack = true;
     [SerializeField] protected AiComponent _ai;
-    [SerializeField] protected Animator _animator;
+    [SerializeField] public Animator _animator;
 
     [SerializeField] protected float _damage;
     [SerializeField] private float _knockBackForce;
     RoomController _roomController;
     public void SetRoomController(RoomController rc) => _roomController = rc;
+
+    public bool CanAnimHitted = true;
 
     private void Awake()
     {
@@ -29,14 +31,11 @@ public class Enemy : Entity
         base.applyDamage(damage, ApplyKnockback, knockbackForce, KnockBackFrom);
 
 
-        //PerkManager.Instance.OnEnemyHitted(this);
-
-        //StartCoroutine(PlayAndFinish("hitted"));
+        PerkManager.Instance.OnEnemyHitted(this);
+        print("Hasta aca se llego bien");
+        if (CanAnimHitted) _animator.SetTrigger("hitted");
         
         StartCoroutine(CDCounter());
-       // _ai.TemporaryDisable(1.0f);
-       // _damCD = true;
-        
 
     }
 
@@ -44,12 +43,14 @@ public class Enemy : Entity
     {
         //PerkManager.Instance.OnEnemyDeath(this);
         BuffManager.Instance.TriggerOnEnemyDeath(this.gameObject);
+        _animator.SetTrigger("Death");
+
         _roomController?.OnEnemyDied(this);
-        base.Die();
+        
     }
 
 
-    private IEnumerator CDCounter()
+    protected IEnumerator CDCounter()
     {
         _renderer.material.SetColor("_BaseColor", Color.red);
         _damCD = true;
@@ -70,23 +71,24 @@ public class Enemy : Entity
         _animator.SetBool("Walking", IsWalking);
     }
 
-    internal void HitConnectded(Collider other)
+    internal virtual void HitConnectded(Collider other)
     {
 
         other.GetComponent<PlayerMaster>().applyDamage(_damage , true , _knockBackForce , transform);
         PerkManager.Instance.OnPlayerHitted?.Invoke(_damage, this);
     }
 
-    protected IEnumerator PlayAndFinish(string TriggerName)
+    public IEnumerator PlayAndFinish(string TriggerName)
     {
         _animator.SetTrigger(TriggerName);
-        //_ai.ChangeEnabled(false);
         yield return new WaitForSeconds(_animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
 
-        //_ai.ChangeEnabled(true);
     }
 
+    public virtual void ApplyParry()
+    {
 
+    }
 
 }
 

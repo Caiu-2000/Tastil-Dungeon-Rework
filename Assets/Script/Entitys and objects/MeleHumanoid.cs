@@ -1,40 +1,130 @@
+
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MeleHumanoid : Enemy
 {
     [SerializeField] EnemyHitCollision _coll;
+    [SerializeField] ParryCollision _parryCollision;
     [SerializeField] Transform _collPoint;
-    [SerializeField] float _attackTime;
-    [SerializeField] float _attackCooldown = 1.5f;
+    // Si robe las variables de las armas para hacerlo al enemigo. 
+    // Que no se note que podria integrar que agarren armas
+
+    [SerializeField] private int _maxCombo = 3, _currentCombo = 0;
+
+    [SerializeField] private List<AttackData> Attacks;
+
+    private void Awake()
+    {
+
+        _currentLife = _maxLife;
+        _maxCombo = Attacks.Count ;
+    }
+
+
     public override void DistanceReached()
     {
         if (CanAttack)
         {
-            StartCoroutine(PlayAndFinish("attack"));
-            StartCoroutine(SettAttackCollision());
-           // _animator.SetTrigger("attack");
-        }
+            CanAttack = false;
+            _currentCombo += 1;
+            if (_currentCombo > _maxCombo) 
+            { 
+                _currentCombo = 1;
+            }
+            print(_currentCombo -1 );
+            StartCoroutine(SetAttack());
 
+        }
+        
         
     }
 
-   
+
+    public override void applyDamage(float damage, bool ApplyKnockback = false, float knockbackForce = 0, Transform KnockBackFrom = null)
+    {
+
+        base.applyDamage(damage, ApplyKnockback, knockbackForce, KnockBackFrom);
+    }
 
     private IEnumerator SettAttackCollision()
     {
-        CanAttack = false;
-        yield return new WaitForSeconds(_attackTime);
+
+        yield return new WaitForSeconds(Attacks[_currentCombo -1 ].CollisionTime);
+
         EnemyHitCollision newColl = Instantiate(_coll);
-        newColl.ChangeDuration(0.1f);
+        newColl.ChangeDuration(Attacks[_currentCombo -1 ].AttackDuration);
         newColl.transform.position = _collPoint.position;
         newColl.transform.rotation = _collPoint.transform.rotation;
         newColl.parentEnemy = this;
-        yield return new WaitForSeconds(_attackCooldown);
+        
+        
+    }
+    private IEnumerator SettParryCollision()
+    {
+
+        yield return new WaitForSeconds(Attacks[_currentCombo -1 ].ParryStart);
+        ParryCollision newColl = Instantiate(_parryCollision);
+        newColl.ChangeDuration(Attacks[_currentCombo - 1].ParryWindow);
+        newColl.transform.position = _collPoint.position;
+        newColl.transform.rotation = _collPoint.transform.rotation;
+        newColl.ParentEnemy = this;
+
+    }
+    private IEnumerator SetAttack()
+    {
+        
+        StartCoroutine(SettAttackCollision());
+        if (Attacks[_currentCombo - 1].Parriable)
+        {
+            StartCoroutine(SettParryCollision());
+
+        }
+        _animator.SetTrigger("attack");
+        _animator.SetInteger("AttackID", _currentCombo - 1);
+        _ai.ChangeEnabled(false);
+        yield return new WaitForSeconds(Attacks[_currentCombo - 1 ].AttackCD);
+        _ai.ChangeEnabled(true);
         CanAttack = true;
     }
 
+    internal override void HitConnectded(Collider other)
+    {
+        other.GetComponent<PlayerMaster>().applyDamage(_damage, true, Attacks[_currentCombo -1].KnockbackForce, transform);
+        PerkManager.Instance.OnPlayerHitted?.Invoke(_damage, this);
+    }
+
+    private IEnumerator WaitToCanAttack(float time)
+    {
+        yield return new WaitForSeconds(time);
+        CanAttack = true;
+        _ai.ChangeEnabled(true);
+        _animator.SetTrigger("ParriedFinished");
+    }
 
 
+    public void Stun(bool Parried , float TimeStunned)
+    {
+        _ai.ChangeEnabled(false);
+        StopCoroutine(SetAttack());
+        StopCoroutine(SettAttackCollision());
+        StartCoroutine(WaitToCanAttack(TimeStunned));
+        
+        if (Parried)
+        {
+            _animator.SetTrigger("Parried");
+        }
+    }
+
+    public override void ApplyParry()
+    {
+        Stun(true, 2.0f);
+
+
+    }
+
+
+    
 
 }

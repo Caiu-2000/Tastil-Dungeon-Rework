@@ -13,14 +13,17 @@ public class HongoCharger : Enemy
     //private bool _attackInProgress = false;
     //private Vector2 _attackDir;
 
-    //public override void DistanceReached()
-    //{
-    //    //if (CanAttack)
-    //    //{
-    //    //    StartCoroutine(SpecialAttack());
-            
-    //    //}
+    public bool IsOnBurrow = false;
 
+    public override void DistanceReached()
+    {
+        /*
+        if (CanAttack)
+        {
+            StartCoroutine(SpecialAttack());
+            
+        }
+        */
 
     //}
     //private void Update()
@@ -32,8 +35,10 @@ public class HongoCharger : Enemy
     //    //}
     //}
 
-    //private IEnumerator SpecialAttack()
-    //{
+    // Este es el ataque de carga que quedo con error de referencia nula el movmeent componenet
+    // Ahora mismo lo dejo para arreglar
+    private IEnumerator SpecialAttack()
+    {
         
     //    float BaseSpeed = _moveComp.GetSpeed();
     //    _ai.ChangeEnabled(false);
@@ -62,9 +67,12 @@ public class HongoCharger : Enemy
     //    StartCoroutine(CountCDforSpecial());
     //}
 
-    //private IEnumerator CountCDforSpecial()
-    //{
-    //    yield return new WaitForSeconds(_specialDuration);
-    //    CanAttack = true;
-    //}
+    private IEnumerator CountCDforSpecial()
+    {
+        yield return new WaitForSeconds(_specialDuration);
+        CanAttack = true;
+    }
+
+
+
 }

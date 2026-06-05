@@ -10,7 +10,7 @@
                     "name": "Move",
                     "type": "Value",
                     "id": "351f2ccd-1f9f-44bf-9bec-d62ac5c5f408",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Integer",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -136,6 +136,15 @@
                     "name": "Restart",
                     "type": "Button",
                     "id": "f7c2b85d-09d5-486c-a77b-7e873056b889",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DebugButton",
+                    "type": "Button",
+                    "id": "91815a47-e3e0-4495-8128-6dd41e0486a8",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -591,6 +600,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Restart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "307827e8-ea84-49d6-a226-03ec3cf2c458",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DebugButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
