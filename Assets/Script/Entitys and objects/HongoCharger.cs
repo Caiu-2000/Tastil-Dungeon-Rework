@@ -4,15 +4,16 @@ using UnityEngine;
 using UnityEngine.Rendering;
 public class HongoCharger : Enemy
 {
-    //[SerializeField] MovementComponent _moveComp;
-    //[SerializeField] float _SpecialCD = 2.0f;
-    //[SerializeField] float _specialDuration = 1.0f;
-    //[SerializeField] float _specialPreparationTime = 1.0f;
-    //[SerializeField] float _speedMult = 2.0f;
-
-    //private bool _attackInProgress = false;
-    //private Vector2 _attackDir;
-
+    [SerializeField] MovementComponent _moveComp;
+    [SerializeField] float _SpecialCD = 2.0f;
+    [SerializeField] float _specialDuration = 1.0f;
+    [SerializeField] float _specialPreparationTime = 1.0f;
+    [SerializeField] float _speedMult = 2.0f;
+    [SerializeField] private EnemyHitCollision CollisionForbody;
+    
+    private bool _attackInProgress = false;
+    private Vector2 _attackDir;
+    
     public bool IsOnBurrow = false;
 
     public override void DistanceReached()
@@ -73,6 +74,17 @@ public class HongoCharger : Enemy
         CanAttack = true;
     }
 
+    public override void Die()
+    {
+        _roomController?.OnEnemyDied(this);
+        _animator.SetTrigger("Died");
+        CollisionForbody.enabled = false;
+        CanAnimHitted = false;
+        float time = _animator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
+        Destroy(gameObject, time);
+        
+            
+    }
 
 
 }

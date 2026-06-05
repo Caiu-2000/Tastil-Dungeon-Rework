@@ -169,6 +169,7 @@ public class PlayerMaster : Entity
 
     public void Shake(float duration, float magnitude)
     {
+        print("Se intento Shakear");
         StartCoroutine(DoShake(duration, magnitude));
     }
 
