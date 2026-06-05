@@ -13,6 +13,7 @@ public class EnemyAttackController : MonoBehaviour
     [SerializeField] private GameObject spitPrefab;
     [SerializeField] private GameObject mouth;
     [SerializeField]CapsuleCollider hitCollider;
+    [SerializeField] CapsuleCollider BodyCollider;
 
     private bool spitReady = true;
     private bool burrowReady = true;
@@ -22,6 +23,8 @@ public class EnemyAttackController : MonoBehaviour
     [SerializeField]GameObject modelo;
     [SerializeField]private PlayerMaster player;
 
+    [SerializeField] private HongoCharger HongoMaster;
+
     private void Start()
     {
         player = GameManager.Instance.Player;
@@ -30,6 +33,7 @@ public class EnemyAttackController : MonoBehaviour
             if (child.gameObject.name == "HitCollision")
                 hitCollider = child.GetComponent<CapsuleCollider>();
         }
+        BodyCollider = GetComponent<CapsuleCollider>();
         StartCoroutine(RollCooldown());
     }
 
@@ -83,11 +87,16 @@ public class EnemyAttackController : MonoBehaviour
 
     private IEnumerator BurrowSequence()
     {
+       
+        
+        HongoMaster.IsOnBurrow = true;
+        HongoMaster.CanAnimHitted = false;
+        Animator animator = GetComponent<Animator>();
+        HongoMaster._animator.SetTrigger("Burrow");
         // Cambiar los triggers por el nombre real
-        GetComponent<Animator>().SetTrigger("Burrow");
         yield return new WaitForSeconds(GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.length);
-
-        //_renderer.enabled = false;
+        hitCollider.enabled = false;
+        BodyCollider.enabled = false;
         modelo.SetActive(false);
         Vector3 targetPos = player.transform.position;
         transform.position = new Vector3(targetPos.x, transform.position.y - 5f, targetPos.z);
@@ -95,13 +104,14 @@ public class EnemyAttackController : MonoBehaviour
         yield return new WaitForSeconds(telegraphDuration);
 
         transform.position = new Vector3(targetPos.x, targetPos.y, targetPos.z);
-        //_renderer.enabled = true;
+        BodyCollider.enabled = true;
         hitCollider.enabled = true;
+        HongoMaster._animator.SetTrigger("ExitBurrow");
         modelo.SetActive(true);
-        GetComponent<Animator>().SetTrigger("PopUp");
         yield return new WaitForSeconds(GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.length);
-
+        HongoMaster.IsOnBurrow = false;
         isAttacking = false;
+        HongoMaster.CanAnimHitted = true;
         StartCoroutine(BurrowCooldown());
         StartCoroutine(RollCooldown());
     }

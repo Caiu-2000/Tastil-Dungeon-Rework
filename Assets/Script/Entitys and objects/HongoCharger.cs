@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
+
 public class HongoCharger : Enemy
 {
     [SerializeField] MovementComponent _moveComp;
@@ -13,14 +14,17 @@ public class HongoCharger : Enemy
     private bool _attackInProgress = false;
     private Vector2 _attackDir;
 
+    public bool IsOnBurrow = false;
+
     public override void DistanceReached()
     {
+        /*
         if (CanAttack)
         {
             StartCoroutine(SpecialAttack());
             
         }
-
+        */
 
     }
     private void Update()
@@ -32,6 +36,8 @@ public class HongoCharger : Enemy
         }
     }
 
+    // Este es el ataque de carga que quedo con error de referencia nula el movmeent componenet
+    // Ahora mismo lo dejo para arreglar
     private IEnumerator SpecialAttack()
     {
         
@@ -67,4 +73,7 @@ public class HongoCharger : Enemy
         yield return new WaitForSeconds(_specialDuration);
         CanAttack = true;
     }
+
+
+
 }
