@@ -7,9 +7,11 @@ public class RoomManager : MonoBehaviour
     public static RoomManager instance;
     public Transform roomAnchor;
     [SerializeField] GameObject thisRoom;
+    public bool firstRoom = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+        firstRoom = true;
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
@@ -49,5 +51,9 @@ public class RoomManager : MonoBehaviour
         yield return StartCoroutine(destroyRoom());
         yield return StartCoroutine(spawnRoom(roomPrefab));
         thisRoom.GetComponent<RoomController>().ActivateSpawners();
+    }
+    public void setBool()
+    {
+        firstRoom = false;
     }
 }
