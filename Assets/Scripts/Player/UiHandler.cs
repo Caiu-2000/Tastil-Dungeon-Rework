@@ -17,6 +17,8 @@ public class UiHandler : MonoBehaviour
     private Transform firstPosition;
 
 
+    [SerializeField] Image LifeIndicatorEffect;
+    private Material miMaterial;
 
     private void Awake()
     {
@@ -24,6 +26,13 @@ public class UiHandler : MonoBehaviour
            if (!Player) Player = GetComponent<PlayerMaster>();
 
         firstPosition = _hotbarSelector.transform;
+    }
+
+
+    private void Start()
+    {
+        if (!miMaterial) miMaterial = LifeIndicatorEffect.material;
+        miMaterial.SetFloat("_Intensity", 0.0f);
     }
 
     private void Update()
@@ -53,7 +62,9 @@ public class UiHandler : MonoBehaviour
     
     public void UpdateLife(float current , float max)
     {
+        if(!miMaterial) miMaterial = LifeIndicatorEffect.material;
         _lifeBar.fillAmount = (current /max);
+        miMaterial.SetFloat("_Intensity", (1 - _lifeBar.fillAmount));
        
     }
 
