@@ -1,12 +1,16 @@
 using UnityEngine;
 
-public class SpitProjectile : MonoBehaviour
+public class SpitProjectile : MonoBehaviour , IParryable
 {
     [SerializeField] private float V0 = 15f;
     [SerializeField] private GameObject acidPoolPrefab;
     private Vector3 targetPos;
     private Rigidbody rb;
     [SerializeField]LayerMask layerMask;
+    private HongoCharger ParentHongo;
+
+    private bool Parried = false;
+
 
     private void Awake()
     {
@@ -42,16 +46,16 @@ public class SpitProjectile : MonoBehaviour
         {
             Debug.Log("CorreWachin");
             other.gameObject.GetComponent<PlayerMaster>().applyDamage(10f);
-            if(Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 10f, layerMask))
+            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 10f, layerMask))
             {
                 Debug.Log("Homoerotico");
                 print(hit.collider.name);
                 groundY = hit.point.y;
             }
-            Instantiate(acidPoolPrefab,new Vector3(transform.position.x, groundY, transform.position.z) , Quaternion.identity);
+            Instantiate(acidPoolPrefab, new Vector3(transform.position.x, groundY, transform.position.z), Quaternion.identity);
             Destroy(gameObject);
         }
-        else if(other.gameObject.CompareTag("Piso"))
+        else if (other.gameObject.CompareTag("Piso"))
         {
             if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 10f, layerMask))
             {
@@ -61,6 +65,23 @@ public class SpitProjectile : MonoBehaviour
             }
             Instantiate(acidPoolPrefab, new Vector3(transform.position.x, groundY, transform.position.z), Quaternion.identity);
             Destroy(gameObject);
-        }        
+        }
+
+        else if (other.gameObject.CompareTag("Enemy") && Parried)
+        {
+            other.GetComponent<Enemy>().applyDamage(10.0f);
+        }
+    }
+
+    public void Parry()
+    {
+        targetPos = ParentHongo.transform.position;
+        Launch();
+        Parried = true;
+    }
+
+    public void SetHongo(HongoCharger newparent)
+    {
+        ParentHongo = newparent;
     }
 }

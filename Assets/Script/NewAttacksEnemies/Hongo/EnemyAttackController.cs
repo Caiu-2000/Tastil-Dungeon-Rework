@@ -73,6 +73,7 @@ public class EnemyAttackController : MonoBehaviour
         spitReady = false;
         var spitGO = Instantiate(spitPrefab, mouth.transform.position, Quaternion.identity);
         spitGO.GetComponent<SpitProjectile>().SetTarget(player.transform.position);
+        spitGO.GetComponent<SpitProjectile>().SetHongo(HongoMaster);
         isAttacking = false;
         StartCoroutine(SpitCooldown());
         StartCoroutine(RollCooldown());
