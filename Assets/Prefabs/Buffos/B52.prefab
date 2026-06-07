@@ -88,7 +88,8 @@ MonoBehaviour:
   _isPicked: 0
   _inventory: {fileID: 0}
   _itemIcon: {fileID: 0}
-  Type: 1
+  _useTime: 1
+  Type: 6
   data: {fileID: 11400000, guid: 6389b007452bd2245b74952b3ab8aa9d, type: 2}
   manager: {fileID: 0}
   imagen: {fileID: 0}

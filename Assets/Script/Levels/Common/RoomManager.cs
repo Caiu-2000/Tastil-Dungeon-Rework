@@ -8,7 +8,7 @@ public class RoomManager : MonoBehaviour
     public Transform roomAnchor;
     [SerializeField] GameObject thisRoom;
     public bool firstRoom = true;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Awake()
     {
         firstRoom = true;
@@ -27,13 +27,14 @@ public class RoomManager : MonoBehaviour
     {
         
     }
-    public IEnumerator spawnRoom(GameObject roomPrefab)
+    public IEnumerator spawnRoom(GameObject roomPrefab, GameObject rewardPrefab)
     {
         try
         {
             Debug.Log("Creo el cuarto");
             thisRoom = Instantiate(roomPrefab, roomAnchor.position, Quaternion.identity);
             RoomController thisRoomController = thisRoom.GetComponent<RoomController>();
+            thisRoomController.SetReward(rewardPrefab);
             CharacterController _cC = GameManager.Instance.Player.GetComponent<CharacterController>();
             _cC.enabled = false;
             GameManager.Instance.Player.transform.position = thisRoomController.GetEnterPosition().position;
@@ -57,15 +58,19 @@ public class RoomManager : MonoBehaviour
         yield return StartCoroutine(FadeController.Instance.Fade());
         Destroy(thisRoom);
     }
-    public IEnumerator TransitionToRoom(GameObject roomPrefab)
+    public IEnumerator TransitionToRoom(GameObject roomPrefab, GameObject rewardPrefab)
     {
         yield return StartCoroutine(destroyRoom());
-        yield return StartCoroutine(spawnRoom(roomPrefab));
+        yield return StartCoroutine(spawnRoom(roomPrefab, rewardPrefab));
         Debug.Log("Creo los enemigos");
         thisRoom.GetComponent<RoomController>().ActivateSpawners();
     }
     public void setBool()
     {
         firstRoom = false;
+    }
+    public GameObject GetRoom()
+    {
+        return thisRoom;
     }
 }

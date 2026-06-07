@@ -151,8 +151,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d009e42cb334d048859c22c2f90bff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ui: {fileID: 1470556162}
+  rewardUI: {fileID: 0}
   nextRoom: {fileID: 6934233276394815261, guid: aabfeb47e671e1f47b1716b9a487ab52, type: 3}
+  rewardSprites: []
+  rewardPrefabs:
+  - {fileID: 621023166600298120, guid: 34d1b5d9249bd584ea4205a2194a110a, type: 3}
+  - {fileID: 8893494120907486937, guid: 006aa7e5f6cea4d4d807f0ee38abba24, type: 3}
+  - {fileID: 8938945555665897150, guid: cccbe6c0507f14a418d922b6d6afb710, type: 3}
+  - {fileID: 6278470365140543455, guid: d3bd8d1d21df03340951dbfa17b04af4, type: 3}
+  - {fileID: 2411773692822195047, guid: a0f76eeaf7c9007418df76b55aa0908e, type: 3}
+  - {fileID: 652028239203610038, guid: 7bb791ccfe011ae4597bd47496fee58a, type: 3}
+  - {fileID: 3206557953388025494, guid: 7c7be6b4719e948439e555594728fe11, type: 3}
+  rewardImage: {fileID: 0}
 --- !u!65 &20547100
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -605,6 +615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 6934233276394815261, guid: aabfeb47e671e1f47b1716b9a487ab52, type: 3}
+  reward: {fileID: 0}
 --- !u!4 &518961476
 Transform:
   m_ObjectHideFlags: 0

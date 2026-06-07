@@ -4,12 +4,18 @@ using System.Collections.Generic;
 
 public class RoomController : MonoBehaviour
 {
+    //---------------------Positions---------------------
     [SerializeField] public Transform playerEnterPosition;
-    [SerializeField] RewardUI rewardUI;
     public Transform GetEnterPosition() => playerEnterPosition;
+    [SerializeField] List<EnemySpawner> spawners = new List<EnemySpawner>();
+    [SerializeField] Transform rewardSpawnPosition;
+    //---------------------GameObjects-------------------
+    [SerializeField] RewardUI[] rewardUI;
     List<Enemy> enemies = new List<Enemy>();
-    [SerializeField]List<EnemySpawner> spawners = new List<EnemySpawner>();
     bool spawnedEnemies = false;
+    GameObject pendingReward;
+
+    //---------------------Methods-----------------------
     private void Awake()
     {
         spawners = new List<EnemySpawner>(GetComponentsInChildren<EnemySpawner>());
@@ -24,10 +30,24 @@ public class RoomController : MonoBehaviour
     {
         enemies.Remove(enemy);
         if (enemies.Count == 0 && spawnedEnemies)
-            rewardUI.Show();
+            SpawnReward();
     }
     public void EnemySpawned(Enemy enemy)
     {
         enemies.Add(enemy);
+    }
+    public void SpawnReward()
+    {
+        if (pendingReward == null) return;
+        Instantiate(pendingReward, rewardSpawnPosition.position, Quaternion.identity);
+    }
+    public void SetReward(GameObject reward)
+    {
+        pendingReward = reward;
+    }
+    public void PotionInteracted()
+    {
+        foreach (RewardUI rewardPanel in rewardUI)
+            rewardPanel.Show();
     }
 }
