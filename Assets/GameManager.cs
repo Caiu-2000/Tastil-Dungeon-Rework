@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     {
         // Cada que se resetaba se perdia la referencia y se rompia todo. 
         // Esto es un manotazo de ahogado
-        if (!pause) pause = FindAnyObjectByType<PauseManager>();
+        if (!pause && Player) pause = Player.gameObject.GetComponentInChildren<PauseManager>();
 
         if (PauseAction.WasPressedThisFrame())
         {
@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
     private void Resume()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        UnityEngine.Cursor.visible = false;
+        Cursor.visible = false;
         pause.SetActive(false);
         Time.timeScale = 1;
         

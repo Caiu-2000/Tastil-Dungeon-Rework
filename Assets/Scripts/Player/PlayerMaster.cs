@@ -49,7 +49,9 @@ public class PlayerMaster : Entity
         
             if (_lastItemOnSigth != _hit.transform.gameObject.GetComponent<IInteractable>())
             {
-                Ui.IndicateInteractItem();
+
+                string mensaje = _hit.transform.gameObject.GetComponent<IInteractable>().interactMessage;
+                Ui.IndicateInteractItem(mensaje);
             }
 
             _lastItemOnSigth = _hit.transform.gameObject.GetComponent<IInteractable>();
@@ -57,7 +59,7 @@ public class PlayerMaster : Entity
         else
         {
             _lastItemOnSigth = null;
-            Ui.IndicateInteractItem(true);
+            Ui.IndicateInteractItem(null,true);
         }
         if (_StaminaCount > 0)
         {
