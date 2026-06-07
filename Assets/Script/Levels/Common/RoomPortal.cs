@@ -19,7 +19,9 @@ public class RoomPortal : MonoBehaviour, IInteractable
     {
         if(ui.gameObject.activeSelf || firstRoom)
         {
-            StartCoroutine(RoomManager.instance.TransitionToRoom(nextRoom));
+            RoomManager.instance.StartCoroutine(RoomManager.instance.TransitionToRoom(nextRoom));
+
+            //StartCoroutine(RoomManager.instance.TransitionToRoom(nextRoom));
             if (firstRoom)
             {
                 RoomManager.instance.setBool();
