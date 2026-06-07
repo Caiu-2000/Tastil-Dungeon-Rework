@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8480674182629967779}
   - component: {fileID: 1551665403835318677}
   - component: {fileID: 5860615556255805128}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Spith
   m_TagString: Untagged
   m_Icon: {fileID: 0}

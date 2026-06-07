@@ -31,7 +31,7 @@ public class Enemy : Entity
         base.applyDamage(damage, ApplyKnockback, knockbackForce, KnockBackFrom);
 
 
-        PerkManager.Instance.OnEnemyHitted(this);
+        //PerkManager.Instance.OnEnemyHitted(this);
         print("Hasta aca se llego bien");
         if (CanAnimHitted && _animator) _animator.SetTrigger("hitted");
         
@@ -75,7 +75,7 @@ public class Enemy : Entity
     {
 
         other.GetComponent<PlayerMaster>().applyDamage(_damage , true , _knockBackForce , transform);
-        PerkManager.Instance.OnPlayerHitted?.Invoke(_damage, this);
+        //PerkManager.Instance.OnPlayerHitted?.Invoke(_damage, this);
     }
 
     public IEnumerator PlayAndFinish(string TriggerName)
