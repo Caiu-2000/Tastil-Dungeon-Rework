@@ -33,7 +33,7 @@ public class Enemy : Entity
 
         //PerkManager.Instance.OnEnemyHitted(this);
         print("Hasta aca se llego bien");
-        if (CanAnimHitted) _animator.SetTrigger("hitted");
+        if (CanAnimHitted && _animator) _animator.SetTrigger("hitted");
         
         StartCoroutine(CDCounter());
 
@@ -41,11 +41,11 @@ public class Enemy : Entity
 
     public override void Die()
     {
-        //PerkManager.Instance.OnEnemyDeath(this);
-        BuffManager.Instance.TriggerOnEnemyDeath(this.gameObject);
-        _animator.SetTrigger("Death");
-
+       
+        BuffManager.Instance?.TriggerOnEnemyDeath(this.gameObject);
+        if(_animator) _animator.SetTrigger("Death");
         _roomController?.OnEnemyDied(this);
+        Destroy(gameObject);
         
     }
 

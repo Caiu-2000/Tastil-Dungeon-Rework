@@ -4,7 +4,7 @@ using UnityEngine;
 abstract public class Item : MonoBehaviour , IInteractable
 {
     [SerializeField] protected Item _ReplaceItem;
-    private Vector2 _firstPosition;
+    protected Vector2 _firstPosition;
     public bool _isPicked = false;
     // Por ahora voy a usar firsPosition para que los items vuelvan a su lugar y que 
     // la sala de pruebas se mantenga organizada
