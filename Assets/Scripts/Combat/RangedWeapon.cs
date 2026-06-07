@@ -13,7 +13,10 @@ public class RangedWeapon : Weapon
 
     private void Start()
     {
-        animator = GetComponent<Animator> ();
+        animator = GetComponent<Animator>();
+        _firstPosition = transform.position;
+        _ItemCollider = GetComponent<Collider>();
+
     }
 
     public override void ChargeAttack()
@@ -27,14 +30,15 @@ public class RangedWeapon : Weapon
         
         _IsCharging=false;
         animator.SetTrigger("Release");
-        Proyectile arrowInstance = Instantiate(_arrow);        
-        arrowInstance.transform.position = _firePoint.position;
-
+        Proyectile arrowInstance = Instantiate(_arrow);
+        Vector3 FiringOffset = new Vector3(0, 0.5f, 0);
+        arrowInstance.transform.position = GameManager.Instance.Player.transform.position + FiringOffset;
+        arrowInstance._speed *= 3;
 
         Vector3 AimedPos = GameManager.Instance.Player.GetLookDretirection();
 
         
-        arrowInstance.transform.LookAt( AimedPos+ _firePoint.position);
+        arrowInstance.ChangeDirection(AimedPos);
         arrowInstance._fromPlayer = true;
         arrowInstance._damage = _damage;
     }

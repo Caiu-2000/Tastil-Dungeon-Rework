@@ -88,4 +88,9 @@ public class Proyectile : MonoBehaviour , IParryable
     {
         RedirectHit(GameManager.Instance.Player.GetLookDretirection());
     }
+
+    public void ChangeDirection(Vector3 direction)
+    {
+        transform.LookAt(this.transform.position  + direction);
+    }
 }

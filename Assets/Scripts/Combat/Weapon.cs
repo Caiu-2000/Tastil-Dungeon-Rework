@@ -18,11 +18,11 @@ public class Weapon : Item
     public bool _equiped = false;
 
     protected Entity ParentEntity;
-    private Collider ItemCollider;
+    protected Collider _ItemCollider;
 
     private void Start()
     {
-        ItemCollider = GetComponent<Collider>();
+        _ItemCollider = GetComponent<Collider>();
         _firstPosition = transform.position;
     }
 
@@ -43,7 +43,7 @@ public class Weapon : Item
 
         _equiped = true;
         _readyToAttack = true;
-        ItemCollider.enabled = false;
+        _ItemCollider.enabled = false;
         if (_input)
         {
             _input.OnAttackPressed += ChargeAttack ;
@@ -56,7 +56,7 @@ public class Weapon : Item
         PlayerInput _input = GameManager.Instance.GetInput();
         _readyToAttack = false;
         _equiped = false;
-        ItemCollider.enabled = true;
+        _ItemCollider.enabled = true;
         if (_input)
         {
             _input.OnAttackPressed -= ChargeAttack;
