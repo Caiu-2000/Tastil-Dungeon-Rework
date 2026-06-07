@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tickInterval: 0.5
-  damage: 5
+  damage: 1
 --- !u!64 &4634078048057479195
 MeshCollider:
   m_ObjectHideFlags: 0
