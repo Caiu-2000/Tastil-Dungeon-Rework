@@ -39,14 +39,15 @@ public class UiHandler : MonoBehaviour
        
     }
 
-    public void IndicateInteractItem(bool empty = false)
+    public void IndicateInteractItem(string mensaje = null, bool empty = false)
     {
         if(empty)
         {
             _contextIndicator.text = "";
             return;
         }
-        _contextIndicator.text = "Apreta 'E' para interactuar";  
+        if (mensaje != null) _contextIndicator.text = mensaje;
+        else  _contextIndicator.text = "Apreta 'E' para interactuar";  
 
     }
     

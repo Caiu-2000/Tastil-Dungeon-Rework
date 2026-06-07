@@ -25,7 +25,7 @@ abstract public class Item : MonoBehaviour , IInteractable
     [SerializeField]private ItemType Type;
 
 
-    public string interactMessage => throw new System.NotImplementedException();
+    public string interactMessage => null;
 
     private void Start()
     {
