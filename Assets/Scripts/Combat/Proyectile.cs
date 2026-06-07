@@ -49,26 +49,7 @@ public class Proyectile : MonoBehaviour , IParryable
             hittable.Hit(_damage);
         }
 
-        /*
-        if (collision.gameObject.CompareTag("Player") && !_fromPlayer)
-        {
-            collision.gameObject.GetComponent<PlayerMaster>().applyDamage(_damage);
-            Destroy(gameObject);
-        }
-        if (collision.gameObject.CompareTag("Enemy") && _fromPlayer)
-        {
-            collision.gameObject.GetComponent<Entity>().applyDamage(_damage);
-            Destroy(gameObject);
-        }
 
-        IBreackable inter = collision.gameObject.GetComponent<IBreackable>();
-
-        if ( inter != null && _fromPlayer)
-        {
-            collision.gameObject.GetComponent<IBreackable>().Breack();
-            Destroy(gameObject);
-        }
-        */
     }
 
 

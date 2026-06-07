@@ -12,7 +12,7 @@ public class Fire : MonoBehaviour, IProjectile
     }
     private void Update()
     {
-        transform.position = targetPos.position;
+        if (targetPos != null) transform.position = targetPos.position;
         
     }
 

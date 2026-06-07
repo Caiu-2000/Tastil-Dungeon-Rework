@@ -22,9 +22,17 @@ public class WeaponsHand : MonoBehaviour
             _equipedWeapon.transform.SetParent(null);
             _equipedWeapon.ResetPosition();
             transform.localRotation = Quaternion.identity;
-            _equipedWeapon = null;
+
+           
             _equipedWeapon.SetParentEntity(null);
-      
+
+
+
+
+
+
+            _equipedWeapon = null;
+
         }
         
         _equipedWeapon = _newWeapon.GetComponent<Weapon>();
