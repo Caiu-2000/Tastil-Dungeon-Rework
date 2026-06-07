@@ -45,6 +45,7 @@ public class Proyectile : MonoBehaviour , IParryable
                     return;
                 }
             }
+            Destroy(this.gameObject);
             hittable.Hit(_damage);
         }
 
