@@ -12,6 +12,13 @@ public class FourHorsemanitem : Item
     [SerializeField] Image imagen;
     [SerializeField] VFXController controller;
     bool isSelected;
+
+    private void Start()
+    {
+        manager = BuffManager.Instance;
+        player = GameManager.Instance.GetPlayer();
+        imagen = player.transform.Find("PlayerUI/BuffSelector").GetComponent<Image>();
+    }
     private void Update()
     {
         if(imagen.IsActive()&& isSelected)

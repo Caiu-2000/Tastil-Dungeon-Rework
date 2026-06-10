@@ -20,8 +20,7 @@ abstract public class Item : MonoBehaviour , IInteractable
         Consumable,
         Trowable,
         Item,
-        Gold,
-        PowerUp
+        Gold
     }
     [SerializeField]private ItemType Type;
 
@@ -36,10 +35,11 @@ abstract public class Item : MonoBehaviour , IInteractable
     public virtual void Interact(PlayerMaster player = null)
     {
         player._inventory.AddItem(this);
-        if(this.GetItemType() == ItemType.PowerUp)
+        if(this.gameObject.CompareTag("powerup"))
         {
             GameObject currentRoom = RoomManager.instance.GetRoom();
             currentRoom.GetComponent<RoomController>().PotionInteracted();
+            Destroy(this.gameObject);
         }
     }
 

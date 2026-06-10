@@ -7,8 +7,15 @@ public class B52Item : Item
     [SerializeField] BuffData data;
     [SerializeField] BuffManager manager = BuffManager.Instance;
     [SerializeField] Image imagen;
+    PlayerMaster player;
     bool isActive;
 
+    private void Start()
+    {
+        manager = BuffManager.Instance;
+        player = GameManager.Instance.GetPlayer();
+        imagen = player.transform.Find("PlayerUI/BuffSelector").GetComponent<Image>();
+    }
     private void Update()
     {
         if (imagen.IsActive() && isActive)

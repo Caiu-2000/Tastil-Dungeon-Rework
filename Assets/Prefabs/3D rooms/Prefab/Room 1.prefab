@@ -1331,13 +1331,13 @@ MonoBehaviour:
   rewardUI: {fileID: 373189126039766241}
   nextRoom: {fileID: 8759136277354865006, guid: 71326fd96d2d0b0469049422da5ba33d, type: 3}
   rewardSprites:
-  - {fileID: 21300000, guid: aaf2f8bd4b669f44fb57aca909704038, type: 3}
-  - {fileID: 21300000, guid: d4233e1af8fd1ca4fbdbc8dddf3fc2b7, type: 3}
-  - {fileID: 21300000, guid: b8e13dbb468a4f842bf021ddca10c75b, type: 3}
-  - {fileID: 21300000, guid: 9bbb15579e0288b45ba6ffbffee897d5, type: 3}
-  - {fileID: 21300000, guid: 96c9c76d0a53f1448b7f638521359e71, type: 3}
-  - {fileID: 21300000, guid: a5688050f17750d488b52f4c10025acc, type: 3}
-  - {fileID: 21300000, guid: 9ef67fd0ca8c141478fa190d32956302, type: 3}
+  - {fileID: 21300000, guid: 1e91fcd65df8c2c479d326e65d7feb07, type: 3}
+  - {fileID: 21300000, guid: d4b793d6486e5434ca812ccec2b022df, type: 3}
+  - {fileID: 21300000, guid: 3ec84d4ccaf1a364f92dd4dfeef4406d, type: 3}
+  - {fileID: 21300000, guid: 80477d1db09f54c498a92f445cfa6809, type: 3}
+  - {fileID: 21300000, guid: bbf933e8886a0aa47ab41524fa29f40c, type: 3}
+  - {fileID: 21300000, guid: a9cbc2550d804cb48a227095c438fe6d, type: 3}
+  - {fileID: 21300000, guid: 1567bdffc8faf70418f25ce48085a18f, type: 3}
   rewardPrefabs:
   - {fileID: 621023166600298120, guid: 34d1b5d9249bd584ea4205a2194a110a, type: 3}
   - {fileID: 8893494120907486937, guid: 006aa7e5f6cea4d4d807f0ee38abba24, type: 3}
