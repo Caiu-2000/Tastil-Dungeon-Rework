@@ -93,8 +93,9 @@ public class EnemyAttackController : MonoBehaviour
         HongoMaster.CanAnimHitted = false;
         Animator animator = GetComponent<Animator>();
         HongoMaster._animator.SetTrigger("Burrow");
+        print(GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.length);
         // Cambiar los triggers por el nombre real
-        yield return new WaitForSeconds(GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        yield return new WaitForSeconds(1.5f/*GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.length*/);
         TelegraphSprite.GetComponent<SpriteRenderer>().enabled = true;
         hitCollider.enabled = false;
         BodyCollider.enabled = false;
