@@ -17,7 +17,7 @@ public class PlayerInput : MonoBehaviour
     //[SerializeField] private InventoryComponent _inventory;
     Vector2 _dir = Vector2.zero;
     private bool CanInputActions = true;
-    private InputAction _reset , _close;
+
 
 
     private InventoryComponent _inventory;
@@ -69,6 +69,7 @@ public class PlayerInput : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.InputHandler = this;
+        _inventory = GetComponent<InventoryComponent>();
     }
     private void Update()
     {

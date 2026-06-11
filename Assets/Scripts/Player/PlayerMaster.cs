@@ -128,7 +128,11 @@ public class PlayerMaster : Entity
         base.Heal(_healAmount);
         Ui.UpdateLife(_currentLife,_maxLife);
     }
-
+    public void AddStamina(float Stam)
+    {
+        _currentStamina += Stam;
+        if (_currentStamina > _maxStamina) _currentStamina = _maxStamina;
+    }
 
     public Vector3 GetLookDretirection()
     {

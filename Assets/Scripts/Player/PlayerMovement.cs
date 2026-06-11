@@ -1,4 +1,6 @@
+using UnityEditor.Build.Content;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class PlayerMovement : MovementComponent
 {
@@ -8,6 +10,13 @@ public class PlayerMovement : MovementComponent
     [SerializeField] private Camera _camera;
     [SerializeField]private PlayerInput _inputComp;
     [SerializeField] private CharacterController Cc;
+
+    private Vector3 PlayerVelocity;
+
+    public float jumpHeight = 2.0f;
+    public float gravity = -9.81f;
+    private float verticalVelocity;
+
     public void Rotate(Vector2 lookdir)
     {
         rotationY += lookdir.x * rotationspeed * Time.deltaTime;
@@ -27,20 +36,41 @@ public class PlayerMovement : MovementComponent
 
     public override void Movement(Vector3 dir)
     {
-        Vector3 move = transform.forward * dir.y + transform.right * dir.x;
 
+        if (!Cc.isGrounded)
+        {
+
+            verticalVelocity += gravity * Time.deltaTime;
+        }
+
+
+        Vector3 move = transform.forward * dir.y + transform.right * dir.x;
+  
+        
         move = move.normalized * speed * Time.fixedDeltaTime * force;
+
         Cc.SimpleMove(move);
+        Cc.Move(new Vector3(0.0f, verticalVelocity, 0.0f));
     }
     public override void jump()
     {
-        
+      
         if (Cc.isGrounded)
         {
-            
-            Cc.Move(new Vector3(0, _jumpForce, 0));
+            verticalVelocity = jumpHeight;
+     
+            //Cc.Move(new Vector3(0, _jumpForce, 0));
         }
     }
+
+
+
+
+
+
+
+
+
 
     private void FixedUpdate()
     {

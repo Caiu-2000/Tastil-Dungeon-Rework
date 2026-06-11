@@ -13,7 +13,7 @@ public class Weapon : Item
 
     [SerializeField]
     protected bool   _readyToAttack = true , _chargableAttack = false;
-    public float _stamCost = 0.0f;
+    public float _stamCost = 10.0f;
 
     public bool _equiped = false;
 
@@ -28,7 +28,10 @@ public class Weapon : Item
 
     public virtual void ChargeAttack()
     {
-        
+        if (_stamCost <= GameManager.Instance.Player._currentStamina)
+        {
+            GameManager.Instance.Player._currentStamina = - _stamCost;
+        }
     }
     public virtual void ReleaseAttack()
     {

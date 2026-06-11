@@ -61,6 +61,10 @@ PrefabInstance:
       value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 805407824451861366, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
+      propertyPath: _stamCost
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 805407824451861366, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       propertyPath: _attackCollDuration
       value: 0.1
       objectReference: {fileID: 0}
@@ -102,15 +106,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7344982316945209445, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5630107
+      value: 3.310266
       objectReference: {fileID: 0}
     - target: {fileID: 7344982316945209445, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.58
+      value: 2.24
       objectReference: {fileID: 0}
     - target: {fileID: 7344982316945209445, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.7910335
+      value: -5.868224
       objectReference: {fileID: 0}
     - target: {fileID: 7344982316945209445, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       propertyPath: m_LocalRotation.w

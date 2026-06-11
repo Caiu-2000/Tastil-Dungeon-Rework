@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BreacableComponent : MonoBehaviour
+public class BreacableComponent : MonoBehaviour , IHittable
 {
     [SerializeField] List<Item> DropableItems;
 
@@ -17,5 +17,10 @@ public class BreacableComponent : MonoBehaviour
             
         }
         Destroy(gameObject);
+    }
+
+    public void Hit(float damage = 0, bool ApplyKnockback = false, float knockbackForce = 0, Transform KnockBackFrom = null)
+    {
+        Breack();
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 
@@ -90,5 +91,20 @@ abstract public class Item : MonoBehaviour , IInteractable
         _hand = newhand;
     }
 
+
+    protected virtual IEnumerator UseItem(string AnimName = "")
+    {
+        if (AnimName != "") _hand.SetAnimationTrigger("Drink");
+        yield return new WaitForSeconds(_useTime);
+        if (_ReplaceItem)
+        {
+            Item Replace = Instantiate(_ReplaceItem);
+            _inventory.ReplaceItem(this, Replace);
+
+
+        }
+
+        Destroy(gameObject);
+    }
 
 }
