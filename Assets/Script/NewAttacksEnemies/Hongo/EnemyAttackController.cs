@@ -15,6 +15,7 @@ public class EnemyAttackController : MonoBehaviour
     [SerializeField]CapsuleCollider hitCollider;
     [SerializeField] CapsuleCollider BodyCollider;
     [SerializeField] GameObject TelegraphSprite;
+    [SerializeField] private AiComponent _ai;
     private bool spitReady = true;
     private bool burrowReady = true;
     private bool isRolling = false;
@@ -25,6 +26,8 @@ public class EnemyAttackController : MonoBehaviour
 
     [SerializeField] private HongoCharger HongoMaster;
 
+    [SerializeField] private float _SpitTime;
+
     private void Start()
     {
         player = GameManager.Instance.Player;
@@ -33,8 +36,11 @@ public class EnemyAttackController : MonoBehaviour
             if (child.gameObject.name == "HitCollision")
                 hitCollider = child.GetComponent<CapsuleCollider>();
         }
-        BodyCollider = GetComponent<CapsuleCollider>();
+        BodyCollider = BodyCollider.GetComponent<CapsuleCollider>();
         StartCoroutine(RollCooldown());
+
+        
+
     }
 
     private void Update()
@@ -69,14 +75,7 @@ public class EnemyAttackController : MonoBehaviour
 
     private void Spit()
     {
-        isAttacking = true;
-        spitReady = false;
-        var spitGO = Instantiate(spitPrefab, mouth.transform.position, Quaternion.identity);
-        spitGO.GetComponent<SpitProjectile>().SetTarget(player.transform.position);
-        spitGO.GetComponent<SpitProjectile>().SetHongo(HongoMaster);
-        isAttacking = false;
-        StartCoroutine(SpitCooldown());
-        StartCoroutine(RollCooldown());
+        StartCoroutine(SpitSequence());
     }
 
     private void Burrow()
@@ -124,6 +123,23 @@ public class EnemyAttackController : MonoBehaviour
         yield return new WaitForSeconds(spitCooldown);
         spitReady = true;
     }
+
+    private IEnumerator SpitSequence()
+    {
+        isAttacking = true;
+        spitReady = false;
+
+        HongoMaster._animator.SetTrigger("Spit");
+        yield return new WaitForSeconds(_SpitTime);
+        var spitGO = Instantiate(spitPrefab, mouth.transform.position, Quaternion.identity);
+        spitGO.GetComponent<SpitProjectile>().SetTarget(player.transform.position);
+        spitGO.GetComponent<SpitProjectile>().SetHongo(HongoMaster);
+        isAttacking = false;
+        StartCoroutine(SpitCooldown());
+        StartCoroutine(RollCooldown());
+        yield return null;
+    }
+
 
     private IEnumerator BurrowCooldown()
     {
