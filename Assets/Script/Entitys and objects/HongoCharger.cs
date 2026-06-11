@@ -1,7 +1,7 @@
 
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
+
 public class HongoCharger : Enemy
 {
     [SerializeField] MovementComponent _moveComp;

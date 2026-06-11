@@ -52,11 +52,11 @@ public class Enemy : Entity
 
     protected IEnumerator CDCounter()
     {
-        _renderer.material.SetColor("_BaseColor", Color.red);
+        if (_renderer) _renderer.material.SetColor("_BaseColor", Color.red);
         _damCD = true;
         yield return new WaitForSeconds(_DamageCDTime);
         _damCD = false;
-        _renderer.material.SetColor("_BaseColor", Color.white);
+        if (_renderer) _renderer.material.SetColor("_BaseColor", Color.white);
 
     }
 

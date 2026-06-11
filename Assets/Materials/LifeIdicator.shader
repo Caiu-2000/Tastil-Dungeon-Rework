@@ -3,7 +3,8 @@ Shader "Hidden/LifeIdicator"
     Properties
     {
         _Intensity ("Intensidad Indicador", Range(0.01, 1.0)) = 0.3
-
+        _MinHeigth ("Altura minima" , Range(0.01, 1.0)) = 0.1 
+        _MaxHeigth ("Altura Maxima" , Range(0.01,1.0)) = 0.1
 
         _RadiusX ("Radio Horizontal", Range(0.01, 1.0)) = 0.3
        
@@ -54,6 +55,8 @@ Shader "Hidden/LifeIdicator"
             float4 _NoiseTex_ST; // Variable interna de Unity para el Tiling y Offset (Escala y posición)
             float _NoiseStrength;
 
+            float _MinHeigth;
+            float _MaxHeigth;
          
             float4 _ColorA;
             float4 _ColorB;
@@ -85,7 +88,7 @@ Shader "Hidden/LifeIdicator"
 
                 float noiseValue = noiseSample.r;
                 
-                _RadiusY = remap(_Intensity , 0 , 0.8 , 0.8 , 0.23);
+                _RadiusY = remap(_Intensity , 0 , 1 , _MinHeigth , _MaxHeigth);
                 _NoiseStrength = _Intensity;
 
                 // --- Código base del elipse ---
