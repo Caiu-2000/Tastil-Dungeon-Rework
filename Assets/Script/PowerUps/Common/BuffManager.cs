@@ -123,5 +123,9 @@ public class BuffManager : MonoBehaviour
         StopCoroutine(routine);
     }
     #endregion
+    public BuffManager GetManager()
+    {
+        return BuffManager.Instance;
+    }
 }
 

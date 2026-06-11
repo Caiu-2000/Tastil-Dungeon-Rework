@@ -9,6 +9,14 @@ public class BloodyMaryItem : Item
     [SerializeField] BuffManager manager = BuffManager.Instance;
     [SerializeField] Image imagen;
     bool isSelected;
+
+    private void Start()
+    {
+        manager = BuffManager.Instance;
+        player = GameManager.Instance.GetPlayer();
+        imagen = player.transform.Find("PlayerUI/BuffSelector").GetComponent<Image>();
+    }
+
     private void Update()
     {
         if (imagen.IsActive()&&isSelected)

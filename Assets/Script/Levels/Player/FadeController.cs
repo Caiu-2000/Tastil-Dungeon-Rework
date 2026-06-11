@@ -54,5 +54,6 @@ public class FadeController : MonoBehaviour
             fadeToBlack.color = tempColor;
             yield return null;
         }
+        print("finish");
     }
 }

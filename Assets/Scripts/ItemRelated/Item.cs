@@ -36,6 +36,12 @@ abstract public class Item : MonoBehaviour , IInteractable
     public virtual void Interact(PlayerMaster player = null)
     {
         player._inventory.AddItem(this);
+        if(this.gameObject.CompareTag("powerup"))
+        {
+            GameObject currentRoom = RoomManager.instance.GetRoom();
+            currentRoom.GetComponent<RoomController>().PotionInteracted();
+            Destroy(this.gameObject);
+        }
     }
 
 

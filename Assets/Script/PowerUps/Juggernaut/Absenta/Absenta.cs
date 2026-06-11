@@ -10,7 +10,12 @@ public class Absenta : Item
     MeleWeapon weapon;
     PlayerMaster player;
     bool isActive;
-
+    private void Start()
+    {
+        manager = BuffManager.Instance;
+        player = GameManager.Instance.GetPlayer();  
+        imagen = player.transform.Find("PlayerUI/BuffSelector").GetComponent<Image>();
+    }
     private void Update()
     {
         if (imagen.IsActive() && isActive)
