@@ -103,7 +103,7 @@ MonoBehaviour:
   _ReplaceItem: {fileID: 5515066605373719603, guid: b2704491627eefa45be84f7c614b073b, type: 3}
   _isPicked: 0
   _inventory: {fileID: 0}
-  _itemIcon: {fileID: 0}
+  _itemIcon: {fileID: 21300000, guid: d0bae557cb2b34d4abf156f11644622c, type: 3}
   _useTime: 1
   Type: 0
   _healingPower: 10

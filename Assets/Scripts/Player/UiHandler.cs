@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class UiHandler : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI  _contextIndicator;
-    private PlayerMaster  Player;
+    [SerializeField] private PlayerMaster  Player;
     [SerializeField] private Image _lifeBar, _stamBar;
  
     [SerializeField] private List<Image> _hotbarIndicators = new List<Image>(3);
@@ -22,8 +22,6 @@ public class UiHandler : MonoBehaviour
 
     private void Awake()
     {
-        return;
-           if (!Player) Player = GetComponent<PlayerMaster>();
 
         firstPosition = _hotbarSelector.transform;
     }
@@ -33,11 +31,12 @@ public class UiHandler : MonoBehaviour
     {
         if (!miMaterial) miMaterial = LifeIndicatorEffect.material;
         miMaterial.SetFloat("_Intensity", 0.0f);
+        if (!Player) Player = GetComponent<PlayerMaster>();
     }
 
     private void Update()
     {
-        return;
+       
         UpdateStam(Player._currentStamina , Player._maxStamina );
     }
 

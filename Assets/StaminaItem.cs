@@ -2,21 +2,16 @@ using System.Collections;
 
 using UnityEngine;
 
-
-public class HealingItem : Item
+public class StaminaItem : Item
 {
-    [SerializeField] private float _healingPower = 10.0f;
-    
+    [SerializeField] private float _StamRecuperation = 25.0f;
+
     public override void Use()
     {
         StartCoroutine(UseItem("Drink"));
-        
+
     }
-
-
-
-
-    protected override IEnumerator UseItem(string AnimName = "")
+    protected virtual IEnumerator UseItem(string AnimName = "")
     {
         if (AnimName != "") _hand.SetAnimationTrigger("Drink");
         yield return new WaitForSeconds(_useTime);
@@ -27,7 +22,7 @@ public class HealingItem : Item
 
 
         }
-        GameManager.Instance.GetPlayer().Heal(_healingPower);
+        GameManager.Instance.GetPlayer().AddStamina(_StamRecuperation);
         Destroy(gameObject);
     }
 }
