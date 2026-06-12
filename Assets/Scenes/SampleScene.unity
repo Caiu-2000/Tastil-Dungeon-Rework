@@ -5686,6 +5686,8 @@ MonoBehaviour:
   PendigSens: 25
   DebugActive: 0
   pause: {fileID: 0}
+  SpawnPoint: {fileID: 463914345}
+  MelePrefab: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
 --- !u!4 &1669496900
 Transform:
   m_ObjectHideFlags: 0

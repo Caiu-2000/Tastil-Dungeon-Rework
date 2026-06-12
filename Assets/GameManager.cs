@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
     public bool DebugActive = false;
     public PauseManager pause;
 
+
+    public Transform SpawnPoint;
+    public Enemy MelePrefab;
     private void Awake()
     {
 
@@ -67,7 +70,13 @@ public class GameManager : MonoBehaviour
         {
             DebugActive = !DebugActive;
         }
-        
+
+        if (Keyboard.current.numpad7Key.wasPressedThisFrame)
+        {
+            if (SpawnPoint) Instantiate(MelePrefab, SpawnPoint);
+        }
+
+
 
     }
 
