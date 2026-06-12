@@ -35,12 +35,14 @@ abstract public class Item : MonoBehaviour , IInteractable
 
     public virtual void Interact(PlayerMaster player = null)
     {
+        Debug.Log($"Interactuaste con {this}");
         player._inventory.AddItem(this);
+        Debug.Log($"Pasaste el addItem");
         if(this.gameObject.CompareTag("powerup"))
         {
+            Debug.Log($"Entraste al if");
             GameObject currentRoom = RoomManager.instance.GetRoom();
             currentRoom.GetComponent<RoomController>().PotionInteracted();
-            Destroy(this.gameObject);
         }
     }
 

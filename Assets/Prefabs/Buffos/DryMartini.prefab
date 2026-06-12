@@ -100,7 +100,9 @@ MonoBehaviour:
   Type: 4
   data: {fileID: 11400000, guid: 62fad65a890a94e4a9689648bbc69525, type: 2}
   manager: {fileID: 0}
-  imagen: {fileID: 0}
+  cards:
+  - {fileID: 11400000, guid: 0b40cf09c99f0e046b1d3b2f29df4629, type: 2}
+  - {fileID: 11400000, guid: d320e9854810bda4ea4fa2e1d13f53c9, type: 2}
 --- !u!136 &9111656969394465075
 CapsuleCollider:
   m_ObjectHideFlags: 0

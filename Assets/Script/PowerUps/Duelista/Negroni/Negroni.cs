@@ -2,51 +2,42 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public class Negroni : Item
 {
     [SerializeField] BuffData data;
     [SerializeField] BuffManager manager = BuffManager.Instance;
-    [SerializeField] Image imagen;
     MeleWeapon weapon;
     PlayerMaster player;
-    bool isActive;
+    [SerializeField] private List<Card> cards;
+
+
     private void Start()
     {
         manager = BuffManager.Instance;
-        player = GameManager.Instance.GetPlayer();  
-        imagen = player.transform.Find("PlayerUI/BuffSelector").GetComponent<Image>();
+        player = GameManager.Instance.GetPlayer();
+        weapon = player.GetComponentInChildren<MeleWeapon>();
     }
-    private void Update()
-    {
-        if (imagen.IsActive() && isActive)
-        {
-            if (Keyboard.current.tKey.wasPressedThisFrame)
-                WeaponBuff();
-            if (Keyboard.current.yKey.wasPressedThisFrame)
-                BodyBuff();
-        }
 
-    }
     public override void Use()
     {
-        player = gameObject.transform.root.GetComponent<PlayerMaster>();
-        weapon = player.GetComponentInChildren<MeleWeapon>();
-        imagen.gameObject.SetActive(true);
-        isActive = true;
+        CardSelectionUI.Instance.Show(cards, index =>
+        {
+            if (index == 0) WeaponBuff();
+            else BodyBuff();
+            Destroy(gameObject);
+        });
     }
     void WeaponBuff()
     {
         BuffManager.Instance.AddBuffOnCriticalHit(new NegroniWeaponBuff(data));
-        imagen.gameObject.SetActive(false);
-        Destroy(gameObject);
     }
 
     void BodyBuff()
     {
         BuffManager.Instance.AddBuffOnHit(new NegroniBodyBuff(data, weapon));
-        imagen.gameObject.SetActive(false);
-        Destroy(gameObject);
     }
     private IEnumerator DrinkTime()
     {

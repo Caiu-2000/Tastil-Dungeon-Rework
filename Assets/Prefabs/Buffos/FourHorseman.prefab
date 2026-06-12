@@ -101,9 +101,9 @@ MonoBehaviour:
   player: {fileID: 0}
   weapon: {fileID: 0}
   data: {fileID: 11400000, guid: a89643cf4a35a004996373850a046494, type: 2}
-  manager: {fileID: 0}
-  imagen: {fileID: 0}
-  controller: {fileID: 0}
+  cards:
+  - {fileID: 11400000, guid: 1759284576018324e83f04e2fa966a34, type: 2}
+  - {fileID: 11400000, guid: c5be0ef06e39a824da5ec92ae7f567b5, type: 2}
 --- !u!136 &2592849551434498074
 CapsuleCollider:
   m_ObjectHideFlags: 0

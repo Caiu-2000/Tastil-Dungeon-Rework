@@ -1,50 +1,39 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class BloodyMaryItem : Item
 {
     PlayerMaster player;
     [SerializeField] BuffData data;
     [SerializeField] BuffManager manager = BuffManager.Instance;
-    [SerializeField] Image imagen;
-    bool isSelected;
+    [SerializeField] private List<Card> cards;
+
 
     private void Start()
     {
         manager = BuffManager.Instance;
         player = GameManager.Instance.GetPlayer();
-        imagen = player.transform.Find("PlayerUI/BuffSelector").GetComponent<Image>();
     }
 
-    private void Update()
-    {
-        if (imagen.IsActive()&&isSelected)
-        {
-            if (Keyboard.current.tKey.wasPressedThisFrame)
-                this.WeaponBuff();
-            if (Keyboard.current.yKey.wasPressedThisFrame)
-                this.BodyBuff();
-        }
 
-    }
     public override void Use()
     {
-        player = gameObject.transform.root.GetComponent<PlayerMaster>();
-        imagen.gameObject.SetActive(true);
-        isSelected = true;
+        CardSelectionUI.Instance.Show(cards, index =>
+        {
+            if (index == 0) WeaponBuff();
+            else BodyBuff();
+            Destroy(gameObject);
+        });
     }
     void WeaponBuff()
     {
         BuffManager.Instance.AddBuffOnCriticalHit(new BMWB(data, player));
-        imagen.gameObject.SetActive(false);
-        Destroy(this.gameObject);
     }
 
     void BodyBuff()
     {
         BuffManager.Instance.AddBuffOnEnemyDeath(new BMBB(data, player));
-        imagen.gameObject.SetActive(false);
-        Destroy(this.gameObject);
     }
 }

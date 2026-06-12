@@ -10,7 +10,7 @@ public class TestCards : MonoBehaviour
     {
         if (Keyboard.current.tKey.wasPressedThisFrame)
         {
-            CardSelectionUI.Instance.Show(testCards);
+            //CardSelectionUI.Instance.Show(testCards);
         }
     }
 }
