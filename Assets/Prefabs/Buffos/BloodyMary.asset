@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c6506204e763f448887ed20c2bb37f4, type: 3}
+  m_Name: BloodyMary
+  m_EditorClassIdentifier: 
+  name: Bloody mary
+  description: Cada critico te cura un porcentaje de tu vida faltante
+  artwork: {fileID: 21300000, guid: d4b793d6486e5434ca812ccec2b022df, type: 3}
+  archetype: 1
+  buffTarget: 1
+  effect: {fileID: 0}

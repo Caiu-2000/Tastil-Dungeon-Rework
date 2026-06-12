@@ -1,55 +1,40 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class FourHorsemanitem : Item
 {
-    [SerializeField]PlayerMaster player;
-    [SerializeField]MeleWeapon weapon;
-    RangedWeapon bow;
-    [SerializeField] BuffData data;
-    [SerializeField] BuffManager manager = BuffManager.Instance;
-    [SerializeField] Image imagen;
-    [SerializeField] VFXController controller;
-    bool isSelected;
+    [SerializeField] private PlayerMaster player;
+    [SerializeField] private MeleWeapon weapon;
+    [SerializeField] private BuffData data;
+    [SerializeField] private List<Card> cards;
 
     private void Start()
     {
-        manager = BuffManager.Instance;
         player = GameManager.Instance.GetPlayer();
-        imagen = player.transform.Find("PlayerUI/BuffSelector").GetComponent<Image>();
+        weapon = player.GetComponentInChildren<MeleWeapon>();
     }
-    private void Update()
-    {
-        if(imagen.IsActive()&& isSelected)
-        {if (Keyboard.current.tKey.wasPressedThisFrame)
-                this.WeaponBuff();
-            if (Keyboard.current.yKey.wasPressedThisFrame)
-                this.BodyBuff();
-        }
 
-    }
     public override void Use()
     {
-        player = gameObject.transform.root.GetComponent<PlayerMaster>();
         weapon = player.GetComponentInChildren<MeleWeapon>();
-        bow = player.GetComponent<RangedWeapon>();
-        imagen.gameObject.SetActive(true);
-        isSelected = true;
-    }
-    void WeaponBuff()
-    {
-        BuffManager.Instance.AddBuffOnAttack(new FHBW(data, player, weapon));
-        imagen.gameObject.SetActive(false);
-        Destroy(this.gameObject);
+
+        CardSelectionUI.Instance.Show(cards, index =>
+        {
+            if (index == 0) WeaponBuff();
+            else BodyBuff();
+            Destroy(gameObject);
+        });
     }
 
-    void BodyBuff()
+    private void WeaponBuff()
     {
-        var buff = new FHBB(data, player, weapon, bow);
+        BuffManager.Instance.AddBuffOnAttack(new FHBW(data, player, weapon));
+    }
+
+    private void BodyBuff()
+    {
+        var buff = new FHBB(data, player, weapon, player.GetComponent<RangedWeapon>());
         BuffManager.Instance.AddBuffOnAttack(buff);
         BuffManager.Instance.AddBuffPassive(buff, 0.1f);
-        imagen.gameObject.SetActive(false);
-        Destroy(this.gameObject);
     }
 }

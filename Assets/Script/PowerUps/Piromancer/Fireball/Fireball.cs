@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class Fireball : Item
 {
@@ -9,47 +10,38 @@ public class Fireball : Item
     RangedWeapon bow;
     [SerializeField] BuffData data;
     [SerializeField] BuffManager manager = BuffManager.Instance;
-    [SerializeField] Image imagen;
-    bool isSelected;
+    [SerializeField] private List<Card> cards;
+
 
     private void Start()
     {
         manager = BuffManager.Instance;
         player = GameManager.Instance.GetPlayer();
-        imagen = player.transform.Find("PlayerUI/BuffSelector").GetComponent<Image>();
-    }
-
-    private void Update()
-    {
-        if (imagen.IsActive() && isSelected)
-        {
-            if (Keyboard.current.tKey.wasPressedThisFrame)
-                this.WeaponBuff();
-            if (Keyboard.current.yKey.wasPressedThisFrame)
-                this.BodyBuff();
-        }
-
-    }
-    public override void Use()
-    {
-        player = gameObject.transform.root.GetComponent<PlayerMaster>();
         weapon = player.GetComponentInChildren<MeleWeapon>();
         bow = player.GetComponent<RangedWeapon>();
-        imagen.gameObject.SetActive(true);
-        isSelected = true;
+
+    }
+
+
+    public override void Use()
+    {
+        weapon = player.GetComponentInChildren<MeleWeapon>();
+
+        CardSelectionUI.Instance.Show(cards, index =>
+        {
+            if (index == 0) WeaponBuff();
+            else BodyBuff();
+            Destroy(gameObject);
+        });
 
     }
     void WeaponBuff()
     {
         BuffManager.Instance.AddBuffOnHit(new FWB(data, weapon));
-        imagen.gameObject.SetActive(false);
-        Destroy(this.gameObject);
     }
 
     void BodyBuff()
     {
         BuffManager.Instance.AddBuffOnPlayerHitted(new FBB(data, player));
-        imagen.gameObject.SetActive(false);
-        Destroy(this.gameObject);
     }
 }
