@@ -49,7 +49,7 @@ MonoBehaviour:
   _ReplaceItem: {fileID: 0}
   _isPicked: 0
   _inventory: {fileID: 0}
-  _itemIcon: {fileID: 21300000, guid: 57ca5a1f0ffa52d4c9989144cfe0d6f0, type: 3}
+  _itemIcon: {fileID: -498821402, guid: b8437dec722e24149922be125e3e76c9, type: 3}
   _useTime: 1
   Type: 0
   _StamRecuperation: 25
