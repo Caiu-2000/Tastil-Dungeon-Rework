@@ -14,7 +14,6 @@ public class PlayerInput : MonoBehaviour
     private InputAction _useAction,_useItemAction, _movementAction, _lookAction, _attackAction , _interactAction , _blockAction, _jumpAtion , _rightClickAction;
     private InputAction _parryAction ;
     [SerializeField] private PlayerMaster _EntityController = null;
-    //[SerializeField] private InventoryComponent _inventory;
     Vector2 _dir = Vector2.zero;
     private bool CanInputActions = true;
 
@@ -123,7 +122,7 @@ public class PlayerInput : MonoBehaviour
         if (Keyboard.current.anyKey.wasPressedThisFrame)
         {
             
-            for (int i = 1; i <= 3; i++)
+            for (int i = 1; i <= 4; i++)
             {
              
                 Key tecla = (Key)System.Enum.Parse(typeof(Key), "Digit" + i);
