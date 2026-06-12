@@ -282,7 +282,7 @@ Transform:
   m_GameObject: {fileID: 2781149962942772733}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 8.76, z: 13.65}
+  m_LocalPosition: {x: 0, y: 8.76, z: 12.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -464,7 +464,7 @@ RectTransform:
   m_GameObject: {fileID: 5435417954110748742}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6.077, y: 6.077, z: 6.077}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3847801216085287556}
@@ -539,7 +539,7 @@ RectTransform:
   m_GameObject: {fileID: 5759192693351946199}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6.077, y: 6.077, z: 6.077}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1600133547667345390}
@@ -1039,7 +1039,7 @@ GameObject:
   - component: {fileID: 4713692636440596720}
   - component: {fileID: 4173977725384732061}
   - component: {fileID: 6015134116892110805}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1130,7 +1130,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1149,7 +1149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rewardUI: {fileID: 4438487197387652940}
-  nextRoom: {fileID: 8759136277354865006}
+  nextRoom: {fileID: 5728683451639359374, guid: 7f070c87b4e912646b39ae7041a0c16b, type: 3}
   rewardSprites:
   - {fileID: 21300000, guid: 1e91fcd65df8c2c479d326e65d7feb07, type: 3}
   - {fileID: 21300000, guid: d4b793d6486e5434ca812ccec2b022df, type: 3}
@@ -1237,7 +1237,7 @@ GameObject:
   - component: {fileID: 1437522430212414215}
   - component: {fileID: 6794152889929429135}
   - component: {fileID: 8915132034251679537}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1328,7 +1328,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1347,7 +1347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rewardUI: {fileID: 7719172957106164275}
-  nextRoom: {fileID: 8759136277354865006}
+  nextRoom: {fileID: 5728683451639359374, guid: 7f070c87b4e912646b39ae7041a0c16b, type: 3}
   rewardSprites:
   - {fileID: 21300000, guid: 1e91fcd65df8c2c479d326e65d7feb07, type: 3}
   - {fileID: 21300000, guid: d4b793d6486e5434ca812ccec2b022df, type: 3}
