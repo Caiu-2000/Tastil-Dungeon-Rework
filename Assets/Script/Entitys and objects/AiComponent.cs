@@ -49,7 +49,7 @@ public class AiComponent : MonoBehaviour
     }
     public void ChangeEnabled(bool newState)
     {
-     
+        if (!newState) _parentEnemy.SetWalking(false);
         _enabled = newState;
     }
 

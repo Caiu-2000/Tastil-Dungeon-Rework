@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 [Serializable]
@@ -20,13 +21,26 @@ public class EnemyHitCollision : MonoBehaviour
     private void Start()
     {
         if(HitDuration == -1.0f) return;
-        Destroy(this , HitDuration);    
+        
+            Destroy(this.gameObject, HitDuration);    
     }
 
     public void ChangeDuration(float duration)
     {
-        Destroy(this, duration);
+        if (duration == -2.0f)
+        {
+            StartCoroutine(DestroyNextFrame());
+            return;
+        }
+        Destroy(    this.gameObject, duration);
     }
+
+    private IEnumerator DestroyNextFrame()
+    {
+        yield return null;
+        Destroy(this.gameObject);
+    }
+
     
 
 }

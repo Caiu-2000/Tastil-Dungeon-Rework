@@ -23,8 +23,6 @@ public class ItemsHand : MonoBehaviour
     }
 
 
-
-
     public void ChangeItem(Item _newItem)
     {
         if (_hotbarCd) { return; }
