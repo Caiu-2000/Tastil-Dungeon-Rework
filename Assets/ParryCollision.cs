@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class ParryCollision : MonoBehaviour , IParryable
 {
@@ -9,7 +10,12 @@ public class ParryCollision : MonoBehaviour , IParryable
 
     public void ChangeDuration(float duration)
     {
-        Destroy(this, duration);
+        if (duration == -2.0f)
+        {
+            StartCoroutine(DestroyNextFrame());
+            return;
+        }
+        Destroy(this.gameObject, duration);
     }
 
     private void OnDrawGizmos()
@@ -24,4 +30,11 @@ public class ParryCollision : MonoBehaviour , IParryable
         print("Parreado");
         ParentEnemy.ApplyParry();
     }
+
+    private IEnumerator DestroyNextFrame()
+    {
+        yield return null;
+        Destroy(this.gameObject);
+    }
+
 }

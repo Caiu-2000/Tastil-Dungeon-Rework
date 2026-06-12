@@ -15,6 +15,9 @@ public class MeleHumanoid : Enemy
 
     [SerializeField] private List<AttackData> Attacks;
 
+    private bool _AttackAlreadyConected = false;
+    private bool _ParryAlreadyConected = false;
+    [SerializeField] EnemyAttackSincronizer1 _AttackSync;
     private void Awake()
     {
 
@@ -33,7 +36,7 @@ public class MeleHumanoid : Enemy
             { 
                 _currentCombo = 1;
             }
-            print(_currentCombo -1 );
+
             StartCoroutine(SetAttack());
 
         }
@@ -48,39 +51,10 @@ public class MeleHumanoid : Enemy
         base.applyDamage(damage, ApplyKnockback, knockbackForce, KnockBackFrom);
     }
 
-    private IEnumerator SettAttackCollision()
-    {
 
-        yield return new WaitForSeconds(Attacks[_currentCombo -1 ].CollisionTime);
-
-        EnemyHitCollision newColl = Instantiate(_coll);
-        newColl.ChangeDuration(Attacks[_currentCombo -1 ].AttackDuration);
-        newColl.transform.position = _collPoint.position;
-        newColl.transform.rotation = _collPoint.transform.rotation;
-        newColl.parentEnemy = this;
-        
-        
-    }
-    private IEnumerator SettParryCollision()
-    {
-
-        yield return new WaitForSeconds(Attacks[_currentCombo -1 ].ParryStart);
-        ParryCollision newColl = Instantiate(_parryCollision);
-        newColl.ChangeDuration(Attacks[_currentCombo - 1].ParryWindow);
-        newColl.transform.position = _collPoint.position;
-        newColl.transform.rotation = _collPoint.transform.rotation;
-        newColl.ParentEnemy = this;
-
-    }
     private IEnumerator SetAttack()
     {
-        
-        StartCoroutine(SettAttackCollision());
-        if (Attacks[_currentCombo - 1].Parriable)
-        {
-            StartCoroutine(SettParryCollision());
-
-        }
+        _AttackAlreadyConected = false;
         _animator.SetTrigger("attack");
         _animator.SetInteger("AttackID", _currentCombo - 1);
         _ai.ChangeEnabled(false);
@@ -92,6 +66,7 @@ public class MeleHumanoid : Enemy
     internal override void HitConnectded(Collider other)
     {
         other.GetComponent<PlayerMaster>().applyDamage(_damage, true, Attacks[_currentCombo -1].KnockbackForce, transform);
+        _AttackAlreadyConected = true;
         PerkManager.Instance.OnPlayerHitted?.Invoke(_damage, this);
     }
 
@@ -107,8 +82,7 @@ public class MeleHumanoid : Enemy
     public void Stun(bool Parried , float TimeStunned)
     {
         _ai.ChangeEnabled(false);
-        StopCoroutine(SetAttack());
-        StopCoroutine(SettAttackCollision());
+        StopAllCoroutines();
         StartCoroutine(WaitToCanAttack(TimeStunned));
         
         if (Parried)
@@ -124,7 +98,36 @@ public class MeleHumanoid : Enemy
 
     }
 
+    private void Update()
+    {
+        if (_AttackSync && !_AttackAlreadyConected)
+        {
+            if (_AttackSync.ParryWindowReady)
+            {
+                SettParryCollision();
+            }
+            if (_AttackSync.AttackWindowReady)
+            {
+                SettAttackCollision();
+            }
+        }
+    }
 
-    
+    private void SettAttackCollision()
+    {
+        EnemyHitCollision newColl = Instantiate(_coll);
+        newColl.ChangeDuration(-2.0f);
+        newColl.transform.position = _collPoint.position;
+        newColl.transform.rotation = _collPoint.transform.rotation;
+        newColl.parentEnemy = this;
+    }
+    private void SettParryCollision()
+    {
+        ParryCollision newColl = Instantiate(_parryCollision);
+        newColl.ChangeDuration(-2.0f);
+        newColl.transform.position = _collPoint.position;
+        newColl.transform.rotation = _collPoint.transform.rotation;
+        newColl.ParentEnemy = this;
+    }
 
 }
