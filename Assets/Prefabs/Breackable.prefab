@@ -69,7 +69,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef7036a6f756d8449e92578775fff4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DropableItems: []
+  DropableItems:
+  - {fileID: 8835119499718473541, guid: 0d1262ecf83b6a045b7e22a9640c789b, type: 3}
+  - {fileID: 1516291951402659741, guid: e8203f3c7d006844b8759ab3aeef2c58, type: 3}
 --- !u!1001 &2642481371038304669
 PrefabInstance:
   m_ObjectHideFlags: 0
