@@ -3101,6 +3101,10 @@ PrefabInstance:
       value: 0.006107836
       objectReference: {fileID: 0}
     - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+      propertyPath: _maxLife
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
       propertyPath: _animator
       value: 
       objectReference: {fileID: 748713238}

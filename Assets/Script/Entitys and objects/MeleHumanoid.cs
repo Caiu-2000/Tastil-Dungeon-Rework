@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SubsystemsImplementation;
 
 public class MeleHumanoid : Enemy
 {
@@ -47,9 +48,9 @@ public class MeleHumanoid : Enemy
             { 
                 _currentCombo = 1;
             }
-
+            
             StartCoroutine(SetAttack());
-
+            CanAnimHitted = false;
         }
         
         
@@ -60,6 +61,9 @@ public class MeleHumanoid : Enemy
     {
 
         base.applyDamage(damage, ApplyKnockback, knockbackForce, KnockBackFrom);
+
+
+
     }
 
 
@@ -71,6 +75,7 @@ public class MeleHumanoid : Enemy
         _ai.ChangeEnabled(false);
         yield return new WaitForSeconds(Attacks[_currentCombo - 1 ].AttackCD);
         _ai.ChangeEnabled(true);
+        CanAnimHitted = true;
         CanAttack = true;
     }
 
@@ -122,6 +127,12 @@ public class MeleHumanoid : Enemy
                 SettAttackCollision();
             }
         }
+        if (KeepDead)
+        {
+            _ai.ChangeEnabled(false);
+
+        }
+
     }
 
     private void SettAttackCollision()
@@ -139,6 +150,17 @@ public class MeleHumanoid : Enemy
         newColl.transform.position = _collPoint.position;
         newColl.transform.rotation = _collPoint.transform.rotation;
         newColl.ParentEnemy = this;
+    }
+
+    public override void Die()
+    {
+     
+        print("Llamo muerte");
+        _animator.SetTrigger("Death");
+        _ai.ChangeEnabled(false);
+        Destroy(gameObject, 3.0f);
+        _roomController?.OnEnemyDied(this);
+        BuffManager.Instance?.TriggerOnEnemyDeath(this.gameObject);
     }
 
 }

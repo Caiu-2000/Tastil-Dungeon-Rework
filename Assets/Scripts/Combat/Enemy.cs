@@ -18,6 +18,8 @@ public class Enemy : Entity
 
     public bool CanAnimHitted = true;
 
+    protected bool KeepDead = false;
+
     private void Awake()
     {
 
@@ -90,5 +92,13 @@ public class Enemy : Entity
 
     }
 
+    private void Update() { 
+    
+     if (KeepDead)
+        {
+            _ai.ChangeEnabled(false);
+
+        }
+    }
 }
 
