@@ -23,6 +23,8 @@ public class MeleHumanoid : Enemy
 
 
 
+    [SerializeField] private float _SpecialCharge = 1;
+    [SerializeField] private float _Specialduration = 1.5f;
 
 
 
@@ -37,6 +39,10 @@ public class MeleHumanoid : Enemy
         _maxCombo = Attacks.Count ;
     }
 
+    private void Start()
+    {
+        StartCoroutine(ChargeSecuence());
+    }
 
     public override void DistanceReached()
     {
@@ -162,5 +168,17 @@ public class MeleHumanoid : Enemy
         _roomController?.OnEnemyDied(this);
         BuffManager.Instance?.TriggerOnEnemyDeath(this.gameObject);
     }
+
+
+    private IEnumerator ChargeSecuence()
+    {
+        yield return new WaitForSeconds(1);
+        _animator.SetTrigger("GoSpecial");
+        yield return new WaitForSeconds(_SpecialCharge);
+        _animator.SetTrigger("Launch");
+        yield return new WaitForSeconds(_Specialduration);
+        _animator.SetTrigger("FInish");
+    }
+
 
 }
