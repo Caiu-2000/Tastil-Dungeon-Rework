@@ -1,4 +1,4 @@
-using JetBrains.Annotations;
+using JetBrains.Annotations; // Esto de donde salio xD
 using UnityEngine;
 
 [DefaultExecutionOrder(10)]
@@ -43,7 +43,7 @@ public class PauseManager :MonoBehaviour
 
     public void GoToLobbyPressed()
     {
-        GameManager.Instance.LoadLevel(2);
+        GameManager.Instance.LoadLevel(1);
     }
 
 }
