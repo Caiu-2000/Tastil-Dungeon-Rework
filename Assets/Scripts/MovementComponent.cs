@@ -87,5 +87,4 @@ public class MovementComponent : MonoBehaviour
         _entityController._CanInputMovement = state;
     }
 
-
 }

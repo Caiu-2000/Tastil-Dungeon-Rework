@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SubsystemsImplementation;
+using UnityEngine.AI;
+
 
 public class MeleHumanoid : Enemy
 {
@@ -28,7 +29,8 @@ public class MeleHumanoid : Enemy
 
 
 
-
+    private bool SpecialInProgress = false;
+    private bool SpecialInCooldown = false;
 
 
 
@@ -39,10 +41,6 @@ public class MeleHumanoid : Enemy
         _maxCombo = Attacks.Count ;
     }
 
-    private void Start()
-    {
-        StartCoroutine(ChargeSecuence());
-    }
 
     public override void DistanceReached()
     {
@@ -87,6 +85,7 @@ public class MeleHumanoid : Enemy
 
     internal override void HitConnectded(Collider other)
     {
+        print("Aca se llego con " + other.name);
         other.GetComponent<PlayerMaster>().applyDamage(_damage, true, Attacks[_currentCombo -1].KnockbackForce, transform);
         _AttackAlreadyConected = true;
         PerkManager.Instance.OnPlayerHitted?.Invoke(_damage, this);
@@ -141,12 +140,13 @@ public class MeleHumanoid : Enemy
 
     }
 
-    private void SettAttackCollision()
+    private void SettAttackCollision(float time = -2.0f)
     {
         EnemyHitCollision newColl = Instantiate(_coll);
-        newColl.ChangeDuration(-2.0f);
+        newColl.ChangeDuration(time);
         newColl.transform.position = _collPoint.position;
         newColl.transform.rotation = _collPoint.transform.rotation;
+        newColl.transform.SetParent(_collPoint.transform, true);
         newColl.parentEnemy = this;
     }
     private void SettParryCollision()
@@ -161,7 +161,6 @@ public class MeleHumanoid : Enemy
     public override void Die()
     {
      
-        print("Llamo muerte");
         _animator.SetTrigger("Death");
         _ai.ChangeEnabled(false);
         Destroy(gameObject, 3.0f);
@@ -170,15 +169,69 @@ public class MeleHumanoid : Enemy
     }
 
 
+
+    public override void SpecialDistanceReached()
+    {
+       
+        if (!SpecialInCooldown && !SpecialInProgress) { StartCoroutine(ChargeSecuence()); }
+    }
+
+
     private IEnumerator ChargeSecuence()
     {
-        yield return new WaitForSeconds(1);
+        GetComponent<NavMeshAgent>().enabled = false;
+        SpecialInProgress = true;
+        CanAttack = false;
+        CanAnimHitted = false;
+        SpecialInCooldown = true;
+        _ai.ChangeEnabled(false);
+        float elapsedTime = 0.0f;
+        _currentCombo = 1;
         _animator.SetTrigger("GoSpecial");
-        yield return new WaitForSeconds(_SpecialCharge);
+
+
+        while (true) 
+        { 
+            elapsedTime += Time.deltaTime;
+            if (elapsedTime >= _SpecialCharge) { break; }
+            RotateTowards(GameManager.Instance.Player.transform);
+            yield return null;
+        }
+        elapsedTime = 0.0f;
+    
         _animator.SetTrigger("Launch");
-        yield return new WaitForSeconds(_Specialduration);
+
+
+        
+        float tempSpeed = moveComp.GetSpeed();
+        moveComp.SetSpeed(20);
+        SettAttackCollision(_Specialduration);
+        while (true)
+        {
+            elapsedTime += Time.deltaTime;
+            if (elapsedTime >= _Specialduration || _AttackAlreadyConected) { break; }
+            moveComp.Movement(new Vector2(0,1));
+            
+            
+            yield return null;
+        }
+        moveComp.SetSpeed(tempSpeed);
+        _AttackAlreadyConected = false;
         _animator.SetTrigger("FInish");
+        _AttackAlreadyConected = false;
+        SpecialInProgress = false;
+        GetComponent<NavMeshAgent>().enabled = true;
+        CanAttack = true;
+        CanAnimHitted = true;
+        _ai.ChangeEnabled(true);
+        yield return new WaitForSeconds(5);
+        SpecialInCooldown =false;
+
+
+
     }
+
+
 
 
 }

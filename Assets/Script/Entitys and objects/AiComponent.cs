@@ -10,9 +10,14 @@ public class AiComponent : MonoBehaviour
     [SerializeField] NavMeshAgent _agent;
     [SerializeField] float _minDistance = 1f;
 
+
+    [SerializeField] float _DistanceForSpecial = 0;
+
     private bool _enabled = false;
     private Transform _objectiveTransform;
     private bool fleeing = false;
+    
+
 
     // Por ahora queda muy simple el movimiento pero quisiera meterle mas mano par hacerlo custom con el componente
     // de movimiento que estoy referenciando
@@ -25,6 +30,15 @@ public class AiComponent : MonoBehaviour
         }
         float currentDistance = Vector3.Distance(this.transform.position, _objectiveTransform.position);
 
+        if (_DistanceForSpecial != 0)
+        {
+            
+            if (currentDistance < _DistanceForSpecial)
+            {
+                
+                _parentEnemy.SpecialDistanceReached();
+            }
+        }
         if (currentDistance > _minDistance && fleeing != true)
         {
             _agent.SetDestination(_objectiveTransform.position);
