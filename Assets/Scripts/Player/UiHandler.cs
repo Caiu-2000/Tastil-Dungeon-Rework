@@ -1,6 +1,8 @@
 
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +17,9 @@ public class UiHandler : MonoBehaviour
     [SerializeField] private List<Image> _hotbarIndicators = new List<Image>(3);
     [SerializeField] private Transform _hotbarSelector;
     private Transform firstPosition;
+
+
+    private float LastHealtValure = 1;
 
 
     [SerializeField] Image LifeIndicatorEffect;
@@ -38,6 +43,7 @@ public class UiHandler : MonoBehaviour
     {
        
         UpdateStam(Player._currentStamina , Player._maxStamina );
+
     }
 
     public void UpdateStam(float newvalue , float maxValue)
@@ -61,9 +67,11 @@ public class UiHandler : MonoBehaviour
     
     public void UpdateLife(float current , float max)
     {
-        if(!miMaterial) miMaterial = LifeIndicatorEffect.material;
-        _lifeBar.fillAmount = (current /max);
-        miMaterial.SetFloat("_Intensity", (1 - _lifeBar.fillAmount));
+        
+        StopAllCoroutines();
+        StartCoroutine(ChangeUILife(current , max));
+
+        
        
     }
 
@@ -86,6 +94,27 @@ public class UiHandler : MonoBehaviour
             return;
         }
         _hotbarSelector.position = _hotbarIndicators[_index].transform.position;
+    }
+
+
+    private IEnumerator ChangeUILife(float curr , float max)
+    {
+        float ElapsedTime = 0.0f;
+        
+        float percentValue = curr / max;
+        while ((ElapsedTime) < 1)
+        {
+            ElapsedTime += Time.deltaTime * 2;
+            LastHealtValure = Mathf.Lerp(LastHealtValure, percentValue, ElapsedTime );
+            print(LastHealtValure + "   " + percentValue);
+           
+            if (!miMaterial) miMaterial = LifeIndicatorEffect.material;
+            _lifeBar.fillAmount = (LastHealtValure );
+            miMaterial.SetFloat("_Intensity", (1 - LastHealtValure));
+            yield return null;
+        }
+
+        yield return null;
     }
 
 }
