@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 [DefaultExecutionOrder(10)]
@@ -28,4 +29,21 @@ public class PauseManager :MonoBehaviour
     {
         TheParent.gameObject.SetActive(v);
     }
+
+
+    public void ClosePressed()
+    {
+        GameManager.Instance.Resume();
+    }
+
+    public void GoMenuPressed()
+    {
+        GameManager.Instance.LoadLevel(0);
+    }
+
+    public void GoToLobbyPressed()
+    {
+        GameManager.Instance.LoadLevel(2);
+    }
+
 }
