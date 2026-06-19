@@ -18,11 +18,19 @@ public class Enemy : Entity
 
     public bool CanAnimHitted = true;
 
+    protected bool KeepDead = false;
+    protected MovementComponent moveComp; 
     private void Awake()
     {
 
         _currentLife = _maxLife;
 
+    }
+
+    private void Start()
+    {
+        
+        moveComp = GetComponent<MovementComponent>();
     }
 
     public override void applyDamage(float damage, bool ApplyKnockback = false, float knockbackForce = 0, Transform KnockBackFrom = null)
@@ -88,6 +96,33 @@ public class Enemy : Entity
     public virtual void ApplyParry()
     {
 
+    }
+
+    private void Update() { 
+    
+     if (KeepDead)
+        {
+            _ai.ChangeEnabled(false);
+
+        }
+    }
+
+
+    public virtual void SpecialDistanceReached()
+    {
+
+    }
+
+
+    protected void RotateTowards(Transform Objective)
+    {
+        Vector3 objPosition = Objective.position;
+
+        objPosition.y = this.gameObject.transform.position.y;
+
+        Vector3 Direction = objPosition - transform.position;
+
+        transform.rotation = Quaternion.LookRotation(Direction);
     }
 
 }

@@ -106,7 +106,7 @@ public class UiHandler : MonoBehaviour
         {
             ElapsedTime += Time.deltaTime * 2;
             LastHealtValure = Mathf.Lerp(LastHealtValure, percentValue, ElapsedTime );
-            print(LastHealtValure + "   " + percentValue);
+
            
             if (!miMaterial) miMaterial = LifeIndicatorEffect.material;
             _lifeBar.fillAmount = (LastHealtValure );
