@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BuffManager : MonoBehaviour
 {
+    bool rightClicked;
     #region singletone
     public static BuffManager Instance { get; private set; }
     void Awake()
@@ -126,6 +128,30 @@ public class BuffManager : MonoBehaviour
     public BuffManager GetManager()
     {
         return BuffManager.Instance;
+    }
+    private void Update()
+    {
+        if (Mouse.current.rightButton.wasPressedThisFrame)
+        {
+            rightClicked = true;
+        }
+    }
+    public bool GetRightClickBool()
+    {
+        return rightClicked;
+    }
+    public Transform FindDeepChild(Transform parent, string name)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name == name)
+                return child;
+
+            Transform result = FindDeepChild(child, name);
+            if (result != null)
+                return result;
+        }
+        return null;
     }
 }
 
