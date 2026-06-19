@@ -136,7 +136,7 @@ public class MeleWeapon : Weapon
 
     private void OnDrawGizmos()
     {
-        return;
+       
         //Esto es solo debug pero tira error de referencia nula en editore por eso esta asi apagado. Es para ver la collision del golpe
 
         if (!DebugBool) return;

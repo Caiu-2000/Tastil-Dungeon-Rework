@@ -18,6 +18,17 @@ public class MeleHumanoid : Enemy
     private bool _AttackAlreadyConected = false;
     private bool _ParryAlreadyConected = false;
     [SerializeField] EnemyAttackSincronizer1 _AttackSync;
+
+
+
+
+
+
+
+
+
+
+
     private void Awake()
     {
 
