@@ -128,11 +128,23 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel(int lvlIndex)
     {
+        if (IsPaused) 
+        {
+            Resume();
+            
+        }
+        if (lvlIndex == 0 && IsPaused)
+        {
+            Resume();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = true;
+        }
         SceneManager.LoadScene(lvlIndex);
     }
 
     public void LoadLevel(string lvlName)
     {
+        if (IsPaused) { Resume(); }
         SceneManager.LoadScene(lvlName);
     }
 
