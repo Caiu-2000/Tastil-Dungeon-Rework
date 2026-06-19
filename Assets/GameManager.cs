@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void Pause()
+    public  void Pause()
     {
         Cursor.lockState = CursorLockMode.None;
         UnityEngine.Cursor.visible = true;
@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
         
     }
 
-    private void Resume()
+    public void Resume()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -124,6 +124,17 @@ public class GameManager : MonoBehaviour
         print(sens);
     }
 
+
+
+    public void LoadLevel(int lvlIndex)
+    {
+        SceneManager.LoadScene(lvlIndex);
+    }
+
+    public void LoadLevel(string lvlName)
+    {
+        SceneManager.LoadScene(lvlName);
+    }
 
 }
 
