@@ -9,6 +9,14 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>();
+
+        if (!GameManager.Instance) return;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        GameManager.Instance.pause.SetActive(false);
+        Time.timeScale = 1;
+
+        GameManager.Instance.IsPaused = false;
     }
 
 
