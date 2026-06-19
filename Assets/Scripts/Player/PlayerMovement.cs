@@ -1,4 +1,5 @@
 
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -14,7 +15,7 @@ public class PlayerMovement : MovementComponent
     private Vector3 PlayerVelocity;
 
     public float jumpHeight = 2.0f;
-    public float gravity = -9.81f;
+    public float gravity = -4.5f;
     private float verticalVelocity;
 
     public void Rotate(Vector2 lookdir)
@@ -37,11 +38,7 @@ public class PlayerMovement : MovementComponent
     public override void Movement(Vector3 dir)
     {
 
-        if (!Cc.isGrounded)
-        {
 
-            verticalVelocity += gravity * Time.deltaTime;
-        }
 
 
         Vector3 move = transform.forward * dir.y + transform.right * dir.x;
@@ -74,9 +71,19 @@ public class PlayerMovement : MovementComponent
 
     private void FixedUpdate()
     {
-        if (Cc.isGrounded)
+        if (!Cc.isGrounded)
         {
-            
+
+            if (verticalVelocity < 0)
+            {
+                verticalVelocity += gravity / 2 * Time.deltaTime;
+                if (verticalVelocity < -1) { verticalVelocity = -1; }
+            }
+            else
+            {
+                verticalVelocity += gravity * Time.deltaTime;
+            }
+
         }
     }
 
