@@ -1409,8 +1409,8 @@ MonoBehaviour:
   _camera: {fileID: 3696545689655379606}
   _inputComp: {fileID: 8804985594230935919}
   Cc: {fileID: 7703093927158255746}
-  jumpHeight: 2
-  gravity: -9.81
+  jumpHeight: 0.8
+  gravity: -3.9
 --- !u!114 &8804985594230935919
 MonoBehaviour:
   m_ObjectHideFlags: 0
