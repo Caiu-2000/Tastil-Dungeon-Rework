@@ -6,7 +6,7 @@ using UnityEngine;
 public class InventoryComponent : MonoBehaviour
 {
     [SerializeField] private UiHandler Ui;
-    [SerializeField] public ItemsHand _secondHand;
+    [SerializeField] private ItemsHand _secondHand;
     [SerializeField] private WeaponsHand _weaponsHand;
     private Item[] ItemsInside = new Item[4];
 

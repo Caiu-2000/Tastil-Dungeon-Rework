@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerMaster : Entity
 {
 
-    [SerializeField] public UiHandler Ui;
+    [SerializeField] private UiHandler Ui;
     [SerializeField] public InventoryComponent _inventory;
     [SerializeField] public WeaponsHand weaponHand;
     private IInteractable _lastItemOnSigth;
@@ -203,6 +203,8 @@ public class PlayerMaster : Entity
     {
         _camera.gameObject.SetActive(!_camera.gameObject.activeSelf);
     }
+
+
 
 
 }

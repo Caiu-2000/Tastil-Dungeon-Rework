@@ -134,7 +134,6 @@ public class ItemsHand : MonoBehaviour
         }
         if (ParriedSomething)
         {
-            print("Parreo");
             OnParryUpdated?.Invoke(1);
             ParryReady = true;
         }
@@ -143,19 +142,14 @@ public class ItemsHand : MonoBehaviour
             elapsedtime = 0;
             while (true)
             {
-
-                elapsedtime += Time.deltaTime;
-                print("No parreo y paso  " + Time.deltaTime);
-                OnParryUpdated?.Invoke( elapsedtime / CdCooldown );
-                if (elapsedtime > CdCooldown) { ParryReady = true; break; }
-
-               yield return null;
-                
+                if (elapsedtime > CdCooldown)
+                yield return null;
             }
         }
 
 
-      
+            yield return new WaitForSeconds(0.5f);
+        ParryReady = true;
     }
 
     private void OnDrawGizmos()
