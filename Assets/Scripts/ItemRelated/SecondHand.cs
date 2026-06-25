@@ -12,6 +12,12 @@ public class ItemsHand : MonoBehaviour
 
     bool ParryReady = true;
 
+    public delegate void ParryCdUpdated(float cD);
+
+    public ParryCdUpdated OnParryUpdated = delegate { };
+
+    [SerializeField]
+    private float CdCooldown = 0.5f;
 
     private void Start()
     {
@@ -100,6 +106,8 @@ public class ItemsHand : MonoBehaviour
         _animator.SetTrigger("Parry");
         ParryReady = false;
         float elapsedtime = 0;
+        bool ParriedSomething = false;
+        OnParryUpdated?.Invoke(0.0f);
         while (true)
         {
             Vector3 AttackPos = GameManager.Instance.GetPlayer().GetLookDretirection() * 0.5f + GameManager.Instance.Player.transform.position + new Vector3(0, 0.5f, 0);
@@ -108,14 +116,15 @@ public class ItemsHand : MonoBehaviour
 
 
             foreach (Collider collider in collisions) {
-                print(collider.gameObject.name);
+    
                 IParryable parried;
 
                 if (collider.gameObject.TryGetComponent(out parried))
                 {
-                    print("<color=red>Se hizo parry</color>");
+                    
                     parried.Parry();
                     BuffManager.Instance.TriggerOnParry();
+                    ParriedSomething = true;
                 }
             }
             
@@ -123,9 +132,23 @@ public class ItemsHand : MonoBehaviour
             if (elapsedtime > 0.25f /*Esta es la ventana de parry*/) break;
             yield return null;
         }
+        if (ParriedSomething)
+        {
+            OnParryUpdated?.Invoke(1);
+            ParryReady = true;
+        }
+        else
+        {
+            elapsedtime = 0;
+            while (true)
+            {
+                if (elapsedtime > CdCooldown)
+                yield return null;
+            }
+        }
 
 
-        yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.5f);
         ParryReady = true;
     }
 

@@ -25,6 +25,10 @@ public class UiHandler : MonoBehaviour
     [SerializeField] Image LifeIndicatorEffect;
     private Material miMaterial;
 
+    [SerializeField] private Image ParryIndicator;
+
+
+
     private void Awake()
     {
 
@@ -116,5 +120,11 @@ public class UiHandler : MonoBehaviour
 
         yield return null;
     }
+
+    public void UpdateParryCD(float newPercentaje)
+    {
+        ParryIndicator.fillAmount = newPercentaje;
+    }
+
 
 }
