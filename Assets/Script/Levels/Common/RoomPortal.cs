@@ -21,7 +21,7 @@ public class RoomPortal : MonoBehaviour, IInteractable
         selectedReward = rewardPrefabs[index];
 
         if (!firstRoom)
-            rewardImage.sprite = rewardSprites[index];
+            rewardImage.sprite = rewardSprites[index];      //here
     }
 
     public void Interact(PlayerMaster _player = null)

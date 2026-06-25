@@ -23,12 +23,10 @@ public class FadeController : MonoBehaviour
         fadeToBlack.color = tempColor;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetFadeToBlack(Image fadeToBlack)
     {
-        
+        this.fadeToBlack = fadeToBlack;
     }
-
     public IEnumerator Fade()
     {
         Color tempColor = fadeToBlack.color;

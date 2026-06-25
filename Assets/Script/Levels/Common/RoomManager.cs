@@ -73,4 +73,9 @@ public class RoomManager : MonoBehaviour
     {
         return thisRoom;
     }
+    public void SetRoomAndActualRoom(Transform roomAnchor, GameObject thisRoom)
+    {
+        this.thisRoom = thisRoom;
+        this.roomAnchor = roomAnchor;
+    }
 }
