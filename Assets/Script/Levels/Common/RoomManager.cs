@@ -77,5 +77,6 @@ public class RoomManager : MonoBehaviour
     {
         this.thisRoom = thisRoom;
         this.roomAnchor = roomAnchor;
+        firstRoom = true;
     }
 }

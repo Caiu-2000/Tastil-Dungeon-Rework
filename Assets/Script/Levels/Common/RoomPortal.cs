@@ -28,9 +28,7 @@ public class RoomPortal : MonoBehaviour, IInteractable
     {
         if (firstRoom || rewardUI.IsVisible())
         {
-            RoomManager.instance.StartCoroutine(
-                RoomManager.instance.TransitionToRoom(nextRoom, selectedReward)
-            );
+            RoomManager.instance.StartCoroutine(RoomManager.instance.TransitionToRoom(nextRoom, selectedReward));
             if (firstRoom)
                 RoomManager.instance.setBool();
         }
