@@ -40,7 +40,9 @@ public class UiHandler : MonoBehaviour
     {
         if (!miMaterial) miMaterial = LifeIndicatorEffect.material;
         miMaterial.SetFloat("_Intensity", 0.0f);
-        if (!Player) Player = GetComponent<PlayerMaster>();
+        
+        Player._inventory._secondHand.OnParryUpdated += UpdateParryCD;
+
     }
 
     private void Update()
@@ -82,12 +84,14 @@ public class UiHandler : MonoBehaviour
     public void updateHotbarItem(int _index , Item _newItem)
     {
         _hotbarIndicators[_index].sprite = _newItem.GetIcon();
+        _hotbarIndicators[_index].color = new Color(1,1,1,1);
     }
 
     public void ClearIcon(int _index)
     {
         if (_index < 0 || _index > _hotbarIndicators.Count - 1) return;
         _hotbarIndicators[_index].sprite = null;
+        _hotbarIndicators[_index].color = new Color(1,1,1,0);
     }
 
     public void UpdateHotbarPosition(int _index)
