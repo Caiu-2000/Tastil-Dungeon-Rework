@@ -151,6 +151,7 @@ public class PlayerMaster : Entity
     }
     public void AddMaxLife(float amount)
     {
+        print($"Added {amount} of life");
         _maxLife += amount;
         _currentLife = +amount;
     }

@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentLife: 0
-  _maxLife: 50
+  _maxLife: 75
   _DamageCDTime: 0.25
   _armor: 0
   currentShieldedLife: 0

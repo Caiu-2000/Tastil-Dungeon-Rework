@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentLife: 0
-  _maxLife: 50
+  _maxLife: 100
   _DamageCDTime: 0.25
   _armor: 0
   currentShieldedLife: 0
@@ -286,6 +286,7 @@ MonoBehaviour:
   _movement: {fileID: 0}
   _agent: {fileID: 2614652689348200489}
   _minDistance: 5
+  _DistanceForSpecial: 0
 --- !u!95 &7414105989320626070
 Animator:
   serializedVersion: 7
