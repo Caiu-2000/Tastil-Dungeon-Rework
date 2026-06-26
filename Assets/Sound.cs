@@ -1,12 +1,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
-public enum SoundTypes
-{
-    Menu,
-    Ambient,
-    Effects
-}
+
 
 [System.Serializable]
 public class Sound 
