@@ -107,7 +107,7 @@ MonoBehaviour:
   _ReplaceItem: {fileID: 0}
   _isPicked: 0
   _inventory: {fileID: 0}
-  _itemIcon: {fileID: 0}
+  _itemIcon: {fileID: 21300000, guid: 1567bdffc8faf70418f25ce48085a18f, type: 3}
   _useTime: 1
   Type: 4
   data: {fileID: 11400000, guid: 38ca158d162aebd489420778ca2f4774, type: 2}
