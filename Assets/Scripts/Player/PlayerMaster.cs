@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerMaster : Entity
 {
 
-    [SerializeField] private UiHandler Ui;
+    [SerializeField] public UiHandler Ui;
     [SerializeField] public InventoryComponent _inventory;
     [SerializeField] public WeaponsHand weaponHand;
     private IInteractable _lastItemOnSigth;
