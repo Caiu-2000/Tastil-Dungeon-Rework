@@ -59,7 +59,7 @@ public class MeleWeapon : Weapon
             _currentCombo += 1;
             if (_currentCombo > _maxCombo) _currentCombo = 1;
             ComboCount = ComboCd;
-
+            SoundManager.instance.Play(SoundTypes.Slash , false);
             _attacking = true;
             StartCoroutine(AttackSecuence());
             return true;
