@@ -52,9 +52,8 @@ public class MeleWeapon : Weapon
 
         if (_attacking || !_equiped || _stamCost > GameManager.Instance.Player._currentStamina) return false;
         BuffManager.Instance.TriggerOnAttack(ParentEntity.gameObject);
-        GameManager.Instance.Player._currentStamina -= _stamCost;
-        if (ParentEntity._currentStamina >= _stamCost)
-        {
+   
+
             ParentEntity.ReduceStamina(_stamCost);
 
             _currentCombo += 1;
@@ -64,8 +63,7 @@ public class MeleWeapon : Weapon
             _attacking = true;
             StartCoroutine(AttackSecuence());
             return true;
-        }
-        return false;
+
     }
     public override Item PicItem(Entity _entity)
     {

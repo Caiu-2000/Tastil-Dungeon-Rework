@@ -112,7 +112,7 @@ public class ItemsHand : MonoBehaviour
         {
             Vector3 AttackPos = GameManager.Instance.GetPlayer().GetLookDretirection() * 0.5f + GameManager.Instance.Player.transform.position + new Vector3(0, 0.5f, 0);
 
-            Collider[] collisions = Physics.OverlapSphere(AttackPos, 1.0f);
+            Collider[] collisions = Physics.OverlapSphere(AttackPos, 0.75f);
 
 
             foreach (Collider collider in collisions) {
@@ -134,7 +134,7 @@ public class ItemsHand : MonoBehaviour
         }
         if (ParriedSomething)
         {
-            print("Parreo");
+        
             OnParryUpdated?.Invoke(1);
             ParryReady = true;
         }
@@ -145,7 +145,7 @@ public class ItemsHand : MonoBehaviour
             {
 
                 elapsedtime += Time.deltaTime;
-                print("No parreo y paso  " + Time.deltaTime);
+   
                 OnParryUpdated?.Invoke( elapsedtime / CdCooldown );
                 if (elapsedtime > CdCooldown) { ParryReady = true; break; }
 
