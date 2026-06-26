@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Rendering;
 
 public  class SoundManager : MonoBehaviour
@@ -11,7 +12,8 @@ public  class SoundManager : MonoBehaviour
 
 
     public Dictionary<string, float> mixerValue;
-
+    
+    public AudioMixerGroup[] AudioMixer;
 
     private void Awake()
     {
@@ -73,4 +75,26 @@ public  class SoundManager : MonoBehaviour
         }
         return null;
     }
+
+    public void SetAllMixersActive(bool active)
+    {
+        float newVol;
+        if (active)
+        {
+            newVol = 1;
+        }
+        else
+        {
+            newVol = 0.00001f;
+        }
+
+
+        foreach (AudioMixerGroup audioMixer in AudioMixer)
+            {
+                audioMixer.audioMixer.SetFloat(audioMixer.name, Mathf.Log(newVol) * 20f);
+                //_AudioMixerG.audioMixer.SetFloat(mixerGroup, Mathf.Log(vol) * 20f);
+            }
+
+    }
+
 }

@@ -1,5 +1,6 @@
 using JetBrains.Annotations; // Esto de donde salio xD
 using UnityEngine;
+using UnityEngine.UI;
 
 [DefaultExecutionOrder(10)]
 public class PauseManager :MonoBehaviour
@@ -9,6 +10,11 @@ public class PauseManager :MonoBehaviour
     [SerializeField]
     public GameObject TheParent;
     public static PauseManager Instance;
+    private bool _audioOn = true;
+
+    [SerializeField] private Image AudioImage;
+    [SerializeField] Sprite[] UiSprites;
+
     private void Start()
     {
         if (Instance != null && Instance != this)
@@ -45,5 +51,24 @@ public class PauseManager :MonoBehaviour
     {
         GameManager.Instance.LoadLevel(1);
     }
+
+
+    public void ToggleVolume()
+    {
+        _audioOn = !_audioOn;
+
+        if (_audioOn)
+        {
+            AudioImage.sprite = UiSprites[0];
+        }
+        else 
+        {
+            AudioImage.sprite = UiSprites[1];
+        }
+
+            SoundManager.instance.SetAllMixersActive(_audioOn);
+        
+    }
+
 
 }
