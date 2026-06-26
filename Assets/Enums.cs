@@ -6,5 +6,6 @@ public enum SoundTypes
     Effects,
     Parry,
     Slash,
-    Hit
+    Hit,
+    Trhow
 }

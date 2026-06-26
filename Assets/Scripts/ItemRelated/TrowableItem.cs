@@ -16,6 +16,7 @@ public class TrowableItem : Item
         _hand.SetAnimationTrigger("Trow");
 
         yield return new WaitForSeconds(_useTime);
+        SoundManager.instance.Play(SoundTypes.Trhow);
         var instancia = Instantiate(Tirableprefab);
         instancia._fromPlayer = true;
         instancia.transform.position = _inventory.SecondHandPosition();//GameManager.Player._Hand.transform.position;
