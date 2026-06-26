@@ -42,6 +42,12 @@ public class SpitProjectile : MonoBehaviour , IParryable
     private void OnTriggerEnter(Collider other)
     {
         float groundY = 0f;
+ 
+        if (other.TryGetComponent(out EnemyHitCollision enemy) && Parried) 
+        {
+            enemy.parentEnemy.applyDamage(10.0f);
+            Destroy(this.gameObject);
+        }
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("CorreWachin");
@@ -67,10 +73,7 @@ public class SpitProjectile : MonoBehaviour , IParryable
             Destroy(gameObject);
         }
 
-        else if (other.gameObject.CompareTag("Enemy") && Parried)
-        {
-            other.GetComponent<Enemy>().applyDamage(10.0f);
-        }
+
     }
 
     public void Parry()

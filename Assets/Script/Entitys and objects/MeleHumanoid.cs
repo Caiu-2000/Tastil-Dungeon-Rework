@@ -96,9 +96,18 @@ public class MeleHumanoid : Enemy
         yield return new WaitForSeconds(time);
         CanAttack = true;
         _ai.ChangeEnabled(true);
+        SpecialInProgress = false;
         _animator.SetTrigger("ParriedFinished");
+        StartCoroutine(RecoverspecialTime());
+        CanAnimHitted = true;
+        GetComponent<NavMeshAgent>().enabled = true;
     }
 
+    private IEnumerator RecoverspecialTime()
+    {
+        yield return new WaitForSeconds(1.0f);
+        SpecialInCooldown = false;
+    }
 
     public void Stun(bool Parried , float TimeStunned)
     {

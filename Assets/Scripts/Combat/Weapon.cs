@@ -30,7 +30,7 @@ public class Weapon : Item
     {
         if (_stamCost <= GameManager.Instance.Player._currentStamina)
         {
-            GameManager.Instance.Player._currentStamina = - _stamCost;
+            GameManager.Instance.Player._currentStamina -= _stamCost;
         }
     }
     public virtual void ReleaseAttack()

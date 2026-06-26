@@ -102,7 +102,7 @@ MonoBehaviour:
   _ReplaceItem: {fileID: 0}
   _isPicked: 0
   _inventory: {fileID: 0}
-  _itemIcon: {fileID: 21300000, guid: 22cc547806dae7746baa7a724e28c37a, type: 3}
+  _itemIcon: {fileID: 21300000, guid: 8347f92f21342a744be4e51ad46f6026, type: 3}
   _useTime: 0.1
   Type: 3
   Tirableprefab: {fileID: 2479291104427248083, guid: 5b3f6b5385306684b8e75769fd2d24e4, type: 3}
