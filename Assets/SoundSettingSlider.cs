@@ -26,9 +26,28 @@ public class SoundSettingSlider : MonoBehaviour
             if (!SoundM.mixerValue.ContainsKey(mixerGroup))
             {
                 SoundM.mixerValue[mixerGroup] = slider.value;
-            } 
+            }
+            SetVolumeValues();
         }
     }
+    public void SetVolume(float vol)
+    {
+        _AudioMixerG.audioMixer.SetFloat(mixerGroup, Mathf.Log(vol) * 20f);
+    }
 
+    public void SetVolumeValues()
+    {
+        SoundM.mixerValue[mixerGroup] = slider.value;
+    }
+    public void LoadVolumeValues()
+    {
+        slider.value = SoundM.mixerValue[mixerGroup];
+        _AudioMixerG.audioMixer.SetFloat(mixerGroup , Mathf.Log(slider.value) * 20f);
+    }
+
+    private void OnDisable()
+    {
+        SetVolumeValues();
+    }
 
 }

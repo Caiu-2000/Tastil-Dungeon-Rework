@@ -9,7 +9,7 @@ public enum SoundTypes
 }
 
 [System.Serializable]
-public class Sound : MonoBehaviour
+public class Sound 
 {
     public string soundName;
     public SoundTypes type;
