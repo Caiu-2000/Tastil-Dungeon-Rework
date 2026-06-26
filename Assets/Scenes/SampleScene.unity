@@ -6066,6 +6066,7 @@ MonoBehaviour:
   pause: {fileID: 0}
   SpawnPoint: {fileID: 463914345}
   MelePrefab: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+  ParryFreezeTime: 0.08
 --- !u!4 &1669496900
 Transform:
   m_ObjectHideFlags: 0
@@ -7868,6 +7869,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1699429754600567474, guid: 8177defaee6d91e4c8d7e329d7493033, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699429754600567474, guid: 8177defaee6d91e4c8d7e329d7493033, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699429754600567474, guid: 8177defaee6d91e4c8d7e329d7493033, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1704314594934035694, guid: 8177defaee6d91e4c8d7e329d7493033, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1704314594934035694, guid: 8177defaee6d91e4c8d7e329d7493033, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2354463862060114226, guid: 8177defaee6d91e4c8d7e329d7493033, type: 3}
       propertyPath: m_Name
       value: Player
@@ -7920,6 +7941,18 @@ PrefabInstance:
       propertyPath: jumpHeight
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8897267458073420660, guid: 8177defaee6d91e4c8d7e329d7493033, type: 3}
+      propertyPath: sounds.Array.data[2].pitch
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897267458073420660, guid: 8177defaee6d91e4c8d7e329d7493033, type: 3}
+      propertyPath: sounds.Array.data[1].soundClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e91de620466897646a3219d3ca3ccd96, type: 3}
+    - target: {fileID: 8897267458073420660, guid: 8177defaee6d91e4c8d7e329d7493033, type: 3}
+      propertyPath: sounds.Array.data[2].soundClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 595d479c716f47240bdf6a756877d3b5, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
