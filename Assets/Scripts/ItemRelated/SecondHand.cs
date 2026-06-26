@@ -125,6 +125,7 @@ public class ItemsHand : MonoBehaviour
                     parried.Parry();
                     BuffManager.Instance.TriggerOnParry();
                     ParriedSomething = true;
+                    GameManager.Instance.ParriedSuccsecsfully();
                 }
             }
             

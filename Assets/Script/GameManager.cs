@@ -1,5 +1,6 @@
 
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -27,6 +28,10 @@ public class GameManager : MonoBehaviour
 
     public Transform SpawnPoint;
     public Enemy MelePrefab;
+
+
+    public float ParryFreezeTime = 0.08f;
+
     private void Awake()
     {
 
@@ -146,6 +151,26 @@ public class GameManager : MonoBehaviour
     {
         if (IsPaused) { Resume(); }
         SceneManager.LoadScene(lvlName);
+    }
+
+    public void ParriedSuccsecsfully()
+    {
+        
+        StartCoroutine(ParryTime());
+    }
+
+    private IEnumerator ParryTime()
+    {
+        Time.timeScale = 0.05f;
+        float elapsedtime = 0;
+        while (true)
+        {
+            elapsedtime += Time.unscaledDeltaTime;
+            print(Time.unscaledDeltaTime + "   " + Time.deltaTime);
+            if (elapsedtime > ParryFreezeTime) { break; }
+            yield return new WaitForEndOfFrame();
+        }
+        Time.timeScale = 1f;
     }
 
 }
