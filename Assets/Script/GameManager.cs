@@ -138,7 +138,7 @@ public class GameManager : MonoBehaviour
             Resume();
             
         }
-        if (lvlIndex == 0 && IsPaused)
+        if (lvlIndex == 0)
         {
             Resume();
             Cursor.lockState = CursorLockMode.Locked;
