@@ -14,7 +14,8 @@ public class RoomController : MonoBehaviour
     List<Enemy> enemies = new List<Enemy>();
     bool spawnedEnemies = false;
     GameObject pendingReward;
-
+    [SerializeField] private bool LastRoom = false;
+    [SerializeField] GameObject ImagenFinal;
     //---------------------Methods-----------------------
     private void Awake()
     {
@@ -30,7 +31,17 @@ public class RoomController : MonoBehaviour
     {
         enemies.Remove(enemy);
         if (enemies.Count == 0 && spawnedEnemies)
-            SpawnReward();
+        {
+            if(LastRoom)
+            {
+                ImagenFinal.SetActive(true);
+                StartCoroutine(Finish());
+            }
+            else
+            {
+                SpawnReward();
+            }
+        }
     }
     public void EnemySpawned(Enemy enemy)
     {
@@ -49,5 +60,10 @@ public class RoomController : MonoBehaviour
     {
         foreach (RewardUI rewardPanel in rewardUI)
             rewardPanel.Show();
+    }
+    private IEnumerator Finish()
+    {
+        yield return new WaitForSeconds(5f);
+        GameManager.Instance.LoadLevel(0);
     }
 }
