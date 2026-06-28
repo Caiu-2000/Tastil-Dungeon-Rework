@@ -182,6 +182,16 @@ MonoBehaviour:
     pitch: 1
     IsLoop: 0
     Source: {fileID: 0}
+  albums:
+  - type: 4
+    soundClip:
+    - {fileID: 8300000, guid: 595d479c716f47240bdf6a756877d3b5, type: 3}
+    - {fileID: 8300000, guid: e91de620466897646a3219d3ca3ccd96, type: 3}
+    - {fileID: 8300000, guid: 71652cdc6fa2c784b8732ebc707f5463, type: 3}
+    - {fileID: 8300000, guid: e0c64dd7a2e24bb40a25beb0ecbe8747, type: 3}
+    AudioMixer: {fileID: 187118316471433284, guid: 4b9b05cf0cfc3d04d8e87d3e5e9e1299, type: 2}
+    volume: 0.165
+    Source: {fileID: 0}
   AudioMixer:
   - {fileID: 24300002, guid: 4b9b05cf0cfc3d04d8e87d3e5e9e1299, type: 2}
   - {fileID: 2707753592497114361, guid: 4b9b05cf0cfc3d04d8e87d3e5e9e1299, type: 2}

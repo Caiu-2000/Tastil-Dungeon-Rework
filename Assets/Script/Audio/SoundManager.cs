@@ -1,15 +1,16 @@
+
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Rendering;
+
 
 public  class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
     public List<Sound> sounds;
-
+    public List<AudioAlbum> albums;
 
     public Dictionary<string, float> mixerValue;
     
@@ -36,6 +37,12 @@ public  class SoundManager : MonoBehaviour
             sound.Source.pitch = sound.pitch;
             sound.Source.loop = sound.IsLoop;
         }
+        foreach (AudioAlbum album in albums)
+        {
+            album.Source = gameObject.AddComponent<AudioSource>();
+            album.Source.outputAudioMixerGroup = album.AudioMixer;
+            album.Source.volume = album.volume;
+        }
     }
 
 
@@ -52,6 +59,21 @@ public  class SoundManager : MonoBehaviour
         
         sound.Source.loop = loop;
         sound.Source.Play();
+    }
+    public void PlayRandom(SoundTypes name)
+    {
+        AudioAlbum album = FindAlbum(name);
+        if (album != null) album.PlayAudio();
+    }
+
+    private AudioAlbum FindAlbum(SoundTypes name)
+    {
+        foreach (AudioAlbum album in albums) 
+        {
+            print(album.type);
+            if (album.type == name) { return album; } 
+        }
+        return null;
     }
 
     public void Pause(SoundTypes name, bool loop = false)

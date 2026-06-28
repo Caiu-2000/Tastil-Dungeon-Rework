@@ -7,5 +7,7 @@ public enum SoundTypes
     Parry,
     Slash,
     Hit,
-    Trhow
+    Trhow,
+    EsqueletonHit,
+
 }
