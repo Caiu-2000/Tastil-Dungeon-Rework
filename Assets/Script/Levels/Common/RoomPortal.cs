@@ -11,6 +11,7 @@ public class RoomPortal : MonoBehaviour, IInteractable
     [SerializeField] Image rewardImage;
     bool firstRoom;
     GameObject selectedReward;
+    bool interactSafeGuard = false;
 
     private void Start()
     {
@@ -26,11 +27,15 @@ public class RoomPortal : MonoBehaviour, IInteractable
 
     public void Interact(PlayerMaster _player = null)
     {
-        if (firstRoom || rewardUI.IsVisible())
+        if (interactSafeGuard == false)
         {
-            RoomManager.instance.StartCoroutine(RoomManager.instance.TransitionToRoom(nextRoom, selectedReward));
-            if (firstRoom)
-                RoomManager.instance.setBool();
+            interactSafeGuard = true;
+            if (firstRoom || rewardUI.IsVisible())
+            {
+                RoomManager.instance.StartCoroutine(RoomManager.instance.TransitionToRoom(nextRoom, selectedReward));
+                if (firstRoom)
+                    RoomManager.instance.setBool();
+            }
         }
     }
 }
