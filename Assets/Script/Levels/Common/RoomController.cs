@@ -16,6 +16,7 @@ public class RoomController : MonoBehaviour
     GameObject pendingReward;
     [SerializeField] private bool LastRoom = false;
     [SerializeField] GameObject ImagenFinal;
+    bool spawnRewardFix = false;
     //---------------------Methods-----------------------
     private void Awake()
     {
@@ -49,8 +50,12 @@ public class RoomController : MonoBehaviour
     }
     public void SpawnReward()
     {
-        if (pendingReward == null) return;
-        Instantiate(pendingReward, rewardSpawnPosition.position, Quaternion.identity);
+        if (spawnRewardFix == false)
+        {
+            if (pendingReward == null) return;
+            Instantiate(pendingReward, rewardSpawnPosition.position, Quaternion.identity);
+            spawnRewardFix = true;
+        }
     }
     public void SetReward(GameObject reward)
     {

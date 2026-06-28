@@ -1896,6 +1896,8 @@ MonoBehaviour:
   rewardUI:
   - {fileID: 373189126039766241}
   - {fileID: 6583991915208393576}
+  LastRoom: 0
+  ImagenFinal: {fileID: 0}
 --- !u!1 &7218651009882569582
 GameObject:
   m_ObjectHideFlags: 0
