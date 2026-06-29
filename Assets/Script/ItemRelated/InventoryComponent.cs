@@ -1,11 +1,11 @@
 
 using System;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class InventoryComponent : MonoBehaviour
 {
-    [SerializeField] private UiHandler Ui;
+  
     [SerializeField] public ItemsHand _secondHand;
     [SerializeField] private WeaponsHand _weaponsHand;
     private Item[] ItemsInside = new Item[4];
@@ -34,7 +34,7 @@ public class InventoryComponent : MonoBehaviour
                 _newItem.AddedToInventory();
                 _secondHand.ChangeItem(_newItem);
 
-                Ui.updateHotbarItem(x, _newItem);
+                GameManager.Instance.Ui.updateHotbarItem(x, _newItem);
                 ChangeSelection(x);
                 break;
             }
@@ -51,7 +51,7 @@ public class InventoryComponent : MonoBehaviour
         
         _currentSelection = newSelection;
         _secondHand.ChangeItem(ItemsInside[newSelection]);
-        Ui.UpdateHotbarPosition(_currentSelection);
+        GameManager.Instance.Ui.UpdateHotbarPosition(_currentSelection);
     }
 
 
@@ -70,13 +70,13 @@ public class InventoryComponent : MonoBehaviour
     {
         int _objIndex = Array.IndexOf(ItemsInside, _itemRef);
         if (_objIndex == -1) return;
-        Ui.ClearIcon(_objIndex);
+        GameManager.Instance.Ui.ClearIcon(_objIndex);
         ItemsInside[_objIndex] = null;
     }
     public void RemoveItem(int index)
     {
        
-        Ui.ClearIcon(index);
+        GameManager.Instance.Ui.ClearIcon(index);
         ItemsInside[index] = null;
     }
 
@@ -88,7 +88,7 @@ public class InventoryComponent : MonoBehaviour
         if (_secondHand.GetItem() == oldItem) _secondHand.ChangeItem(newItem);
         ItemsInside[Index] = newItem;
         newItem._inventory = this;
-        Ui.updateHotbarItem(Index, newItem);
+        GameManager.Instance.Ui.updateHotbarItem(Index, newItem);
 
     }
     public Vector3 SecondHandPosition()

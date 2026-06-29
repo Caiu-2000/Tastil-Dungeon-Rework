@@ -1,5 +1,6 @@
 
 
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,24 +11,35 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-   
+
+
+    [Header("Player related")]
     public static GameManager Instance { get; private set; }
     public PlayerMaster Player;
     public PlayerInput InputHandler;
+    public UiHandler Ui;
 
 
+
+    [Header("Game Control")]
     private InputAction PauseAction;
     private InputAction RestartAction;
     private InputAction DebugAction;
     public bool IsPaused = false;
-
     public float PendigSens = 25;
     public bool DebugActive = false;
     public PauseManager pause;
 
 
+
+
+    // QUEDA SACAR DE ACA , ESTO ES SOLO PARA LA ZONA DE PRUEBAS
+    [Header("Test zone Related")]
     public Transform SpawnPoint;
     public Enemy MelePrefab;
+
+
+
 
 
     public float ParryFreezeTime = 0.08f;
@@ -54,9 +66,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        // Cada que se resetaba se perdia la referencia y se rompia todo. 
-        // Esto es un manotazo de ahogado
-        if (!pause && Player) pause = Player.gameObject.GetComponentInChildren<PauseManager>();
 
         if (PauseAction.WasPressedThisFrame())
         {
@@ -173,5 +182,9 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    internal void PlayerDied()
+    {
+        throw new NotImplementedException();
+    }
 }
 

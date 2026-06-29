@@ -1,14 +1,14 @@
 
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 //ORIGINAL QUE TIENE QUE QUEDAR
 [DefaultExecutionOrder(-1)]
 public class PlayerMaster : Entity
 {
 
-    [SerializeField] public UiHandler Ui;
+    
     [SerializeField] public InventoryComponent _inventory;
     [SerializeField] public WeaponsHand weaponHand;
     private IInteractable _lastItemOnSigth;
@@ -16,11 +16,21 @@ public class PlayerMaster : Entity
     private Animator _animator;
     [SerializeField]
     private BuffManager manager;
+
+
+
+
+    public delegate void StamChange(float NewStam, float MaxStam);
+    public StamChange OnStaminaChanged = delegate { };
+
+
+
     private void Start()
     {
       
         _animator = GetComponent<Animator>();
         GameManager.Instance.Player = this;
+        
     }
 
     public override void ReduceStamina(float Cost)
@@ -28,8 +38,8 @@ public class PlayerMaster : Entity
         _currentStamina -= Cost;
         if (_currentStamina < 0) _currentStamina = 0;
         _StaminaCount = _StaminaCD;
-        Ui.UpdateStam(_currentStamina,  _maxStamina);
-        Ui.UpdateLife(_currentLife, _maxLife);
+        OnStaminaChanged.Invoke(_currentStamina,  _maxStamina);
+        
     }
 
 
@@ -51,7 +61,7 @@ public class PlayerMaster : Entity
             {
 
                 string mensaje = _hit.transform.gameObject.GetComponent<IInteractable>().interactMessage;
-                Ui.IndicateInteractItem(mensaje);
+                GameManager.Instance.Ui.IndicateInteractItem(mensaje);
             }
 
             _lastItemOnSigth = _hit.transform.gameObject.GetComponent<IInteractable>();
@@ -59,7 +69,7 @@ public class PlayerMaster : Entity
         else
         {
             _lastItemOnSigth = null;
-            Ui.IndicateInteractItem(null,true);
+            GameManager.Instance.Ui.IndicateInteractItem(null,true);
         }
         if (_StaminaCount > 0)
         {
@@ -114,19 +124,19 @@ public class PlayerMaster : Entity
             this.gameObject.GetComponent<PlayerMovement>().ApplyKnockback(KBDir, knockbackForce);
         }
 
-        Ui.UpdateLife(_currentLife, _maxLife); 
+        OnHealthChanged.Invoke(_currentLife, _maxLife);
         //manager.TriggerOnPlayerHitted(this.gameObject);
     }
 
     public  override void Die()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameManager.Instance.PlayerDied();
     }
 
     public override void Heal(float _healAmount)
     {
         base.Heal(_healAmount);
-        Ui.UpdateLife(_currentLife,_maxLife);
+        OnHealthChanged.Invoke(_currentLife, _maxLife);
     }
     public void AddStamina(float Stam)
     {
@@ -187,8 +197,8 @@ public class PlayerMaster : Entity
 
         while (elapsed < duration)
         {
-            float x = Random.Range(-1f, 1f) * magnitude;
-            float y = Random.Range(-1f, 1f) * magnitude;
+            float x = UnityEngine.Random.Range(-1f, 1f) * magnitude;
+            float y = UnityEngine.Random.Range(-1f, 1f) * magnitude;
 
             _camera.transform.localPosition = new Vector3(originalPos.x + x, originalPos.y + y, originalPos.x);
 
