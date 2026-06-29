@@ -184,7 +184,7 @@ public class GameManager : MonoBehaviour
 
     internal void PlayerDied()
     {
-        throw new NotImplementedException();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
 
