@@ -1,5 +1,5 @@
 
-using System;
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -12,7 +12,7 @@ public  class SoundManager : MonoBehaviour
     public List<Sound> sounds;
     public List<AudioAlbum> albums;
 
-    public Dictionary<string, float> mixerValue;
+    public Dictionary<string, float> mixerValue = new Dictionary<string, float>();
     
     public AudioMixerGroup[] AudioMixer;
 

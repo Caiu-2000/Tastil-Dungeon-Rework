@@ -2,8 +2,6 @@
 using System.Collections;
 using UnityEngine;
 
-
-
 public class Enemy : Entity
 {
     [SerializeField] private Renderer _renderer;
@@ -13,12 +11,16 @@ public class Enemy : Entity
 
     [SerializeField] protected float _damage;
     [SerializeField] private float _knockBackForce;
+    
     protected RoomController _roomController;
     public void SetRoomController(RoomController rc) => _roomController = rc;
 
     public bool CanAnimHitted = true;
-
     protected bool KeepDead = false;
+
+    [SerializeField] protected SoundEmitterComponent SoundEmitter = new SoundEmitterComponent();
+
+
     protected MovementComponent moveComp; 
     private void Awake()
     {
@@ -31,6 +33,7 @@ public class Enemy : Entity
     {
         
         moveComp = GetComponent<MovementComponent>();
+        
     }
 
     public override void applyDamage(float damage, bool ApplyKnockback = false, float knockbackForce = 0, Transform KnockBackFrom = null)
@@ -38,9 +41,6 @@ public class Enemy : Entity
         if (_damCD) { return; }
         base.applyDamage(damage, ApplyKnockback, knockbackForce, KnockBackFrom);
 
-
-        //PerkManager.Instance.OnEnemyHitted(this);
-        print("Hasta aca se llego bien");
         if (CanAnimHitted && _animator) _animator.SetTrigger("hitted");
         
         StartCoroutine(CDCounter());

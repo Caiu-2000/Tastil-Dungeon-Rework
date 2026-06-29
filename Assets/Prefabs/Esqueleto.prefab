@@ -213,7 +213,7 @@ MonoBehaviour:
   _StaminaCD: 1
   _StaminaCount: 0
   _StaminaRegen: 25
-  _renderer: {fileID: 0}
+  _renderer: {fileID: 5709499215956091339}
   _ai: {fileID: 6584041461182360468}
   _animator: {fileID: 5779658560057799034}
   _damage: 15
@@ -1586,6 +1586,11 @@ PrefabInstance:
 --- !u!4 &5113001213074769221 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5966716420047463702, guid: f69fb4423f7b13b41a72abbcf9bbee52, type: 3}
+  m_PrefabInstance: {fileID: 7765596107670953903}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &5709499215956091339 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2664098864995057252, guid: f69fb4423f7b13b41a72abbcf9bbee52, type: 3}
   m_PrefabInstance: {fileID: 7765596107670953903}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7423508155418485502 stripped

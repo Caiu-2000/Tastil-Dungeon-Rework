@@ -49,10 +49,10 @@ public class PlayerMaster : Entity
         
         Ray _ray = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         RaycastHit _hit;
-        float _maxDistance = 100f;
+        
 
 
-        if (Physics.Raycast(_ray, out _hit, _maxDistance, LayerMask.GetMask("ItemCollisions")))
+        if (Physics.Raycast(_ray, out _hit, 5, LayerMask.GetMask("ItemCollisions")))
         {
             
             if(_hit.transform.gameObject.GetComponent<IInteractable>() == null) return;
@@ -81,7 +81,7 @@ public class PlayerMaster : Entity
             if (_currentStamina > _maxStamina) _currentStamina = _maxStamina;
         }
 
-        Debug.DrawRay(_ray.origin, _ray.direction * _maxDistance, Color.red);
+        
         
     }
 

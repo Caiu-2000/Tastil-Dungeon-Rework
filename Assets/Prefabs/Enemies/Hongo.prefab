@@ -207,12 +207,24 @@ MonoBehaviour:
   _StaminaCD: 1
   _StaminaCount: 0
   _StaminaRegen: 25
-  _renderer: {fileID: 0}
+  _renderer: {fileID: 7141403420141002432}
   _ai: {fileID: 6245934071168992640}
   _animator: {fileID: 7414105989320626070}
   _damage: 5
   _knockBackForce: 100
   CanAnimHitted: 1
+  SoundEmitter:
+    sounds:
+    - soundName: HongoHitted
+      type: 5
+      soundClip: {fileID: 8300000, guid: 85f236eb195c233469459b5a6fd086ce, type: 3}
+      AudioMixer: {fileID: 187118316471433284, guid: 4b9b05cf0cfc3d04d8e87d3e5e9e1299, type: 2}
+      volume: 1
+      pitch: 1
+      IsLoop: 0
+      Source: {fileID: 0}
+    AudioAlbum: []
+    AudioMixerGroup: {fileID: 187118316471433284, guid: 4b9b05cf0cfc3d04d8e87d3e5e9e1299, type: 2}
   _moveComp: {fileID: 0}
   _SpecialCD: 2
   _specialDuration: 1
@@ -610,6 +622,11 @@ PrefabInstance:
 --- !u!4 &3216462212106111285 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 62d955f034f5d1440be7aef665d2edf3, type: 3}
+  m_PrefabInstance: {fileID: 3110177728317370078}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7141403420141002432 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4020924224465817570, guid: 62d955f034f5d1440be7aef665d2edf3, type: 3}
   m_PrefabInstance: {fileID: 3110177728317370078}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3639106387800337520
