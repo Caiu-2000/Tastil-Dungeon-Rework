@@ -33,6 +33,7 @@ public class PauseManager :MonoBehaviour
 
     internal void SetActive(bool v)
     {
+        if (!TheParent) return;
         TheParent.gameObject.SetActive(v);
     }
 

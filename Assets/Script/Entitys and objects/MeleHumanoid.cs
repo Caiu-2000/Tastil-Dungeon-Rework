@@ -88,7 +88,7 @@ public class MeleHumanoid : Enemy
         print("Aca se llego con " + other.name);
         other.GetComponent<PlayerMaster>().applyDamage(_damage, true, Attacks[_currentCombo -1].KnockbackForce, transform);
         _AttackAlreadyConected = true;
-        PerkManager.Instance.OnPlayerHitted?.Invoke(_damage, this);
+      
     }
 
     private IEnumerator WaitToCanAttack(float time)

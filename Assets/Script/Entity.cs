@@ -13,7 +13,9 @@ public abstract  class Entity : MonoBehaviour , IHittable
 
     public float _maxStamina = 100.0f, _currentStamina = 0.0f;
     public float _StaminaCD = 1f , _StaminaCount = 0 , _StaminaRegen = 25f;
-    
+
+    public delegate void HealthChange(float NewHealth, float MaxHealth);
+    public HealthChange OnHealthChanged = delegate { };
     private void Awake()
     { 
         _currentLife = _maxLife;

@@ -11,7 +11,7 @@ using UnityEngine.UI;
 public class UiHandler : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI  _contextIndicator;
-    [SerializeField] private PlayerMaster  Player;
+    private PlayerMaster  Player;
     [SerializeField] private Image _lifeBar, _stamBar;
  
     [SerializeField] private List<Image> _hotbarIndicators = new List<Image>(3);
@@ -38,10 +38,19 @@ public class UiHandler : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.Ui= this;
         if (!miMaterial) miMaterial = LifeIndicatorEffect.material;
         miMaterial.SetFloat("_Intensity", 0.0f);
         
+        Player = GameManager.Instance.Player;
+
         Player._inventory._secondHand.OnParryUpdated += UpdateParryCD;
+
+        if (GameManager.Instance.Player)
+        {
+            GameManager.Instance.Player.OnHealthChanged += UpdateLife;
+            GameManager.Instance.Player.OnStaminaChanged += UpdateStam;
+        }
 
     }
 
