@@ -130,6 +130,7 @@ public class MeleHumanoid : Enemy
 
     private void Update()
     {
+        SoundEmitter.PlaySound(SoundTypes.Hit);
         if (_AttackSync && !_AttackAlreadyConected)
         {
             if (_AttackSync.ParryWindowReady)
