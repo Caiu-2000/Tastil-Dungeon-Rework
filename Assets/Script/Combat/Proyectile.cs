@@ -7,14 +7,12 @@ public class Proyectile : MonoBehaviour , IParryable
 {
     [SerializeField] public bool _fromPlayer = false;
 
-    [SerializeField] private Transform _objective;
+    protected Transform _objective;
     [SerializeField] public float _weight, _speed = 1.0f , _damage = 50.0f;
     [SerializeField] private bool _canKnockback = false;
     [SerializeField] private float _timeToAutoDelete = 10.0f;
-    private bool _wasRedirected = false;
+    protected bool _wasRedirected = false;
     
-
-    [SerializeField] private GameObject _objectModel;
 
 
     private void Start()
@@ -34,7 +32,7 @@ public class Proyectile : MonoBehaviour , IParryable
 
     private void OnTriggerEnter(Collider collision)
     {
-
+        
         IHittable hittable;
         if(collision.gameObject.TryGetComponent(out hittable))
         {
@@ -86,6 +84,7 @@ public class Proyectile : MonoBehaviour , IParryable
 
     public void Parry()
     {
+        print("intento parrear");
         RedirectHit(GameManager.Instance.Player.GetLookDretirection());
     }
 
