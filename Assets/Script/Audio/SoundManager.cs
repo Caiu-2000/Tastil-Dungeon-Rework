@@ -9,8 +9,8 @@ public  class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
-    public List<Sound> sounds;
-    public List<AudioAlbum> albums;
+    public Sound[] sounds;
+    public AudioAlbum[] albums;
 
     public Dictionary<string, float> mixerValue = new Dictionary<string, float>();
     
@@ -62,13 +62,13 @@ public  class SoundManager : MonoBehaviour
     }
     public void PlayRandom(SoundTypes name)
     {
-        AudioAlbum album = FindAlbum(name);
+        AudioAlbum album = FindAlbum(name , albums);
         if (album != null) album.PlayAudio();
     }
 
-    private AudioAlbum FindAlbum(SoundTypes name)
+    public static AudioAlbum FindAlbum(SoundTypes name, AudioAlbum[] AlbumToSearch)
     {
-        foreach (AudioAlbum album in albums) 
+        foreach (AudioAlbum album in AlbumToSearch) 
         {
        
             if (album.type == name) { return album; } 

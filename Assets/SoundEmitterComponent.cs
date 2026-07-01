@@ -10,6 +10,7 @@ public class SoundEmitterComponent
     private AudioSource _audioSource;
     [SerializeField]
     private Sound[] sounds;
+ 
     [SerializeField]
     private AudioAlbum[] AudioAlbum;
     [SerializeField]
@@ -18,7 +19,17 @@ public class SoundEmitterComponent
 
     public void InitializeThis()
     {
-     _audioSource.outputAudioMixerGroup = AudioMixerGroup;   
+     _audioSource.outputAudioMixerGroup = AudioMixerGroup;
+
+
+
+        foreach (AudioAlbum album in AudioAlbum)
+        {
+            album.Source =_audioSource;
+            album.Source.outputAudioMixerGroup = album.AudioMixer;
+            album.Source.volume = album.volume;
+        }
+
     }
 
     public void PlaySound(SoundTypes type)
@@ -30,6 +41,13 @@ public class SoundEmitterComponent
             _audioSource.Play(); 
         }
     }
+
+    public void PlayRandom(SoundTypes type)
+    {
+        _audioSource.clip = SoundManager.FindAlbum(type , AudioAlbum ).GetRandomClip();
+        _audioSource.Play();
+    }
+
 
     private bool  FindSound(SoundTypes name , out Sound foundSound)
     {

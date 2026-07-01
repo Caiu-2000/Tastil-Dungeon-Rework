@@ -226,12 +226,19 @@ MonoBehaviour:
     - soundName: 
       type: 5
       soundClip: {fileID: 8300000, guid: 85f236eb195c233469459b5a6fd086ce, type: 3}
-      AudioMixer: {fileID: 187118316471433284, guid: 4b9b05cf0cfc3d04d8e87d3e5e9e1299, type: 2}
+      AudioMixer: {fileID: 0}
       volume: 1
       pitch: 1
       IsLoop: 0
       Source: {fileID: 0}
-    AudioAlbum: []
+    AudioAlbum:
+    - type: 5
+      soundClip:
+      - {fileID: 8300000, guid: 85f236eb195c233469459b5a6fd086ce, type: 3}
+      - {fileID: 8300000, guid: 95554a1f0bfdc284b830183e8c48f2f8, type: 3}
+      AudioMixer: {fileID: 0}
+      volume: 0
+      Source: {fileID: 0}
     AudioMixerGroup: {fileID: 187118316471433284, guid: 4b9b05cf0cfc3d04d8e87d3e5e9e1299, type: 2}
   _coll: {fileID: 5613051332891386071, guid: ac9a2bb7f2c62994cbe6bfec7d28b8d3, type: 3}
   _parryCollision: {fileID: 7799133091847265430, guid: 6d16b8a15c5b3b047aa6a56d1a741688, type: 3}

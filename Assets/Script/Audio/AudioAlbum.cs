@@ -16,7 +16,14 @@ public class AudioAlbum
     internal void PlayAudio()
     {
        
-        Source.clip = soundClip[UnityEngine.Random.Range(0, soundClip.Length)] ;
+        Source.clip = GetRandomClip();
+        Debug.Log(Source.clip.name);
         Source.Play();
     }
+    public AudioClip GetRandomClip()
+    {
+        return soundClip[UnityEngine.Random.Range(0, soundClip.Length)];
+    }
+
+
 }
