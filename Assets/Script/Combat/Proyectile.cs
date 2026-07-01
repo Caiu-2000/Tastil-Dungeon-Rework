@@ -9,7 +9,7 @@ public class Proyectile : MonoBehaviour , IParryable
 
     protected Transform _objective;
     [SerializeField] public float _weight, _speed = 1.0f , _damage = 50.0f;
-    [SerializeField] private bool _canKnockback = false;
+
     [SerializeField] private float _timeToAutoDelete = 10.0f;
     protected bool _wasRedirected = false;
     
@@ -84,7 +84,7 @@ public class Proyectile : MonoBehaviour , IParryable
 
     public void Parry()
     {
-        print("intento parrear");
+     
         RedirectHit(GameManager.Instance.Player.GetLookDretirection());
     }
 

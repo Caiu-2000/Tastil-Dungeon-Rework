@@ -70,7 +70,7 @@ public  class SoundManager : MonoBehaviour
     {
         foreach (AudioAlbum album in albums) 
         {
-            print(album.type);
+       
             if (album.type == name) { return album; } 
         }
         return null;

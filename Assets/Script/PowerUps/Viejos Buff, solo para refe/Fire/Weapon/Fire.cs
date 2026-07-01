@@ -18,7 +18,7 @@ public class Fire : MonoBehaviour, IProjectile
 
     public void SetTarget(Transform target)
     {
-        print("TestFire");
+     
         targetPos = target;
     }
     IEnumerator Destroy()

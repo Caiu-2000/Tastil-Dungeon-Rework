@@ -85,7 +85,7 @@ public class MeleHumanoid : Enemy
 
     internal override void HitConnectded(Collider other)
     {
-        print("Aca se llego con " + other.name);
+     
         other.GetComponent<PlayerMaster>().applyDamage(_damage, true, Attacks[_currentCombo -1].KnockbackForce, transform);
         _AttackAlreadyConected = true;
       

@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
     {
         
         Player.GetComponent<PlayerMovement>().rotationspeed = sens;
-        print(sens);
+       
     }
 
 
@@ -175,7 +175,6 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             elapsedtime += Time.unscaledDeltaTime;
-            print(Time.unscaledDeltaTime + "   " + Time.deltaTime);
             if (elapsedtime > ParryFreezeTime) { break; }
             yield return new WaitForEndOfFrame();
         }
