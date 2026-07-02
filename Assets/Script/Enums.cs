@@ -8,6 +8,8 @@ public enum SoundTypes
     Slash,
     Hit,
     Trhow,
-    EsqueletonHit,
+    
+    Death,
+    Damaged
 
 }

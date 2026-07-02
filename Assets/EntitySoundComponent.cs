@@ -18,19 +18,16 @@ public class EntitySoundComponent : SoundEmitterComponent
         
     }
 
-
-
-
     public void PlayDamaged()
     {
-        Debug.Log("Damaged");
+        PlaySound(SoundTypes.Damaged , true);
     }
     public void PlayDeath()
     {
-        Debug.Log("dead");
+        PlaySound(SoundTypes.Death);
     }
     public void PlayAttack()
     {
-        Debug.Log("Attacked");
+        PlaySound(SoundTypes.Hit);
     }
 }

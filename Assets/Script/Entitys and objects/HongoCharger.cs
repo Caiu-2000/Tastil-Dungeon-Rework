@@ -77,12 +77,14 @@ public class HongoCharger : Enemy
 
     public override void Die()
     {
+        OnEntityDead?.Invoke();
         _roomController?.OnEnemyDied(this);
+        _ai.ChangeEnabled(false);
         _animator.SetTrigger("Died");
         CollisionForbody.enabled = false;
         CanAnimHitted = false;
-        float time = _animator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
-        Destroy(gameObject, time);
+        KeepDead = true;
+        Destroy(gameObject, 3);
         
             
     }
