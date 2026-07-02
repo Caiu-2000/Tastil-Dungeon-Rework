@@ -1,7 +1,7 @@
 
 using System.Collections;
 using UnityEngine;
-
+[RequireComponent(typeof(AudioSource))]
 public class Enemy : Entity
 {
     [SerializeField] private Renderer _renderer;
@@ -33,7 +33,7 @@ public class Enemy : Entity
     {
         
         moveComp = GetComponent<MovementComponent>();
-        
+        SoundEmitter.InitializeThis();
     }
 
     public override void applyDamage(float damage, bool ApplyKnockback = false, float knockbackForce = 0, Transform KnockBackFrom = null)

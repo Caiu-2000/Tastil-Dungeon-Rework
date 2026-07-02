@@ -27,7 +27,7 @@ public class PauseManager :MonoBehaviour
     }
     public void SensChanged()
     {
-        print(slider.value);
+       
         GameManager.Instance.ChangeSens(slider.value);
     }
 

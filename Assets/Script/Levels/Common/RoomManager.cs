@@ -31,7 +31,7 @@ public class RoomManager : MonoBehaviour
     {
         try
         {
-            Debug.Log("Creo el cuarto");
+      
             thisRoom = Instantiate(roomPrefab, roomAnchor.position, Quaternion.identity);
             RoomController thisRoomController = thisRoom.GetComponent<RoomController>();
             thisRoomController.SetReward(rewardPrefab);
@@ -44,7 +44,7 @@ public class RoomManager : MonoBehaviour
         }
         catch (System.Exception e)
         {
-            Debug.LogError("Error: " + e.Message);
+         
             yield break;
         }
            
@@ -54,7 +54,7 @@ public class RoomManager : MonoBehaviour
     }
     public IEnumerator destroyRoom()
     {
-        Debug.Log("Destruyo el cuarto");
+        
         yield return StartCoroutine(FadeController.Instance.Fade());
         Destroy(thisRoom);
     }
@@ -62,7 +62,7 @@ public class RoomManager : MonoBehaviour
     {
         yield return StartCoroutine(destroyRoom());
         yield return StartCoroutine(spawnRoom(roomPrefab, rewardPrefab));
-        Debug.Log("Creo los enemigos");
+       
         thisRoom.GetComponent<RoomController>().ActivateSpawners();
     }
     public void setBool()

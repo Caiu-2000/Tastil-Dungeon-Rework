@@ -50,12 +50,11 @@ public class SpitProjectile : MonoBehaviour , IParryable
         }
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("CorreWachin");
+        
             other.gameObject.GetComponent<PlayerMaster>().applyDamage(10f);
             if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 10f, layerMask))
             {
-                Debug.Log("Homoerotico");
-                print(hit.collider.name);
+
                 groundY = hit.point.y;
             }
             Instantiate(acidPoolPrefab, new Vector3(transform.position.x, groundY, transform.position.z), Quaternion.identity);
@@ -65,8 +64,7 @@ public class SpitProjectile : MonoBehaviour , IParryable
         {
             if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 10f, layerMask))
             {
-                Debug.Log("Homoerotico");
-                print(hit.collider.name);
+             
                 groundY = hit.point.y + 0.05f;
             }
             Instantiate(acidPoolPrefab, new Vector3(transform.position.x, groundY, transform.position.z), Quaternion.identity);

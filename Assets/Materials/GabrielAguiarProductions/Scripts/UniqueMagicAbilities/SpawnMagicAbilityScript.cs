@@ -48,7 +48,7 @@ public class SpawnMagicAbilityScript : MonoBehaviour {
 		if(VFXsShakeParameters.Count > 0)
 			effectShakeParameters = VFXsShakeParameters [0];
 		else
-			Debug.Log ("No Delays added to the ShakeDelays List");
+	
 		
 		if (effectName != null) 
 			effectName.text = effectToSpawn.name;

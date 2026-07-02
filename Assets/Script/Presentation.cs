@@ -20,10 +20,6 @@ public class PresentationController : MonoBehaviour
         yaSeMostro = true;
         StartCoroutine(VideoCloser());
     }
-    private void Update()
-    {
-        print(Time.timeScale);
-    }
 
 
 

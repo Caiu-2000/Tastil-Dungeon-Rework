@@ -116,7 +116,7 @@ public class ItemsHand : MonoBehaviour
 
 
             foreach (Collider collider in collisions) {
-    
+              
                 IParryable parried;
 
                 if (collider.gameObject.TryGetComponent(out parried))
