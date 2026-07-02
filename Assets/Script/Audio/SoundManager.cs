@@ -7,6 +7,7 @@ using UnityEngine.Audio;
 
 public  class SoundManager : MonoBehaviour
 {
+
     public static SoundManager instance;
 
     public Sound[] sounds;
@@ -19,7 +20,11 @@ public  class SoundManager : MonoBehaviour
     private void Awake()
     {
         if (!instance) instance = this;
-        else Destroy(gameObject);
+        else
+        {
+
+            Destroy(gameObject);
+        } 
 
         DontDestroyOnLoad(gameObject);
         InitSounds();

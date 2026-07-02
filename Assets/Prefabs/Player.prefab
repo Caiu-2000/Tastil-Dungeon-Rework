@@ -48,10 +48,10 @@ MonoBehaviour:
   sounds:
   - soundName: Parry
     type: 3
-    soundClip: {fileID: 0}
+    soundClip: {fileID: 8300000, guid: d8390330a9e26c44b82d7baa8d154fa2, type: 3}
     AudioMixer: {fileID: 0}
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 1
     IsLoop: 0
     Source: {fileID: 0}
   - soundName: Slash
@@ -220,7 +220,6 @@ MonoBehaviour:
   _StaminaCD: 1
   _StaminaCount: 0
   _StaminaRegen: 25
-  Ui: {fileID: 0}
   _inventory: {fileID: 5014124460746608401}
   weaponHand: {fileID: 342618992619907853}
   _camera: {fileID: 3696545689655379606}
@@ -237,7 +236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dee80cfc166653d44944d689f1e6c32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ui: {fileID: 0}
   _secondHand: {fileID: 6228939305491822497}
   _weaponsHand: {fileID: 342618992619907853}
 --- !u!114 &4098388992522799871
@@ -805,7 +803,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9183470836773578162}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -856,7 +854,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9183470836773578162}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &2158658100139614340
 MonoBehaviour:
   m_ObjectHideFlags: 0

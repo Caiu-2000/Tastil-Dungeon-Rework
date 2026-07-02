@@ -1,5 +1,7 @@
+using NUnit.Framework;
 using System.Collections;
-
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class ItemsHand : MonoBehaviour
@@ -108,12 +110,13 @@ public class ItemsHand : MonoBehaviour
         float elapsedtime = 0;
         bool ParriedSomething = false;
         OnParryUpdated?.Invoke(0.0f);
+        bool ParriedSounded = false;
         while (true)
         {
             Vector3 AttackPos = GameManager.Instance.GetPlayer().GetLookDretirection() * 0.5f + GameManager.Instance.Player.transform.position + new Vector3(0, 0.5f, 0);
 
             Collider[] collisions = Physics.OverlapSphere(AttackPos, 0.75f);
-
+            List<IParryable> Parrieds = new List<IParryable>();
 
             foreach (Collider collider in collisions) {
               
@@ -123,8 +126,10 @@ public class ItemsHand : MonoBehaviour
                 {
                     
                     parried.Parry();
+                    if (!ParriedSounded) SoundManager.instance.Play(SoundTypes.Parry); ParriedSounded = true;
                     BuffManager.Instance.TriggerOnParry();
                     ParriedSomething = true;
+                    
                     GameManager.Instance.ParriedSuccsecsfully();
                 }
             }
@@ -135,9 +140,10 @@ public class ItemsHand : MonoBehaviour
         }
         if (ParriedSomething)
         {
-        
+         
             OnParryUpdated?.Invoke(1);
             ParryReady = true;
+
         }
         else
         {
