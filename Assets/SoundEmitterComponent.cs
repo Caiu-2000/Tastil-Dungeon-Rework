@@ -7,21 +7,19 @@ using UnityEngine.Audio;
 public class SoundEmitterComponent 
 {
     [SerializeField]
-    private AudioSource _audioSource;
+    protected AudioSource _audioSource;
     [SerializeField]
-    private Sound[] sounds;
+    protected Sound[] sounds;
  
     [SerializeField]
-    private AudioAlbum[] AudioAlbum;
+    protected AudioAlbum[] AudioAlbum;
     [SerializeField]
-    private AudioMixerGroup AudioMixerGroup;
+    protected AudioMixerGroup AudioMixerGroup;
  
 
-    public void InitializeThis()
+    public virtual void InitializeThis(Entity ParentEntity= null)
     {
      _audioSource.outputAudioMixerGroup = AudioMixerGroup;
-
-
 
         foreach (AudioAlbum album in AudioAlbum)
         {
@@ -44,7 +42,10 @@ public class SoundEmitterComponent
 
     public void PlayRandom(SoundTypes type)
     {
-        _audioSource.clip = SoundManager.FindAlbum(type , AudioAlbum ).GetRandomClip();
+        AudioClip clip =  SoundManager.FindAlbum(type , AudioAlbum ).GetRandomClip();
+        Debug.Log(clip);
+        _audioSource.clip = clip;
+        
         _audioSource.Play();
     }
 
@@ -62,13 +63,6 @@ public class SoundEmitterComponent
         foundSound = null;
         return false;
     }
-
-
-
-
-
-
-
 
 
 }

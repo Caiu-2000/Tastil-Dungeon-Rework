@@ -10,18 +10,19 @@ public class AudioAlbum
     public SoundTypes type;
     public AudioClip[] soundClip;
     public AudioMixerGroup AudioMixer;
-    [Range(0f, 1f)] public float volume;
+    [Range(0f, 1f)] public float volume =1.0f;
     public AudioSource Source;
 
     internal void PlayAudio()
     {
        
         Source.clip = GetRandomClip();
-        Debug.Log(Source.clip.name);
+        
         Source.Play();
     }
     public AudioClip GetRandomClip()
     {
+       
         return soundClip[UnityEngine.Random.Range(0, soundClip.Length)];
     }
 

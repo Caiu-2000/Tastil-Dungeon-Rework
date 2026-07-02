@@ -3,8 +3,7 @@ using UnityEngine;
 
 public abstract  class Entity : MonoBehaviour , IHittable
 {
-                    //PENDIENTE CAMBIAR ESTO A PROTEGIDO O ALGO QUE LO PRIVATICE PARA TODO MENOS SUS 
-                    //HERENCIAS
+
     [SerializeField] protected float _currentLife = 0, _maxLife = 100, _DamageCDTime = 0.25f;
     [SerializeField] protected float _armor = 0f;
     [SerializeField] protected float currentShieldedLife;
@@ -16,6 +15,17 @@ public abstract  class Entity : MonoBehaviour , IHittable
 
     public delegate void HealthChange(float NewHealth, float MaxHealth);
     public HealthChange OnHealthChanged = delegate { };
+
+    public delegate void Damaged();
+    public Damaged OnDamaged = delegate { };
+
+    public delegate void Dead();
+    public delegate void Attack();
+
+    public Dead OnEntityDead = delegate { };
+    public Attack OnEntityAttacked = delegate { };
+
+
     private void Awake()
     { 
         _currentLife = _maxLife;
@@ -24,7 +34,7 @@ public abstract  class Entity : MonoBehaviour , IHittable
 
     public virtual void applyDamage(float damage, bool ApplyKnockback = false, float knockbackForce = 0.0f, Transform KnockBackFrom = null)
     {
-        // PARCHE DE MIERDA 
+       
         if (_currentLife == 0) _currentLife = _maxLife;
         float reducedDamage = Mathf.Max(0, damage - _armor);
 
@@ -39,7 +49,7 @@ public abstract  class Entity : MonoBehaviour , IHittable
         else
             currentShieldedLife -= reducedDamage;
 
-
+        OnDamaged?.Invoke();
         if (_currentLife <= 0)
         {
             Die();
@@ -55,6 +65,7 @@ public abstract  class Entity : MonoBehaviour , IHittable
                 
             
         }
+
     }
 
     private void Update()

@@ -114,7 +114,7 @@ public  class SoundManager : MonoBehaviour
         foreach (AudioMixerGroup audioMixer in AudioMixer)
             {
                 audioMixer.audioMixer.SetFloat(audioMixer.name, Mathf.Log(newVol) * 20f);
-                //_AudioMixerG.audioMixer.SetFloat(mixerGroup, Mathf.Log(vol) * 20f);
+                
             }
 
     }

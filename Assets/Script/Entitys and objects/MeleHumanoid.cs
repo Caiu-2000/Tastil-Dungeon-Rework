@@ -33,12 +33,14 @@ public class MeleHumanoid : Enemy
     private bool SpecialInCooldown = false;
 
 
-
+    // Esto no es la mejor practica pero fue una solucion
+    private bool AlreadyEmitedSound = false;
     private void Awake()
     {
 
         _currentLife = _maxLife;
         _maxCombo = Attacks.Count ;
+      
     }
 
 
@@ -61,18 +63,14 @@ public class MeleHumanoid : Enemy
     }
 
 
-    public override void applyDamage(float damage, bool ApplyKnockback = false, float knockbackForce = 0, Transform KnockBackFrom = null)
-    {
 
-        base.applyDamage(damage, ApplyKnockback, knockbackForce, KnockBackFrom);
-
-
-
-    }
 
 
     private IEnumerator SetAttack()
     {
+
+
+        OnEntityAttacked?.Invoke();
         _AttackAlreadyConected = false;
         _animator.SetTrigger("attack");
         _animator.SetInteger("AttackID", _currentCombo - 1);
@@ -130,7 +128,7 @@ public class MeleHumanoid : Enemy
 
     private void Update()
     {
-        SoundEmitter.PlayRandom(SoundTypes.Hit);
+        
         if (_AttackSync && !_AttackAlreadyConected)
         {
             if (_AttackSync.ParryWindowReady)
@@ -173,6 +171,7 @@ public class MeleHumanoid : Enemy
      
         _animator.SetTrigger("Death");
         _ai.ChangeEnabled(false);
+        OnEntityDead?.Invoke();
         Destroy(gameObject, 3.0f);
         _roomController?.OnEnemyDied(this);
         BuffManager.Instance?.TriggerOnEnemyDeath(this.gameObject);

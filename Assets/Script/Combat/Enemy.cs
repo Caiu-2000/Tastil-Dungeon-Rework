@@ -18,7 +18,7 @@ public class Enemy : Entity
     public bool CanAnimHitted = true;
     protected bool KeepDead = false;
 
-    [SerializeField] protected SoundEmitterComponent SoundEmitter = new SoundEmitterComponent();
+    [SerializeField] protected EntitySoundComponent SoundEmitter = new EntitySoundComponent();
 
 
     protected MovementComponent moveComp; 
@@ -33,7 +33,8 @@ public class Enemy : Entity
     {
         
         moveComp = GetComponent<MovementComponent>();
-        SoundEmitter.InitializeThis();
+        print("Este start anda");
+        SoundEmitter.InitializeThis(this);
     }
 
     public override void applyDamage(float damage, bool ApplyKnockback = false, float knockbackForce = 0, Transform KnockBackFrom = null)
@@ -49,7 +50,7 @@ public class Enemy : Entity
 
     public override void Die()
     {
-       
+        OnEntityDead?.Invoke();
         BuffManager.Instance?.TriggerOnEnemyDeath(this.gameObject);
         if(_animator) _animator.SetTrigger("Death");
         _roomController?.OnEnemyDied(this);
