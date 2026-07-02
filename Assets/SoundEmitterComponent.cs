@@ -30,11 +30,13 @@ public class SoundEmitterComponent
 
     }
 
-    public void PlaySound(SoundTypes type)
+    public void PlaySound(SoundTypes type , bool ChangePitch = false)
     {
+
         if (FindSound(type , out Sound sound) )
         {
             Debug.Log(sound.type);
+            if (ChangePitch) _audioSource.pitch = Random.Range(0.8f , 1.1f);
             _audioSource.clip = sound.soundClip;
             _audioSource.Play(); 
         }

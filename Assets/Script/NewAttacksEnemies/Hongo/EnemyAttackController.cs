@@ -45,6 +45,7 @@ public class EnemyAttackController : MonoBehaviour
 
     private void Update()
     {
+        if (HongoMaster.KeepDead) return;
         if (!isRolling && !isAttacking && CheckRange())
             DecideAttack();
     }

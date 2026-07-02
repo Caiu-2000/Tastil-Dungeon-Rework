@@ -16,7 +16,7 @@ public class Enemy : Entity
     public void SetRoomController(RoomController rc) => _roomController = rc;
 
     public bool CanAnimHitted = true;
-    protected bool KeepDead = false;
+    public bool KeepDead = false;
 
     [SerializeField] protected EntitySoundComponent SoundEmitter = new EntitySoundComponent();
 
