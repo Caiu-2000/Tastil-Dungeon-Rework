@@ -171,6 +171,7 @@ public class MeleHumanoid : Enemy
      
         _animator.SetTrigger("Death");
         _ai.ChangeEnabled(false);
+        OnEntityDead?.Invoke();
         Destroy(gameObject, 3.0f);
         _roomController?.OnEnemyDied(this);
         BuffManager.Instance?.TriggerOnEnemyDeath(this.gameObject);
