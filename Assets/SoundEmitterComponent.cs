@@ -42,10 +42,10 @@ public class SoundEmitterComponent
         }
     }
 
-    public void PlayRandom(SoundTypes type)
+    public void PlayRandom(SoundTypes type , bool randomitch = false)
     {
         AudioClip clip =  SoundManager.FindAlbum(type , AudioAlbum ).GetRandomClip();
-        Debug.Log(clip);
+        if (randomitch) _audioSource.pitch = Random.Range(0.8f, 1.1f);
         _audioSource.clip = clip;
         
         _audioSource.Play();

@@ -183,6 +183,7 @@ public class GameManager : MonoBehaviour
 
     internal void PlayerDied()
     {
+        print("Se llamo muerte");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

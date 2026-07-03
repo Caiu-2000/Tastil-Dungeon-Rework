@@ -40,7 +40,7 @@ public class MeleHumanoid : Enemy
 
         _currentLife = _maxLife;
         _maxCombo = Attacks.Count ;
-      
+        SoundEmitter.InitializeThis(this);
     }
 
 

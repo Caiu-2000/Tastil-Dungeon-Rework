@@ -1,4 +1,5 @@
 
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 [System.Serializable]
@@ -20,6 +21,7 @@ public class EntitySoundComponent : SoundEmitterComponent
 
     public void PlayDamaged()
     {
+        Debug.Log("Se daño al enemmigo");
         PlaySound(SoundTypes.Damaged , true);
     }
     public void PlayDeath()
