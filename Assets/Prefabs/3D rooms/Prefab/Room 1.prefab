@@ -3765,6 +3765,10 @@ PrefabInstance:
       propertyPath: _proyectile
       value: 
       objectReference: {fileID: 5639646953316920197, guid: 6100af250f024b441a8e129db0b163dd, type: 3}
+    - target: {fileID: 5259395859738113456, guid: 115fd913dac81d04ebe9d3732f0789f2, type: 3}
+      propertyPath: _timeBetween
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6566302245629152817, guid: 115fd913dac81d04ebe9d3732f0789f2, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5

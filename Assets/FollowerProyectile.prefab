@@ -50,7 +50,7 @@ MonoBehaviour:
   _fromPlayer: 0
   _weight: 0
   _speed: 10
-  _damage: 10
+  _damage: 5
   _timeToAutoDelete: 3
 --- !u!54 &-4780303394244563328
 Rigidbody:
