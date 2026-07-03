@@ -220,7 +220,6 @@ MonoBehaviour:
   _damage: 15
   _knockBackForce: 100
   CanAnimHitted: 1
-  KeepDead: 0
   SoundEmitter:
     _audioSource: {fileID: 3351371492046591572}
     sounds:
@@ -1340,10 +1339,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 5.988986
       objectReference: {fileID: 0}
-    - target: {fileID: 2664098864995057252, guid: f69fb4423f7b13b41a72abbcf9bbee52, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 5a47bb9db96d4bb4f9ec09e2e47d7564, type: 2}
     - target: {fileID: 2866567497599042752, guid: f69fb4423f7b13b41a72abbcf9bbee52, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -4.2490525
