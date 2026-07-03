@@ -17,9 +17,6 @@ public class PlayerMaster : Entity
     [SerializeField]
     private BuffManager manager;
 
-
-
-
     public delegate void StamChange(float NewStam, float MaxStam);
     public StamChange OnStaminaChanged = delegate { };
 
@@ -114,6 +111,7 @@ public class PlayerMaster : Entity
             currentShieldedLife -= reducedDamage;
         }
         BuffManager.Instance.TriggerOnPlayerHitted(this.gameObject);
+        SoundManager.instance.PlayRandom(SoundTypes.Damaged);
         if (_currentLife <= 0)
         {
             Die();
