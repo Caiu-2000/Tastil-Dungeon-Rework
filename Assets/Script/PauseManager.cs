@@ -1,4 +1,5 @@
-using JetBrains.Annotations; // Esto de donde salio xD
+
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,8 +8,14 @@ public class PauseManager :MonoBehaviour
 {
     [SerializeField]
     public UnityEngine.UI.Slider slider;
+    
+    
     [SerializeField]
-    public GameObject TheParent;
+    public GameObject Pause;
+
+    [SerializeField]
+    public GameObject Config;
+    
     public static PauseManager Instance;
     private bool _audioOn = true;
 
@@ -27,19 +34,22 @@ public class PauseManager :MonoBehaviour
     }
     public void SensChanged()
     {
-       
+        
         GameManager.Instance.ChangeSens(slider.value);
     }
 
     internal void SetActive(bool v)
     {
-        if (!TheParent) return;
-        TheParent.gameObject.SetActive(v);
+        if (!Pause) return;
+        toggleGeneral(v);
+        ToggleConfig(false);
     }
 
 
     public void ClosePressed()
     {
+        toggleGeneral(false);
+        ToggleConfig(true);
         GameManager.Instance.Resume();
     }
 
@@ -71,5 +81,26 @@ public class PauseManager :MonoBehaviour
         
     }
 
+    public void configPressed()
+    {
+        toggleGeneral(false);
+        ToggleConfig(true);
+    }
 
+    public void CloseConfigPressed()
+    {
+        toggleGeneral(true);
+        ToggleConfig(false);
+    }
+
+    private void toggleGeneral(bool active)
+    {
+        Pause.GetComponent<GraphicRaycaster>().enabled = active;
+        Pause.gameObject.SetActive(active);
+    }
+    private void ToggleConfig(bool active)
+    {
+        Config.GetComponent<GraphicRaycaster>().enabled = active;
+        Config.gameObject.SetActive(active);
+    }
 }

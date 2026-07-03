@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class HongoCharger : Enemy
 {
+    /*
     [SerializeField] MovementComponent _moveComp;
     [SerializeField] float _SpecialCD = 2.0f;
     [SerializeField] float _specialDuration = 1.0f;
     [SerializeField] float _specialPreparationTime = 1.0f;
     [SerializeField] float _speedMult = 2.0f;
-    [SerializeField] private EnemyHitCollision CollisionForbody;
+    
     
     private bool _attackInProgress = false;
     private Vector2 _attackDir;
-    
+    */
     public bool IsOnBurrow = false;
-
+    [SerializeField] private EnemyHitCollision CollisionForbody;
     public override void DistanceReached()
     {
         /*
@@ -68,12 +69,12 @@ public class HongoCharger : Enemy
     //    _moveComp.ChangeDamping(100);
     //    StartCoroutine(CountCDforSpecial());
     }
-
+    /*
     private IEnumerator CountCDforSpecial()
     {
         yield return new WaitForSeconds(_specialDuration);
         CanAttack = true;
-    }
+    }*/
 
     public override void Die()
     {

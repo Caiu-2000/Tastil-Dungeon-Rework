@@ -39,6 +39,16 @@ public class MainMenu : MonoBehaviour
         _animator.SetTrigger("CLose"); // Ojo: el trigger se llama "CLose" en tu Animator.
     }
 
+    public void CloseCredits()
+    {
+        _animator.SetTrigger("CloseCredits");
+    }
+    public void OpenCredits()
+    {
+        _animator.SetTrigger("OpenCredits");
+    }
+
+
     // SALIR
     public void QuitGame()
     {
