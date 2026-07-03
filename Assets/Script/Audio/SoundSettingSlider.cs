@@ -21,6 +21,9 @@ public class SoundSettingSlider : MonoBehaviour
         if(!SoundManager.instance) { print("Te olvidaste el manager"); }
         else
         {
+
+            print(mixerGroup + "     " + _AudioMixerG.name);
+
             SoundM = SoundManager.instance;
             mixerGroup = _AudioMixerG.name;
             if (!SoundM.mixerValue.ContainsKey(mixerGroup))
@@ -32,11 +35,13 @@ public class SoundSettingSlider : MonoBehaviour
     }
     public void SetVolume(float vol)
     {
+        print(_AudioMixerG.audioMixer.outputAudioMixerGroup + "   " + mixerGroup);
         _AudioMixerG.audioMixer.SetFloat(mixerGroup, Mathf.Log(vol) * 20f);
     }
 
     public void SetVolumeValues()
     {
+        
         SoundM.mixerValue[mixerGroup] = slider.value;
     }
     public void LoadVolumeValues()
