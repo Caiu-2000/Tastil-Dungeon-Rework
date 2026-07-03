@@ -81,6 +81,14 @@ MonoBehaviour:
     pitch: 1.3
     IsLoop: 0
     Source: {fileID: 0}
+  - soundName: Gamemusic
+    type: 10
+    soundClip: {fileID: 8300000, guid: 3fd31d04c87171746873e53de72df075, type: 3}
+    AudioMixer: {fileID: 2707753592497114361, guid: 4b9b05cf0cfc3d04d8e87d3e5e9e1299, type: 2}
+    volume: 1
+    pitch: 1.3
+    IsLoop: 0
+    Source: {fileID: 0}
   albums:
   - type: 4
     soundClip:

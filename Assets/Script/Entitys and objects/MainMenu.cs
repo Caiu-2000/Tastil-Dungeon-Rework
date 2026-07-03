@@ -28,6 +28,7 @@ public class MainMenu : MonoBehaviour
     public void LoadLevel(int Level = 1)
     {
         SoundManager.instance.StopPlaying(SoundTypes.Menumusic);
+        SoundManager.instance.Play(SoundTypes.PlayingMusic , true);
         SceneManager.LoadScene(Level);
     }
 

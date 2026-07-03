@@ -131,6 +131,9 @@ public  class SoundManager : MonoBehaviour
     }
     private void Update()
     {
-        this.gameObject.transform.position = Camera.main.transform.position;
+        if (Camera.main)
+        {
+            this.gameObject.transform.position = Camera.main.transform.position;
+        }
     }
 }
