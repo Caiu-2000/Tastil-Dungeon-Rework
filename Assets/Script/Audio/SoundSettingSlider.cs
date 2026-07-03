@@ -29,7 +29,7 @@ public class SoundSettingSlider : MonoBehaviour
         else
         {
 
-            print(mixerGroup + "     " + _AudioMixerG.name);
+         
             if (mixerGroup == "SFX") WasSFX=true;
             SoundM = SoundManager.instance;
             mixerGroup = _AudioMixerG.name;
@@ -65,5 +65,7 @@ public class SoundSettingSlider : MonoBehaviour
     {
         SetVolumeValues();
     }
+
+
 
 }

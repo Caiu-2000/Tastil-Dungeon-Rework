@@ -125,4 +125,12 @@ public  class SoundManager : MonoBehaviour
 
     }
 
+    public void StopPlaying(SoundTypes name)
+    {
+        FindSound(name).Source.Stop();
+    }
+    private void Update()
+    {
+        this.gameObject.transform.position = Camera.main.transform.position;
+    }
 }

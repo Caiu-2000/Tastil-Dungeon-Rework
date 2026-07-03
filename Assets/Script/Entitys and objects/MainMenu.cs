@@ -16,15 +16,18 @@ public class MainMenu : MonoBehaviour
         Cursor.visible = true;
 
         if (!GameManager.Instance) return;
-        GameManager.Instance.pause.SetActive(false);
+
+        GameManager.Instance.pause?.SetActive(false);
         Time.timeScale = 1;
         GameManager.Instance.IsPaused = false;
+        SoundManager.instance.Play(SoundTypes.Menumusic , true);
     }
 
     // JUGAR (partida nueva). También sirve para CRÉDITOS si es una escena:
     // le pasás el índice de esa escena desde el OnClick.
     public void LoadLevel(int Level = 1)
     {
+        SoundManager.instance.StopPlaying(SoundTypes.Menumusic);
         SceneManager.LoadScene(Level);
     }
 
@@ -59,4 +62,12 @@ public class MainMenu : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
     }
+
+
+
+    public void MouseHoverButton()
+    {
+        SoundManager.instance.PlayRandom(SoundTypes.Menu);
+    }
+
 }

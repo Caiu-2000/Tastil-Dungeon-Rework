@@ -49,9 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fromPlayer: 0
   _weight: 0
-  _speed: 3
+  _speed: 10
   _damage: 10
-  _canKnockback: 0
   _timeToAutoDelete: 10
 --- !u!54 &-4780303394244563328
 Rigidbody:

@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _proyectile: {fileID: 5073768170924246124, guid: f1cb8d795475c3a4dad97bbcf9eee6e6, type: 3}
-  _timeBetween: 1
+  _timeBetween: 5
   _firingPoint: {fileID: 5287996040022758656}
   _fireDirection: {fileID: 5564787490585253519}
 --- !u!1 &5715752188472297552

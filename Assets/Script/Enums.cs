@@ -10,6 +10,8 @@ public enum SoundTypes
     Trhow,
     
     Death,
-    Damaged
+    Damaged,
+    Menumusic,
+    PlayingMusic
 
 }
