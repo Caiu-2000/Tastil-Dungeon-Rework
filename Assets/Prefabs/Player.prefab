@@ -49,7 +49,7 @@ MonoBehaviour:
   - soundName: Parry
     type: 3
     soundClip: {fileID: 8300000, guid: d8390330a9e26c44b82d7baa8d154fa2, type: 3}
-    AudioMixer: {fileID: 0}
+    AudioMixer: {fileID: 187118316471433284, guid: 4b9b05cf0cfc3d04d8e87d3e5e9e1299, type: 2}
     volume: 1
     pitch: 1
     IsLoop: 0

@@ -33,7 +33,7 @@ public class Enemy : Entity
     {
         
         moveComp = GetComponent<MovementComponent>();
-        print("Este start anda");
+        
         SoundEmitter.InitializeThis(this);
     }
 
