@@ -27,6 +27,7 @@ public class UiHandler : MonoBehaviour
     [SerializeField] private Image ParryIndicator;
     [SerializeField] private Image HitMarker;
     [SerializeField] private Image ParryMarker;
+    [SerializeField] private Image critMarker;
 
 
 
@@ -51,6 +52,7 @@ public class UiHandler : MonoBehaviour
         {
             GameManager.Instance.Player.OnHealthChanged += UpdateLife;
             GameManager.Instance.Player.OnStaminaChanged += UpdateStam;
+            GameManager.Instance.Player.OnHittconnected += HitConnected;
         }
 
     }
@@ -138,8 +140,9 @@ public class UiHandler : MonoBehaviour
     }
 
     public void HitConnected(bool WasCrit = false) 
-    { 
-    
+    {
+        StartCoroutine(ShowAndHideSprite(HitMarker, 0.2f));
+        if (WasCrit) StartCoroutine(ShowAndHideSprite(critMarker, 0.2f));
     
     }
     public void ParriedSomething() 

@@ -80,7 +80,7 @@ public class MeleWeapon : Weapon
         yield return new WaitForSeconds(AttackTimers[_currentCombo -1]);
         DebugBool = true;
 
-   
+        bool Connected = false, crit = false;
         float elapsedTime = 0;
 
         /*Perdoname padre por que eh pecado
@@ -106,15 +106,17 @@ public class MeleWeapon : Weapon
                 if (hitable == null) continue;
                 if (AlreadyHitted.Contains(hitable)) continue;
                 if (hitable.GetType() == ParentEntity.GetType()) { continue; }
-                
+                Connected = true;
                 if (Random.Range(0f, 1f) < _critChance / 100)              //Divido por 100 asi hago que la critchance vaya entre 0 a 1 (pasando por las comas), se prodria haber hecho diferente pero queria usar floats
                 {
                     hitable.Hit(_damage * 1.5f, _canKnockback, _knockbackForce, ParentEntity.transform); //CRITICO, aca tendriamos que llamar vfx y toda la cosa
                     BuffManager.Instance.TriggerOnHit(Hitted.gameObject);
                     BuffManager.Instance.TriggerOnCriticalHit(Hitted.gameObject);
+                    crit = true;
                 }
                 else
                 {
+                    
                     hitable.Hit(_damage, _canKnockback, _knockbackForce, ParentEntity.transform);
                     BuffManager.Instance.TriggerOnHit(Hitted.gameObject);
                 }
@@ -122,6 +124,10 @@ public class MeleWeapon : Weapon
             }
             if (elapsedTime > _attackCollDuration) break;
             yield return null;
+        }
+        if (Connected)
+        {
+            ParentEntity.OnHittconnected?.Invoke(crit);
         }
         DebugBool = false;
         
