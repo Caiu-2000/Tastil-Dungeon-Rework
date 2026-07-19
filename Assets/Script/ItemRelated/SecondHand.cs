@@ -15,8 +15,11 @@ public class ItemsHand : MonoBehaviour
     bool ParryReady = true;
 
     public delegate void ParryCdUpdated(float cD);
+    public delegate void ParriedSucces();
+
 
     public ParryCdUpdated OnParryUpdated = delegate { };
+    public ParriedSucces OnParriedSucces = delegate { };
 
     [SerializeField]
     private float CdCooldown = 0.5f;
@@ -130,7 +133,7 @@ public class ItemsHand : MonoBehaviour
                     BuffManager.Instance.TriggerOnParry();
                     ParriedSomething = true;
                     
-                    GameManager.Instance.ParriedSuccsecsfully();
+                    OnParriedSucces?.Invoke();
                 }
             }
             

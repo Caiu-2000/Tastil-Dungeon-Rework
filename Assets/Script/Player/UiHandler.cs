@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,6 +25,8 @@ public class UiHandler : MonoBehaviour
     private Material miMaterial;
 
     [SerializeField] private Image ParryIndicator;
+    [SerializeField] private Image HitMarker;
+    [SerializeField] private Image ParryMarker;
 
 
 
@@ -45,7 +46,7 @@ public class UiHandler : MonoBehaviour
         Player = GameManager.Instance.Player;
 
         Player._inventory._secondHand.OnParryUpdated += UpdateParryCD;
-
+        Player._inventory._secondHand.OnParriedSucces += ParriedSomething;
         if (GameManager.Instance.Player)
         {
             GameManager.Instance.Player.OnHealthChanged += UpdateLife;
@@ -85,9 +86,6 @@ public class UiHandler : MonoBehaviour
         
         StopAllCoroutines();
         StartCoroutine(ChangeUILife(current , max));
-
-        
-       
     }
 
     public void updateHotbarItem(int _index , Item _newItem)
@@ -139,5 +137,24 @@ public class UiHandler : MonoBehaviour
         ParryIndicator.fillAmount = newPercentaje;
     }
 
+    public void HitConnected(bool WasCrit = false) 
+    { 
+    
+    
+    }
+    public void ParriedSomething() 
+    {
+        StartCoroutine(ShowAndHideSprite(ParryMarker, 0.2f));
+    
+    }
+
+    private IEnumerator ShowAndHideSprite(Image sprite , float time)
+    {
+        sprite.color = Color.white;
+        yield return new WaitForSeconds(time);
+        
+        sprite.color = new Color(0, 0, 0, 0);
+
+    }
 
 }

@@ -116,7 +116,10 @@ public class GameManager : MonoBehaviour
 
 
 
-
+    public void SecondHandUpdate(ItemsHand newHand)
+    {
+        newHand.OnParriedSucces += ParriedSuccsecsfully;
+    }
 
 
 
