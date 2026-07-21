@@ -86,6 +86,10 @@ public class Enemy : Entity
         other.GetComponent<PlayerMaster>().applyDamage(_damage , true , _knockBackForce , transform);
         //PerkManager.Instance.OnPlayerHitted?.Invoke(_damage, this);
     }
+    internal virtual void HitConnectded(PlayerMaster player)
+    {
+        player.applyDamage(_damage , true , _knockBackForce , transform);
+    }
 
     public IEnumerator PlayAndFinish(string TriggerName)
     {

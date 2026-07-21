@@ -20,6 +20,8 @@ public class PlayerMaster : Entity
     public delegate void StamChange(float NewStam, float MaxStam);
     public StamChange OnStaminaChanged = delegate { };
 
+    public bool DamageInCd = false;
+   
 
 
     private void Start()
@@ -93,7 +95,8 @@ public class PlayerMaster : Entity
 
     public override void applyDamage(float damage, bool ApplyKnockback = false, float knockbackForce = 0, Transform KnockBackFrom = null)
     {
-
+        if (DamageInCd) { return; }
+        StartCoroutine(DamageCd());
         float reducedDamage = Mathf.Max(0, damage - _armor);
         Shake(0.15f, 0.1f);
         if (currentShieldedLife <= 0)
@@ -212,5 +215,11 @@ public class PlayerMaster : Entity
         _camera.gameObject.SetActive(!_camera.gameObject.activeSelf);
     }
 
+    private IEnumerator DamageCd()
+    {
+        DamageInCd = true;
+        yield return new WaitForSeconds(_DamageCDTime);
+        DamageInCd = false;
+    }
 
 }
