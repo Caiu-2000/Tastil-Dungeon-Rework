@@ -11,7 +11,7 @@ public class StaminaItem : Item
         StartCoroutine(UseItem("Drink"));
 
     }
-    protected virtual IEnumerator UseItem(string AnimName = "")
+    protected override IEnumerator UseItem(string AnimName = "")
     {
         if (AnimName != "") _hand.SetAnimationTrigger("Drink");
         yield return new WaitForSeconds(_useTime);
