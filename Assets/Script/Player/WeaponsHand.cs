@@ -7,13 +7,6 @@ public class WeaponsHand : MonoBehaviour
     private Weapon _equipedWeapon;
     [SerializeField] Transform WeaponPoint;
 
-
-    public void Start()
-    {
-        SuscribeToInput();
-    }
-
-
     public void EquipWeapon(Weapon _newWeapon)
     {
         if (_equipedWeapon != null)
@@ -21,16 +14,8 @@ public class WeaponsHand : MonoBehaviour
             _equipedWeapon.DeactivateWeapon();
             _equipedWeapon.transform.SetParent(null);
             _equipedWeapon.ResetPosition();
-            transform.localRotation = Quaternion.identity;
-
-           
+            transform.localRotation = Quaternion.identity;       
             _equipedWeapon.SetParentEntity(null);
-
-
-
-
-
-
             _equipedWeapon = null;
 
         }
@@ -43,35 +28,6 @@ public class WeaponsHand : MonoBehaviour
         GameManager.Instance.Player.PickedNewWeapon(_equipedWeapon.WeaponID);
         _equipedWeapon.ActivateWeapon();
 
-
-
-        
-   
-
-
     }
-
-    public virtual void AttackPressed()
-    {
-        if (_equipedWeapon)
-        {
-            
-        }
-    }
-    public virtual void AttackReleased()
-    {
-
-    }
-
-
-    private void SuscribeToInput()
-    {
-        GameManager.Instance.InputHandler.OnAttackPressed += AttackPressed;
-        GameManager.Instance.InputHandler.OnAttackReleased += AttackReleased;
-    }
-    private void CancelInput()
-    {
-        GameManager.Instance.InputHandler.OnAttackPressed  -= AttackPressed;
-        GameManager.Instance.InputHandler.OnAttackReleased -= AttackReleased;
-    }
+  
 }

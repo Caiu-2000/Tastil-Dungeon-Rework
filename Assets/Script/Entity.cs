@@ -25,7 +25,8 @@ public abstract  class Entity : MonoBehaviour , IHittable
     public Dead OnEntityDead = delegate { };
     public Attack OnEntityAttacked = delegate { };
 
-
+    public delegate void Hittconnected(bool WasCrit = false);
+    public Hittconnected OnHittconnected = delegate { };
     private void Awake()
     { 
         _currentLife = _maxLife;
