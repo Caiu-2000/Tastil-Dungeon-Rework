@@ -22,7 +22,7 @@ public class NegroniWeaponBuff : IOnCriticalHit
         {
             yield return new WaitForSeconds(tickRate);
             elapsed += tickRate;
-            enemy.GetComponent<Entity>().applyDamage(data.damage * tickRate);
+            enemy.GetComponent<Entity>().applyDamage(new HittData(data.damage * tickRate));
         }
 
         if (vfx != null) Object.Destroy(vfx);

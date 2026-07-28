@@ -11,6 +11,7 @@ public class SpitProjectile : MonoBehaviour , IParryable
 
     private bool Parried = false;
 
+    [SerializeField] private float PoisonDamage = 10.0f;
 
     private void Awake()
     {
@@ -45,13 +46,13 @@ public class SpitProjectile : MonoBehaviour , IParryable
  
         if (other.TryGetComponent(out EnemyHitCollision enemy) && Parried) 
         {
-            enemy.parentEnemy.applyDamage(10.0f);
+            enemy.parentEnemy.applyDamage(new HittData(PoisonDamage));
             Destroy(this.gameObject);
         }
         if (other.gameObject.CompareTag("Player"))
         {
         
-            other.gameObject.GetComponent<PlayerMaster>().applyDamage(10f);
+            other.gameObject.GetComponent<PlayerMaster>().applyDamage(new HittData(PoisonDamage));
             if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 10f, layerMask))
             {
 

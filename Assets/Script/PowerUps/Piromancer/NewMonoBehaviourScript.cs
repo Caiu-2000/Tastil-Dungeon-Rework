@@ -14,6 +14,6 @@ public class NewMonoBehaviourScript : MonoBehaviour
     void Update()
     {
         if (Keyboard.current.numpad1Key.wasPressedThisFrame)
-            player.applyDamage(1, false, 0, this.gameObject.transform);
+            player.applyDamage(new HittData(1,null,this.gameObject.transform.position));
     }
 }

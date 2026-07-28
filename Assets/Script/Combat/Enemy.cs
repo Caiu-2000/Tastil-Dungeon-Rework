@@ -37,10 +37,10 @@ public class Enemy : Entity
         SoundEmitter.InitializeThis(this);
     }
 
-    public override void applyDamage(float damage, bool ApplyKnockback = false, float knockbackForce = 0, Transform KnockBackFrom = null)
+    public override void applyDamage(HittData hitt)
     {
         if (_damCD) { return; }
-        base.applyDamage(damage, ApplyKnockback, knockbackForce, KnockBackFrom);
+        base.applyDamage(hitt);
 
         if (CanAnimHitted && _animator) _animator.SetTrigger("hitted");
         
@@ -83,12 +83,12 @@ public class Enemy : Entity
     internal virtual void HitConnectded(Collider other)
     {
 
-        other.GetComponent<PlayerMaster>().applyDamage(_damage , true , _knockBackForce , transform);
+        other.GetComponent<PlayerMaster>().applyDamage(new HittData(_damage , this , transform.position));
         //PerkManager.Instance.OnPlayerHitted?.Invoke(_damage, this);
     }
     internal virtual void HitConnectded(PlayerMaster player)
     {
-        player.applyDamage(_damage , true , _knockBackForce , transform);
+        player.applyDamage(new HittData(_damage, this, transform.position));
     }
 
     public IEnumerator PlayAndFinish(string TriggerName)

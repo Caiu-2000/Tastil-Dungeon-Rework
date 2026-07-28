@@ -83,8 +83,8 @@ public class MeleHumanoid : Enemy
 
     internal override void HitConnectded(Collider other)
     {
-     
-        other.GetComponent<PlayerMaster>().applyDamage(_damage, true, Attacks[_currentCombo -1].KnockbackForce, transform);
+        // Lo viejo era _damage, true, Attacks[_currentCombo -1].KnockbackForce, transform
+        other.GetComponent<PlayerMaster>().applyDamage(new HittData(_damage , this, transform.position , Attacks[_currentCombo - 1].KnockbackForce));
         _AttackAlreadyConected = true;
       
     }

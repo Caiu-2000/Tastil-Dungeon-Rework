@@ -21,13 +21,6 @@ public class RangedEnemy : Enemy
 
     }
 
-    public override void applyDamage(float damage, bool ApplyKnockback = false, float knockbackForce = 0, Transform KnockBackFrom = null)
-    {
-
-        base.applyDamage(damage, ApplyKnockback, knockbackForce, KnockBackFrom);
-
-    }
-
 
 
     private IEnumerator SettAttackCollision()

@@ -33,11 +33,11 @@ public abstract  class Entity : MonoBehaviour , IHittable
         _currentStamina = _maxStamina;
     }
 
-    public virtual void applyDamage(float damage, bool ApplyKnockback = false, float knockbackForce = 0.0f, Transform KnockBackFrom = null)
+    public virtual void applyDamage(HittData hitt)
     {
        
         if (_currentLife == 0) _currentLife = _maxLife;
-        float reducedDamage = Mathf.Max(0, damage - _armor);
+        float reducedDamage = Mathf.Max(0, hitt.Damage - _armor);
 
         if (currentShieldedLife <= 0)
             _currentLife -= reducedDamage;
@@ -55,13 +55,13 @@ public abstract  class Entity : MonoBehaviour , IHittable
         {
             Die();
         }
-        if (ApplyKnockback)
+        if (hitt.KnockbackForce > 0)
         {
-            Vector3 KBDir = this.transform.position - KnockBackFrom.position;
+            Vector3 KBDir = transform.position - hitt.Hittfrom;
 
             if(this.gameObject.TryGetComponent(out MovementComponent movecomp))
             {
-                movecomp.gameObject.GetComponent<MovementComponent>().ApplyKnockback(KBDir, knockbackForce * 1.5f);
+                movecomp.gameObject.GetComponent<MovementComponent>().ApplyKnockback(KBDir, hitt.KnockbackForce * 1.5f);
             }
                 
             
@@ -99,9 +99,9 @@ public abstract  class Entity : MonoBehaviour , IHittable
         if (_currentLife > _maxLife) _currentLife = _maxLife;
     }
 
-    public void Hit(float damage = 0, bool ApplyKnockback = false, float knockbackForce = 0, Transform KnockBackFrom = null)
+    public void Hit(HittData Hitt)
     {
-        applyDamage(damage,ApplyKnockback,knockbackForce,KnockBackFrom);
+        applyDamage(Hitt);
     }
     public void SetShield(float amount)
     {

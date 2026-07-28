@@ -16,7 +16,7 @@ public class AcidPool : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && !coroutineRunning)
         {
             coroutineRunning = true;
-            other.GetComponent<PlayerMaster>().applyDamage(damage);
+            other.GetComponent<PlayerMaster>().applyDamage(new HittData(damage));
             StartCoroutine(DamageCoroutine());
         }
     }

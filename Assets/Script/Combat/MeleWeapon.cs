@@ -109,15 +109,16 @@ public class MeleWeapon : Weapon
                 Connected = true;
                 if (Random.Range(0f, 1f) < _critChance / 100)              //Divido por 100 asi hago que la critchance vaya entre 0 a 1 (pasando por las comas), se prodria haber hecho diferente pero queria usar floats
                 {
-                    hitable.Hit(_damage * 1.5f, _canKnockback, _knockbackForce, ParentEntity.transform); //CRITICO, aca tendriamos que llamar vfx y toda la cosa
+                    hitable.Hit(new HittData(_damage * 1.5f, ParentEntity, ParentEntity.transform.position, _knockbackForce)); //CRITICO, aca tendriamos que llamar vfx y toda la cosa
                     BuffManager.Instance.TriggerOnHit(Hitted.gameObject);
+                    print(Hitted.gameObject);
                     BuffManager.Instance.TriggerOnCriticalHit(Hitted.gameObject);
                     crit = true;
                 }
                 else
                 {
                     
-                    hitable.Hit(_damage, _canKnockback, _knockbackForce, ParentEntity.transform);
+                    hitable.Hit(new HittData(_damage, ParentEntity, ParentEntity.transform.position, _knockbackForce));
                     BuffManager.Instance.TriggerOnHit(Hitted.gameObject);
                 }
                 AlreadyHitted.Add(hitable);

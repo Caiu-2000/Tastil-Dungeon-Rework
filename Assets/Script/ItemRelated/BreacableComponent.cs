@@ -19,7 +19,7 @@ public class BreacableComponent : MonoBehaviour , IHittable
         Destroy(gameObject);
     }
 
-    public void Hit(float damage = 0, bool ApplyKnockback = false, float knockbackForce = 0, Transform KnockBackFrom = null)
+    public void Hit(HittData hitt)
     {
         Breack();
     }

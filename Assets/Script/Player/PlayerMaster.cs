@@ -93,11 +93,11 @@ public class PlayerMaster : Entity
     }
 
 
-    public override void applyDamage(float damage, bool ApplyKnockback = false, float knockbackForce = 0, Transform KnockBackFrom = null)
+    public override void applyDamage(HittData hitt)
     {
         if (DamageInCd) { return; }
         StartCoroutine(DamageCd());
-        float reducedDamage = Mathf.Max(0, damage - _armor);
+        float reducedDamage = Mathf.Max(0, hitt.Damage - _armor);
         Shake(0.15f, 0.1f);
         if (currentShieldedLife <= 0)
         {
@@ -119,10 +119,10 @@ public class PlayerMaster : Entity
         {
             Die();
         }
-        if (ApplyKnockback)
+        if (hitt.KnockbackForce > 0)
         {
-            Vector3 KBDir = this.transform.position - KnockBackFrom.position;
-            this.gameObject.GetComponent<PlayerMovement>().ApplyKnockback(KBDir, knockbackForce);
+            Vector3 KBDir = this.transform.position - hitt.Hittfrom;
+            this.gameObject.GetComponent<PlayerMovement>().ApplyKnockback(KBDir, hitt.KnockbackForce);
         }
 
         OnHealthChanged.Invoke(_currentLife, _maxLife);

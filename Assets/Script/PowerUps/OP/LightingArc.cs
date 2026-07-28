@@ -27,7 +27,7 @@ public class LightingArc : IOnHitBuff
                 arc.Fire(enemy.transform.position, collider.gameObject.transform.position);
                 doDamage = collider.gameObject.GetComponentInParent<Enemy>();
                 if (doDamage == null) doDamage = collider.gameObject.GetComponent<Enemy>();
-                doDamage.applyDamage(10f);
+                doDamage.applyDamage(new HittData(10.0f));
             }    
         }
     }

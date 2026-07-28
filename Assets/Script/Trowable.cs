@@ -11,7 +11,7 @@ public class Trowable : Proyectile
         if( collision.TryGetComponent(out hitted))
         {
             if (hitted.GetType() == typeof(PlayerMaster) && _fromPlayer) { return; }
-            hitted.Hit(_damage);
+            hitted.Hit(new HittData(_damage));
         }
         Destroy(gameObject);    
 

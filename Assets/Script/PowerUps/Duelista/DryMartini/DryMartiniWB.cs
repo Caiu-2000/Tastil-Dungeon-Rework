@@ -13,7 +13,10 @@ public class DryMartiniWB : IOnCriticalHit
 
     public void ExecuteOnCriticalHit(GameObject enemy, BuffManager manager)
     {
-        enemy.GetComponent<MovementComponent>().ApplyKnockback(enemy.transform.position - player.transform.position, 1000);
-        manager.AddBuffOnAttack(new DryMartiniDashWB(enemy.transform));
+        if (enemy.TryGetComponent<MovementComponent>(out MovementComponent movecomp))
+        {
+            movecomp.ApplyKnockback(enemy.transform.position - player.transform.position, 1000);
+        }
+            manager.AddBuffOnAttack(new DryMartiniDashWB(enemy.transform));
     }
 }
