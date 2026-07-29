@@ -794,7 +794,7 @@ GameObject:
   - component: {fileID: 599334898184540820}
   m_Layer: 0
   m_Name: PISOLOW1 (1)
-  m_TagString: Untagged
+  m_TagString: Piso
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -808,7 +808,7 @@ Transform:
   m_GameObject: {fileID: 6548417500316914483}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 3.5855536, z: -1.264519}
+  m_LocalPosition: {x: 116.6, y: 3.5855536, z: -1.264519}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2091,6 +2091,14 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 2139a98855b95ed46abc9808790d2271, type: 2}
+    - target: {fileID: -4122283166180443422, guid: 110e0b24a60524845a39fa040bacb996, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -4122283166180443422, guid: 110e0b24a60524845a39fa040bacb996, type: 3}
+      propertyPath: m_TagString
+      value: Piso
+      objectReference: {fileID: 0}
     - target: {fileID: -2994574054460991704, guid: 110e0b24a60524845a39fa040bacb996, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -2155,6 +2163,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: ce3465d9ca398c742a4b84ebb07a8946, type: 2}
+    - target: {fileID: 4615643564146174736, guid: 110e0b24a60524845a39fa040bacb996, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4989659033300186593, guid: 110e0b24a60524845a39fa040bacb996, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

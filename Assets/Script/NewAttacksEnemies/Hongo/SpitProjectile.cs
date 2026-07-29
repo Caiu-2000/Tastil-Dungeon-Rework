@@ -49,6 +49,7 @@ public class SpitProjectile : MonoBehaviour , IParryable
             enemy.parentEnemy.applyDamage(new HittData(PoisonDamage));
             Destroy(this.gameObject);
         }
+        print("toque esto  : " + other.name);
         if (other.gameObject.CompareTag("Player"))
         {
         
