@@ -21,7 +21,7 @@ TagManager:
   - Hittable
   - ItemCollisions
   - Proyectile
-  - 
+  - CustomLayer
   - 
   - 
   - 
@@ -44,6 +44,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: HandItems
+    uniqueID: 1174405851
     locked: 0
   m_RenderingLayers:
   - Default
