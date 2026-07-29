@@ -22,7 +22,9 @@ public class PlayerMovement : MovementComponent
     {
         rotationY += lookdir.x * rotationspeed * Time.deltaTime;
         transform.localRotation = Quaternion.Euler(0, rotationY, 0);
+        /// entre -90 y 120 
         _rotationX += lookdir.y * -rotationspeed * Time.deltaTime; ;
+        _rotationX =  Mathf.Clamp(_rotationX ,- 90, 100);
         _camera.transform.localRotation = Quaternion.Euler(_rotationX, 0f, 0f);
     }
     private void Awake()
