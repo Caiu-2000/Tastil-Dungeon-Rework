@@ -138,6 +138,7 @@ Transform:
   - {fileID: 591796331901978086}
   - {fileID: 107433167367609815}
   - {fileID: 8388557473915158333}
+  - {fileID: 1988826421261295154}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &9015347453668816009
@@ -242,6 +243,7 @@ MonoBehaviour:
       volume: 1
       Source: {fileID: 0}
     AudioMixerGroup: {fileID: 187118316471433284, guid: 4b9b05cf0cfc3d04d8e87d3e5e9e1299, type: 2}
+  StateMachine: {fileID: 6995297768177352728}
   _coll: {fileID: 5613051332891386071, guid: ac9a2bb7f2c62994cbe6bfec7d28b8d3, type: 3}
   _parryCollision: {fileID: 7799133091847265430, guid: 6d16b8a15c5b3b047aa6a56d1a741688, type: 3}
   _collPoint: {fileID: 8388557473915158333}
@@ -443,6 +445,57 @@ Transform:
   - {fileID: 7804256539759310916}
   m_Father: {fileID: 1937144138086183469}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6352719791774622514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1988826421261295154}
+  - component: {fileID: 6995297768177352728}
+  m_Layer: 9
+  m_Name: StateMachine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1988826421261295154
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6352719791774622514}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1937144138086183469}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6995297768177352728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6352719791774622514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a42a7601e625daf4897f36c515dd7650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statesList: []
+  CurrentState: {fileID: 0}
+  DefaultState: {fileID: 0}
+  DeathState: {fileID: 0}
+  _damaged: {fileID: 0}
+  _movement: {fileID: 0}
+  DebugText: {fileID: 0}
 --- !u!1001 &7287138035536245208
 PrefabInstance:
   m_ObjectHideFlags: 0

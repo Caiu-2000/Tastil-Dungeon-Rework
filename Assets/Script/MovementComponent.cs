@@ -86,5 +86,14 @@ public class MovementComponent : MonoBehaviour
     {
         _entityController._CanInputMovement = state;
     }
+    public void RotateTowards(Transform Objective)
+    {
+        Vector3 objPosition = Objective.position;
 
+        objPosition.y = this.gameObject.transform.position.y;
+
+        Vector3 Direction = objPosition - transform.position;
+
+        transform.rotation = Quaternion.LookRotation(Direction);
+    }
 }

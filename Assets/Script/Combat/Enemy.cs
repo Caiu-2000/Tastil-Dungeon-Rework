@@ -8,10 +8,11 @@ public class Enemy : Entity
     protected bool CanAttack = true;
     [SerializeField] protected AiComponent _ai;
     [SerializeField] public Animator _animator;
-
+    [SerializeField] EnemyHitCollision _coll;
     [SerializeField] protected float _damage;
     [SerializeField] private float _knockBackForce;
-    
+    [SerializeField] ParryCollision _parryCollision;
+    [SerializeField] Transform _collPoint;
     protected RoomController _roomController;
     public void SetRoomController(RoomController rc) => _roomController = rc;
 
@@ -20,6 +21,7 @@ public class Enemy : Entity
 
     [SerializeField] protected EntitySoundComponent SoundEmitter = new EntitySoundComponent();
 
+    [SerializeField] private StateMachine StateMachine;
 
     protected MovementComponent moveComp; 
     private void Awake()
@@ -118,17 +120,24 @@ public class Enemy : Entity
 
     }
 
-
-    protected void RotateTowards(Transform Objective)
+    public void SettAttackCollision(float time = -2.0f)
     {
-        Vector3 objPosition = Objective.position;
-
-        objPosition.y = this.gameObject.transform.position.y;
-
-        Vector3 Direction = objPosition - transform.position;
-
-        transform.rotation = Quaternion.LookRotation(Direction);
+        EnemyHitCollision newColl = Instantiate(_coll);
+        newColl.ChangeDuration(time);
+        newColl.transform.position = _collPoint.position;
+        newColl.transform.rotation = _collPoint.transform.rotation;
+        newColl.transform.SetParent(_collPoint.transform, true);
+        newColl.parentEnemy = this;
     }
+    public void SettParryCollision()
+    {
+        ParryCollision newColl = Instantiate(_parryCollision);
+        newColl.ChangeDuration(-2.0f);
+        newColl.transform.position = _collPoint.position;
+        newColl.transform.rotation = _collPoint.transform.rotation;
+        newColl.ParentEnemy = this;
+    }
+
 
 }
 

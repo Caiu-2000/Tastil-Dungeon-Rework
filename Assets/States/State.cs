@@ -9,12 +9,12 @@ public  class State : MonoBehaviour
     [SerializeField] protected State DefaultNextState;
     [SerializeField] public bool IsPausable = true;
     protected StateMachine ParentMachine;
-    protected Entity _controlledEntity;
+    protected Enemy enemy;
 
-    public void InitialiceState(StateMachine Machine , Entity entity)
+    public void InitialiceState(StateMachine Machine , Enemy entity)
     {
         ParentMachine = Machine;
-        _controlledEntity = entity;
+        enemy = entity;
     }
 
     public virtual void StartState()

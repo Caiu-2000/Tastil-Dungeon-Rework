@@ -9,8 +9,9 @@ public class StateMachine :MonoBehaviour
     [SerializeReference] private State DefaultState;
     [SerializeField] private State DeathState;
     [SerializeField] private DamagedState _damaged;
-    
-    private Entity _entity;
+    private bool _AttackAlreadyConected = false;
+    private bool _ParryAlreadyConected = false;
+    internal Enemy _entity;
     public MovementComponent _movement;
     internal  AiComponent _ai;
 
@@ -19,7 +20,7 @@ public class StateMachine :MonoBehaviour
 
 
     private State _pausedState;
-
+    public Animator _animator;
 
     [SerializeField] private TMPro.TextMeshPro DebugText;
 
@@ -30,7 +31,7 @@ public class StateMachine :MonoBehaviour
 
         _entity.OnDamaged += Damaged;
 
-
+        _animator = _entity._animator;
         _movement = movement;
         _ai = AI;
 
