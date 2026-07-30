@@ -189,5 +189,10 @@ public class GameManager : MonoBehaviour
         print("Se llamo muerte");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    public void ToggleCamera()
+    {
+        Camera.main.gameObject.SetActive(!Camera.main.gameObject.activeSelf);
+    }
+
 }
 

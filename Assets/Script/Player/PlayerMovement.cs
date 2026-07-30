@@ -1,5 +1,4 @@
 
-using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -8,7 +7,7 @@ public class PlayerMovement : MovementComponent
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     public float rotationY = 0f, _rotationX = 0f , rotationspeed = 25f ;
-    [SerializeField] private Camera _camera;
+    [SerializeField] private Transform _camera;
     [SerializeField]private PlayerInput _inputComp;
     [SerializeField] private CharacterController Cc;
 
@@ -19,11 +18,15 @@ public class PlayerMovement : MovementComponent
     private float verticalVelocity;
 
     public void Rotate(Vector2 lookdir)
+
+
     {
+        
         rotationY += lookdir.x * rotationspeed * Time.deltaTime;
         transform.localRotation = Quaternion.Euler(0, rotationY, 0);
         _rotationX += lookdir.y * -rotationspeed * Time.deltaTime; ;
-        _camera.transform.localRotation = Quaternion.Euler(_rotationX, 0f, 0f);
+        print (_rotationX);
+        _camera.rotation= Quaternion.Euler(_rotationX, 0f, 0f);
     }
     private void Awake()
     {

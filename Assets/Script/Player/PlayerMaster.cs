@@ -46,7 +46,7 @@ public class PlayerMaster : Entity
     private void Update()
     {
         
-        Ray _ray = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        Ray _ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
         RaycastHit _hit;
         
 
@@ -178,7 +178,7 @@ public class PlayerMaster : Entity
     public void PickedNewWeapon(int Id)
     {
         _animator.SetTrigger("TakeWeapon");
-        _animator.SetInteger("WeaponID", Id);
+      
 
     }
 
@@ -193,6 +193,9 @@ public class PlayerMaster : Entity
 
     private IEnumerator DoShake(float duration, float magnitude)
     {
+        yield return null;
+        print("HAY QUE REIMPLEMENTAR CAMERA SHAKE");
+        /*
         originalPos = _camera.transform.localPosition;
         float elapsed = 0.0f;
 
@@ -208,12 +211,13 @@ public class PlayerMaster : Entity
         }
 
         _camera.transform.localPosition = originalPos;
+        */
     }
     
-    public void ToggleCamera()
-    {
-        _camera.gameObject.SetActive(!_camera.gameObject.activeSelf);
-    }
+
+
+
+
 
     private IEnumerator DamageCd()
     {
