@@ -101,6 +101,7 @@ MonoBehaviour:
   _inventory: {fileID: 0}
   _itemIcon: {fileID: 21300000, guid: 80477d1db09f54c498a92f445cfa6809, type: 3}
   _useTime: 1
+  _itemMesh: {fileID: 7367611022696165568}
   Type: 4
   data: {fileID: 11400000, guid: 6389b007452bd2245b74952b3ab8aa9d, type: 2}
   manager: {fileID: 0}
@@ -212,6 +213,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a528f7254ee143b46a066fb0215ae9ae, type: 3}
+--- !u!1 &7367611022696165568 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a528f7254ee143b46a066fb0215ae9ae, type: 3}
+  m_PrefabInstance: {fileID: 7709717128835992977}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7887161514430229114 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a528f7254ee143b46a066fb0215ae9ae, type: 3}

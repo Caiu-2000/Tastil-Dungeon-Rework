@@ -106,6 +106,7 @@ MonoBehaviour:
   _inventory: {fileID: 0}
   _itemIcon: {fileID: 21300000, guid: 1e91fcd65df8c2c479d326e65d7feb07, type: 3}
   _useTime: 1
+  _itemMesh: {fileID: 4415792843280459815}
   Type: 4
   player: {fileID: 0}
   weapon: {fileID: 0}
@@ -200,5 +201,10 @@ PrefabInstance:
 --- !u!4 &3892197071654089373 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fb2f955ad5cd4a846aa0a0db9862bf14, type: 3}
+  m_PrefabInstance: {fileID: 3569496192775394678}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4415792843280459815 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fb2f955ad5cd4a846aa0a0db9862bf14, type: 3}
   m_PrefabInstance: {fileID: 3569496192775394678}
   m_PrefabAsset: {fileID: 0}

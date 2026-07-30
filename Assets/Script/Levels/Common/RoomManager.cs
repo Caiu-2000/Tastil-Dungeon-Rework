@@ -44,7 +44,8 @@ public class RoomManager : MonoBehaviour
         }
         catch (System.Exception e)
         {
-         
+            print("hubo exsepcion si lo escribi mal y se queda mal punto");
+            print(e.ToString());
             yield break;
         }
            

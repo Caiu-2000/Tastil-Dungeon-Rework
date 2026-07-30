@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     public PlayerMaster Player;
     public PlayerInput InputHandler;
     public UiHandler Ui;
+    public Weapon CurrentWeapon;
 
 
 
@@ -191,6 +193,8 @@ public class GameManager : MonoBehaviour
     }
     public void ToggleCamera()
     {
+        return;
+        if (Camera.main == null) return;
         Camera.main.gameObject.SetActive(!Camera.main.gameObject.activeSelf);
     }
 

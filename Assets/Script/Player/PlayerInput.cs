@@ -78,7 +78,7 @@ public class PlayerInput : MonoBehaviour
         
 
             Vector2 lookDir = _lookAction.ReadValue<Vector2>();
-        print("_lookAction vale : " + lookDir);
+    
         _playerMovement.Rotate(lookDir);
 
 

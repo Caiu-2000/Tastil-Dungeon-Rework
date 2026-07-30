@@ -120,5 +120,12 @@ abstract public class Item : MonoBehaviour , IInteractable
 
         Destroy(gameObject);
     }
-
+    public void RecursiveChangeLayer(GameObject obj ,int layer = 12)
+    {
+        gameObject.layer = layer;
+        foreach (Transform child in obj.transform)
+        {
+            RecursiveChangeLayer(child.gameObject, layer);
+        }
+    }
 }

@@ -4,9 +4,9 @@ public class FHBW : IOnAttackBuff
 {
     BuffData data;
     PlayerMaster player;
-    MeleWeapon weapon;
+    Weapon weapon;
     Transform bloodsword;
-    public FHBW(BuffData data, PlayerMaster player, MeleWeapon weapon)
+    public FHBW(BuffData data, PlayerMaster player, Weapon weapon)
     {
         this.data = data;
         this.player = player;

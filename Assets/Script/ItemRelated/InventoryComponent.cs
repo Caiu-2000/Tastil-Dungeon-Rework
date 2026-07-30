@@ -15,12 +15,20 @@ public class InventoryComponent : MonoBehaviour
 
     public void AddItem(Item _newItem)
     {
-        _newItem._itemMesh.layer = 12;
+        if (_newItem._itemMesh != null)
+        {
+            _newItem._itemMesh.layer = 12;
+        }
+        else
+        {
+            _newItem.RecursiveChangeLayer(_newItem.gameObject, 12);
+        }
         if (_newItem is Weapon weapon)
         {
             if (weapon._equiped) return;
+            GameManager.Instance.CurrentWeapon = weapon;
             _weaponsHand.EquipWeapon(weapon);
-            
+
             return;
         }
         if (_newItem is Item item)
