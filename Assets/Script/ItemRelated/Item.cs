@@ -7,13 +7,12 @@ abstract public class Item : MonoBehaviour , IInteractable
     [SerializeField] protected Item _ReplaceItem;
     protected Vector2 _firstPosition;
     public bool _isPicked = false;
-    // Por ahora voy a usar firsPosition para que los items vuelvan a su lugar y que 
-    // la sala de pruebas se mantenga organizada
+
     public InventoryComponent _inventory;
     [SerializeField]private Sprite _itemIcon;
     [SerializeField] protected float _useTime = 1.0f;
     protected ItemsHand _hand;
-
+    public GameObject _itemMesh;
     public enum ItemType
     {
         WeaponMele,
@@ -31,6 +30,13 @@ abstract public class Item : MonoBehaviour , IInteractable
     private void Start()
     {
         _firstPosition = transform.position;
+        if (_itemMesh  == null)
+        {
+            foreach (Transform child in transform)
+            {
+                child.gameObject.layer = GlobalData.CanvasLayer;
+            }
+        }
     }
 
     public virtual void Interact(PlayerMaster player = null)

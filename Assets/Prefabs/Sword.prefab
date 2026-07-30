@@ -69,6 +69,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 805407824451861366, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
+      propertyPath: _itemMesh
+      value: 
+      objectReference: {fileID: 9167385308619654956}
+    - target: {fileID: 805407824451861366, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       propertyPath: _stamCost
       value: 10
       objectReference: {fileID: 0}
@@ -122,15 +126,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7344982316945209445, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.37
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7344982316945209445, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.58
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7344982316945209445, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.23
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7344982316945209445, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       propertyPath: m_LocalRotation.w
@@ -245,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cc89c1d7e37699440bcd02cca0b072f3, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cc89c1d7e37699440bcd02cca0b072f3, type: 3}
       propertyPath: m_IsActive
@@ -401,7 +405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cc89c1d7e37699440bcd02cca0b072f3, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cc89c1d7e37699440bcd02cca0b072f3, type: 3}
       propertyPath: m_IsActive
@@ -481,5 +485,10 @@ PrefabInstance:
 --- !u!4 &8390990000100515222 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cc89c1d7e37699440bcd02cca0b072f3, type: 3}
+  m_PrefabInstance: {fileID: 8356553971395328637}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9167385308619654956 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cc89c1d7e37699440bcd02cca0b072f3, type: 3}
   m_PrefabInstance: {fileID: 8356553971395328637}
   m_PrefabAsset: {fileID: 0}
