@@ -5916,6 +5916,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   InputHandler: {fileID: 0}
   Ui: {fileID: 0}
+  CurrentWeapon: {fileID: 0}
   IsPaused: 0
   PendigSens: 25
   DebugActive: 0
@@ -6825,6 +6826,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   InputHandler: {fileID: 0}
   Ui: {fileID: 0}
+  CurrentWeapon: {fileID: 0}
   IsPaused: 0
   PendigSens: 25
   DebugActive: 0
