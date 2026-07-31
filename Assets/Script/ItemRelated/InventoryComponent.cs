@@ -14,29 +14,38 @@ public class InventoryComponent : MonoBehaviour
 
 
     public void AddItem(Item _newItem)
-
-
     {
-
-
-        if (_newItem is Weapon)
+        if (_newItem._itemMesh != null)
         {
-            if (_newItem.GetComponent<Weapon>()._equiped) return;
-            _weaponsHand.EquipWeapon(_newItem.GetComponent<Weapon>());
+            _newItem._itemMesh.layer = 12;
+        }
+        else
+        {
+            _newItem.RecursiveChangeLayer(_newItem.gameObject, 12);
+        }
+        if (_newItem is Weapon weapon)
+        {
+            if (weapon._equiped) return;
+            GameManager.Instance.CurrentWeapon = weapon;
+            _weaponsHand.EquipWeapon(weapon);
+
             return;
         }
-        for (int x = 0; x < ItemsInside.Length; x++) 
+        if (_newItem is Item item)
         {
-            if (ItemsInside[x] == null)
+            for (int x = 0; x < ItemsInside.Length; x++)
             {
-                ItemsInside[x] = _newItem;
-                _newItem._inventory = this;
-                _newItem.AddedToInventory();
-                _secondHand.ChangeItem(_newItem);
+                if (ItemsInside[x] == null)
+                {
+                    ItemsInside[x] = item;
+                    item._inventory = this;
+                    item.AddedToInventory();
+                    _secondHand.ChangeItem(item);
 
-                GameManager.Instance.Ui.updateHotbarItem(x, _newItem);
-                ChangeSelection(x);
-                break;
+                    GameManager.Instance.Ui.updateHotbarItem(x, item);
+                    ChangeSelection(x);
+                    break;
+                }
             }
         }
     }

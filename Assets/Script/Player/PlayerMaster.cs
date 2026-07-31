@@ -45,43 +45,46 @@ public class PlayerMaster : Entity
 
     private void Update()
     {
-        
-        Ray _ray = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-        RaycastHit _hit;
-        
 
-
-        if (Physics.Raycast(_ray, out _hit, 5, LayerMask.GetMask("ItemCollisions")))
+        if (Camera.main != null)
         {
-            
-            if(_hit.transform.gameObject.GetComponent<IInteractable>() == null) return;
-        
-            if (_lastItemOnSigth != _hit.transform.gameObject.GetComponent<IInteractable>())
+            Ray _ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+
+            RaycastHit _hit;
+
+
+
+            if (Physics.Raycast(_ray, out _hit, 5, LayerMask.GetMask("ItemCollisions")))
             {
 
-                string mensaje = _hit.transform.gameObject.GetComponent<IInteractable>().interactMessage;
-                GameManager.Instance.Ui.IndicateInteractItem(mensaje);
+                if (_hit.transform.gameObject.GetComponent<IInteractable>() == null) return;
+
+                if (_lastItemOnSigth != _hit.transform.gameObject.GetComponent<IInteractable>())
+                {
+
+                    string mensaje = _hit.transform.gameObject.GetComponent<IInteractable>().interactMessage;
+                    GameManager.Instance.Ui.IndicateInteractItem(mensaje);
+                }
+
+                _lastItemOnSigth = _hit.transform.gameObject.GetComponent<IInteractable>();
+            }
+            else
+            {
+                _lastItemOnSigth = null;
+                GameManager.Instance.Ui.IndicateInteractItem(null, true);
+            }
+            if (_StaminaCount > 0)
+            {
+                _StaminaCount -= Time.deltaTime;
+            }
+            else if (_currentStamina < _maxStamina)
+            {
+                _currentStamina += _StaminaRegen * Time.deltaTime;
+                if (_currentStamina > _maxStamina) _currentStamina = _maxStamina;
             }
 
-            _lastItemOnSigth = _hit.transform.gameObject.GetComponent<IInteractable>();
-        }
-        else
-        {
-            _lastItemOnSigth = null;
-            GameManager.Instance.Ui.IndicateInteractItem(null,true);
-        }
-        if (_StaminaCount > 0)
-        {
-            _StaminaCount -= Time.deltaTime;
-        }
-        else if (_currentStamina < _maxStamina)
-        {
-            _currentStamina += _StaminaRegen * Time.deltaTime;
-            if (_currentStamina > _maxStamina) _currentStamina = _maxStamina;
-        }
 
-        
-        
+        }
     }
 
 
@@ -178,7 +181,7 @@ public class PlayerMaster : Entity
     public void PickedNewWeapon(int Id)
     {
         _animator.SetTrigger("TakeWeapon");
-        _animator.SetInteger("WeaponID", Id);
+      
 
     }
 
@@ -193,6 +196,9 @@ public class PlayerMaster : Entity
 
     private IEnumerator DoShake(float duration, float magnitude)
     {
+        yield return null;
+        print("HAY QUE REIMPLEMENTAR CAMERA SHAKE");
+        /*
         originalPos = _camera.transform.localPosition;
         float elapsed = 0.0f;
 
@@ -208,12 +214,13 @@ public class PlayerMaster : Entity
         }
 
         _camera.transform.localPosition = originalPos;
+        */
     }
     
-    public void ToggleCamera()
-    {
-        _camera.gameObject.SetActive(!_camera.gameObject.activeSelf);
-    }
+
+
+
+
 
     private IEnumerator DamageCd()
     {

@@ -39,12 +39,13 @@ public class RoomManager : MonoBehaviour
             _cC.enabled = false;
             GameManager.Instance.Player.transform.position = thisRoomController.GetEnterPosition().position;
             _cC.enabled = true;
-            GameManager.Instance.Player.GetComponent<PlayerMaster>().ToggleCamera();
-            GameManager.Instance.Player.GetComponent<PlayerMaster>().ToggleCamera();
+            GameManager.Instance.ToggleCamera();
+            GameManager.Instance.ToggleCamera();
         }
         catch (System.Exception e)
         {
-         
+            print("hubo exsepcion si lo escribi mal y se queda mal punto");
+            print(e.ToString());
             yield break;
         }
            

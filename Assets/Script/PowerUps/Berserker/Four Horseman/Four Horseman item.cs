@@ -27,8 +27,8 @@ public class FourHorsemanitem : Item
     }
 
     private void WeaponBuff()
-    {
-        BuffManager.Instance.AddBuffOnAttack(new FHBW(data, player, weapon));
+    {   // ACA SAQUE LA VARIABLE DE WEAPON Y PUSE LA REFERENCIA
+        BuffManager.Instance.AddBuffOnAttack(new FHBW(data, player, GameManager.Instance.CurrentWeapon));
     }
 
     private void BodyBuff()
