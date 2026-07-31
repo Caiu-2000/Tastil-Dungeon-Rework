@@ -20,6 +20,12 @@ public class Weapon : Item
     protected Entity ParentEntity;
     protected Collider _ItemCollider;
 
+
+    public Sprite crosshair;
+    public Sprite hitmarker;
+    public Sprite critmarker;
+
+
     private void Start()
     {
         _ItemCollider = GetComponent<Collider>();

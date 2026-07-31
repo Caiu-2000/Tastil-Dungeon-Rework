@@ -5,8 +5,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-// HAY QUE ACORDARSE DE BORRAR TODOS LOS RETURN CUANDO AGREGUE LA UI DE NUEVO
-
 public class UiHandler : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI  _contextIndicator;
@@ -28,7 +26,7 @@ public class UiHandler : MonoBehaviour
     [SerializeField] private Image HitMarker;
     [SerializeField] private Image ParryMarker;
     [SerializeField] private Image critMarker;
-
+    [SerializeField] private Image crossHair;
 
 
     private void Awake()
@@ -53,6 +51,7 @@ public class UiHandler : MonoBehaviour
             GameManager.Instance.Player.OnHealthChanged += UpdateLife;
             GameManager.Instance.Player.OnStaminaChanged += UpdateStam;
             GameManager.Instance.Player.OnHittconnected += HitConnected;
+            GameManager.Instance.Player._inventory.OnWeaponChanged += UpdateHitmarkers;
         }
 
     }
@@ -160,4 +159,11 @@ public class UiHandler : MonoBehaviour
 
     }
 
+    public void UpdateHitmarkers(Weapon weapon)
+    {
+        
+        HitMarker.sprite = null;
+        critMarker.sprite = null;
+        crossHair.sprite = null;
+    }
 }

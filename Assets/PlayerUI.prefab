@@ -2157,6 +2157,7 @@ MonoBehaviour:
   HitMarker: {fileID: 8082002496735914554}
   ParryMarker: {fileID: 5683035395890498408}
   critMarker: {fileID: 3851379280368649430}
+  crossHair: {fileID: 718525520783198228}
 --- !u!1 &6198541766572805313
 GameObject:
   m_ObjectHideFlags: 0

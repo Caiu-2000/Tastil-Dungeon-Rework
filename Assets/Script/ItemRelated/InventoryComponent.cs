@@ -11,7 +11,9 @@ public class InventoryComponent : MonoBehaviour
     private Item[] ItemsInside = new Item[4];
 
     private int _currentSelection = 1;
+    public delegate void WeaponUpdated(Weapon weapon);
 
+    public WeaponUpdated OnWeaponChanged = delegate { };
 
     public void AddItem(Item _newItem)
     {
@@ -27,6 +29,7 @@ public class InventoryComponent : MonoBehaviour
         {
             if (weapon._equiped) return;
             GameManager.Instance.CurrentWeapon = weapon;
+            OnWeaponChanged?.Invoke(weapon);
             _weaponsHand.EquipWeapon(weapon);
 
             return;
