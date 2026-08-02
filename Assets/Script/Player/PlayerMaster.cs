@@ -180,6 +180,7 @@ public class PlayerMaster : Entity
 
     public void PickedNewWeapon(int Id)
     {
+        return;
         _animator.SetTrigger("TakeWeapon");
       
 

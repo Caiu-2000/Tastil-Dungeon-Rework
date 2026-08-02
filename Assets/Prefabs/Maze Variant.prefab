@@ -40,6 +40,10 @@ PrefabInstance:
       propertyPath: critmarker
       value: 
       objectReference: {fileID: -1080733837, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
+    - target: {fileID: 4201798530863187679, guid: d902ea849c2d61a4a9874076dec271be, type: 3}
+      propertyPath: _weaponAnimations
+      value: 
+      objectReference: {fileID: 11400000, guid: fac6e35eb7d9d6d41baf6753d7a776d8, type: 2}
     - target: {fileID: 6092302833805510092, guid: d902ea849c2d61a4a9874076dec271be, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
