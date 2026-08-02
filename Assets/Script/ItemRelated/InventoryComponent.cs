@@ -11,13 +11,16 @@ public class InventoryComponent : MonoBehaviour
     private Item[] ItemsInside = new Item[4];
 
     private int _currentSelection = 1;
+    public delegate void WeaponUpdated(Weapon weapon);
 
+    public WeaponUpdated OnWeaponChanged = delegate { };
 
     public void AddItem(Item _newItem)
     {
         if (_newItem._itemMesh != null)
         {
             _newItem._itemMesh.layer = 12;
+            _newItem.RecursiveChangeLayer(_newItem._itemMesh );
         }
         else
         {
@@ -27,6 +30,7 @@ public class InventoryComponent : MonoBehaviour
         {
             if (weapon._equiped) return;
             GameManager.Instance.CurrentWeapon = weapon;
+            OnWeaponChanged?.Invoke(weapon);
             _weaponsHand.EquipWeapon(weapon);
 
             return;

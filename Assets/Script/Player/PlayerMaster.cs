@@ -13,7 +13,7 @@ public class PlayerMaster : Entity
     [SerializeField] public WeaponsHand weaponHand;
     private IInteractable _lastItemOnSigth;
     [SerializeField] private Camera _camera;
-    private Animator _animator;
+    [SerializeField]private Animator _animator;
     [SerializeField]
     private BuffManager manager;
 
@@ -27,7 +27,7 @@ public class PlayerMaster : Entity
     private void Start()
     {
       
-        _animator = GetComponent<Animator>();
+       
         GameManager.Instance.Player = this;
         
     }
@@ -180,6 +180,7 @@ public class PlayerMaster : Entity
 
     public void PickedNewWeapon(int Id)
     {
+        return;
         _animator.SetTrigger("TakeWeapon");
       
 

@@ -16,25 +16,16 @@ public class PlayerMovement : MovementComponent
     public float jumpHeight = 2.0f;
     public float gravity = -4.5f;
     private float verticalVelocity;
-    /*
-    public void Rotate(Vector2 lookdir)
-    {  
-        rotationY += lookdir.x * rotationspeed * Time.deltaTime;
-        transform.localRotation = Quaternion.Euler(0, rotationY, 0);
-        _rotationX += lookdir.y * -rotationspeed * Time.deltaTime; ;
-        _camera.localRotation= Quaternion.Euler(_rotationX, 0f, 0f);
-    }*/
+
     public void Rotate(Vector2 lookdir)
     {
-        // 1. Rotate the Player left/right on the Y axis (Local works great here)
+    
         rotationY += lookdir.x * rotationspeed * Time.deltaTime;
         transform.localRotation = Quaternion.Euler(0, rotationY, 0);
 
-        // 2. Clamp the X rotation so the player can't look upside down
         _rotationX += lookdir.y * -rotationspeed * Time.deltaTime;
         _rotationX = Mathf.Clamp(_rotationX, -90f, 90f);
 
-        // FIX: Change .rotation to .localRotation so it inherits the parent's Y rotation
         Campoint.rotation = Quaternion.Euler(_rotationX, 0f, 0f);
     }
     private void Awake()

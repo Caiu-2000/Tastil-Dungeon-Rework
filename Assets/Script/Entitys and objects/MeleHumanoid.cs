@@ -33,8 +33,6 @@ public class MeleHumanoid : Enemy
     private bool SpecialInCooldown = false;
 
 
-    // Esto no es la mejor practica pero fue una solucion
-    private bool AlreadyEmitedSound = false;
     private void Awake()
     {
 

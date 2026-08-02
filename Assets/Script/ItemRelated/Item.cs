@@ -122,9 +122,10 @@ abstract public class Item : MonoBehaviour , IInteractable
     }
     public void RecursiveChangeLayer(GameObject obj ,int layer = 12)
     {
-        gameObject.layer = layer;
+        obj.layer = layer;
         foreach (Transform child in obj.transform)
         {
+            print(child);
             RecursiveChangeLayer(child.gameObject, layer);
         }
     }
