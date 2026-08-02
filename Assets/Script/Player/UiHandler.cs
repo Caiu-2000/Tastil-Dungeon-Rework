@@ -162,8 +162,8 @@ public class UiHandler : MonoBehaviour
     public void UpdateHitmarkers(Weapon weapon)
     {
         
-        HitMarker.sprite = null;
-        critMarker.sprite = null;
-        crossHair.sprite = null;
+        HitMarker.sprite = weapon.hitmarker;
+        critMarker.sprite = weapon.critmarker;
+        crossHair.sprite = weapon.crosshair;
     }
 }

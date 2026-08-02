@@ -20,6 +20,7 @@ public class InventoryComponent : MonoBehaviour
         if (_newItem._itemMesh != null)
         {
             _newItem._itemMesh.layer = 12;
+            _newItem.RecursiveChangeLayer(_newItem._itemMesh );
         }
         else
         {

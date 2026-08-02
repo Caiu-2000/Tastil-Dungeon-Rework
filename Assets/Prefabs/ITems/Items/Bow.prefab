@@ -123,6 +123,7 @@ MonoBehaviour:
   _inventory: {fileID: 0}
   _itemIcon: {fileID: 0}
   _useTime: 1
+  _itemMesh: {fileID: 3797709583796689117}
   Type: 1
   _damage: 10
   _knockbackForce: 30
@@ -133,6 +134,9 @@ MonoBehaviour:
   _chargableAttack: 1
   _stamCost: 0
   _equiped: 0
+  crosshair: {fileID: -1911515901, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
+  hitmarker: {fileID: -1892929071, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
+  critmarker: {fileID: 713179744, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
   _arrow: {fileID: 683617291411065294, guid: f1cb8d795475c3a4dad97bbcf9eee6e6, type: 3}
   _firePoint: {fileID: 7969046564014353640}
 --- !u!136 &2214900430917317717
@@ -251,6 +255,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6eff5e26c7ce06d448086b9a9ffc08cb, type: 3}
+--- !u!1 &3797709583796689117 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6eff5e26c7ce06d448086b9a9ffc08cb, type: 3}
+  m_PrefabInstance: {fileID: 4068234182151726476}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4611681699116089959 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6eff5e26c7ce06d448086b9a9ffc08cb, type: 3}
