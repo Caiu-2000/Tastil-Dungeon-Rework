@@ -25,6 +25,7 @@ public class Weapon : Item
     public Sprite hitmarker;
     public Sprite critmarker;
 
+    [SerializeField] private WeaponAnimations _weaponAnimations;
 
     private void Start()
     {
@@ -123,4 +124,5 @@ public class Weapon : Item
             _critChance = 100;
     }
 
+    public WeaponAnimations GetAnimations() { return _weaponAnimations; }
 }

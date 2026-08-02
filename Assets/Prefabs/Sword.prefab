@@ -97,6 +97,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 805407824451861366, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
+      propertyPath: _weaponAnimations
+      value: 
+      objectReference: {fileID: 11400000, guid: f9e9cfae09fb6e843b9959c56ae1e764, type: 2}
+    - target: {fileID: 805407824451861366, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       propertyPath: _attackCollDuration
       value: 0.1
       objectReference: {fileID: 0}
