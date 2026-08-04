@@ -194,8 +194,9 @@ public class GameManager : MonoBehaviour
     public void ToggleCamera()
     {
         return;
+        /*
         if (Camera.main == null) return;
-        Camera.main.gameObject.SetActive(!Camera.main.gameObject.activeSelf);
+        Camera.main.gameObject.SetActive(!Camera.main.gameObject.activeSelf);*/
     }
 
 }
