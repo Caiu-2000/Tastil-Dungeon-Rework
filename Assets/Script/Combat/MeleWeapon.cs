@@ -75,7 +75,7 @@ public class MeleWeapon : Weapon
     {
  
         // LLAMAR A ANIMACIONES 
-        GameManager.Instance.Player.SetAttackAnimation("Attack" , _currentCombo);
+        //GameManager.Instance.Player.SetAttackAnimation("Attack" , _currentCombo);
         _trail.emitting = true;
         yield return new WaitForSeconds(AttackTimers[_currentCombo -1]);
         DebugBool = true;
