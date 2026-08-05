@@ -61,6 +61,12 @@ public class UiHandler : MonoBehaviour
        
         UpdateStam(Player._currentStamina , Player._maxStamina );
 
+
+       
+
+
+
+
     }
 
     public void UpdateStam(float newvalue , float maxValue)
