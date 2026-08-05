@@ -7,9 +7,7 @@ using UnityEngine.AI;
 
 public class MeleHumanoid : Enemy
 {
-    [SerializeField] EnemyHitCollision _coll;
-    [SerializeField] ParryCollision _parryCollision;
-    [SerializeField] Transform _collPoint;
+    
     // Si robe las variables de las armas para hacerlo al enemigo. 
     // Que no se note que podria integrar que agarren armas
 
@@ -17,8 +15,6 @@ public class MeleHumanoid : Enemy
 
     [SerializeField] private List<AttackData> Attacks;
 
-    private bool _AttackAlreadyConected = false;
-    private bool _ParryAlreadyConected = false;
     [SerializeField] EnemyAttackSincronizer1 _AttackSync;
 
 
@@ -146,23 +142,6 @@ public class MeleHumanoid : Enemy
 
     }
 
-    private void SettAttackCollision(float time = -2.0f)
-    {
-        EnemyHitCollision newColl = Instantiate(_coll);
-        newColl.ChangeDuration(time);
-        newColl.transform.position = _collPoint.position;
-        newColl.transform.rotation = _collPoint.transform.rotation;
-        newColl.transform.SetParent(_collPoint.transform, true);
-        newColl.parentEnemy = this;
-    }
-    private void SettParryCollision()
-    {
-        ParryCollision newColl = Instantiate(_parryCollision);
-        newColl.ChangeDuration(-2.0f);
-        newColl.transform.position = _collPoint.position;
-        newColl.transform.rotation = _collPoint.transform.rotation;
-        newColl.ParentEnemy = this;
-    }
 
     public override void Die()
     {

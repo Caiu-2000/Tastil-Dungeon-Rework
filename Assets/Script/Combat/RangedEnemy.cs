@@ -5,7 +5,7 @@ using UnityEngine;
 public class RangedEnemy : Enemy
 {
    
-    [SerializeField] Transform _collPoint;
+  
     [SerializeField] float _attackTime;
     [SerializeField] Proyectile _proyectile;
     

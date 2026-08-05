@@ -46,6 +46,7 @@ public class WeaponsHand : MonoBehaviour
 
     public void updateAnimations(WeaponAnimations anims)
     {
+        if (anims == null) { return; }
         print(anims.TakeOut.name);
         overrideController["ACArreglado"] = anims.TakeOut;
         WeaponAnimator.SetTrigger("Desenfunde");

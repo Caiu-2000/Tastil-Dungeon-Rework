@@ -1052,13 +1052,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4344412163399767165, guid: 142626549b9e53342ac75f9b5b969006, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5266659673803407109, guid: 142626549b9e53342ac75f9b5b969006, type: 3}
       propertyPath: m_Name
       value: player package
-      objectReference: {fileID: 0}
-    - target: {fileID: 7355870320269843077, guid: 142626549b9e53342ac75f9b5b969006, type: 3}
-      propertyPath: m_TranslationOffset.x
-      value: -1.051822
       objectReference: {fileID: 0}
     - target: {fileID: 7894499681853068443, guid: 142626549b9e53342ac75f9b5b969006, type: 3}
       propertyPath: m_LocalPosition.x

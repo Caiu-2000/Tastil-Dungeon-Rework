@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c568fcd12216b041a33593a6542f6cb, type: 3}
   m_Name: Maza
   m_EditorClassIdentifier: 
-  TakeOut: {fileID: 0}
+  TakeOut: {fileID: 7400000, guid: cb750a9acebb6a5429e1584824a5a687, type: 2}
   Attack1: {fileID: 0}
   Attack2: {fileID: 0}
   Attack3: {fileID: 0}

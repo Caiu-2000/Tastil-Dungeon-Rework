@@ -12,7 +12,7 @@ public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private PlayerMovement _playerMovement = null;
     private InputAction _useAction,_useItemAction, _movementAction, _lookAction, _attackAction , _interactAction , _blockAction, _jumpAtion , _rightClickAction;
-    private InputAction _parryAction ;
+    private InputAction _parryAction , _SpecialAction ;
     [SerializeField] private PlayerMaster _EntityController = null;
     Vector2 _dir = Vector2.zero;
     private bool CanInputActions = true;
@@ -31,6 +31,8 @@ public class PlayerInput : MonoBehaviour
 
     public AttacksDelegate OnAttackPressed = delegate { };
     public AttacksDelegate OnAttackReleased = delegate { };
+    public AttacksDelegate OnSpecialPressed = delegate { };
+    public AttacksDelegate OnSpecialReleased = delegate { };
     public JumpPress OnJumpPress = delegate { };
     
     public UseAction OnUsePressed = delegate { };
@@ -57,6 +59,7 @@ public class PlayerInput : MonoBehaviour
         _parryAction = InputSystem.actions.FindAction("Parry");
         _useItemAction = InputSystem.actions.FindAction("UseItem");
 
+        _SpecialAction = InputSystem.actions.FindAction("RigthClick");
 
         UnityEngine.Cursor.visible = false;
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
@@ -112,6 +115,15 @@ public class PlayerInput : MonoBehaviour
             if (_parryAction.WasPressedThisFrame())
             {
                 OnParryPressed?.Invoke();
+            }
+
+            if (_SpecialAction.WasPressedThisFrame())
+            {
+                OnSpecialPressed?.Invoke();
+            }
+            else if (_SpecialAction.WasReleasedThisFrame())
+            {
+                OnSpecialReleased?.Invoke();
             }
 
         }
