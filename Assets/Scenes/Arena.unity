@@ -1146,7 +1146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4920552964375429379, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7918267321035083528, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
       propertyPath: SoundEmitter.sounds.Array.size
@@ -2170,7 +2170,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 115739603812437549, guid: ff8d34e0ae0b5f14795f0bd412e2c8e5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3275688582683465777, guid: ff8d34e0ae0b5f14795f0bd412e2c8e5, type: 3}
       propertyPath: m_LocalPosition.x
