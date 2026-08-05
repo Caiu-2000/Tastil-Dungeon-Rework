@@ -1,36 +1,59 @@
-using System;
 using UnityEngine;
+using System;
+using System.Collections;
 
 public class ArenaWaveManager : MonoBehaviour
 {
     public enum ArenaState { Idle, SpawningWave, WaveActive, WaveCleared, GameOver, Victory}
-    [SerializeField] private ArenaModeConfig config;
-    [SerializeField] private ArenaEnemySpawner spawner;
-    public ArenaState CurrentState { get; private set; }
-    public int CurrentWave { get; private set; }
+    [SerializeField] private ArenaSpawner spawner;
+    [SerializeField] private WavesToSpawn wavesConfig;
+    public ArenaState CurrentState { get; private set;}
+    public int CurrentWave { get; private set;}
+    [SerializeField] float delayBetweenWaves;
+    [SerializeField] float totalWaves;
     public event Action<int> OnWaveStart;
     public event Action<int> OnWaveCleared;
     public event Action OnArenaVictory;
     public event Action OnArenaGameOver;
-    private void OnEnable() => spawner.OnAllEnemiesDefeated += HandleWaveCleared;
-    private void OnDisable() => spawner.OnAllEnemiesDefeated -= HandleWaveCleared;
-
     void Start()
     {
-        
+        spawner.OnAllEnemiesDefeated += HandleWaveCleared;
+        CurrentState = ArenaState.Idle;
+        StartCoroutine(WaveStartRoutine(delayBetweenWaves));
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator WaveStartRoutine(float delay)
+    { 
+        yield return new WaitForSeconds(delay);
+        StartNextWave();
+    }
+    private void StartNextWave()
     {
-        
+        CurrentWave++;
+        CurrentState = ArenaState.SpawningWave;
+        int waveIndex = CurrentWave - 1;
+        if (waveIndex >= totalWaves)
+        {
+            CurrentState = ArenaState.Victory;
+            OnArenaVictory?.Invoke(); //does nothing for now i need to add the win script
+            return;
+        }
+        spawner.SpawnWave(wavesConfig.waves[waveIndex].enemies);
+        OnWaveStart?.Invoke(waveIndex);
+        CurrentState = ArenaState.WaveActive;
     }
     private void HandleWaveCleared()
     {
-
+        if (CurrentState == ArenaState.Victory || CurrentState == ArenaState.GameOver)
+            return;
+        CurrentState = ArenaState.WaveCleared;
+        OnWaveCleared?.Invoke(CurrentWave);
+        StartCoroutine(WaveStartRoutine(delayBetweenWaves));
     }
+    //for now it doesn't work as I didn't wire it to the player death
     public void ReportPlayerDeath()
     {
+        StopAllCoroutines();
         CurrentState = ArenaState.GameOver;
         OnArenaGameOver?.Invoke();
     }
