@@ -88,6 +88,7 @@ public class Weapon : Item
             _input.OnSpecialReleased -= ReleaseSpecial;
             _input.OnSpecialPressed -= ChargeSpecial;
         }
+        RecursiveChangeLayer(gameObject , 10);
     }
 
     public virtual bool TryAttack()
