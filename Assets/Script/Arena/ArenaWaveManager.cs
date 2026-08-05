@@ -10,7 +10,6 @@ public class ArenaWaveManager : MonoBehaviour
     public ArenaState CurrentState { get; private set;}
     public int CurrentWave { get; private set;}
     [SerializeField] float delayBetweenWaves;
-    [SerializeField] float totalWaves;
     public event Action<int> OnWaveStart;
     public event Action<int> OnWaveCleared;
     public event Action OnArenaVictory;
@@ -32,7 +31,7 @@ public class ArenaWaveManager : MonoBehaviour
         CurrentWave++;
         CurrentState = ArenaState.SpawningWave;
         int waveIndex = CurrentWave - 1;
-        if (waveIndex >= totalWaves)
+        if (waveIndex >= wavesConfig.waves.Count)
         {
             CurrentState = ArenaState.Victory;
             OnArenaVictory?.Invoke(); //does nothing for now i need to add the win script
