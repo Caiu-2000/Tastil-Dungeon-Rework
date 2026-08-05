@@ -5,8 +5,8 @@ using UnityEngine;
 public class AttackingState : State
 {
     [SerializeField] float AttackDuration = 1.0f;
-    public bool IsOnCD = false;
-    [SerializeField] float CdTime = 1.5f;
+ 
+    
     [SerializeField] private float hittWindow = 0.1f;
     [SerializeField] private float parryWindow = 0.1f;
     [SerializeField] private float timeBeforeAttack = 0.25f;
@@ -21,7 +21,7 @@ public class AttackingState : State
     private IEnumerator SetAttack()
     {
         
-        StartCoroutine(countCD());
+        StartCoroutine(CdCount());
         _controlledEntity.OnEntityAttacked?.Invoke();
         _controlledEntity._AttackAlreadyConected = false;
         _controlledEntity._animator.SetTrigger("attack");
@@ -42,11 +42,6 @@ public class AttackingState : State
 
     }
 
-    private IEnumerator countCD()
-    {
-        IsOnCD = true;
-        yield return new WaitForSeconds(CdTime);
-        IsOnCD = false ;
-    }
+
 
 }

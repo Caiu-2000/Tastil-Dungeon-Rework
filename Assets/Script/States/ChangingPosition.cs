@@ -20,6 +20,7 @@ public class ChangingPosition : State
         print(ParentMachine.AiComponent.GetDistance());
         if (Vector3.Distance(this.transform.position, GameManager.Instance.Player.transform.position) >= 7)
         {
+            if (DefaultNextState.IsOnCd) return;
             ParentMachine.ChangeState(DefaultNextState);
         }
         if (ParentMachine.AiComponent.GetDistance() <= 0.7f)

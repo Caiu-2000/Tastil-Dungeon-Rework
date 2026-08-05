@@ -1,4 +1,5 @@
 
+using System.Collections;
 using UnityEngine;
 
 //[System.Serializable]
@@ -10,11 +11,12 @@ public  class State : MonoBehaviour
     [SerializeField] public bool IsPausable = true;
     [SerializeField] protected StateMachine ParentMachine;
     protected Enemy _controlledEntity;
-    
+    public bool IsOnCd = false;
+    public float CdTime = 2.0f;
 
     public void InitialiceState(StateMachine Machine , Enemy entity)
     {
-        print("HOLA SOY EL PUTO ESTADO Y ME LLEGA  " + Machine + entity + this.ToString());
+
         ParentMachine = Machine;
         _controlledEntity = entity;
     }
@@ -41,5 +43,11 @@ public  class State : MonoBehaviour
     public virtual void ResumeState()
     {
 
+    }
+    protected IEnumerator CdCount()
+    {
+        IsOnCd = true;
+        yield return new WaitForSeconds(CdTime);
+        IsOnCd = false;
     }
 }

@@ -23,9 +23,11 @@ public class TrowingThing : State
        bomb.SetObjective(GameManager.Instance.Player.transform.position);
         bomb.SetParent(_controlledEntity);
         yield return new WaitForSeconds(1.5f);
+        StartCoroutine(CdCount());
     
 
         ParentMachine.ChangeState(DefaultNextState);
     
 }
+
 }
