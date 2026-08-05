@@ -3190,6 +3190,7 @@ GameObject:
   - component: {fileID: 1278169664707121091}
   - component: {fileID: 6111021769356106874}
   - component: {fileID: 6615786700572968668}
+  - component: {fileID: 5046800299499249805}
   m_Layer: 9
   m_Name: StateMachine
   m_TagString: Untagged
@@ -3229,6 +3230,7 @@ MonoBehaviour:
   - {fileID: 1278169664707121091}
   - {fileID: 6111021769356106874}
   - {fileID: 6615786700572968668}
+  - {fileID: 5046800299499249805}
   CurrentState: {fileID: 6615786700572968668}
   DefaultState: {fileID: 6615786700572968668}
   deathState: {fileID: 0}
@@ -3251,6 +3253,7 @@ MonoBehaviour:
   AnimationTrigger: 
   DefaultNextState: {fileID: 0}
   IsPausable: 1
+  ParentMachine: {fileID: 0}
   RangeForAttack: 1
   ChaseFire: 0
 --- !u!114 &6111021769356106874
@@ -3266,8 +3269,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AnimationTrigger: 
-  DefaultNextState: {fileID: 0}
+  DefaultNextState: {fileID: 6615786700572968668}
   IsPausable: 1
+  ParentMachine: {fileID: 0}
 --- !u!114 &6615786700572968668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3281,12 +3285,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AnimationTrigger: 
-  DefaultNextState: {fileID: 0}
+  DefaultNextState: {fileID: 5046800299499249805}
   IsPausable: 1
+  ParentMachine: {fileID: 283031994189258406}
   desiredDistance: 2
   Mask:
     serializedVersion: 2
     m_Bits: 4215
+--- !u!114 &5046800299499249805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6925835923955132787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5001cf7fabd95e74db5c9387ca7e223c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimationTrigger: 
+  DefaultNextState: {fileID: 6615786700572968668}
+  IsPausable: 1
+  ParentMachine: {fileID: 283031994189258406}
+  proyectile: {fileID: 5756885866788156516, guid: a557a803b4c81dc4cb80e1fbd6f2cba0, type: 3}
+  TrowTime: 1
 --- !u!1 &6974521434611168100
 GameObject:
   m_ObjectHideFlags: 0

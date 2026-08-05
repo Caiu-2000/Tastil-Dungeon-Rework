@@ -49,8 +49,10 @@ public abstract  class Entity : MonoBehaviour , IHittable
         }
         else
             currentShieldedLife -= reducedDamage;
+        Vector3 from = Vector3.zero;
+        if (KnockBackFrom != null) { from = KnockBackFrom.position; }
 
-        OnDamaged?.Invoke(new hittData(damage , KnockBackFrom.position , knockbackForce));
+        OnDamaged?.Invoke(new hittData(damage , from, knockbackForce));
         if (_currentLife <= 0)
         {
             Die();

@@ -18,9 +18,9 @@ public class ChangingPosition : State
     public override void UpdateState()
     {
         print(ParentMachine.AiComponent.GetDistance());
-        if (Vector3.Distance(this.transform.position, GameManager.Instance.Player.transform.position) <= 7)
+        if (Vector3.Distance(this.transform.position, GameManager.Instance.Player.transform.position) >= 7)
         {
-
+            ParentMachine.ChangeState(DefaultNextState);
         }
         if (ParentMachine.AiComponent.GetDistance() <= 0.7f)
         {

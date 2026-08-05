@@ -26,10 +26,6 @@ public class Proyectile : MonoBehaviour , IParryable
         transform.position = transform.position + transform.forward *Time.deltaTime * _speed;
     }
 
-
-    //No se si esto sera bueno o no pero bueno quedara preguntar despues
-    //ESTO ESTA PENDIENTE A REWORKEAR CON INTERFACES 
-
     private void OnTriggerEnter(Collider collision)
     {
         
@@ -43,6 +39,7 @@ public class Proyectile : MonoBehaviour , IParryable
                     return;
                 }
             }
+            else if (!_fromPlayer && hittable is Enemy) { return; }
             Destroy(this.gameObject);
             hittable.Hit(_damage);
         }
@@ -82,7 +79,7 @@ public class Proyectile : MonoBehaviour , IParryable
         Destroy(gameObject);
     }
 
-    public void Parry()
+    public virtual void Parry()
     {
      
         RedirectHit(GameManager.Instance.Player.GetLookDretirection());

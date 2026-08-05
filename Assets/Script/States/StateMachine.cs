@@ -29,6 +29,7 @@ public class StateMachine : MonoBehaviour
 
     internal void Initialice(Enemy enemy, MovementComponent movement, AiComponent AI)
     {
+        print("Si me inicializaron aca");
         _entity = enemy;
 
         _entity.OnDamaged += Damaged;
@@ -42,6 +43,8 @@ public class StateMachine : MonoBehaviour
 
         foreach (State state in statesList)
         {
+            print(state.ToString() + this + _entity);
+
             state.InitialiceState(this, _entity);
         }
 

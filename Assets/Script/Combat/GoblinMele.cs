@@ -9,6 +9,7 @@ public class GoblinMele : Enemy
     {
         BaseStart();
         CombatDirector.instance.AddToList(this);
+        print("Si se llamo aca");
         machine.Initialice(this, moveComp, _ai);
     }
 

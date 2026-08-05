@@ -14,6 +14,7 @@ public  class State : MonoBehaviour
 
     public void InitialiceState(StateMachine Machine , Enemy entity)
     {
+        print("HOLA SOY EL PUTO ESTADO Y ME LLEGA  " + Machine + entity + this.ToString());
         ParentMachine = Machine;
         _controlledEntity = entity;
     }
