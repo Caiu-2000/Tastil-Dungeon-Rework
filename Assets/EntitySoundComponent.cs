@@ -19,9 +19,9 @@ public class EntitySoundComponent : SoundEmitterComponent
         
     }
 
-    public void PlayDamaged()
+    public void PlayDamaged(hittData? data = null)
     {
-        Debug.Log("Se daño al enemmigo");
+       
         PlaySound(SoundTypes.Damaged , true);
     }
     public void PlayDeath()

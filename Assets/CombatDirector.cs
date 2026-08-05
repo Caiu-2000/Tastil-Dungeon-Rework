@@ -1,4 +1,4 @@
-using NUnit.Framework;
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,10 +9,10 @@ public class CombatDirector : MonoBehaviour
 
     public List<GoblinMele> goblinsMele = new List<GoblinMele>();
 
-    void Start()
+    void Awake()
     {
-        if (instance == null) { instance = this; }
-        else { Destroy(this.gameObject); }
+        if (instance != null && instance != this) { Destroy(gameObject); return; }
+        instance = this;
         DontDestroyOnLoad(gameObject);
     }
 
@@ -20,5 +20,9 @@ public class CombatDirector : MonoBehaviour
     void Update()
     {
         
+    }
+    public void AddToList(GoblinMele mele)
+    {
+        goblinsMele.Add(mele);
     }
 }

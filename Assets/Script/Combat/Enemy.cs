@@ -4,6 +4,9 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class Enemy : Entity
 {
+    [SerializeField] protected EnemyHitCollision _coll;
+    [SerializeField] protected ParryCollision _parryCollision;
+    [SerializeField] protected Transform _collPoint;
     [SerializeField] private Renderer _renderer;
     protected bool CanAttack = true;
     [SerializeField] protected AiComponent _ai;
@@ -21,6 +24,8 @@ public class Enemy : Entity
     [SerializeField] protected EntitySoundComponent SoundEmitter = new EntitySoundComponent();
 
 
+    public bool _AttackAlreadyConected = false;
+    public bool _ParryAlreadyConected = false;
     protected MovementComponent moveComp; 
     private void Awake()
     {
@@ -31,9 +36,14 @@ public class Enemy : Entity
 
     private void Start()
     {
-        
+        BaseStart();
+
+    }
+    // Hago esto por que necesito usar el start en clases que heredan y me los sobreescriben
+    public virtual void BaseStart()
+    {
         moveComp = GetComponent<MovementComponent>();
-        
+
         SoundEmitter.InitializeThis(this);
     }
 
@@ -129,6 +139,28 @@ public class Enemy : Entity
 
         transform.rotation = Quaternion.LookRotation(Direction);
     }
+
+
+    public void SettAttackCollision(float time = -2.0f)
+    {
+        EnemyHitCollision newColl = Instantiate(_coll);
+        newColl.ChangeDuration(time);
+        newColl.transform.position = _collPoint.position;
+        newColl.transform.rotation = _collPoint.transform.rotation;
+        newColl.transform.SetParent(_collPoint.transform, true);
+        newColl.parentEnemy = this;
+    }
+    public void SettParryCollision(float time = -2.0f)
+    {
+        ParryCollision newColl = Instantiate(_parryCollision);
+        newColl.ChangeDuration(time);
+        newColl.transform.position = _collPoint.position;
+        newColl.transform.rotation = _collPoint.transform.rotation;
+        newColl.ParentEnemy = this;
+    }
+
+
+
 
 }
 

@@ -8,10 +8,11 @@ public  class State : MonoBehaviour
     [SerializeField] protected string AnimationTrigger;
     [SerializeField] protected State DefaultNextState;
     [SerializeField] public bool IsPausable = true;
-    protected StateMachine ParentMachine;
-    protected Entity _controlledEntity;
+    [SerializeField] protected StateMachine ParentMachine;
+    protected Enemy _controlledEntity;
+    
 
-    public void InitialiceState(StateMachine Machine , Entity entity)
+    public void InitialiceState(StateMachine Machine , Enemy entity)
     {
         ParentMachine = Machine;
         _controlledEntity = entity;
@@ -19,7 +20,7 @@ public  class State : MonoBehaviour
 
     public virtual void StartState()
     {
-        if (AnimationTrigger != null && _controlledEntity._SpriteAnimator != null) _controlledEntity._SpriteAnimator.SetTrigger(AnimationTrigger);
+       // if (AnimationTrigger != null ) _controlledEntity._SpriteAnimator.SetTrigger(AnimationTrigger);
     }
 
     public virtual void StopState() 

@@ -7,8 +7,9 @@ public class GoblinMele : Enemy
     public StateMachine machine;
     void Start()
     {
-        CombatDirector.instance.goblinsMele.Append(this);
-        
+        BaseStart();
+        CombatDirector.instance.AddToList(this);
+        machine.Initialice(this, moveComp, _ai);
     }
 
     // Update is called once per frame
