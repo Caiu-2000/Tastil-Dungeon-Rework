@@ -16,7 +16,7 @@ public abstract  class Entity : MonoBehaviour , IHittable
     public delegate void HealthChange(float NewHealth, float MaxHealth);
     public HealthChange OnHealthChanged = delegate { };
 
-    public delegate void Damaged();
+    public delegate void Damaged(hittData? data = null);
     public Damaged OnDamaged = delegate { };
 
     public delegate void Dead();
@@ -49,8 +49,10 @@ public abstract  class Entity : MonoBehaviour , IHittable
         }
         else
             currentShieldedLife -= reducedDamage;
+        Vector3 from = Vector3.zero;
+        if (KnockBackFrom != null) { from = KnockBackFrom.position; }
 
-        OnDamaged?.Invoke();
+        OnDamaged?.Invoke(new hittData(damage , from, knockbackForce));
         if (_currentLife <= 0)
         {
             Die();

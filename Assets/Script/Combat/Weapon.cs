@@ -26,7 +26,7 @@ public class Weapon : Item
     public Sprite critmarker;
 
     [SerializeField] private WeaponAnimations _weaponAnimations;
-
+    protected bool ChargingSpecial = false;
     private void Start()
     {
         _ItemCollider = GetComponent<Collider>();
@@ -44,6 +44,18 @@ public class Weapon : Item
     {
       
     }
+
+    public virtual void ChargeSpecial() 
+    {
+        if (ChargingSpecial) return; 
+        ChargingSpecial = true;
+    
+    }
+    public virtual void ReleaseSpecial() 
+    {
+        ChargingSpecial = false ;
+    
+    }
     
     
     public void ActivateWeapon()
@@ -58,6 +70,8 @@ public class Weapon : Item
         {
             _input.OnAttackPressed += ChargeAttack ;
             _input.OnAttackReleased += ReleaseAttack ;
+            _input.OnSpecialReleased += ReleaseSpecial ;
+            _input.OnSpecialPressed += ChargeSpecial ;
         }
 
     }
@@ -71,6 +85,8 @@ public class Weapon : Item
         {
             _input.OnAttackPressed -= ChargeAttack;
             _input.OnAttackReleased -= ReleaseAttack;
+            _input.OnSpecialReleased -= ReleaseSpecial;
+            _input.OnSpecialPressed -= ChargeSpecial;
         }
     }
 

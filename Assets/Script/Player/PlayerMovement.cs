@@ -66,12 +66,6 @@ public class PlayerMovement : MovementComponent
 
 
 
-
-
-
-
-
-
     private void FixedUpdate()
     {
         if (!Cc.isGrounded)

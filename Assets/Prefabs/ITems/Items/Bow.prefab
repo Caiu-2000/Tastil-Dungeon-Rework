@@ -137,8 +137,11 @@ MonoBehaviour:
   crosshair: {fileID: -1911515901, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
   hitmarker: {fileID: -1892929071, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
   critmarker: {fileID: 713179744, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
+  _weaponAnimations: {fileID: 0}
   _arrow: {fileID: 683617291411065294, guid: f1cb8d795475c3a4dad97bbcf9eee6e6, type: 3}
+  _SpecialArrow: {fileID: 683617291411065294, guid: 0596ced4e9078da489906d5832152b7d, type: 3}
   _firePoint: {fileID: 7969046564014353640}
+  MaxTension: 3
 --- !u!136 &2214900430917317717
 CapsuleCollider:
   m_ObjectHideFlags: 0

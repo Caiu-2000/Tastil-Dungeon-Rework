@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -16,7 +17,7 @@ public class AiComponent : MonoBehaviour
     private bool _enabled = false;
     private Transform _objectiveTransform;
     private bool fleeing = false;
-    
+    private Vector3 ObjPos;
 
 
     // Por ahora queda muy simple el movimiento pero quisiera meterle mas mano par hacerlo custom con el componente
@@ -24,24 +25,27 @@ public class AiComponent : MonoBehaviour
 
     private void Update()
     {
-        if ( !_enabled || _objectiveTransform == null)
+    
+        if ( !_enabled || ( _objectiveTransform == null && ObjPos == null))
         {
+            
             return; 
         }
-        float currentDistance = Vector3.Distance(this.transform.position, _objectiveTransform.position);
+        if (_objectiveTransform != null) { ObjPos = _objectiveTransform.position; }
+        float currentDistance = GetDistance();
 
         if (_DistanceForSpecial != 0)
         {
             
             if (currentDistance < _DistanceForSpecial)
             {
-                
+
                 _parentEnemy.SpecialDistanceReached();
             }
         }
         if (currentDistance > _minDistance && fleeing != true)
         {
-            _agent.SetDestination(_objectiveTransform.position);
+            _agent.SetDestination(ObjPos);
             _parentEnemy.SetWalking(true);
         } 
         else if (fleeing == true)
@@ -56,6 +60,12 @@ public class AiComponent : MonoBehaviour
         }
     }
 
+    public float GetDistance()
+    {
+        
+      return  Vector3.Distance(this.transform.position, ObjPos);
+    }
+
     public void ChangeObjective(Transform _newTransform)
     {
 
@@ -63,6 +73,7 @@ public class AiComponent : MonoBehaviour
     }
     public void ChangeEnabled(bool newState)
     {
+ 
         if (!newState) _parentEnemy.SetWalking(false);
         _enabled = newState;
     }
@@ -74,6 +85,7 @@ public class AiComponent : MonoBehaviour
 
     private IEnumerator DisableCorroutine(float Time)
     {
+      
         _enabled = false;
         yield return new WaitForSeconds(Time);
         _enabled = true;
@@ -91,5 +103,10 @@ public class AiComponent : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         fleeing = false;
+    }
+    public void Changepos(Vector3 pos)
+    {
+        ObjPos = pos;
+        _objectiveTransform = null;
     }
 }

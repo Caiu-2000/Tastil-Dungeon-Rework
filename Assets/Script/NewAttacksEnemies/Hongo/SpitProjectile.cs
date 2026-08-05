@@ -7,6 +7,9 @@ public class SpitProjectile : MonoBehaviour , IParryable
     private Vector3 targetPos;
     private Rigidbody rb;
     [SerializeField]LayerMask layerMask;
+
+
+
     private HongoCharger ParentHongo;
 
     private bool Parried = false;
