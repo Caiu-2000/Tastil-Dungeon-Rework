@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d9f538c7be498d4da68231b5f070cb4, type: 3}
-  m_Name: WavesToSpawn
+  m_Script: {fileID: 11500000, guid: c7d3c97b44ba4e54c8544d4141a39fef, type: 3}
+  m_Name: WaveData 1
   m_EditorClassIdentifier: 
-  waves:
-  - {fileID: 11400000, guid: fb7553d9594b4ce4f86c1c935d6a3e64, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  enemies:
+  - enemyPrefab: {fileID: 4920552964375429379, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
+    count: 2
+    spawnInterval: 3

@@ -38,7 +38,7 @@ public class ArenaWaveManager : MonoBehaviour
             return;
         }
         spawner.SpawnWave(wavesConfig.waves[waveIndex].enemies);
-        OnWaveStart?.Invoke(waveIndex);
+        OnWaveStart?.Invoke(CurrentWave);
         CurrentState = ArenaState.WaveActive;
     }
     private void HandleWaveCleared()
