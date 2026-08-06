@@ -10,7 +10,7 @@ public class FWB : IOnHitBuff
     {
         this.data = data;
         this.weapon = weapon;
-        firesword = weapon.transform.Find("Fire Sword");
+        firesword = weapon.transform.Find("Fire Weapon");
         Debug.Log(weapon);
     }
 
