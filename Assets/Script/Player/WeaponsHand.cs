@@ -11,8 +11,7 @@ public class WeaponsHand : MonoBehaviour
 
     void Start()
     {
-        WeaponAnimator = GetComponent<Animator>();
-
+   
         WeaponAnimator.runtimeAnimatorController = overrideController;
         print(WeaponAnimator.runtimeAnimatorController.name);
     }
