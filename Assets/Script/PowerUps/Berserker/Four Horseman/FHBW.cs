@@ -11,7 +11,7 @@ public class FHBW : IOnAttackBuff
         this.data = data;
         this.player = player;
         this.weapon = weapon;
-        bloodsword = weapon.transform.Find("Blood Sword");
+        bloodsword = weapon.transform.Find("Blood Weapon");
         bloodsword.gameObject.SetActive(true);
 
     }

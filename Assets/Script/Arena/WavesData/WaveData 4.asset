@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7d3c97b44ba4e54c8544d4141a39fef, type: 3}
-  m_Name: WaveData 1
+  m_Name: WaveData 4
   m_EditorClassIdentifier: 
   enemies:
-  - enemyPrefab: {fileID: 4920552964375429379, guid: 6b49a361c2d19e84bac1fb70445832f6, type: 3}
-    count: 1
+  - enemyPrefab: {fileID: 8390245840914180165, guid: 7d1fbfc33a2adf24abbe9a77ae146afc, type: 3}
+    count: 2
     spawnInterval: 3
