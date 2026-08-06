@@ -34,8 +34,3 @@ public interface IProjectile
 {
     void SetTarget(Transform target);
 }
-
-public interface IStunable
-{
-    void CallStun(float time);
-}

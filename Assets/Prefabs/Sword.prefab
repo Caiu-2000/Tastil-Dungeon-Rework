@@ -61,10 +61,6 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 805407824451861366, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
-      propertyPath: Hability
-      value: 
-      objectReference: {fileID: 3558908284123533704}
-    - target: {fileID: 805407824451861366, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       propertyPath: WeaponID
       value: 0
       objectReference: {fileID: 0}
@@ -101,17 +97,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 805407824451861366, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
-      propertyPath: SpecialStamCost
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 805407824451861366, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       propertyPath: _weaponAnimations
       value: 
       objectReference: {fileID: 11400000, guid: f9e9cfae09fb6e843b9959c56ae1e764, type: 2}
-    - target: {fileID: 805407824451861366, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
-      propertyPath: SpeciallChargeTime
-      value: 0.7
-      objectReference: {fileID: 0}
     - target: {fileID: 805407824451861366, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       propertyPath: _attackCollDuration
       value: 0.1
@@ -212,31 +200,8 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7344982316945209445, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8390990000100515222}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2869648153679632369, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 3558908284123533704}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
---- !u!1 &1635266728553359960 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2869648153679632369, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
-  m_PrefabInstance: {fileID: 3558595386540965289}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3558908284123533704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1635266728553359960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0930430039d246d4b9e73f24106d8a55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PreviousTime: 0.05
-  DashSpeed: 25
-  DashDuretion: 0.2
 --- !u!4 &6092302833805510092 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7344982316945209445, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}

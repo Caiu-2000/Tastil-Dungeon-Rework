@@ -1,4 +1,3 @@
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 
@@ -26,18 +25,8 @@ public class Weapon : Item
     public Sprite hitmarker;
     public Sprite critmarker;
 
-    [SerializeField] protected WeaponHability Hability;
-
-
-    [SerializeField] protected WeaponAnimations _weaponAnimations;
+    [SerializeField] private WeaponAnimations _weaponAnimations;
     protected bool ChargingSpecial = false;
-    [SerializeField] protected float SpeciallChargeTime = 0.5f;
-    [SerializeField] protected float SpecialStamCost = 10.0f;
-    protected float SpecialTimeCount = 0;
-    protected bool ReleasedSpecial = false;
-
-
-
     private void Start()
     {
         _ItemCollider = GetComponent<Collider>();
@@ -56,7 +45,17 @@ public class Weapon : Item
       
     }
 
-
+    public virtual void ChargeSpecial() 
+    {
+        if (ChargingSpecial) return; 
+        ChargingSpecial = true;
+    
+    }
+    public virtual void ReleaseSpecial() 
+    {
+        ChargingSpecial = false ;
+    
+    }
     
     
     public void ActivateWeapon(Animator handAnimator)
@@ -64,7 +63,7 @@ public class Weapon : Item
 
         PlayerInput _input = GameManager.Instance.GetInput();
         HandAnimator = handAnimator;
-        Hability.InitialiceHability(GameManager.Instance.Player , this); // Se supone que estaba hecho para que los enemigos tambien manejen las armas. No se llego 
+
         _equiped = true;
         _readyToAttack = true;
         _ItemCollider.enabled = false;
@@ -144,33 +143,4 @@ public class Weapon : Item
     }
 
     public WeaponAnimations GetAnimations() { return _weaponAnimations; }
-
-    public virtual void ChargeSpecial()
-    {
-
-        if (SpecialStamCost <= GameManager.Instance.Player._currentStamina && !ChargingSpecial)
-        {
-            GameManager.Instance.Player._currentStamina -= SpecialStamCost;
-            ChargingSpecial = true;
-
-        }
-
-    }
-    public virtual void ReleaseSpecial()
-    {
-        ReleasedSpecial = true;
-
-    }
-
-
-
-    private void Update()
-    {
-        if (ChargingSpecial)
-        {
-            SpecialTimeCount += Time.deltaTime;
-        }
-        if (ReleasedSpecial && SpecialTimeCount > SpeciallChargeTime) { Hability.RunHability(); ReleasedSpecial = false; ChargingSpecial = false; } 
-    }
-
 }
