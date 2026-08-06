@@ -62,6 +62,8 @@ public class MeleWeapon : Weapon
             SoundManager.instance.PlayRandom(SoundTypes.Slash);
             _attacking = true;
             StartCoroutine(AttackSecuence());
+        HandAnimator.SetInteger("CurrentAttack" , _currentCombo);
+        HandAnimator.SetTrigger("Attack");
             return true;
 
     }
@@ -150,4 +152,23 @@ public class MeleWeapon : Weapon
         //Gizmos.DrawWireSphere(AttackPos , _collSize);
         Gizmos.DrawWireCube(AttackPos, new Vector3(_collSize, _collSize, _collSize));
     }
+
+
+
+    public override void ChargeSpecial()
+    {
+        base.ChargeSpecial();
+        HandAnimator.SetTrigger("StartCharge");
+
+    }
+    public override void ReleaseSpecial()
+    {
+        base.ReleaseSpecial();
+    
+
+        HandAnimator.SetTrigger("ReleaseCharge");
+
+    }
+
+
 }

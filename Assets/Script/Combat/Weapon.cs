@@ -20,7 +20,7 @@ public class Weapon : Item
     protected Entity ParentEntity;
     protected Collider _ItemCollider;
 
-
+    protected Animator HandAnimator;
     public Sprite crosshair;
     public Sprite hitmarker;
     public Sprite critmarker;
@@ -58,10 +58,11 @@ public class Weapon : Item
     }
     
     
-    public void ActivateWeapon()
+    public void ActivateWeapon(Animator handAnimator)
     {
 
         PlayerInput _input = GameManager.Instance.GetInput();
+        HandAnimator = handAnimator;
 
         _equiped = true;
         _readyToAttack = true;

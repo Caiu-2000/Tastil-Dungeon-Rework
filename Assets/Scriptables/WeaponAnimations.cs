@@ -9,4 +9,5 @@ public class WeaponAnimations : ScriptableObject
     public AnimationClip Attack3;
     public AnimationClip Charge;
     public AnimationClip Release;
+    public AnimationClip Loop;
 }

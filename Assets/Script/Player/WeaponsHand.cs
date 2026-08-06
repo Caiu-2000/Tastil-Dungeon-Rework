@@ -39,7 +39,7 @@ public class WeaponsHand : MonoBehaviour
 
         updateAnimations(_equipedWeapon.GetAnimations());
 
-        _equipedWeapon.ActivateWeapon();
+        _equipedWeapon.ActivateWeapon(WeaponAnimator);
         
     }
 
@@ -48,6 +48,12 @@ public class WeaponsHand : MonoBehaviour
         if (anims == null) { return; }
         print(anims.TakeOut.name);
         overrideController["ACArreglado"] = anims.TakeOut;
+        overrideController["Armature|Attack1Sword"] = anims.Attack1;
+        overrideController["Armature|Attack2Sword"] = anims.Attack2;
+        overrideController["Armature|Attack3Sword"] = anims.Attack3;
+        overrideController["Armature|LoopPointing"] = anims.Loop;
+        overrideController["Armature|ChargePointing"] = anims.Charge;
+        overrideController["Armature|ReleasePointing"] = anims.Release;
         WeaponAnimator.SetTrigger("Desenfunde");
 
     }
