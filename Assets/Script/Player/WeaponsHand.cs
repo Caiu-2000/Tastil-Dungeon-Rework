@@ -13,7 +13,7 @@ public class WeaponsHand : MonoBehaviour
     {
    
         WeaponAnimator.runtimeAnimatorController = overrideController;
-        print(WeaponAnimator.runtimeAnimatorController.name);
+        
     }
 
 
@@ -46,7 +46,7 @@ public class WeaponsHand : MonoBehaviour
     public void updateAnimations(WeaponAnimations anims)
     {
         if (anims == null) { return; }
-        print(anims.TakeOut.name);
+      
         overrideController["ACArreglado"] = anims.TakeOut;
         overrideController["Armature|Attack1Sword"] = anims.Attack1;
         overrideController["Armature|Attack2Sword"] = anims.Attack2;

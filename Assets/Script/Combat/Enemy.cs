@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
-public class Enemy : Entity
+public class Enemy : Entity , IStunable
 {
     [SerializeField] protected EnemyHitCollision _coll;
     [SerializeField] protected ParryCollision _parryCollision;
@@ -159,8 +159,11 @@ public class Enemy : Entity
         newColl.ParentEnemy = this;
     }
 
+    public virtual void ApplyStun(float StunTime = 1.0f) { }
 
-
-
+    public void CallStun(float time)
+    {
+        ApplyStun(time);
+    }
 }
 

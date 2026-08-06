@@ -16,5 +16,6 @@ MonoBehaviour:
   Attack1: {fileID: 0}
   Attack2: {fileID: 0}
   Attack3: {fileID: 0}
-  Charge: {fileID: -2102666035406271029, guid: 42000e3e9be0c664d92a6c0e291d7b13, type: 3}
+  Charge: {fileID: -1344631953840713630, guid: 42000e3e9be0c664d92a6c0e291d7b13, type: 3}
   Release: {fileID: 0}
+  Loop: {fileID: -7888667597604381145, guid: 42000e3e9be0c664d92a6c0e291d7b13, type: 3}

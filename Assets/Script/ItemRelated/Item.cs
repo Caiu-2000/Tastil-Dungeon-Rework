@@ -125,7 +125,7 @@ abstract public class Item : MonoBehaviour , IInteractable
         obj.layer = layer;
         foreach (Transform child in obj.transform)
         {
-            print(child);
+
             RecursiveChangeLayer(child.gameObject, layer);
         }
     }

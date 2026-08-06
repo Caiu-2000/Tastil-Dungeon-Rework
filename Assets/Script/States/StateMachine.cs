@@ -29,7 +29,7 @@ public class StateMachine : MonoBehaviour
 
     internal void Initialice(Enemy enemy, MovementComponent movement, AiComponent AI)
     {
-        print("Si me inicializaron aca");
+      
         _entity = enemy;
 
         _entity.OnDamaged += Damaged;
@@ -43,7 +43,7 @@ public class StateMachine : MonoBehaviour
 
         foreach (State state in statesList)
         {
-            print(state.ToString() + this + _entity);
+           
 
             state.InitialiceState(this, _entity);
         }
@@ -92,7 +92,7 @@ public class StateMachine : MonoBehaviour
 
     public void Damaged( hittData? attackData = null)
     {
-        print("Se llamo esto");
+        
         if (CurrentState.IsPausable)
         {
 
@@ -114,5 +114,13 @@ public class StateMachine : MonoBehaviour
         ForceInterrupt(ParryState);
     }
 
+    public void ApplyStun(float TimeForStun)
+    {
+        CurrentState.PauseState();
+        damaged.SetHittData(new hittData(), CurrentState , true , TimeForStun);
+        _pausedState = CurrentState;
+        CurrentState = damaged;
+        CurrentState.StartState();
+    }
 
 }

@@ -8,12 +8,12 @@ public class MeleWeapon : Weapon
 {
     
     
-    [SerializeField] private bool _canKnockback = true;
-    [SerializeField] private int _maxCombo = 3, _currentCombo = 0;
-    [SerializeField] private List<float> AttackTimers = new List<float>();
-    private float ComboCd = 3.0f, ComboCount = 0.0f;
-    [SerializeField] private float  _reach = 1.0f , _collSize = 0.5f , _vertialOfsset = 0.5f , _attackCollDuration = 0.1f , _timeBetwenAttacks = 1.0f;
-    [SerializeField] private TrailRenderer _trail;
+    [SerializeField] public bool _canKnockback = true;
+    [SerializeField] public int _maxCombo = 3, _currentCombo = 0;
+    [SerializeField] public List<float> AttackTimers = new List<float>();
+    public float ComboCd = 3.0f, ComboCount = 0.0f;
+    [SerializeField] public float  _reach = 1.0f , _collSize = 0.5f , _vertialOfsset = 0.5f , _attackCollDuration = 0.1f , _timeBetwenAttacks = 1.0f;
+    [SerializeField] public TrailRenderer _trail;
 
     
 
@@ -35,6 +35,22 @@ public class MeleWeapon : Weapon
         }
         
         if (!_equiped) return;
+        if (ChargingSpecial)
+        {
+            SpecialTimeCount += Time.deltaTime;
+        }
+        if (ReleasedSpecial && SpecialTimeCount > SpeciallChargeTime) 
+        {
+            
+            Hability.RunHability();
+            ReleasedSpecial = false;
+            ChargingSpecial = false; 
+            SpecialTimeCount = 0;
+
+            HandAnimator.SetTrigger("ReleaseCharge");
+        }
+
+
     }
     public override void ChargeAttack()
     {
@@ -157,17 +173,22 @@ public class MeleWeapon : Weapon
 
     public override void ChargeSpecial()
     {
-        base.ChargeSpecial();
-        HandAnimator.SetTrigger("StartCharge");
+        if (SpecialStamCost <= GameManager.Instance.Player._currentStamina && !ChargingSpecial)
+        {
+
+            GameManager.Instance.Player._currentStamina -= SpecialStamCost;
+            ChargingSpecial = true;
+            HandAnimator.SetTrigger("StartCharge");
+
+        }
+        
 
     }
     public override void ReleaseSpecial()
     {
-        base.ReleaseSpecial();
-    
+        ReleasedSpecial = true;
 
-        HandAnimator.SetTrigger("ReleaseCharge");
-
+   
     }
 
 
