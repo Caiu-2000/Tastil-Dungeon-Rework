@@ -160,7 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fromPlayer: 0
   _weight: 2
-  _speed: 25
+  _speed: 15
   _damage: 50
   _timeToAutoDelete: 10
   explotion: {fileID: 477206505354467288, guid: 3dfda426f217eb247a2f23cd381ea614, type: 3}

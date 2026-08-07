@@ -73,6 +73,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 805407824451861366, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
+      propertyPath: _itemIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 9e91a129517d66548953fed9b220eb9e, type: 3}
+    - target: {fileID: 805407824451861366, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       propertyPath: _itemMesh
       value: 
       objectReference: {fileID: 9167385308619654956}
@@ -237,6 +241,7 @@ MonoBehaviour:
   PreviousTime: 0.05
   DashSpeed: 25
   DashDuretion: 0.2
+  Damage: 20
 --- !u!4 &6092302833805510092 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7344982316945209445, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}

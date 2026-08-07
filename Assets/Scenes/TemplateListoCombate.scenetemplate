@@ -68,7 +68,11 @@ MonoBehaviour:
     instantiationMode: 0
   - dependency: {fileID: 8300000, guid: 91d496ade289542418e1c6b93dd4649e, type: 3}
     instantiationMode: 1
+  - dependency: {fileID: 2800000, guid: 3b2458a9981f08746b1fad822b0ae66f, type: 3}
+    instantiationMode: 0
   - dependency: {fileID: 2800000, guid: c811ccf932f6cd241a76b3c79c5efba3, type: 3}
+    instantiationMode: 0
+  - dependency: {fileID: 2800000, guid: c7b74fdfda65b2c4fb6c66ae07229bd3, type: 3}
     instantiationMode: 0
   - dependency: {fileID: 2100000, guid: 1ff136ded889c8643962ebb2751516c1, type: 2}
     instantiationMode: 0
@@ -146,7 +150,7 @@ MonoBehaviour:
     instantiationMode: 1
   - dependency: {fileID: 953460464650809435, guid: a94938b8b3d99cf42ba2bafb04264745, type: 3}
     instantiationMode: 0
-  - dependency: {fileID: 2100000, guid: 964ff6d8ade3d314cb0581f2d4242182, type: 2}
+  - dependency: {fileID: 2800000, guid: ea6dd6dee4e6cc5428f749c42babf25e, type: 3}
     instantiationMode: 0
   - dependency: {fileID: 2800000, guid: 7d0a5550992aa7041b6446f8761fe4fb, type: 3}
     instantiationMode: 0
@@ -157,6 +161,8 @@ MonoBehaviour:
   - dependency: {fileID: 2800000, guid: f5eb9a50fc1c1024ba6d8d64b0cd6c70, type: 3}
     instantiationMode: 0
   - dependency: {fileID: 2800000, guid: 96aaab9cc247d0b4c98132159688c1af, type: 3}
+    instantiationMode: 0
+  - dependency: {fileID: 2100000, guid: 964ff6d8ade3d314cb0581f2d4242182, type: 2}
     instantiationMode: 0
   - dependency: {fileID: 2800000, guid: c9bd74624d8070f429e3f46d161f9204, type: 3}
     instantiationMode: 0
@@ -643,6 +649,8 @@ MonoBehaviour:
   - dependency: {fileID: 2800000, guid: 19b2e34c0e225294381728bb34e002a4, type: 3}
     instantiationMode: 0
   - dependency: {fileID: 919132149155446097, guid: 12d6189bd5123734bbf10473c92b2ccc, type: 3}
+    instantiationMode: 0
+  - dependency: {fileID: 2100000, guid: 45877f0c0ad6303418bd2c32c4ff3709, type: 2}
     instantiationMode: 0
   - dependency: {fileID: 2800000, guid: 5d277cdbd42aebc4ca141f8cb8cdf7ea, type: 3}
     instantiationMode: 0

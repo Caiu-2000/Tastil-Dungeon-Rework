@@ -19,10 +19,14 @@ public class TrowableItem : Item
         SoundManager.instance.Play(SoundTypes.Trhow);
         var instancia = Instantiate(Tirableprefab);
         instancia._fromPlayer = true;
+       
+        
         instancia.transform.position = _inventory.SecondHandPosition();//GameManager.Player._Hand.transform.position;
         instancia.GetComponent<Rigidbody>().AddForce(GameManager.Instance.Player.transform.forward * 50, ForceMode.Impulse);
         Vector3 localSpinAxis = transform.right;
         instancia.GetComponent<Rigidbody>().AddTorque(localSpinAxis * 50, ForceMode.Impulse);
+        RecursiveChangeLayer(instancia.gameObject, 11);
+        instancia.transform.position = GameManager.Instance.Player.transform.position; 
         Destroy(gameObject);
   
     }

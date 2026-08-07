@@ -198,7 +198,7 @@ public class PlayerMaster : Entity
     private IEnumerator DoShake(float duration, float magnitude)
     {
         yield return null;
-        print("HAY QUE REIMPLEMENTAR CAMERA SHAKE");
+ 
         /*
         originalPos = _camera.transform.localPosition;
         float elapsed = 0.0f;

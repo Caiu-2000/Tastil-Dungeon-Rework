@@ -489,7 +489,31 @@ MonoBehaviour:
   KeepDead: 0
   SoundEmitter:
     _audioSource: {fileID: 0}
-    sounds: []
+    sounds:
+    - soundName: 
+      type: 7
+      soundClip: {fileID: 8300000, guid: 32fadda80dcedc64e9279d74c90d4142, type: 3}
+      AudioMixer: {fileID: 187118316471433284, guid: 4b9b05cf0cfc3d04d8e87d3e5e9e1299, type: 2}
+      volume: 1
+      pitch: 1
+      IsLoop: 0
+      Source: {fileID: 0}
+    - soundName: 
+      type: 8
+      soundClip: {fileID: 8300000, guid: f47383fb5d94b0d4ca2ffbd09263b3ad, type: 3}
+      AudioMixer: {fileID: 187118316471433284, guid: 4b9b05cf0cfc3d04d8e87d3e5e9e1299, type: 2}
+      volume: 1
+      pitch: 1
+      IsLoop: 0
+      Source: {fileID: 0}
+    - soundName: 
+      type: 5
+      soundClip: {fileID: 8300000, guid: d7d7942a1f9b9c5429e55f3e5fc9175b, type: 3}
+      AudioMixer: {fileID: 187118316471433284, guid: 4b9b05cf0cfc3d04d8e87d3e5e9e1299, type: 2}
+      volume: 1
+      pitch: 1
+      IsLoop: 0
+      Source: {fileID: 0}
     AudioAlbum: []
     AudioMixerGroup: {fileID: 0}
   _AttackAlreadyConected: 0

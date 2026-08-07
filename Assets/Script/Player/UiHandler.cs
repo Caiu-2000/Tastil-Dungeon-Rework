@@ -28,6 +28,7 @@ public class UiHandler : MonoBehaviour
     [SerializeField] private Image critMarker;
     [SerializeField] private Image crossHair;
 
+    [SerializeField] private Image WeaponIndicator;
 
     private void Awake()
     {
@@ -172,4 +173,10 @@ public class UiHandler : MonoBehaviour
         critMarker.sprite = weapon.critmarker;
         crossHair.sprite = weapon.crosshair;
     }
+
+    public void changeWeapon(Sprite newsprite)
+        {
+        WeaponIndicator.sprite = newsprite;
+
+        }
 }

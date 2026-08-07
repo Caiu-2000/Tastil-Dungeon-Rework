@@ -12,6 +12,8 @@ public enum SoundTypes
     Death,
     Damaged,
     Menumusic,
-    PlayingMusic
+    PlayingMusic,
+    bombHis,
+    explosion
 
 }

@@ -89,6 +89,22 @@ MonoBehaviour:
     pitch: 1.3
     IsLoop: 0
     Source: {fileID: 0}
+  - soundName: bomb
+    type: 11
+    soundClip: {fileID: 8300000, guid: ea9e86beeca63684e8ac6ab50c5b0357, type: 3}
+    AudioMixer: {fileID: 187118316471433284, guid: 4b9b05cf0cfc3d04d8e87d3e5e9e1299, type: 2}
+    volume: 1
+    pitch: 1.3
+    IsLoop: 0
+    Source: {fileID: 0}
+  - soundName: bum
+    type: 12
+    soundClip: {fileID: 8300000, guid: d38d31b609291424ea7578ded1ffebb2, type: 3}
+    AudioMixer: {fileID: 187118316471433284, guid: 4b9b05cf0cfc3d04d8e87d3e5e9e1299, type: 2}
+    volume: 1
+    pitch: 1.3
+    IsLoop: 0
+    Source: {fileID: 0}
   albums:
   - type: 4
     soundClip:
