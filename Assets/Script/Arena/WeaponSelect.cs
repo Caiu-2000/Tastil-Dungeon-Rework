@@ -32,9 +32,9 @@ public class WeaponSelect : MonoBehaviour
     }
     void SpawnWeapon(Weapon weapon)
     {
-        var weaponspawned = Instantiate(weapon);
+        //var weaponspawned = Instantiate(weapon);
         PlayerMaster player = GameManager.Instance.GetPlayer();
         InventoryComponent inventory = player.GetComponent<InventoryComponent>();
-        inventory.AddItem(weaponspawned);
+        inventory.AddItem(weapon);
     }
 }

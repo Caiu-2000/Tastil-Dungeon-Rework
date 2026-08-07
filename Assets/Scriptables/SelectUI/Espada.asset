@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Espada
   m_EditorClassIdentifier: 
   name: Espada
-  description: ' '
-  artwork: {fileID: 21300000, guid: 026496c08b3323f49984717c262780de, type: 3}
+  description: "Un arma vers\xE1til que ofrece un equilibrio entre velocidad, alcance
+    y da\xF1o,"
+  artwork: {fileID: 21300000, guid: e07ef68148da3cb4a98ca2f87f44741e, type: 3}
   archetype: 2
   buffTarget: 0
   effect: {fileID: 0}

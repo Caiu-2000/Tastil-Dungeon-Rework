@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Fireball
   description: cada 3 golpes, prende fuego al enemigo
-  artwork: {fileID: 21300000, guid: 3ec84d4ccaf1a364f92dd4dfeef4406d, type: 3}
+  artwork: {fileID: 21300000, guid: ae63706ede112f84ea58ff8692d3927a, type: 3}
   archetype: 3
   buffTarget: 1
   effect: {fileID: 0}

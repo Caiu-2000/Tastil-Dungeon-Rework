@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Maza
   m_EditorClassIdentifier: 
   name: Mace
-  description: 
-  artwork: {fileID: 21300000, guid: 73ba4ece3e731884296a7b5c8dddd262, type: 3}
+  description: Un arma contundente. Su gran peso convierte cada impacto en un golpe
+    devastador, ideal para quienes prefieren la fuerza por encima de la velocidad
+  artwork: {fileID: 21300000, guid: 319f58a0bededd648af964ffcdab1c6f, type: 3}
   archetype: 1
   buffTarget: 1
   effect: {fileID: 0}
