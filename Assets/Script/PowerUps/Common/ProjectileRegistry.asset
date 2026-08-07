@@ -32,7 +32,7 @@ MonoBehaviour:
   - key: Explosion
     prefab: {fileID: 953460464650809435, guid: a94938b8b3d99cf42ba2bafb04264745, type: 3}
   - key: ExplosionSmall
-    prefab: {fileID: 4611771311522726687, guid: df9aa525c097f914aa66e7cc5b707028, type: 3}
+    prefab: {fileID: 953460464650809435, guid: a94938b8b3d99cf42ba2bafb04264745, type: 3}
   - key: Bleed
     prefab: {fileID: 5513840539181429617, guid: 3f80d912240cce74bbf907af0e0eb20f, type: 3}
   - key: ElectricArc

@@ -35,7 +35,7 @@ public class DryMartini : Item
     }
     void BodyBuff()
     {
-        BuffManager.Instance.AddBuffOnParry(new DryMartiniBB(weapon, data));
+        BuffManager.Instance.AddBuffOnParry(new DryMartiniBB(GameManager.Instance.CurrentWeapon, data));
     }
 
 }

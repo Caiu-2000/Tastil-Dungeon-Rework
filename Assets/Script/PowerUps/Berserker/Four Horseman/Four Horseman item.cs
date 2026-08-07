@@ -33,7 +33,7 @@ public class FourHorsemanitem : Item
 
     private void BodyBuff()
     {
-        var buff = new FHBB(data, player, weapon, player.GetComponent<RangedWeapon>());
+        var buff = new FHBB(data, player, (MeleWeapon)GameManager.Instance.CurrentWeapon, player.GetComponent<RangedWeapon>());
         BuffManager.Instance.AddBuffOnAttack(buff);
         BuffManager.Instance.AddBuffPassive(buff, 0.1f);
     }
