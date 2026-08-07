@@ -1,4 +1,4 @@
-using System.Linq;
+
 using UnityEngine;
 
 public class GoblinMele : Enemy
@@ -17,5 +17,9 @@ public class GoblinMele : Enemy
     void Update()
     {
         
+    }
+    public override void ApplyStun(float StunTime = 1)
+    {
+        machine.ApplyStun(StunTime);
     }
 }

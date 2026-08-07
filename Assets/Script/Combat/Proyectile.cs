@@ -23,7 +23,7 @@ public class Proyectile : MonoBehaviour , IParryable
 
     private void Update()
     {
-        transform.position = transform.position + transform.forward *Time.deltaTime * _speed;
+        transform.position = transform.position + transform.forward *Time.deltaTime * _speed - new Vector3(0,_weight * Time.deltaTime,0);
     }
 
     private void OnTriggerEnter(Collider collision)

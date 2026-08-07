@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c568fcd12216b041a33593a6542f6cb, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  TakeOut: {fileID: 7400000, guid: 24a4add564430d245b56c56e53b41115, type: 2}
-  Attack1: {fileID: 0}
-  Attack2: {fileID: 0}
-  Attack3: {fileID: 0}
-  Charge: {fileID: 0}
-  Release: {fileID: 0}
+  TakeOut: {fileID: -1286573044617618786, guid: 42000e3e9be0c664d92a6c0e291d7b13, type: 3}
+  Attack1: {fileID: 5431434188324628600, guid: 42000e3e9be0c664d92a6c0e291d7b13, type: 3}
+  Attack2: {fileID: 274675614470336245, guid: 42000e3e9be0c664d92a6c0e291d7b13, type: 3}
+  Attack3: {fileID: -320434039559981563, guid: 42000e3e9be0c664d92a6c0e291d7b13, type: 3}
+  Charge: {fileID: -2102666035406271029, guid: 42000e3e9be0c664d92a6c0e291d7b13, type: 3}
+  Release: {fileID: -4771815942923909141, guid: 42000e3e9be0c664d92a6c0e291d7b13, type: 3}

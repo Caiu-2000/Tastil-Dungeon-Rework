@@ -112,7 +112,10 @@ public class MeleHumanoid : Enemy
             _animator.SetTrigger("Parried");
         }
     }
-
+    public override void ApplyStun(float StunTime = 1)
+    {
+        Stun(true, StunTime);
+    }
     public override void ApplyParry()
     {
         Stun(true, 2.0f);
@@ -151,6 +154,7 @@ public class MeleHumanoid : Enemy
         OnEntityDead?.Invoke();
         Destroy(gameObject, 3.0f);
         _roomController?.OnEnemyDied(this);
+        StopAllCoroutines();
         BuffManager.Instance?.TriggerOnEnemyDeath(this.gameObject);
     }
 

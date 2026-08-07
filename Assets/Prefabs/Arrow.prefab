@@ -138,13 +138,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fromPlayer: 0
-  _objective: {fileID: 0}
-  _weight: 0
+  _weight: 2
   _speed: 10
   _damage: 5
-  _canKnockback: 0
   _timeToAutoDelete: 10
-  _objectModel: {fileID: 0}
 --- !u!65 &5716303463953329436
 BoxCollider:
   m_ObjectHideFlags: 0

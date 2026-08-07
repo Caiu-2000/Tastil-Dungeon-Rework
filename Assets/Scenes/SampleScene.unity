@@ -1052,6 +1052,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 502334688405599387, guid: 142626549b9e53342ac75f9b5b969006, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766480029347443728, guid: 142626549b9e53342ac75f9b5b969006, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.051822
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766480029347443728, guid: 142626549b9e53342ac75f9b5b969006, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.70760775
+      objectReference: {fileID: 0}
+    - target: {fileID: 3766480029347443728, guid: 142626549b9e53342ac75f9b5b969006, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.687023
+      objectReference: {fileID: 0}
     - target: {fileID: 4344412163399767165, guid: 142626549b9e53342ac75f9b5b969006, type: 3}
       propertyPath: _animator
       value: 
@@ -1059,6 +1075,14 @@ PrefabInstance:
     - target: {fileID: 5266659673803407109, guid: 142626549b9e53342ac75f9b5b969006, type: 3}
       propertyPath: m_Name
       value: player package
+      objectReference: {fileID: 0}
+    - target: {fileID: 7046733872375865284, guid: 142626549b9e53342ac75f9b5b969006, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 45877f0c0ad6303418bd2c32c4ff3709, type: 2}
+    - target: {fileID: 7355870320269843077, guid: 142626549b9e53342ac75f9b5b969006, type: 3}
+      propertyPath: m_TranslationOffset.x
+      value: -1.051822
       objectReference: {fileID: 0}
     - target: {fileID: 7894499681853068443, guid: 142626549b9e53342ac75f9b5b969006, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1192,6 +1216,9 @@ MonoBehaviour:
   _StaminaCD: 1
   _StaminaCount: 0
   _StaminaRegen: 25
+  _coll: {fileID: 0}
+  _parryCollision: {fileID: 0}
+  _collPoint: {fileID: 0}
   _renderer: {fileID: 1142646826}
   _ai: {fileID: 0}
   _animator: {fileID: 0}
@@ -1204,6 +1231,8 @@ MonoBehaviour:
     sounds: []
     AudioAlbum: []
     AudioMixerGroup: {fileID: 0}
+  _AttackAlreadyConected: 0
+  _ParryAlreadyConected: 0
 --- !u!136 &202783862
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1792,6 +1821,9 @@ MonoBehaviour:
   _StaminaCD: 1
   _StaminaCount: 0
   _StaminaRegen: 25
+  _coll: {fileID: 0}
+  _parryCollision: {fileID: 0}
+  _collPoint: {fileID: 0}
   _renderer: {fileID: 2039591587}
   _ai: {fileID: 0}
   _animator: {fileID: 0}
@@ -1804,6 +1836,8 @@ MonoBehaviour:
     sounds: []
     AudioAlbum: []
     AudioMixerGroup: {fileID: 0}
+  _AttackAlreadyConected: 0
+  _ParryAlreadyConected: 0
 --- !u!136 &352427752
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2941,10 +2975,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bow
       objectReference: {fileID: 0}
+    - target: {fileID: 9131150515405936455, guid: f3268bf1f27ad1a40906cbb12e3f5aac, type: 3}
+      propertyPath: Hability
+      value: 
+      objectReference: {fileID: 1302502542}
+    - target: {fileID: 9131150515405936455, guid: f3268bf1f27ad1a40906cbb12e3f5aac, type: 3}
+      propertyPath: _weaponAnimations
+      value: 
+      objectReference: {fileID: 11400000, guid: f9e9cfae09fb6e843b9959c56ae1e764, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9090783090364856774, guid: f3268bf1f27ad1a40906cbb12e3f5aac, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1302502542}
   m_SourcePrefab: {fileID: 100100000, guid: f3268bf1f27ad1a40906cbb12e3f5aac, type: 3}
 --- !u!1 &526744076 stripped
 GameObject:
@@ -4345,6 +4390,9 @@ MonoBehaviour:
   _StaminaCD: 1
   _StaminaCount: 0
   _StaminaRegen: 25
+  _coll: {fileID: 0}
+  _parryCollision: {fileID: 0}
+  _collPoint: {fileID: 0}
   _renderer: {fileID: 725614800}
   _ai: {fileID: 0}
   _animator: {fileID: 0}
@@ -4357,6 +4405,8 @@ MonoBehaviour:
     sounds: []
     AudioAlbum: []
     AudioMixerGroup: {fileID: 0}
+  _AttackAlreadyConected: 0
+  _ParryAlreadyConected: 0
 --- !u!136 &1026357536
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5182,6 +5232,9 @@ MonoBehaviour:
   _StaminaCD: 1
   _StaminaCount: 0
   _StaminaRegen: 25
+  _coll: {fileID: 0}
+  _parryCollision: {fileID: 0}
+  _collPoint: {fileID: 0}
   _renderer: {fileID: 331059066}
   _ai: {fileID: 0}
   _animator: {fileID: 0}
@@ -5194,6 +5247,8 @@ MonoBehaviour:
     sounds: []
     AudioAlbum: []
     AudioMixerGroup: {fileID: 0}
+  _AttackAlreadyConected: 0
+  _ParryAlreadyConected: 0
 --- !u!136 &1277102152
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5330,6 +5385,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1302502537 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9090783090364856774, guid: f3268bf1f27ad1a40906cbb12e3f5aac, type: 3}
+  m_PrefabInstance: {fileID: 516920520}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1302502542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302502537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0930430039d246d4b9e73f24106d8a55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PreviousTime: 0.05
+  DashSpeed: 3
+  DashDuretion: 0.75
+  Damage: 20
 --- !u!1 &1306168490
 GameObject:
   m_ObjectHideFlags: 0
@@ -7675,6 +7751,9 @@ MonoBehaviour:
   _StaminaCD: 1
   _StaminaCount: 0
   _StaminaRegen: 25
+  _coll: {fileID: 0}
+  _parryCollision: {fileID: 0}
+  _collPoint: {fileID: 0}
   _renderer: {fileID: 2092785782}
   _ai: {fileID: 0}
   _animator: {fileID: 0}
@@ -7687,6 +7766,8 @@ MonoBehaviour:
     sounds: []
     AudioAlbum: []
     AudioMixerGroup: {fileID: 0}
+  _AttackAlreadyConected: 0
+  _ParryAlreadyConected: 0
 --- !u!136 &1942850931
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8119,6 +8200,9 @@ MonoBehaviour:
   _StaminaCD: 1
   _StaminaCount: 0
   _StaminaRegen: 25
+  _coll: {fileID: 0}
+  _parryCollision: {fileID: 0}
+  _collPoint: {fileID: 0}
   _renderer: {fileID: 0}
   _ai: {fileID: 0}
   _animator: {fileID: 0}
@@ -8131,6 +8215,8 @@ MonoBehaviour:
     sounds: []
     AudioAlbum: []
     AudioMixerGroup: {fileID: 0}
+  _AttackAlreadyConected: 0
+  _ParryAlreadyConected: 0
 --- !u!114 &1999862288
 MonoBehaviour:
   m_ObjectHideFlags: 0
