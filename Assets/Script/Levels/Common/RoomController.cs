@@ -69,6 +69,6 @@ public class RoomController : MonoBehaviour
     private IEnumerator Finish()
     {
         yield return new WaitForSeconds(5f);
-        GameManager.Instance.LoadLevel(0);
+        GameManager.Instance.LoadLevel(3);
     }
 }
