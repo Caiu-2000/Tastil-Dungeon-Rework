@@ -44,7 +44,7 @@ abstract public class Item : MonoBehaviour , IInteractable
    
         player._inventory.AddItem(this);
       
-        if(this.gameObject.CompareTag("powerup"))
+        if(this.gameObject.CompareTag("powerup") && RoomManager.instance !=null)
         {
             
             GameObject currentRoom = RoomManager.instance.GetRoom();
