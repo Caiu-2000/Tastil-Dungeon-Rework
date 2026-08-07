@@ -36,6 +36,7 @@ public class SoundEmitterComponent
 
         if (FindSound(type , out Sound sound) )
         {
+            if (_audioSource == null) return;
             Debug.Log(sound.type);
             if (ChangePitch) _audioSource.pitch = Random.Range(0.8f , 1.1f);
             _audioSource.clip = sound.soundClip;
