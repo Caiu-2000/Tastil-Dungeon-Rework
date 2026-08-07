@@ -4,12 +4,13 @@ public class FWB : IOnHitBuff
 {
     int stacks = 0;
     BuffData data;
-    MeleWeapon weapon;
+    Weapon weapon;
     Transform firesword;
-    public FWB (BuffData data, MeleWeapon weapon)
+    public FWB (BuffData data, Weapon weapon)
     {
         this.data = data;
         this.weapon = weapon;
+        Debug.Log (weapon);
         firesword = weapon.transform.Find("Fire Weapon");
         Debug.Log(weapon);
     }

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class Fireball : Item
 {
     PlayerMaster player;
-    MeleWeapon weapon;
+    Weapon weapon;
     RangedWeapon bow;
     [SerializeField] BuffData data;
     [SerializeField] BuffManager manager = BuffManager.Instance;
@@ -17,7 +17,7 @@ public class Fireball : Item
     {
         manager = BuffManager.Instance;
         player = GameManager.Instance.GetPlayer();
-        weapon = player.GetComponentInChildren<MeleWeapon>();
+        weapon = GameManager.Instance.CurrentWeapon;
         bow = player.GetComponent<RangedWeapon>();
 
     }
@@ -37,7 +37,7 @@ public class Fireball : Item
     }
     void WeaponBuff()
     {
-        BuffManager.Instance.AddBuffOnHit(new FWB(data, weapon));
+        BuffManager.Instance.AddBuffOnHit(new FWB(data, GameManager.Instance.CurrentWeapon));
     }
 
     void BodyBuff()

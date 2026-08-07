@@ -4,9 +4,9 @@ public class NegroniBodyBuff : IOnHitBuff
 {
     BuffData data;
     GameObject enemyCache;
-    MeleWeapon weapon;
+    Weapon weapon;
     
-    public NegroniBodyBuff(BuffData data, MeleWeapon weapon)
+    public NegroniBodyBuff(BuffData data, Weapon weapon)
     {
         this.data = data;
         this.weapon = weapon;

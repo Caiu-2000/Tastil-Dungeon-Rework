@@ -37,7 +37,7 @@ public class Negroni : Item
 
     void BodyBuff()
     {
-        BuffManager.Instance.AddBuffOnHit(new NegroniBodyBuff(data, weapon));
+        BuffManager.Instance.AddBuffOnHit(new NegroniBodyBuff(data, GameManager.Instance.CurrentWeapon));
     }
     private IEnumerator DrinkTime()
     {
