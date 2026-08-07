@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Four horseman
   description: "Cuando el ataque conecta perdes un 5% de tu vida actual para hacer
     un 15% extra de da\xF1o"
-  artwork: {fileID: 21300000, guid: 1e91fcd65df8c2c479d326e65d7feb07, type: 3}
+  artwork: {fileID: 21300000, guid: 2189e2e127c2f964bb03f55c49744fd0, type: 3}
   archetype: 1
   buffTarget: 1
   effect: {fileID: 0}

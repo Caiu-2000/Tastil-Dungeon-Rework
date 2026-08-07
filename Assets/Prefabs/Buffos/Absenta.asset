@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Absenta
   description: Cuando golpeas a un enemigo consegui un stack de armadura temporal,
     al llegar al maximo de stacks tu siguiente ataque te cura
-  artwork: {fileID: 21300000, guid: 1567bdffc8faf70418f25ce48085a18f, type: 3}
+  artwork: {fileID: 21300000, guid: 34afdf12b20cfd64da4a53562a210739, type: 3}
   archetype: 0
   buffTarget: 1
   effect: {fileID: 0}

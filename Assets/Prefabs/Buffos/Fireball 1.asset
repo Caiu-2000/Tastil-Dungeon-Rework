@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Fireball
   description: "Tomar da\xF1o prende fuego a los enemigos cercanos"
-  artwork: {fileID: 21300000, guid: 3ec84d4ccaf1a364f92dd4dfeef4406d, type: 3}
+  artwork: {fileID: 21300000, guid: 63c3fa29eded1a5438db6a4f46150160, type: 3}
   archetype: 3
   buffTarget: 1
   effect: {fileID: 0}

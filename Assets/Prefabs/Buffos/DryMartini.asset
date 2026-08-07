@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Dry martini
   description: El golpe crito empuja al enemigo, Tu siguiente ataque es un dash hacia
     este enemigo
-  artwork: {fileID: 21300000, guid: bbf933e8886a0aa47ab41524fa29f40c, type: 3}
+  artwork: {fileID: 21300000, guid: a3d56ba6047f72e4eabdee28fead6c39, type: 3}
   archetype: 2
   buffTarget: 1
   effect: {fileID: 0}

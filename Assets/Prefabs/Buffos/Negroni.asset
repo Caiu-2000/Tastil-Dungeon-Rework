@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Negroni
   description: Los criticos generan sangrado
-  artwork: {fileID: 21300000, guid: a9cbc2550d804cb48a227095c438fe6d, type: 3}
+  artwork: {fileID: 21300000, guid: 13adb95ae42ff1f4892ce382029d952e, type: 3}
   archetype: 2
   buffTarget: 1
   effect: {fileID: 0}

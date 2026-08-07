@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Dry martini
   description: Cuando logras un parry tu siguiente golpe es un critico asegurado
-  artwork: {fileID: 21300000, guid: bbf933e8886a0aa47ab41524fa29f40c, type: 3}
+  artwork: {fileID: 21300000, guid: c2377380b31bce0438406fff858ca57e, type: 3}
   archetype: 2
   buffTarget: 0
   effect: {fileID: 0}
