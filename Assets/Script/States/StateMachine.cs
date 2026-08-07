@@ -38,7 +38,7 @@ public class StateMachine : MonoBehaviour
 
         _movement = movement;
         AiComponent = AI;
-
+        print("inicializada");
 
 
 
