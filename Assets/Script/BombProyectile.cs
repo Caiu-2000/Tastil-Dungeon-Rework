@@ -8,6 +8,7 @@ public class BombProyectile : Proyectile
     [SerializeField]private Rigidbody rb;
     private Entity parent;
 
+    [SerializeField] GlobalExplotion explotion;
 
     private void Launch()
     {
@@ -49,5 +50,9 @@ public class BombProyectile : Proyectile
     internal void SetParent(Enemy controlledEntity)
     {
         parent = controlledEntity;
+    }
+    private void OnDestroy()
+    {
+        Instantiate(explotion, transform.position, Quaternion.identity);
     }
 }

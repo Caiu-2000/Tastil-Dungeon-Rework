@@ -70,8 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DropableItems:
-  - {fileID: 8835119499718473541, guid: 0d1262ecf83b6a045b7e22a9640c789b, type: 3}
-  - {fileID: 1516291951402659741, guid: e8203f3c7d006844b8759ab3aeef2c58, type: 3}
+  - {fileID: 46958909850179816, guid: a0f76eeaf7c9007418df76b55aa0908e, type: 3}
 --- !u!1001 &2642481371038304669
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public class Proyectile : MonoBehaviour , IParryable
 
     [SerializeField] private float _timeToAutoDelete = 10.0f;
     protected bool _wasRedirected = false;
-    
+
 
 
     private void Start()
@@ -40,13 +40,17 @@ public class Proyectile : MonoBehaviour , IParryable
                 }
             }
             else if (!_fromPlayer && hittable is Enemy) { return; }
-            Destroy(this.gameObject);
+            CallDestroy();
             hittable.Hit(_damage);
         }
 
 
     }
 
+    protected virtual void CallDestroy()
+    {
+        Destroy(this.gameObject);
+    }
 
     private void Hitted()
     {
@@ -89,4 +93,6 @@ public class Proyectile : MonoBehaviour , IParryable
     {
         transform.LookAt(this.transform.position  + direction);
     }
+
+
 }

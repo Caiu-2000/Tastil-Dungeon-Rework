@@ -53,6 +53,7 @@ MonoBehaviour:
   _damage: 50
   _timeToAutoDelete: 10
   rb: {fileID: 3517918254446089897}
+  explotion: {fileID: 477206505354467288, guid: 3dfda426f217eb247a2f23cd381ea614, type: 3}
 --- !u!135 &278741089825085249
 SphereCollider:
   m_ObjectHideFlags: 0
