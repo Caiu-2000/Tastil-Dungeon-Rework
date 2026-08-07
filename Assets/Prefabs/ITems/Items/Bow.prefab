@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 6822016165311557540}
   - component: {fileID: 9131150515405936455}
   - component: {fileID: 2214900430917317717}
+  - component: {fileID: 1092045025396216893}
   m_Layer: 10
   m_Name: Bow
   m_TagString: Untagged
@@ -137,9 +138,12 @@ MonoBehaviour:
   crosshair: {fileID: -1911515901, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
   hitmarker: {fileID: -1892929071, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
   critmarker: {fileID: 713179744, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
-  _weaponAnimations: {fileID: 0}
+  Hability: {fileID: 1092045025396216893}
+  _weaponAnimations: {fileID: 11400000, guid: fac6e35eb7d9d6d41baf6753d7a776d8, type: 2}
+  SpeciallChargeTime: 0.5
+  SpecialStamCost: 10
   _arrow: {fileID: 683617291411065294, guid: f1cb8d795475c3a4dad97bbcf9eee6e6, type: 3}
-  _SpecialArrow: {fileID: 683617291411065294, guid: 0596ced4e9078da489906d5832152b7d, type: 3}
+  _SpecialArrow: {fileID: 8633344317368708522, guid: 0596ced4e9078da489906d5832152b7d, type: 3}
   _firePoint: {fileID: 7969046564014353640}
   MaxTension: 3
 --- !u!136 &2214900430917317717
@@ -165,6 +169,22 @@ CapsuleCollider:
   m_Height: 3.63
   m_Direction: 1
   m_Center: {x: 0, y: 0.79, z: 0}
+--- !u!114 &1092045025396216893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9090783090364856774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0930430039d246d4b9e73f24106d8a55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PreviousTime: 0.05
+  DashSpeed: 3
+  DashDuretion: 0.75
+  Damage: 20
 --- !u!1001 &4068234182151726476
 PrefabInstance:
   m_ObjectHideFlags: 0

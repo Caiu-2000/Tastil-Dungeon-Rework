@@ -229,6 +229,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 805407824451861366, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
+      propertyPath: Hability
+      value: 
+      objectReference: {fileID: 294866197940156435}
+    - target: {fileID: 805407824451861366, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       propertyPath: WeaponID
       value: 1
       objectReference: {fileID: 0}
@@ -237,6 +241,18 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 805407824451861366, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
+      propertyPath: crosshair
+      value: 
+      objectReference: {fileID: 917759498, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
+    - target: {fileID: 805407824451861366, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
+      propertyPath: hitmarker
+      value: 
+      objectReference: {fileID: -489148809, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
+    - target: {fileID: 805407824451861366, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
+      propertyPath: critmarker
+      value: 
+      objectReference: {fileID: -1108728779, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
+    - target: {fileID: 805407824451861366, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       propertyPath: _canKnockback
       value: 0
       objectReference: {fileID: 0}
@@ -244,6 +260,10 @@ PrefabInstance:
       propertyPath: _readyToAttack
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 805407824451861366, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
+      propertyPath: _weaponAnimations
+      value: 
+      objectReference: {fileID: 11400000, guid: fac6e35eb7d9d6d41baf6753d7a776d8, type: 2}
     - target: {fileID: 805407824451861366, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       propertyPath: _attackCollDuration
       value: 0.1
@@ -286,15 +306,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7344982316945209445, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.37
+      value: 4.2435923
       objectReference: {fileID: 0}
     - target: {fileID: 7344982316945209445, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.58
+      value: 1.6885948
       objectReference: {fileID: 0}
     - target: {fileID: 7344982316945209445, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.23
+      value: -5.7424765
       objectReference: {fileID: 0}
     - target: {fileID: 7344982316945209445, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       propertyPath: m_LocalRotation.w
@@ -341,8 +361,29 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7344982316945209445, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9159188057923221710}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2869648153679632369, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 294866197940156435}
   m_SourcePrefab: {fileID: 100100000, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
+--- !u!1 &1487810937621215160 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2869648153679632369, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
+  m_PrefabInstance: {fileID: 3708377707620622409}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &294866197940156435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487810937621215160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 134b09f922c25d541a3422aa16131680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explotion: {fileID: 477206505354467288, guid: 3dfda426f217eb247a2f23cd381ea614, type: 3}
 --- !u!4 &6239828959408625708 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7344982316945209445, guid: 06bfa1a14cc5d80489594f148f4e9481, type: 3}
