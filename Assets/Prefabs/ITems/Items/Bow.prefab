@@ -122,7 +122,7 @@ MonoBehaviour:
   _ReplaceItem: {fileID: 0}
   _isPicked: 0
   _inventory: {fileID: 0}
-  _itemIcon: {fileID: 0}
+  _itemIcon: {fileID: 1528785404, guid: b8437dec722e24149922be125e3e76c9, type: 3}
   _useTime: 1
   _itemMesh: {fileID: 3797709583796689117}
   Type: 1
@@ -133,7 +133,7 @@ MonoBehaviour:
   WeaponID: 4
   _readyToAttack: 1
   _chargableAttack: 1
-  _stamCost: 0
+  _stamCost: 10
   _equiped: 0
   crosshair: {fileID: -1911515901, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
   hitmarker: {fileID: -1892929071, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
@@ -141,11 +141,12 @@ MonoBehaviour:
   Hability: {fileID: 1092045025396216893}
   _weaponAnimations: {fileID: 11400000, guid: fac6e35eb7d9d6d41baf6753d7a776d8, type: 2}
   SpeciallChargeTime: 0.5
-  SpecialStamCost: 10
+  SpecialStamCost: 50
   _arrow: {fileID: 683617291411065294, guid: f1cb8d795475c3a4dad97bbcf9eee6e6, type: 3}
   _SpecialArrow: {fileID: 8633344317368708522, guid: 0596ced4e9078da489906d5832152b7d, type: 3}
   _firePoint: {fileID: 7969046564014353640}
   MaxTension: 3
+  model: {fileID: 3797709583796689117}
 --- !u!136 &2214900430917317717
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -17,6 +17,10 @@ PrefabInstance:
       value: Lanza Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4201798530863187679, guid: d902ea849c2d61a4a9874076dec271be, type: 3}
+      propertyPath: Hability
+      value: 
+      objectReference: {fileID: 8586942967575671421}
+    - target: {fileID: 4201798530863187679, guid: d902ea849c2d61a4a9874076dec271be, type: 3}
       propertyPath: WeaponID
       value: 1
       objectReference: {fileID: 0}
@@ -31,15 +35,15 @@ PrefabInstance:
     - target: {fileID: 4201798530863187679, guid: d902ea849c2d61a4a9874076dec271be, type: 3}
       propertyPath: crosshair
       value: 
-      objectReference: {fileID: -747927903, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
+      objectReference: {fileID: 917759498, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
     - target: {fileID: 4201798530863187679, guid: d902ea849c2d61a4a9874076dec271be, type: 3}
       propertyPath: hitmarker
       value: 
-      objectReference: {fileID: -1108728779, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
+      objectReference: {fileID: -489148809, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
     - target: {fileID: 4201798530863187679, guid: d902ea849c2d61a4a9874076dec271be, type: 3}
       propertyPath: critmarker
       value: 
-      objectReference: {fileID: -1653037832, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
+      objectReference: {fileID: -1108728779, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
     - target: {fileID: 4201798530863187679, guid: d902ea849c2d61a4a9874076dec271be, type: 3}
       propertyPath: _canKnockback
       value: 0
@@ -47,6 +51,10 @@ PrefabInstance:
     - target: {fileID: 4201798530863187679, guid: d902ea849c2d61a4a9874076dec271be, type: 3}
       propertyPath: _readyToAttack
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4201798530863187679, guid: d902ea849c2d61a4a9874076dec271be, type: 3}
+      propertyPath: SpecialStamCost
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 6092302833805510092, guid: d902ea849c2d61a4a9874076dec271be, type: 3}
       propertyPath: m_LocalPosition.x
@@ -88,7 +96,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3558908284123533704, guid: d902ea849c2d61a4a9874076dec271be, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7911868361846315578, guid: d902ea849c2d61a4a9874076dec271be, type: 3}
     - {fileID: 9167385308619654956, guid: d902ea849c2d61a4a9874076dec271be, type: 3}
@@ -96,13 +105,34 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6092302833805510092, guid: d902ea849c2d61a4a9874076dec271be, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7714594515861094414}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1635266728553359960, guid: d902ea849c2d61a4a9874076dec271be, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8586942967575671421}
   m_SourcePrefab: {fileID: 100100000, guid: d902ea849c2d61a4a9874076dec271be, type: 3}
 --- !u!4 &1649433451159452465 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6092302833805510092, guid: d902ea849c2d61a4a9874076dec271be, type: 3}
   m_PrefabInstance: {fileID: 4787260270929264381}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6115432781756765349 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1635266728553359960, guid: d902ea849c2d61a4a9874076dec271be, type: 3}
+  m_PrefabInstance: {fileID: 4787260270929264381}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8586942967575671421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6115432781756765349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 134b09f922c25d541a3422aa16131680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explotion: {fileID: 477206505354467288, guid: 3dfda426f217eb247a2f23cd381ea614, type: 3}
 --- !u!1001 &7819664762621306853
 PrefabInstance:
   m_ObjectHideFlags: 0

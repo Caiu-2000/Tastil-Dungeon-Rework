@@ -32,7 +32,7 @@ public class InventoryComponent : MonoBehaviour
             GameManager.Instance.CurrentWeapon = weapon;
             OnWeaponChanged?.Invoke(weapon);
             _weaponsHand.EquipWeapon(weapon);
-
+            GameManager.Instance.Ui.changeWeapon(weapon._itemIcon);
             return;
         }
         if (_newItem is Item item)

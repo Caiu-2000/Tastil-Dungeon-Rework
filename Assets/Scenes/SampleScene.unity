@@ -8872,18 +8872,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lanza
       objectReference: {fileID: 0}
-    - target: {fileID: 8655929866707793954, guid: 8f154310512d11c46bfea1ec92a0a2fc, type: 3}
-      propertyPath: crosshair
-      value: 
-      objectReference: {fileID: 917759498, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
-    - target: {fileID: 8655929866707793954, guid: 8f154310512d11c46bfea1ec92a0a2fc, type: 3}
-      propertyPath: hitmarker
-      value: 
-      objectReference: {fileID: -489148809, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
-    - target: {fileID: 8655929866707793954, guid: 8f154310512d11c46bfea1ec92a0a2fc, type: 3}
-      propertyPath: critmarker
-      value: 
-      objectReference: {fileID: -1108728779, guid: d0d00c0e7b9e5934c91a8143f7ac7be1, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

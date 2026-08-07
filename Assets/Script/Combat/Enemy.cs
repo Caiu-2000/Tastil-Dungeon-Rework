@@ -110,7 +110,7 @@ public class Enemy : Entity , IStunable
 
     public virtual void ApplyParry()
     {
-
+        ApplyStun();
     }
 
     private void Update() { 

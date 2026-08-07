@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Maza
   m_EditorClassIdentifier: 
   TakeOut: {fileID: -1842006987149333897, guid: 42000e3e9be0c664d92a6c0e291d7b13, type: 3}
-  Attack1: {fileID: 0}
-  Attack2: {fileID: 0}
-  Attack3: {fileID: 0}
-  Charge: {fileID: -1344631953840713630, guid: 42000e3e9be0c664d92a6c0e291d7b13, type: 3}
-  Release: {fileID: 0}
-  Loop: {fileID: -7888667597604381145, guid: 42000e3e9be0c664d92a6c0e291d7b13, type: 3}
+  Attack1: {fileID: 5431434188324628600, guid: 42000e3e9be0c664d92a6c0e291d7b13, type: 3}
+  Attack2: {fileID: 274675614470336245, guid: 42000e3e9be0c664d92a6c0e291d7b13, type: 3}
+  Attack3: {fileID: -320434039559981563, guid: 42000e3e9be0c664d92a6c0e291d7b13, type: 3}
+  Charge: {fileID: 7959682860715868352, guid: 42000e3e9be0c664d92a6c0e291d7b13, type: 3}
+  Release: {fileID: -2102666035406271029, guid: 42000e3e9be0c664d92a6c0e291d7b13, type: 3}
+  Loop: {fileID: 7400000, guid: 9afebc735110f084b8047d9ef15c7e38, type: 2}

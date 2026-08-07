@@ -9,7 +9,7 @@ abstract public class Item : MonoBehaviour , IInteractable
     public bool _isPicked = false;
 
     public InventoryComponent _inventory;
-    [SerializeField]private Sprite _itemIcon;
+    [SerializeField]public Sprite _itemIcon;
     [SerializeField] protected float _useTime = 1.0f;
     protected ItemsHand _hand;
     public GameObject _itemMesh;

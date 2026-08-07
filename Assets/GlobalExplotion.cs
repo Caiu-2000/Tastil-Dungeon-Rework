@@ -6,17 +6,17 @@ public class GlobalExplotion : MonoBehaviour
     public float Damage = 10.0f;
     void Start()
     {
-
+        SoundManager.instance.Play(SoundTypes.explosion);
         Collider[] colliders    = Physics.OverlapSphere(transform.position, GetComponent<SphereCollider>().radius);
         
         foreach(Collider collider in colliders)
         {
-            print(collider.name);
+       
             if (collider.TryGetComponent<IHittable>(out IHittable hitted))
             {
                 if (collider.GetComponent<PlayerMaster>() && DontDamagePlayer) continue;
                 hitted.Hit(Damage);
-                print("hola");
+       
             }
         }
 

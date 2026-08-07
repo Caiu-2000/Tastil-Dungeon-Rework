@@ -1,4 +1,4 @@
-using Unity.Burst.CompilerServices;
+
 using UnityEngine;
 
 
@@ -75,8 +75,10 @@ public class Weapon : Item
             _input.OnSpecialReleased += ReleaseSpecial ;
             _input.OnSpecialPressed += ChargeSpecial ;
         }
-
+        SpecialActivation();
     }
+
+    public virtual void SpecialActivation() { }
     public void DeactivateWeapon()
     {
         PlayerInput _input = GameManager.Instance.GetInput();

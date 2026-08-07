@@ -176,7 +176,7 @@ public class MeleWeapon : Weapon
         if (SpecialStamCost <= GameManager.Instance.Player._currentStamina && !ChargingSpecial)
         {
 
-            GameManager.Instance.Player._currentStamina -= SpecialStamCost;
+            GameManager.Instance.Player.ReduceStamina( SpecialStamCost);
             ChargingSpecial = true;
             HandAnimator.SetTrigger("StartCharge");
 
