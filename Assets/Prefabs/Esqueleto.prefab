@@ -214,6 +214,9 @@ MonoBehaviour:
   _StaminaCD: 1
   _StaminaCount: 0
   _StaminaRegen: 25
+  _coll: {fileID: 5613051332891386071, guid: ac9a2bb7f2c62994cbe6bfec7d28b8d3, type: 3}
+  _parryCollision: {fileID: 7799133091847265430, guid: 6d16b8a15c5b3b047aa6a56d1a741688, type: 3}
+  _collPoint: {fileID: 8388557473915158333}
   _renderer: {fileID: 5709499215956091339}
   _ai: {fileID: 6584041461182360468}
   _animator: {fileID: 5779658560057799034}
@@ -232,19 +235,18 @@ MonoBehaviour:
       pitch: 1
       IsLoop: 0
       Source: {fileID: 0}
-    AudioAlbum:
-    - type: 8
-      soundClip:
-      - {fileID: 8300000, guid: f1e0ce748ec7c1e45a7d5134f2ee27d4, type: 3}
-      - {fileID: 8300000, guid: d55ddf84a46673b43984d09b12cece08, type: 3}
-      - {fileID: 8300000, guid: 92688dc3726a5344d9f3443a16f19439, type: 3}
+    - soundName: 
+      type: 8
+      soundClip: {fileID: 8300000, guid: d55ddf84a46673b43984d09b12cece08, type: 3}
       AudioMixer: {fileID: 187118316471433284, guid: 4b9b05cf0cfc3d04d8e87d3e5e9e1299, type: 2}
       volume: 1
+      pitch: 1
+      IsLoop: 0
       Source: {fileID: 0}
+    AudioAlbum: []
     AudioMixerGroup: {fileID: 187118316471433284, guid: 4b9b05cf0cfc3d04d8e87d3e5e9e1299, type: 2}
-  _coll: {fileID: 5613051332891386071, guid: ac9a2bb7f2c62994cbe6bfec7d28b8d3, type: 3}
-  _parryCollision: {fileID: 7799133091847265430, guid: 6d16b8a15c5b3b047aa6a56d1a741688, type: 3}
-  _collPoint: {fileID: 8388557473915158333}
+  _AttackAlreadyConected: 0
+  _ParryAlreadyConected: 0
   _maxCombo: 3
   _currentCombo: 0
   Attacks:

@@ -2270,10 +2270,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoblinBaseMele
       objectReference: {fileID: 0}
-    - target: {fileID: 115739603812437549, guid: ff8d34e0ae0b5f14795f0bd412e2c8e5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3275688582683465777, guid: ff8d34e0ae0b5f14795f0bd412e2c8e5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.870089

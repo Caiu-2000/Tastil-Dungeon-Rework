@@ -9,20 +9,25 @@ public class ChasingState : State
 
     public override void StartState()
     {
-        base.StartState();
+          
         ParentMachine.AiComponent.ChangeObjective(GameManager.Instance.Player.transform);
-        print("esto se le dio start");
+        
         ParentMachine.AiComponent.ChangeEnabled(true);
+        _controlledEntity._animator.SetBool("Walking", true);
     }
     public override void UpdateState()
     {
-        if (ParentMachine.AiComponent.GetDistance() < 1) { ParentMachine.ChangeState(DefaultNextState); }
+        if (ParentMachine.AiComponent.GetDistance() < 1 && !DefaultNextState.IsOnCd) {
+        
+            ParentMachine.ChangeState(DefaultNextState);
+            _controlledEntity._animator.SetBool("Walking", false);
+        }
  
     
     }
     public override void PauseState()
     {
-        print("Se pauso");
+   
         ParentMachine.AiComponent.ChangeEnabled(false);
     }
 }

@@ -20,6 +20,13 @@ public class GoblinMele : Enemy
     }
     public override void ApplyStun(float StunTime = 1)
     {
+        print("Me parrearon");
         machine.ApplyStun(StunTime);
     }
+
+    public override void Die()
+    {
+        machine.CharacterDied();
+    }
+    
 }

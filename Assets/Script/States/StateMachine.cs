@@ -16,6 +16,7 @@ public class StateMachine : MonoBehaviour
     private Enemy _entity;
     public MovementComponent _movement;
 
+    public Animator Modelanimator;
     
     public delegate void Attack(Vector3 ObjPos);
     public Attack OnAttack = delegate { };
@@ -81,8 +82,12 @@ public class StateMachine : MonoBehaviour
 
     public void CharacterDied()
     {
-        foreach (State state in statesList) { state.StopAllCoroutines(); }
-        print("PONE ACA LA MUERTE");
+        foreach (State state in statesList) {
+            if (state is DamagedState) continue;
+            state.StopAllCoroutines(); }
+        damaged.PausedState = deathState;
+        
+        
     }
 
     public void CallAttack(Vector3 ObjPos)
@@ -116,8 +121,11 @@ public class StateMachine : MonoBehaviour
 
     public void ApplyStun(float TimeForStun)
     {
-        CurrentState.PauseState();
-        damaged.SetHittData(new hittData(), CurrentState , true , TimeForStun);
+        
+        CurrentState.StopAllCoroutines();
+        CurrentState.StopState();
+
+        damaged.SetHittData(new hittData(), DefaultState , true , TimeForStun);
         _pausedState = CurrentState;
         CurrentState = damaged;
         CurrentState.StartState();

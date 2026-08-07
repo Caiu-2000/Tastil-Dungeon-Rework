@@ -15,6 +15,7 @@ public class AttackingState : State
     {
         base.StartState();
         StartCoroutine(SetAttack());
+
     }
 
 
@@ -37,7 +38,7 @@ public class AttackingState : State
         yield return new WaitForSeconds(0.25f);
 
 
-
+        StartCoroutine(CdCount());
         ParentMachine.ChangeState(DefaultNextState);
 
     }

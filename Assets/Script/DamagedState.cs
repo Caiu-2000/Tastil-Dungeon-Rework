@@ -5,7 +5,7 @@ using UnityEngine;
 public class DamagedState : State
 {
     public hittData HittData;
-    private State PausedState;
+    public State PausedState;
     private bool WasStun;
     private float StunTime = 0.5f;
     public override void StartState()

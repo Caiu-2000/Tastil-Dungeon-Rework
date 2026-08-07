@@ -13,6 +13,7 @@ public class ChangingPosition : State
         wantedPosition = GetNewObjective();
         ParentMachine.AiComponent.Changepos(wantedPosition);
         ParentMachine.AiComponent.ChangeEnabled(true);
+        _controlledEntity._animator.SetBool("Walking" , true);
     }
 
     public override void UpdateState()
@@ -21,10 +22,12 @@ public class ChangingPosition : State
         if (Vector3.Distance(this.transform.position, GameManager.Instance.Player.transform.position) >= 7)
         {
             if (DefaultNextState.IsOnCd) return;
+            _controlledEntity._animator.SetBool("Walking", false);
             ParentMachine.ChangeState(DefaultNextState);
         }
         if (ParentMachine.AiComponent.GetDistance() <= 0.7f)
         {
+            _controlledEntity._animator.SetBool("Walking", true);
             StartState();
         }
     }
