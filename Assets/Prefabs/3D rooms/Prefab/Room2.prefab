@@ -1780,6 +1780,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Breackable
       objectReference: {fileID: 0}
+    - target: {fileID: 8554720328272571136, guid: c3279fe8a09130344b5c7937af09749d, type: 3}
+      propertyPath: 'DropableItems.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8835119499718473541, guid: 0d1262ecf83b6a045b7e22a9640c789b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
